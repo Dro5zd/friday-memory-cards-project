@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/friday-memory-cards-project/static/css/main.964fdded.css",
+    "main.js": "/friday-memory-cards-project/static/js/main.ca552c41.js",
+    "index.html": "/friday-memory-cards-project/index.html",
+    "main.964fdded.css.map": "/friday-memory-cards-project/static/css/main.964fdded.css.map",
+    "main.ca552c41.js.map": "/friday-memory-cards-project/static/js/main.ca552c41.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.964fdded.css",
+    "static/js/main.ca552c41.js"
+  ]
+}
