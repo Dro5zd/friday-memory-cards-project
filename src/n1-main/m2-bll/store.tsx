@@ -6,7 +6,6 @@ import {passwordRecoveryReducer} from './passwordRecoveryReducer';
 import {newPasswordReducer} from './newPasswordReducer';
 import {testReducer} from './testReducer';
 
-
 const reducers = combineReducers({
     auth: authReducer,
     register: registerReducer,
