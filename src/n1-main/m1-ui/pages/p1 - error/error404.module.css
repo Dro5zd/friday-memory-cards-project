@@ -1,6 +1,6 @@
 .container{
     height: 100vh;
-    background: #e4ebf5;
+    background: var(--greyLight-1);
     z-index: -10;
     position: relative;
 }
@@ -24,7 +24,7 @@
     position: relative;
     text-align: center;
     font-size: 500px;
-    color: #ffffff;
+    color: var(--white);
     z-index: -1;
 }
 
@@ -33,10 +33,9 @@
     display: flex;
     justify-content: center;
     margin: 0 auto;
-    /*top: -800px;*/
     position: relative;
     text-align: center;
     font-size: 100px;
-    color: #ffffff;
+    color: var(--white);
     z-index: 2;
 }
