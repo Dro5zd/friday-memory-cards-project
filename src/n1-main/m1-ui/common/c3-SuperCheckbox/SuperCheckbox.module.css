@@ -1,7 +1,7 @@
 .checkbox {
     box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #fff;
     cursor: pointer;
-    position: relative;
+    /*position: relative;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,6 +12,7 @@
 }
 
 .spanClassName {
+
 }
 
 .checkbox::before {
@@ -19,17 +20,18 @@
     width: 0.65em;
     height: 0.65em;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-    transform: scale(0);
     transform-origin: bottom left;
-    /*transition: 120ms transform ease;*/
-    /*box-shadow: inset 1em 1em #9211e8;*/
-    /* Windows High Contrast Mode */
-    background-color: #401bea;
+    transition: background-color 500ms ease;
+    background-color: #919b9d;
     font-size: 30px;
 }
 
 .checkbox:checked::before {
-    transform: scale(1);
+    background-color: #401bea;
+}
+
+.checkbox:hover::before {
+    background-color: #401bea;
 }
 
 .checkbox:checked{
