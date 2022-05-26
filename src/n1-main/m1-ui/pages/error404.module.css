@@ -1,0 +1,42 @@
+.container{
+    height: 100vh;
+    background: #e4ebf5;
+    z-index: -10;
+    position: relative;
+}
+
+.png{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    z-index: 2;
+}
+
+.png2{
+    align-items: center;
+    width: 700px;
+}
+
+.title1{
+    display: flex;
+    justify-content: center;
+    margin-top: -800px;
+    position: relative;
+    text-align: center;
+    font-size: 500px;
+    color: #ffffff;
+    z-index: -1;
+}
+
+
+.title2 {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    /*top: -800px;*/
+    position: relative;
+    text-align: center;
+    font-size: 100px;
+    color: #ffffff;
+    z-index: 2;
+}

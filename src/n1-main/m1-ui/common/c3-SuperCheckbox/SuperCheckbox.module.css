@@ -1,0 +1,14 @@
+.checkbox {
+    box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #fff;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    width: 2.8rem;
+    height: 2.8rem;
+}
+
+.spanClassName {
+}

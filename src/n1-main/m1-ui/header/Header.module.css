@@ -1,0 +1,26 @@
+.link {
+    text-decoration: none;
+    color: magenta;
+    margin: 10px;
+    text-transform: uppercase;
+}
+
+.link:hover {
+    color: #330867;
+}
+
+.active {
+    text-decoration: none;
+    margin: 10px;
+    color: #3c097c;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
