@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/friday-memory-cards-project/static/css/main.494ab4b9.css",
-    "main.js": "/friday-memory-cards-project/static/js/main.19a91614.js",
+    "main.css": "/friday-memory-cards-project/static/css/main.8c2551a0.css",
+    "main.js": "/friday-memory-cards-project/static/js/main.28dfc73c.js",
     "static/media/png.png": "/friday-memory-cards-project/static/media/png.7ce8b7a4c01b0f282fa6.png",
     "index.html": "/friday-memory-cards-project/index.html",
-    "main.494ab4b9.css.map": "/friday-memory-cards-project/static/css/main.494ab4b9.css.map",
-    "main.19a91614.js.map": "/friday-memory-cards-project/static/js/main.19a91614.js.map"
+    "main.8c2551a0.css.map": "/friday-memory-cards-project/static/css/main.8c2551a0.css.map",
+    "main.28dfc73c.js.map": "/friday-memory-cards-project/static/js/main.28dfc73c.js.map"
   },
   "entrypoints": [
-    "static/css/main.494ab4b9.css",
-    "static/js/main.19a91614.js"
+    "static/css/main.8c2551a0.css",
+    "static/js/main.28dfc73c.js"
   ]
 }
