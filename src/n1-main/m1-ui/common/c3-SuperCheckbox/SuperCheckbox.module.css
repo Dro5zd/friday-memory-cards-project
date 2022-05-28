@@ -6,8 +6,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 0.5rem;
-    width: 2.8rem;
-    height: 2.8rem;
+    width: 30px;
+    height: 30px;
     -webkit-appearance: none;
 }
 
@@ -23,7 +23,7 @@
     transform-origin: bottom left;
     transition: background-color 500ms ease;
     background-color: var(--greyDark);
-    font-size: 30px;
+    font-size: 25px;
 }
 
 .checkbox:checked::before {
@@ -35,7 +35,7 @@
 }
 
 .checkbox:checked {
-    box-shadow: inset .2rem .2rem .5rem #c8d0e7, inset -.2rem -.2rem .5rem #fff;
+    box-shadow: inset .1rem .1rem .3rem #c8d0e7, inset -.1rem -.1rem .3rem #fff;
 }
 
 

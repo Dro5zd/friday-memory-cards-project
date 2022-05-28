@@ -7,9 +7,9 @@ import {NavLink} from "react-router-dom";
 import {PATH} from "../../routes/Routs";
 
 export const Login = () => {
-  const [login, setLogin] = useState('')
-  const [password, setPassword] = useState('')
-  const [remember, setRemember] = useState<boolean>(false)
+  // const [login, setLogin] = useState('')
+  // const [password, setPassword] = useState('')
+  // const [remember, setRemember] = useState<boolean>(false)
 
   return (
     <div className={s.loginContainer}>
@@ -20,24 +20,26 @@ export const Login = () => {
           <SuperInputText className={s.emailInput} type={"email"} placeholder={'email'}/>
           <SuperInputText className={s.passInput} type={"password"} placeholder={'password'}/>
         </div>
-        <div className={s.linkCheckboxWrapper}>
           <div className={s.rememberWrapper}>
-            <SuperCheckbox/>
+            <SuperCheckbox className={s.rememberCheckbox}/>
             <span>Remember Me</span>
           </div>
-          <div className={s.forgotLink}>
-            <NavLink to={PATH.ENTERING_NEW_PASSWORD} className={navData => navData.isActive ? s.active : s.link}>
-              Forgot Password
-            </NavLink>
-          </div>
-        </div>
         <div>
           <SuperButton className={s.loginButton} title={'Login'}/>
         </div>
-        <span>Don't have an account?</span>
-        <NavLink to={PATH.REGISTER} className={navData => navData.isActive ? s.active : s.link}>
-          Sing Up
-        </NavLink>
+        <div className={s.footerWrapper}>
+          <div>
+            <span className={s.newUserSpan}>New User?</span>
+            <NavLink to={PATH.REGISTER} className={s.toRegisterLink}>
+              <span className={s.signUpSpan}>Sing Up</span>
+            </NavLink>
+          </div>
+          <div className={s.forgotLink}>
+            <NavLink to={PATH.ENTERING_NEW_PASSWORD} className={s.forgotPassLink}>
+              <span>Forgot Password</span>
+            </NavLink>
+          </div>
+        </div>
       </div>
     </div>
   )
