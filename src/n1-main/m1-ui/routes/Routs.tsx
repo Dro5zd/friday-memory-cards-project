@@ -1,7 +1,7 @@
 import React from 'react'
 import {Navigate, Route, Routes} from 'react-router-dom';
 import {Error404} from '../pages/p1 - error/Error404';
-import {Login} from '../pages/Login';
+import {Login} from '../pages/p2 - login/Login';
 import {NewPassword} from '../pages/NewPassword';
 import {Register} from '../pages/Register';
 import {Test} from '../pages/p7 - test/Test';
