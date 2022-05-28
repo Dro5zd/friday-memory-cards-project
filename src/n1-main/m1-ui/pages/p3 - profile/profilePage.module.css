@@ -14,7 +14,7 @@
     box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
     padding: 4rem;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
 }
@@ -45,14 +45,14 @@
 }
 
 .profileName {
-    margin: 5px;
-    font-size: 32px;
+    margin-bottom: 45px;
+    font-size: 35px;
     text-align: center;
-    color: var(--primary-dark);
+    color: var(--greyDark-2);
 }
 
 .profileStatus{
-    color: var(--greyDark);
+    color: var(--greyDark-2);
     margin: 5px;
     font-size: 20px;
     text-align: center;
@@ -60,6 +60,34 @@
     font-weight: 500;
 }
 
+.buttonBlock{
+    display: flex;
+}
+
 .buttonBlock button {
-    width: 400px;
+    width: 160px;
+    height: 55px;
+    margin: 15px;
+}
+
+.cancelButton{
+    background-color: var(--primary-light);
+    box-shadow: inset 0.2rem 0.2rem 1rem var(--greyLight-2), inset -0.2rem -0.2rem 1rem var(--primary-light), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+
+}
+
+.inputBlock input {
+    height: 55px;
+    margin: 15px;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--greyDark);
+    margin: 10px;
+    text-transform: uppercase;
+}
+
+.link:hover {
+    color: var(--primary-dark);
 }
