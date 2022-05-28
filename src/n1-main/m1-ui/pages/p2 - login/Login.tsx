@@ -3,8 +3,7 @@ import SuperInputText from "../../common/c1-SuperInputText/SuperInputText";
 import SuperCheckbox from "../../common/c3-SuperCheckbox/SuperCheckbox";
 import SuperButton from "../../common/c2-SuperButton/SuperButton";
 import s from './Login.module.css'
-import {Register} from "../Register";
-import {NavLink, Route, Routes} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {PATH} from "../../routes/Routs";
 
 export const Login = () => {
@@ -40,6 +39,7 @@ export const Login = () => {
           Sing Up
         </NavLink>
       </div>
+
     </div>
   )
 }
