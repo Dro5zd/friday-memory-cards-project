@@ -4,7 +4,7 @@ const initState = {
 
 type initStateType = typeof initState
 
-export const authReducer = (state: initStateType = initState, action: loadingACType): initStateType  => {
+export const loginReducer = (state: initStateType = initState, action: loadingACType): initStateType  => {
     switch (action.type) {
         case 'LOADING-ON':
             return {...state, isLoading: !action.isLoading}
