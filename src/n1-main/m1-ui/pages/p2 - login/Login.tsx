@@ -39,7 +39,6 @@ export const Login = () => {
           Sing Up
         </NavLink>
       </div>
-
     </div>
   )
 }
