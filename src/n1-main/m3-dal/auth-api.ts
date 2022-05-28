@@ -13,3 +13,5 @@ export const authAPI = {
         return instance.get('ping')
     },
 }
+
+//1
