@@ -1,7 +1,7 @@
 * {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
-  color: #2D2E46;
+  color: var(--greyDark-2);
 }
 
 .loginContainer {
@@ -34,9 +34,9 @@
 
 .loginSubTitle {
   margin-top: 32px;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 23px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 
 .inputWrapper {

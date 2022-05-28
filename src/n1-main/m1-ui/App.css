@@ -7,7 +7,10 @@
   --greyLight-2: #c8d0e7;
   --greyLight-3: #bec8e4;
   --greyDark: #9baacf;
+  --greyDark-2: #636b83;
 }
+/*цвет шрифта в логинизации*/
+/*color: #636b83;*/
 
 .App {
   text-align: center;
