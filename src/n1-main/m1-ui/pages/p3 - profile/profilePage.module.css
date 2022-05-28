@@ -1,0 +1,65 @@
+.profileContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--greyLight-1);
+}
+
+.components {
+    width: 400px;
+    height: 600px;
+    border-radius: 3rem;
+    box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+    padding: 4rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.picture img {
+    display: block;
+    margin: auto;
+    width: 80%;
+    height: 200px;
+    border-radius: 0 0 5px 5px;
+    object-fit: cover;
+    object-position: 100% 65%;
+}
+
+.avatar {
+    position: relative;
+    /*margin-top: -150px;*/
+    justify-content: center;
+}
+
+.avatar img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 168px;
+    border-radius: 50%;
+    border: 5px solid white;
+}
+
+.profileName {
+    margin: 5px;
+    font-size: 32px;
+    text-align: center;
+    color: var(--primary-dark);
+}
+
+.profileStatus{
+    color: var(--greyDark);
+    margin: 5px;
+    font-size: 20px;
+    text-align: center;
+    /*text-transform: uppercase;*/
+    font-weight: 500;
+}
+
+.buttonBlock button {
+    width: 400px;
+}

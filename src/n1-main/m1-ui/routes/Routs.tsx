@@ -6,7 +6,7 @@ import {NewPassword} from '../pages/NewPassword';
 import {Register} from '../pages/Register';
 import {Test} from '../pages/p7 - test/Test';
 import {PasswordRecovery} from '../pages/PasswordRecovery';
-import {Profile} from '../pages/Profile';
+import {Profile} from '../pages/p3 - profile/Profile';
 
 export const PATH = {
     LOGIN: '/login',
