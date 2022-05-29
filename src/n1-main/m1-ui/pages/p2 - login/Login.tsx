@@ -10,17 +10,17 @@ import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 
 export const Login = () => {
 
-  const [login, setLogin] = useState('bogdan_mykhailov@icloud.com')
-  const [password, setPassword] = useState('11111111')
+  const [login, setLogin] = useState('')
+  const [password, setPassword] = useState('')
   const [remember, setRemember] = useState(false)
   const dispatch = useTypedDispatch()
 
   const loginData = useTypedSelector(state => state.auth)
 
-  let initValue = {
-    "email": 'bogdan_mykhailov@icloud.com',
-    "password": '11111111',
-    "rememberMe": true
+  const loginValue = {
+    email: login,
+    password: password,
+    rememberMe: remember
   }
 
   const onclickLoginHandler = () => {
@@ -28,7 +28,7 @@ export const Login = () => {
     setPassword(password)
     setLogin('')
     setPassword('')
-    dispatch(loginTC(initValue))
+    dispatch(loginTC(loginValue))
     console.log(loginData)
   }
 
