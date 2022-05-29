@@ -10,10 +10,10 @@
     cursor: pointer;
     transition: 0.3s ease;
     background: var(--primary);
-    box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light), inset -0.2rem -0.2rem 1rem var(--primary-dark), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
     color: var(--greyLight-1);
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
+    box-shadow: inset .2rem .2rem 1rem var(--primary-light), inset -.2rem -.2rem 1rem var(--primary-dark),.3rem .3rem .6rem var(--greyLight-2), -.2rem -.2rem .5rem var(--white);
 }
 
 .default:hover {
