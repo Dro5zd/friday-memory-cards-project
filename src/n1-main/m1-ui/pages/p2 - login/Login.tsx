@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {ChangeEvent, useState} from 'react'
 import SuperInputText from "../../common/c1-SuperInputText/SuperInputText";
 import SuperCheckbox from "../../common/c3-SuperCheckbox/SuperCheckbox";
 import SuperButton from "../../common/c2-SuperButton/SuperButton";
@@ -32,6 +32,13 @@ export const Login = () => {
     console.log(loginData)
   }
 
+  const onChangeLoginHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setLogin(e.currentTarget.value)
+  }
+  const onChangePassHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.currentTarget.value)
+  }
+
   return (
     <div className={s.loginContainer}>
       <div className={s.components}>
@@ -42,14 +49,14 @@ export const Login = () => {
 
         <div className={s.inputWrapper}>
           <SuperInputText
-            onChange={setLogin}
+            onChange={onChangeLoginHandler}
             value={login}
             className={s.emailInput}
             type={"email"}
             placeholder={'email'}
           />
           <SuperInputText
-            onChange={setPassword}
+            onChange={onChangePassHandler}
             value={password}
             className={s.passInput}
             type={"password"}

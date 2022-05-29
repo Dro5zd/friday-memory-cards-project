@@ -30,7 +30,6 @@ export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch) => {
     })
     .catch((e) => {
       const error = e.res ? e.res.data.error : (e.message + ', more details in the console')
-      dispatch(loginAC(error))
     })
 }
 
