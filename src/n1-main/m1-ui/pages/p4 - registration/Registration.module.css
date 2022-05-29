@@ -1,0 +1,66 @@
+.registrationContainer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background: var(--greyLight-1);
+}
+
+.components {
+    width: 400px;
+    height: 600px;
+    border-radius: 3rem;
+    box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+    padding: 4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.registrationTitle {
+    margin-top: 10px;
+    font-size: 30px;
+}
+
+.registrationSubTitle {
+    margin-top: 32px;
+    font-size: 20px;
+}
+
+.inputWrapper {
+    margin-top: 38px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.emailInput {
+    height: 55px;
+}
+
+.passInput {
+    margin-top: 25px;
+    height: 55px;
+}
+
+.linkCheckboxWrapper {
+    margin-top: 48px;
+    display: flex;
+
+}
+
+.registrationButton {
+    width: 260px;
+    height: 50px;
+    margin-top: 20px;
+}
+.label {
+    margin: 10px 0 5px;
+
+}
+.navigate {
+    justify-self: flex-end;
+}
