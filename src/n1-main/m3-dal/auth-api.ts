@@ -36,11 +36,12 @@ export type LoginParamsType = {
   password: string,
   rememberMe?: boolean,
 }
+
 export type AuthResponseType = {
   _id: string;
   email: string;
   name: string;
-  avatar?: string;
+  avatar: string;
   publicCardPacksCount: number;
   created: Date;
   updated: Date;
@@ -49,6 +50,7 @@ export type AuthResponseType = {
   rememberMe: boolean;
   error?: string;
 }
+
 type InfoResponseType = {
   info: string;
   error?: string

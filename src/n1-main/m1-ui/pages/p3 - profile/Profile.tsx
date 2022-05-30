@@ -18,7 +18,9 @@ export const Profile = () => {
             navigate(PATH.LOGIN)
         }
     }, [params])
+
     const [mode, setMode] = useState(true)
+
     const changeMode = () => {
         setMode(!mode)
     }
