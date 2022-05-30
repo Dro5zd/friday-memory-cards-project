@@ -1,20 +1,35 @@
-const initState = {
-    isLoading: false
+import {Dispatch} from "redux";
+import {authAPI} from "../m3-dal/auth-api";
+
+const initState = {} as RecoveryType
+type RecoveryType = {
+    info: string;
+    error?: string;
 }
 
-type initStateType = typeof initState
 
-export const passwordRecoveryReducer = (state: initStateType = initState, action: loadingACType): initStateType  => {
+export const passwordRecoveryReducer = (state: RecoveryType = initState, action: ActionType): RecoveryType => {
     switch (action.type) {
-        case 'LOADING-ON':
-            return {...state, isLoading: !action.isLoading}
+        case 'SET-RECOVERY-INFO':
+            return {...state, info: action.info}
+        case "SET-RECOVERY-ERROR":
+            return {...state, error: action.error}
         default:
             return state
     }
 }
 
-type loadingACType = ReturnType<typeof loadingAC>
+type ActionType = ReturnType<typeof setRecoveryInfoAC> | ReturnType<typeof setRecoveryErrorAC>
 
-export const loadingAC = (isLoading: boolean) => {
-    return {type: 'LOADING-ON'as const, isLoading}
+export const setRecoveryInfoAC = (info: string) => {
+    return ({type: 'SET-RECOVERY-INFO', info} as const)
+}
+export const setRecoveryErrorAC = (error: string) => {
+    return ({type: 'SET-RECOVERY-ERROR', error} as const)
+}
+
+export const setRecoveryTC = (forgotData: any) => (dispatch: Dispatch<ActionType>) => {
+    authAPI.forgot(forgotData).then((res) => {
+        dispatch(setRecoveryInfoAC(res.data.data.info))
+    })
 }
