@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {authAPI, LoginParamsType} from "../m3-dal/auth-api";
+import {setIsAuthorisedAC} from "./appReducer";
 
 const LOGIN = 'LOGIN'
 
@@ -26,6 +27,7 @@ export const loginAC = (login: InitStateType) => ({
 export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch) => {
   authAPI.loginPost(data)
     .then((res) => {
+      dispatch(setIsAuthorisedAC(true))
       dispatch(loginAC(res.data))
     })
     .catch((e) => {

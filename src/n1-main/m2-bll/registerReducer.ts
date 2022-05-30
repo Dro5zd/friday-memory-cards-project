@@ -17,7 +17,6 @@ export type RequestRegisterType = {
 export const registerReducer = (state: InitStateType = initState, action: ActionType): InitStateType => {
     switch (action.type) {
         case 'SET-ERROR':
-            debugger
             return {...state, error: action.error}
         case "SET-IS-REGISTERED":
             return {...state, isRegistered: action.isRegistered}
