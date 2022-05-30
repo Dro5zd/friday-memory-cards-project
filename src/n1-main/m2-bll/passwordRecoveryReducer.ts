@@ -28,8 +28,21 @@ export const setRecoveryErrorAC = (error: string) => {
     return ({type: 'SET-RECOVERY-ERROR', error} as const)
 }
 
-export const setRecoveryTC = (forgotData: any) => (dispatch: Dispatch<ActionType>) => {
+export const setRecoveryTC = (email: string) => (dispatch: Dispatch<ActionType>) => {
+    const forgotData: RecoverPassRequestType = {
+        email: email,
+        from: `test-front-admin <ai73a@yandex.by>`,
+        message: `<div style="background-color: lime; padding: 15px">
+                    password recovery link: 
+                    <a href='http://localhost:3000/friday-memory-cards-project#/set-new-password/$token$'>link</a>
+                  </div>`
+    }
     authAPI.forgot(forgotData).then((res) => {
-        dispatch(setRecoveryInfoAC(res.data.data.info))
+        dispatch(setRecoveryInfoAC(res.data.info))
     })
+}
+export type RecoverPassRequestType = {
+    email: string;
+    from: string;
+    message: string;
 }
