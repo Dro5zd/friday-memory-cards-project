@@ -102,6 +102,7 @@
     text-decoration: none;
     color: var(--primary);
     font-weight: bold;
+    cursor: pointer;
 }
 /*спросить разрешение у Андрея_______________*/
 

@@ -5,12 +5,12 @@ import {setIsAuthorisedAC} from "./appReducer";
 const LOGIN = 'LOGIN'
 const SET_LOGIN_ERROR = 'SET-LOGIN-ERROR'
 
-const initState = {} as NewType
+const initState = {} as InitStateType
 
 export const loginReducer = (state: AppStoreType = initState, action: LoginReducerType): AppStoreType => {
   switch (action.type) {
     case LOGIN:
-      return {...state, data: action.data}
+      return {...action.data}
 
     case SET_LOGIN_ERROR:
       return {...state, error: action.error}
@@ -66,10 +66,3 @@ type InitStateType = {
 
   error?: string;
 }
-type NewType = {
-  data: InitStateType
-  error?: string
-  avatar: string;
-  name: string
-}
-
