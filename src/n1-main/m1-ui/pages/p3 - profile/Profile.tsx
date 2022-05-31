@@ -31,7 +31,6 @@ export const Profile = () => {
 
     const name = useTypedSelector(state => state.profile.name)
     const nameMe = useTypedSelector(state => state.auth.name)
-
     const avatar = useTypedSelector(state => state.profile.avatar)
     const avatarMe = useTypedSelector(state => state.auth.avatar)
 
