@@ -55,7 +55,7 @@ type InitStateType = {
   _id: string;
   email: string;
   name: string;
-  avatar?: string;
+  avatar: string;
   publicCardPacksCount: number; // количество колод
 
   created: Date;
@@ -69,5 +69,7 @@ type InitStateType = {
 type NewType = {
   data: InitStateType
   error?: string
+  avatar: string;
+  name: string
 }
 

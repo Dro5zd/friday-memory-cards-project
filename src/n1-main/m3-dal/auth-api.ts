@@ -54,7 +54,7 @@ export type AuthResponseType = {
   _id: string;
   email: string;
   name: string;
-  avatar?: string;
+  avatar: string;
   publicCardPacksCount: number;
   created: Date;
   updated: Date;

@@ -19,12 +19,11 @@ export const Login = () => {
     dispatch(loginFormTC(data))
     reset()
   }
-
-  // useEffect(() => {
-  //   if (!isAuthorised) {
-  //     navigate(PATH.PROFILE)
-  //   }
-  // }, [isAuthorised, navigate])
+  useEffect(() => {
+    if (isAuthorised) {
+      navigate(PATH.PROFILE)
+    }
+  }, [isAuthorised, navigate])
 
   return (
     <div className={s.loginContainer}>
