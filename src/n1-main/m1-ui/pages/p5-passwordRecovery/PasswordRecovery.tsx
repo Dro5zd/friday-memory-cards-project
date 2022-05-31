@@ -34,7 +34,6 @@ export const PasswordRecovery = () => {
                     <SuperButton className={s.sendButton} title={'Send'}/>
                 </form>
                 <NavLink className={s.toLoginLink} to={PATH.LOGIN}>Try to Log In</NavLink>
-                <NavLink className={s.toLoginLink} to={PATH.LOGIN}>Try to log in</NavLink>
                 {errors.email && <span>Email is not correct</span>}
                 {serverMessage && <span>{serverMessage} please check your email</span>}
             </div>
