@@ -2,28 +2,38 @@ import React, {useEffect} from 'react';
 import s from './NewPassword.module.css'
 import SuperInputText from "../../common/c1-SuperInputText/SuperInputText";
 import SuperButton from "../../common/c2-SuperButton/SuperButton";
-import {newPassTC} from "../../../m2-bll/newPasswordReducer";
+import {newPassTC, setPassChangedAC} from "../../../m2-bll/newPasswordReducer";
 import {NewPassParamsType} from "../../../m3-dal/auth-api";
 import {useForm} from "react-hook-form";
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {PATH} from "../../routes/Routs";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 export const NewPassword = () => {
-  const passChanged = useTypedSelector(state => state.app.passChanged)
-  const {register, handleSubmit, reset, formState: {errors}} = useForm<NewPassParamsType>()
+  const passChanged = useTypedSelector(state => state.newPassword.passChanged)
+  const {register, handleSubmit, reset, formState: {errors}} = useForm<InputPassType>()
   const newPassError = useTypedSelector(state => state.newPassword.error)
   const dispatch = useTypedDispatch()
   const navigate = useNavigate()
-  const onSubmit = (newPassData: NewPassParamsType) => {
-    dispatch(newPassTC(newPassData))
+  const {token} = useParams<{ token: string }>()
+  const onSubmit = (newPassData: InputPassType) => {
+    const payload: NewPassParamsType = {
+      password: newPassData.password,
+      // если undefined || null дает строку
+      resetPasswordToken: token ?? ''
+    }
+    dispatch(newPassTC(payload))
     reset()
   }
-  // useEffect(() => {
-  //   if (!passChanged) {
-  //     navigate(PATH.LOGIN)
-  //   }
-  // }, [passChanged, navigate])
+
+  useEffect(() => {
+    if (passChanged) {
+      //если диспатчить меня редиректит на профайл а должно на логин
+      // диспатч для того чтоб пассЧендж на фолс
+      dispatch(setPassChangedAC(false))
+      navigate(PATH.LOGIN)
+    }
+  }, [passChanged, navigate])
 
   return (
     <div className={s.newPassContainer}>
@@ -66,3 +76,8 @@ export const NewPassword = () => {
     </div>
   );
 };
+
+//types
+type InputPassType = {
+  password: string,
+}

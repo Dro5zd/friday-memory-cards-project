@@ -10,8 +10,6 @@ const instance = axios.create({
   // }
 })
 
-// Нужно спросить Давида зачем ??
-
 const instanceHeroku = axios.create({
     baseURL: 'https://neko-back.herokuapp.com/2.0/',
     withCredentials: true,
@@ -31,7 +29,7 @@ export const authAPI = {
     return instance.post<AxiosResponse<AuthResponseType>>('auth/me')
   },
   newPass(newPassData: NewPassParamsType) {
-    return instance.post('/auth/set-new-password', newPassData)
+    return instanceHeroku.post('/auth/set-new-password', newPassData)
   },
   logOut(){
     return instance.delete<AxiosResponse<InfoResponseType>>('auth/me')

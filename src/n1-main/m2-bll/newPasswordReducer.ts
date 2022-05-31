@@ -1,22 +1,25 @@
 import {Dispatch} from "redux";
 import {authAPI, NewPassParamsType} from "../m3-dal/auth-api";
 
-const NEW_PASS = 'NEW-PASS'
 const SET_NEW_PASS_ERROR = 'SET-NEW-PASS-ERROR'
+const SET_PASS_CHANGED = 'SET-PASS-CHANGED'
 
 const initState = {
-  newPass: '',
-  error: ''
+  error: '',
+  passChanged: false
 }
 
 export const newPasswordReducer = (state: InitStateType = initState, action: NewPassActionsType): InitStateType => {
   switch (action.type) {
-    case NEW_PASS:
-      return {...state, newPass: action.newPass}
 
     case SET_NEW_PASS_ERROR:
       return {
         ...state, error: action.error
+      }
+    case SET_PASS_CHANGED:
+      return {
+        ...state,
+        passChanged: action.passChanged
       }
 
     default:
@@ -25,23 +28,23 @@ export const newPasswordReducer = (state: InitStateType = initState, action: New
 }
 
 // actions
-export const newPassAC = (newPass: string) => ({type: NEW_PASS, newPass} as const)
 export const setNewPassErrorAC = (error: string) => ({type: SET_NEW_PASS_ERROR, error} as const)
+export const setPassChangedAC = (passChanged: boolean) => ({type: SET_PASS_CHANGED, passChanged} as const)
 
 //thunk
 export const newPassTC = (newPassData: NewPassParamsType) => (dispatch: Dispatch) => {
   authAPI.newPass(newPassData)
-    .then((res) => {
-      dispatch(newPassAC(res.data.newPass))
+    .then(() => {  // можно и не делать
+      dispatch(setPassChangedAC(true))
     })
     .catch((e) => {
-      dispatch(setNewPassErrorAC(`Error: ${e.message}`))
+      dispatch(setNewPassErrorAC(e.message))
     })
 }
 
 // types
 export type NewPassActionsType =
-  | ReturnType<typeof newPassAC>
   | ReturnType<typeof setNewPassErrorAC>
+  | ReturnType<typeof setPassChangedAC>
 
 type InitStateType = typeof initState
