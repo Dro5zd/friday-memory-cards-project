@@ -43,9 +43,7 @@ export const Profile = () => {
                 </div>
                 <SuperButton className={s.editButton} title={'Edit Profile'} onClick={changeMode}/>
 
-                <NavLink to={PATH.LOGIN} className={navData => navData.isActive ? s.active : s.link}>
                     <span className={s.link} onClick={logOutHandler}>Log Out</span>
-                </NavLink>
 
             </div> : <ProfileEdit changeMode={changeMode}/>}
         </div>
