@@ -19,6 +19,7 @@ export const Login = () => {
     dispatch(loginFormTC(data))
     reset()
   }
+
   // useEffect(() => {
   //   if (!isAuthorised) {
   //     navigate(PATH.PROFILE)
