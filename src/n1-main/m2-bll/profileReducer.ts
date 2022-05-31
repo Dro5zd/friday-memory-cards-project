@@ -9,7 +9,7 @@ const initState = {
 export const profileReducer = (state: changeProfileRequestType = initState, action: ActionsType): changeProfileRequestType  => {
     switch (action.type) {
         case 'UPDATE-PROFILE':
-            return {...state, name: action.newName, avatar: action.newAvatar}
+            return {name: action.newName, avatar: action.newAvatar}
         default:
             return state
     }
@@ -23,7 +23,7 @@ export const updateProfileTC = (data: changeProfileRequestType) => {
     return (dispatch: Dispatch<ActionsType>) => {
         profileAPI.changeProfile(data)
             .then(res => {
-                dispatch(updateProfileAC(res.data.addedUser.name, res.data.addedUser.avatar))
+                dispatch(updateProfileAC(res.data.updatedUser.name, res.data.updatedUser.avatar))
             })
     }
 }

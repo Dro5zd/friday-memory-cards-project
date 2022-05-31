@@ -16,6 +16,8 @@ export const appReducer = (state: InitStateType = initState, action: ActionType)
             return {...state, isAuthorised: action.isAuthorised}
         case "SET-IS-INITIALISED":
             return {...state, isInitialised: action.isInitialised}
+        case "LOG-OUT":
+            return {...state, isAuthorised: action.isAuthorised}
         default:
             return state
     }
@@ -23,6 +25,7 @@ export const appReducer = (state: InitStateType = initState, action: ActionType)
 
 export const setIsAuthorisedAC = (isAuthorised: boolean) => ({type: "SET-IS-AUTHORISED", isAuthorised} as const)
 export const setIsInitialisedAC = (isInitialised: boolean) => ({type: "SET-IS-INITIALISED", isInitialised} as const)
+export const logOutAC = (isAuthorised: boolean) => ({type: "LOG-OUT", isAuthorised} as const)
 
 export const authoriseMeTC = () => (dispatch: Dispatch<ActionType>) => {
     /*dispatch(setIsInitialisedAC(false))*/
@@ -33,4 +36,11 @@ export const authoriseMeTC = () => (dispatch: Dispatch<ActionType>) => {
     })
 }
 
-type ActionType = ReturnType<typeof setIsAuthorisedAC> | ReturnType<typeof setIsInitialisedAC>
+export const logOutMeTC = () => (dispatch: Dispatch<ActionType>) => {
+    /*dispatch(setIsInitialisedAC(false))*/
+    authAPI.logOut().then((res) => {
+        dispatch(setIsAuthorisedAC(false))
+    })
+}
+
+type ActionType = ReturnType<typeof setIsAuthorisedAC> | ReturnType<typeof setIsInitialisedAC> | ReturnType<typeof logOutAC>

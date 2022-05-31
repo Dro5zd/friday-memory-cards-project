@@ -27,6 +27,9 @@ export const authAPI = {
   },
   forgot(forgotData: any) {
     return instanceHeroku.post<AxiosResponse<InfoResponseType>>('auth/forgot', forgotData)
+  },
+  logOut(){
+    return instance.delete<AxiosResponse<InfoResponseType>>('auth/me')
   }
 }
 
@@ -50,6 +53,8 @@ export type AuthResponseType = {
   rememberMe: boolean;
   error?: string;
 }
+
+
 
 type InfoResponseType = {
   info: string;

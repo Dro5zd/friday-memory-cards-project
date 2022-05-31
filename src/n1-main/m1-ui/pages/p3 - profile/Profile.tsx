@@ -5,13 +5,14 @@ import noPhoto from '../../../../assets/img/noPhoto.png'
 import {ProfileEdit} from './ProfileEdit';
 import {NavLink, useNavigate, useParams} from 'react-router-dom';
 import {PATH} from '../../routes/Routs';
-import {AppStoreType, useTypedSelector} from '../../../m2-bll/store';
-import {useSelector} from 'react-redux';
+import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
+import {logOutMeTC} from '../../../m2-bll/appReducer';
 
 export const Profile = () => {
     const isAuthorised = useTypedSelector<boolean>(state => state.app.isAuthorised)
     const navigate = useNavigate()
     const params = useParams<string>()
+    const dispatch = useTypedDispatch()
 
     useEffect(() => {
         if (!isAuthorised) {
@@ -24,22 +25,30 @@ export const Profile = () => {
     const changeMode = () => {
         setMode(!mode)
     }
-    const login = useTypedSelector(state => state.auth.name)
 
-    const avatar = useSelector<AppStoreType, string | undefined>(state => state.auth.avatar)
+    const logOutHandler = () => {
+        dispatch(logOutMeTC())
+    }
+
+    const name = useTypedSelector(state => state.profile.name)
+    const nameMe = useTypedSelector(state => state.auth.name)
+
+    const avatar = useTypedSelector(state => state.profile.avatar)
+    const avatarMe = useTypedSelector(state => state.auth.avatar)
+
     // const dispatch = useDispatch<any>()
     return (
         <div className={s.profileContainer}>
             {mode ? <div className={s.components}>
                 <div className={s.avatar}>
-                    <img src={avatar || noPhoto} alt={'ava'}/>
+                    <img src={ avatarMe || avatar || noPhoto} alt={'ava'}/>
 
-                    <h2 className={s.profileName}>{login}</h2>
+                    <h2 className={s.profileName}>{name || nameMe || 'Name'}</h2>
                 </div>
                 <SuperButton title={'Edit Profile'} onClick={changeMode}/>
 
                 <NavLink to={PATH.LOGIN} className={navData => navData.isActive ? s.active : s.link}>
-                    <span>Log Out</span>
+                    <span onClick={logOutHandler}>Log Out</span>
                 </NavLink>
 
 

@@ -3,8 +3,7 @@ import s from './profilePage.module.css';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import noPhoto from '../../../../assets/img/noPhoto.png'
 import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
-import {useSelector} from 'react-redux';
-import {AppStoreType, useTypedDispatch} from '../../../m2-bll/store';
+import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {updateProfileTC} from '../../../m2-bll/profileReducer';
 
 type ProfileEditType = {
@@ -13,7 +12,8 @@ type ProfileEditType = {
 
 export const ProfileEdit = (props: ProfileEditType) => {
 
-    const avatar = useSelector<AppStoreType, string | undefined>(state => state.auth.avatar)
+    const avatar = useTypedSelector(state => state.auth.avatar)
+
     const dispatch = useTypedDispatch()
 
     const [newName, setNewName] = useState('')
@@ -25,6 +25,7 @@ export const ProfileEdit = (props: ProfileEditType) => {
     const onChangeNewAvatarHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewAvatar(e.currentTarget.value)
     }
+
 
     const updateProfile = (name: string, avatar: string) => {
         dispatch(updateProfileTC({name, avatar}))

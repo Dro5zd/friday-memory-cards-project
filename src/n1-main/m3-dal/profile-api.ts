@@ -15,7 +15,7 @@ export type changeProfileRequestType = {
 }
 
 type changeProfileResponseType = {
-    addedUser: AuthResponseType
+    updatedUser: AuthResponseType
     error?: string
 }
 
