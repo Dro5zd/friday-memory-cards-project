@@ -12,7 +12,7 @@ type ProfileEditType = {
 
 export const ProfileEdit = (props: ProfileEditType) => {
 
-    const avatar = useTypedSelector(state => state.auth.avatar)
+    const avatar = useTypedSelector(state => state.profile.avatar)
 
     const dispatch = useTypedDispatch()
 
@@ -26,9 +26,13 @@ export const ProfileEdit = (props: ProfileEditType) => {
         setNewAvatar(e.currentTarget.value)
     }
 
+    const cancelButtonHandler = ()=>{
+        props.changeMode(true)
+    }
 
     const updateProfile = (name: string, avatar: string) => {
         dispatch(updateProfileTC({name, avatar}))
+        props.changeMode(true)
     }
 
     return (
@@ -41,13 +45,13 @@ export const ProfileEdit = (props: ProfileEditType) => {
                 </div>
 
                 <div className={s.inputBlock}>
-                    <SuperInputText placeholder={'Enter new name'} onChange={onChangeNewNameHandler} onBlur={()=>updateProfile(newName, newAvatar)}/>
-                    <SuperInputText placeholder={'Enter link to new avatar'} onChange={onChangeNewAvatarHandler} onBlur={()=>updateProfile(newName, newAvatar)}/>
+                    <SuperInputText placeholder={'Enter new name'} onChange={onChangeNewNameHandler} />
+                    <SuperInputText placeholder={'Enter link to new avatar'} onChange={onChangeNewAvatarHandler}/>
                 </div>
 
                 <div className={s.buttonBlock}>
-                    <SuperButton className={s.cancelButton} title={'Cancel'} onClick={() => props.changeMode(true)}/>
-                    <SuperButton title={'Save'} onClick={() => props.changeMode(true)}/>
+                    <SuperButton className={s.cancelButton} title={'Cancel'} onClick={cancelButtonHandler}/>
+                    <SuperButton title={'Save'} onClick={()=>updateProfile(newName, newAvatar)}/>
                 </div>
             </div>
         </div>
