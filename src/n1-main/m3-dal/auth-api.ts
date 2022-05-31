@@ -1,4 +1,5 @@
 import axios, {AxiosResponse} from 'axios';
+import {RecoverPassRequestType} from "../m2-bll/passwordRecoveryReducer";
 
 const instance = axios.create({
   baseURL: 'http://localhost:7542/2.0/',
@@ -12,11 +13,11 @@ const instance = axios.create({
 // Нужно спросить Давида зачем ??
 
 const instanceHeroku = axios.create({
-  baseURL: 'https://neko-back.herokuapp.com/2.0/',
-  withCredentials: true,
-  headers: {
-    'API-KEY': ''
-  }
+    baseURL: 'https://neko-back.herokuapp.com/2.0/',
+    withCredentials: true,
+    headers: {
+        'API-KEY': ''
+    }
 })
 
 export const authAPI = {
@@ -29,22 +30,22 @@ export const authAPI = {
   me() {
     return instance.post<AxiosResponse<AuthResponseType>>('auth/me')
   },
-  forgot(forgotData: any) {
-    return instanceHeroku.post<AxiosResponse<InfoResponseType>>('auth/forgot', forgotData)
-  },
   newPass(newPassData: NewPassParamsType) {
     return instance.post('/auth/set-new-password', newPassData)
   },
   logOut(){
     return instance.delete<AxiosResponse<InfoResponseType>>('auth/me')
-  }
+  },
+    forgot(forgotData: RecoverPassRequestType) {
+        return instanceHeroku.post<InfoResponseType>('auth/forgot', forgotData)
+    }
 }
 
 //types
 export type LoginParamsType = {
-  email: string,
-  password: string,
-  rememberMe?: boolean,
+    email: string,
+    password: string,
+    rememberMe?: boolean,
 }
 export type NewPassParamsType = {
   password: string,
@@ -64,6 +65,6 @@ export type AuthResponseType = {
   error?: string;
 }
 type InfoResponseType = {
-  info: string;
-  error?: string
+    info: string;
+    error?: string
 }
