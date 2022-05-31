@@ -20,6 +20,9 @@ const instanceHeroku = axios.create({
 })
 
 export const authAPI = {
+  // getTest() {
+  //   return instance.get('ping')
+  // },
   loginPost(data: LoginParamsType) {
     return instance.post<LoginParamsType, AxiosResponse>('auth/login', data)
   },
@@ -31,6 +34,9 @@ export const authAPI = {
   },
   newPass(newPassData: NewPassParamsType) {
     return instance.post('/auth/set-new-password', newPassData)
+  },
+  logOut(){
+    return instance.delete<AxiosResponse<InfoResponseType>>('auth/me')
   }
 }
 

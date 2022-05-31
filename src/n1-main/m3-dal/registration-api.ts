@@ -8,6 +8,7 @@ const instance = axios.create({
         'API-KEY': ''
     }
 })
+
 type RegistrationResponseType = {
     error?: string
 }
