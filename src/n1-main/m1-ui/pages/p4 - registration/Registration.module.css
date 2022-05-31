@@ -39,28 +39,29 @@
     align-items: center;
     justify-content: center;
 }
+/*Спросить у Давида разрешение___________________*/
+/*.emailInput {*/
+/*    height: 55px;*/
+/*}*/
 
-.emailInput {
-    height: 55px;
-}
-
-.passInput {
-    margin-top: 25px;
-    height: 55px;
-}
-
+/*.passInput {*/
+/*    margin-top: 25px;*/
+/*    height: 55px;*/
+/*}*/
+/*Спросить у Давида разрешение___________________*/
 .linkCheckboxWrapper {
     margin-top: 48px;
     display: flex;
 
 }
-
+/*Спросить у Давида разрешение___________________*/
 .registrationButton {
     height: 50px;
-    margin-top: 20px;
+    margin-top: 45px;
     width: 21.4rem;
     text-transform: uppercase;
 }
+/*Спросить у Давида разрешение___________________*/
 .label {
     margin: 10px 0 5px;
 
@@ -71,9 +72,12 @@
     justify-content: space-between;
     width: 21.4rem;
 }
+/*Спросить у Давида разрешение___________________*/
 .input {
     margin-top: 25px;
+    height: 55px;
 }
+/*Спросить у Давида разрешение___________________*/
 .toLoginLink {
     text-decoration: none;
     font-weight: bold;

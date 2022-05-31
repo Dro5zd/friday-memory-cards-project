@@ -1,20 +1,46 @@
+import {Dispatch} from "redux";
+import {authAPI, NewPassParamsType} from "../m3-dal/auth-api";
+
+const NEW_PASS = 'NEW-PASS'
+const SET_NEW_PASS_ERROR = 'SET-NEW-PASS-ERROR'
+
 const initState = {
-    isLoading: false
+  newPass: '',
+  error: ''
 }
 
-type initStateType = typeof initState
+export const newPasswordReducer = (state: InitStateType = initState, action: NewPassActionsType): InitStateType => {
+  switch (action.type) {
+    case NEW_PASS:
+      return {...state, newPass: action.newPass}
 
-export const newPasswordReducer = (state: initStateType = initState, action: loadingACType): initStateType  => {
-    switch (action.type) {
-        case 'LOADING-ON':
-            return {...state, isLoading: !action.isLoading}
-        default:
-            return state
-    }
+    case SET_NEW_PASS_ERROR:
+      return {
+        ...state, error: action.error
+      }
+
+    default:
+      return state
+  }
+}
+// actions
+export const newPassAC = (newPass: string) => ({type: NEW_PASS, newPass} as const)
+export const setNewPassErrorAC = (error: string) => ({type: SET_NEW_PASS_ERROR, error} as const)
+
+//thunk
+export const newPassTC = (newPassData: NewPassParamsType) => (dispatch: Dispatch) => {
+  authAPI.newPass(newPassData)
+    .then((res) => {
+      dispatch(newPassAC(res.data.newPass))
+    })
+    .catch((e) => {
+      dispatch(setNewPassErrorAC(`Error: ${e.message}`))
+    })
 }
 
-type loadingACType = ReturnType<typeof loadingAC>
+// types
+export type NewPassActionsType =
+  | ReturnType<typeof newPassAC>
+  | ReturnType<typeof setNewPassErrorAC>
 
-export const loadingAC = (isLoading: boolean) => {
-    return {type: 'LOADING-ON'as const, isLoading}
-}
+type InitStateType = typeof initState

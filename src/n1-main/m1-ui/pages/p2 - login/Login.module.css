@@ -73,6 +73,11 @@
   height: 10px;
 }
 
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .loginButton {
   margin-top: 40px;
   width: 21.4rem;
@@ -107,4 +112,10 @@
 .forgotPassLink {
   text-decoration: none;
   font-weight: bold;
+}
+
+.errorBlock span {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
 }

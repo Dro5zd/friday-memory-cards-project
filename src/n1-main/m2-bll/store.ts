@@ -1,5 +1,4 @@
 import {AnyAction, applyMiddleware, combineReducers, createStore} from 'redux';
-import {loginReducer} from './loginReducer';
 import {registerReducer} from './registerReducer';
 import {profileReducer} from './profileReducer';
 import {passwordRecoveryReducer} from './passwordRecoveryReducer';
@@ -8,6 +7,7 @@ import {testReducer} from './testReducer';
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import thunk, { ThunkDispatch } from 'redux-thunk';
 import {appReducer} from "./appReducer";
+import {loginReducer} from "./loginReducer";
 
 const reducers = combineReducers({
     auth: loginReducer,

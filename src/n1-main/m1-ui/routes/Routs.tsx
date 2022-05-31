@@ -1,12 +1,12 @@
 import React from 'react'
 import {Navigate, Route, Routes} from 'react-router-dom';
 import {Error404} from '../pages/p1 - error/Error404';
-import {Login} from '../pages/p2 - login/Login';
-import {NewPassword} from '../pages/NewPassword';
+import {NewPassword} from '../pages/p6-newPassword/NewPassword';
 import {Test} from '../pages/p7 - test/Test';
 import {PasswordRecovery} from '../pages/p5-passwordRecovery/PasswordRecovery';
 import {Profile} from '../pages/p3 - profile/Profile';
 import Registration from "../pages/p4 - registration/Registration";
+import {Login} from "../pages/p2 - login/Login";
 
 export const PATH = {
     LOGIN: '/login',

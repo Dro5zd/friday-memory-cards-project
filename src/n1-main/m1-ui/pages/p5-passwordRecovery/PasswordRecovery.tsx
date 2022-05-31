@@ -15,11 +15,11 @@ export const PasswordRecovery = () => {
                 <div className={s.recoveryTitle}>Friday project</div>
                 <div className={s.recoverySubTitle}>Forgot password?</div>
                 <form className={s.inputWrapper} onSubmit={handleSubmit(onSumbit)}>
-                    <SuperInputText className={s.emailInput}/>
+                    <SuperInputText className={s.emailInput} type={'email'} placeholder={'Email'}/>
                     <span className={s.span}>Enter your email address and we will send you further instructions</span>
                     <SuperButton className={s.sendButton} title={'Send'}/>
                 </form>
-                <NavLink className={s.toLoginLink} to={PATH.LOGIN}>Try to log in</NavLink>
+                <NavLink className={s.toLoginLink} to={PATH.LOGIN}>Try to Log In</NavLink>
             </div>
         </div>
     )

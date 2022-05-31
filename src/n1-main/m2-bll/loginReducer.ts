@@ -3,42 +3,54 @@ import {authAPI, LoginParamsType} from "../m3-dal/auth-api";
 import {setIsAuthorisedAC} from "./appReducer";
 
 const LOGIN = 'LOGIN'
+const SET_LOGIN_ERROR = 'SET-LOGIN-ERROR'
 
-const initState = {} as InitStateType
+const initState = {} as NewType
 
 export const loginReducer = (state: AppStoreType = initState, action: LoginReducerType): AppStoreType => {
   switch (action.type) {
     case LOGIN:
-      return {
-        ...action.login
-      }
+      return {...state, data: action.data}
+
+    case SET_LOGIN_ERROR:
+      return {...state, error: action.error}
+
     default:
       return state
   }
 }
 
-type LoginReducerType = ReturnType<typeof loginAC>
-
-export const loginAC = (login: InitStateType) => ({
+// actions
+export const loginAC = (data: InitStateType) => ({
   type: LOGIN,
-    login
+  data
+} as const)
+export const setLoginErrorAC = (error: string) => ({
+  type: SET_LOGIN_ERROR,
+  error
 } as const)
 
-export const loginTC = (data: LoginParamsType) => (dispatch: Dispatch) => {
+// thunk
+export const loginFormTC = (data: LoginParamsType) => (dispatch: Dispatch) => {
   authAPI.loginPost(data)
     .then((res) => {
       dispatch(setIsAuthorisedAC(true))
       dispatch(loginAC(res.data))
     })
     .catch((e) => {
-      const error = e.res ? e.res.data.error : (e.message + ', more details in the console')
+      dispatch(setLoginErrorAC(`Error: ${e.message}`))
+      // const error = e.res ? e.res.data.error : (e.message + ', more details in the console')
+      // console.log(error)
+      // console.log('Error: ', {...e})
     })
 }
 
-
 // types
-type AppStoreType = typeof initState
+type LoginReducerType =
+  | ReturnType<typeof loginAC>
+  | ReturnType<typeof setLoginErrorAC>
 
+type AppStoreType = typeof initState
 type InitStateType = {
   _id: string;
   email: string;
@@ -53,5 +65,9 @@ type InitStateType = {
   rememberMe: boolean;
 
   error?: string;
+}
+type NewType = {
+  data: InitStateType
+  error?: string
 }
 

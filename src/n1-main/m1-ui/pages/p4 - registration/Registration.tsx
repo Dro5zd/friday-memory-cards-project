@@ -21,8 +21,9 @@ const Registration = () => {
     const {register, handleSubmit, reset, watch, formState: {errors}} = useForm<RegistrationFormType>()
     const navigate = useNavigate()
     const onSubmit = (data: RegistrationFormType) => {
-        const email = data.email
-        const password = data.password
+        const {email, password} = data
+        // const email = data.email
+        // const password = data.password
         dispatch(registerTC({email, password}))
         reset()
     }
@@ -33,12 +34,13 @@ const Registration = () => {
         <div className={s.registrationContainer}>
             <div className={s.components}>
                 <div className={s.registrationTitle}>Friday project</div>
-                <div className={s.registrationSubTitle}>Sign Up</div>
+                <div className={s.registrationSubTitle}>Sign up</div>
                 <form onSubmit={handleSubmit(onSubmit)} className={s.inputWrapper}>
                     <SuperInputText {...register('email', {
                         required: true,
                         pattern: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
-                    })} type={"text"} placeholder={'Email'}/>
+                    })} type={"text"} placeholder={'Email'}
+                                    style={{height: '55px'}}/>
                     <SuperInputText className={s.input} {...register('password', {required: true, minLength: 8})}
                                     type={"password"}
                                     placeholder={'Password'}/>
