@@ -23,6 +23,7 @@ export const newPasswordReducer = (state: InitStateType = initState, action: New
       return state
   }
 }
+
 // actions
 export const newPassAC = (newPass: string) => ({type: NEW_PASS, newPass} as const)
 export const setNewPassErrorAC = (error: string) => ({type: SET_NEW_PASS_ERROR, error} as const)
