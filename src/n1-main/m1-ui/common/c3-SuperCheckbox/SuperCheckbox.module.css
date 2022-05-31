@@ -27,11 +27,11 @@
 }
 
 .checkbox:checked::before {
-    background-color: var(--primary-dark);
+    background-color: var(--primary);
 }
 
 .checkbox:hover::before {
-    background-color: var(--primary-dark);
+    background-color: var(--primary);
 }
 
 .checkbox:checked {

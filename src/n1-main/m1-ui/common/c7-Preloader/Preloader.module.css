@@ -1,7 +1,13 @@
+.preloaderWrapper {
+    height: 100vh;
+    width: 100vm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .preloader {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    margin-top: 30px;
-    margin-left: 300px;
+    width: 200px;
+    height: 200px;
 }
