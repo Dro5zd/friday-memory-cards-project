@@ -3,47 +3,49 @@
     text-decoration: none;
     text-transform: uppercase;
     height: 60px;
-    width: 200px;
+    /*width: 200px;*/
     list-style-type: none;
     display: inline;
     align-items: center;
     justify-content: center;
     border-radius: 1rem;
-    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+    /*box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);*/
 }
 
-.link:active {
-    box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem white;
-}
+/*.link:active {*/
+/*    box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem white;*/
+/*}*/
 
-.link:hover {
-    color: var(--primary);
-}
+/*.link:hover {*/
+/*    color: var(--primary);*/
+/*}*/
 
 /*сделал при нажатии плавный переход но делал в спешке и не очень нравится надо поковырять закоментил в линк и актив*/
 .active {
     /*transition: all 0.5s ease;*/
-    margin: 1px;
+    /*margin: 1px;*/
     border-radius: 1rem;
     text-decoration: none;
     color: var(--primary);
     text-transform: uppercase;
     font-weight: bold;
     height: 60px;
-    width: 200px;
-    box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem white;
+    /*width: 200px;*/
+    /*box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem white;*/
 }
 
 .active:active {
-    box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem white;
+    /*box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem white;*/
 }
+
 .wrapper {
     display: inline-flex;
 }
 
 .header {
+    justify-content: end;
+
     position: fixed;
-    justify-content: center;
     margin-top: 15px;
     display: flex;
     width: 96vw;
@@ -55,38 +57,22 @@
     left: 2vw;
 }
 
-/*.header .logo span {*/
-/*    display: flex;*/
-/*    position: absolute;*/
-/*    left: 0;*/
-/*    margin: 18px 0 0 125px;*/
-/*    font-size: 30px;*/
-/*    font-weight: 600;*/
-/*}*/
-
 .header .logo {
     display: flex;
     height: 60px;
     position: absolute;
     left: 0;
-    margin: 5px 0 0 125px;
+    margin: 5px 0 0 50px;
     font-size: 30px;
     font-weight: 600;
 }
 
-/*.logo {*/
-/*    height: 100%;*/
-/*    width: 100%;*/
-/*    background-color: #6d5dfc;*/
-/*}*/
-
 .headerItem {
-    justify-content: center;
     align-items: center;
+
     display: flex;
     width: 100%;
     height: 100%;
-    margin: 0 4px;
 }
 
 .headerItem a {
@@ -94,6 +80,38 @@
     align-items: center;
     justify-content: center;
 }
+
+.avatar {
+    display: flex;
+    height: 60px;
+
+    margin-right: 40px;
+}
+
+.avatar img {
+    height: 56px;
+    border-radius: 50%;
+    margin-left: 8px;
+    border: 2px var(--greyDark-2) solid;
+}
+
+.avatar:hover h2{
+    color: var(--primary);
+}
+
+.profileName {
+    display: flex;
+    width: 300px;
+    word-wrap: break-word;
+    font-size: 20px;
+    align-items: center;
+    justify-content: right;
+}
+
+/*.wrapper .headerItem .avatar {*/
+/*    display: flex;*/
+/*    justify-content: right;*/
+/*}*/
 
 
 /*стили для иконок не закончил пока */

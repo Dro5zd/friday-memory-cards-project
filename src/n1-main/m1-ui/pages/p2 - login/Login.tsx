@@ -22,7 +22,7 @@ export const Login = () => {
   }
   useEffect(() => {
     if (isAuthorised) {
-      navigate(PATH.PROFILE)
+      navigate(PATH.PACKS_LIST)
     }
   }, [isAuthorised, navigate])
 
