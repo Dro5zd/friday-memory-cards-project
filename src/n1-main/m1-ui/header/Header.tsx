@@ -3,6 +3,7 @@ import s from './Header.module.css'
 import {NavLink} from 'react-router-dom';
 import {PATH} from '../routes/Routs';
 import {useTypedSelector} from '../../m2-bll/store';
+import mainLogo from '../../../assets/img/B.A.D._logo3.png'
 // @ts-ignore
 // import user from '../../../assets/img/user.svg'
 
@@ -13,7 +14,8 @@ export const Header = () => {
   return (
     <div className={s.header}>
       <div className={s.logo}>
-        <span>B.A.D. Memory cards</span>
+          <img src={mainLogo} alt="main_logo"/>
+        {/*<span>B.A.D. Memory cards</span>*/}
       </div>
 
       {isAuthorised ?

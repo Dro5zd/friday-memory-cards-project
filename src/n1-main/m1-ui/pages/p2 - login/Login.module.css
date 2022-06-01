@@ -17,13 +17,15 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 60px;
 }
 
-.loginTitle {
-  margin-top: 30px;
-  font-weight: 600;
-  font-size: 35px;
-  text-transform: uppercase;
+.loginTitle img {
+  height: 90px;
+  margin-top: 20px;
+  /*font-weight: 600;*/
+  /*font-size: 35px;*/
+  /*text-transform: uppercase;*/
 }
 
 .loginSubTitle {

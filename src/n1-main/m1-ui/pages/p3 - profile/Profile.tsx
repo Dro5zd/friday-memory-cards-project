@@ -38,7 +38,10 @@ export const Profile = () => {
         <div className={s.profileContainer}>
             {mode ? <div className={s.components}>
                 <div className={s.avatar}>
-                    <img src={ avatar || avatarMe || noPhoto} alt={'ava'}/>
+                    <div className={s.avatarBorder}>
+                        <img src={ avatar || avatarMe || noPhoto} alt={'ava'}/>
+                    </div>
+
 
                     <h2 className={s.profileName}>{ name || nameMe || 'Name'}</h2>
                 </div>

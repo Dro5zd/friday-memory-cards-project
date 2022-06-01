@@ -29,21 +29,35 @@
     border-radius: 0 0 5px 5px;
     object-fit: cover;
     object-position: 100% 65%;
+
 }
 
 .avatar {
-    position: relative;
-    /*margin-top: -150px;*/
+    display: contents;
     justify-content: center;
+
 }
 
-.avatar img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 168px;
+.avatarBorder {
+    display: flex;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    border: 5px solid white;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white), inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+
+}
+
+
+.avatarBorder img {
+    display: block;
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    /*border: 5px solid white;*/
 }
 
 .profileName {

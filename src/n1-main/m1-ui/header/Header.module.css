@@ -55,11 +55,21 @@
     left: 2vw;
 }
 
-.header .logo span {
+/*.header .logo span {*/
+/*    display: flex;*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    margin: 18px 0 0 125px;*/
+/*    font-size: 30px;*/
+/*    font-weight: 600;*/
+/*}*/
+
+.header .logo {
     display: flex;
+    height: 60px;
     position: absolute;
     left: 0;
-    margin: 18px 0 0 125px;
+    margin: 5px 0 0 125px;
     font-size: 30px;
     font-weight: 600;
 }

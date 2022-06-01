@@ -16,7 +16,18 @@
   --greyDark-2: #636b83;
 }
 
+/*for future
+.darkTheme {
+  --white: #7f84a6;
+  --greyLight-2: #53596e;
+  --greyLight-1: #636b83;
+}
+*/
+
 .App {
   text-align: center;
   justify-content: center;
 }
+
+
+
