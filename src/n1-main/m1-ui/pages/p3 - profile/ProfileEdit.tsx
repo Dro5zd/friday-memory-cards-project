@@ -13,11 +13,12 @@ type ProfileEditType = {
 export const ProfileEdit = (props: ProfileEditType) => {
 
     const avatar = useTypedSelector(state => state.profile.avatar)
+    const name = useTypedSelector(state => state.profile.name)
 
     const dispatch = useTypedDispatch()
 
-    const [newName, setNewName] = useState('')
-    const [newAvatar, setNewAvatar] = useState('')
+    const [newName, setNewName] = useState(name || '')
+    const [newAvatar, setNewAvatar] = useState(avatar || '')
 
     const onChangeNewNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewName(e.currentTarget.value)
@@ -45,8 +46,8 @@ export const ProfileEdit = (props: ProfileEditType) => {
                 </div>
 
                 <div className={s.inputBlock}>
-                    <SuperInputText placeholder={'Enter new name'} onChange={onChangeNewNameHandler} />
-                    <SuperInputText placeholder={'Enter link to new avatar'} onChange={onChangeNewAvatarHandler}/>
+                    <SuperInputText placeholder={'Enter new name'} onChange={onChangeNewNameHandler} value={newName}/>
+                    <SuperInputText placeholder={'Enter link to new avatar'} onChange={onChangeNewAvatarHandler} value={newAvatar}/>
                 </div>
 
                 <div className={s.buttonBlock}>

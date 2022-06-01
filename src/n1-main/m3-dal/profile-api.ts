@@ -10,8 +10,8 @@ const instance = axios.create({
 })
 
 export type changeProfileRequestType = {
-    name: string
-    avatar: string
+    name?: string
+    avatar?: string
 }
 
 type changeProfileResponseType = {

@@ -8,6 +8,7 @@ import Preloader from "./common/c7-Preloader/Preloader";
 export const App = () => {
     const dispatch = useTypedDispatch()
     const isInitialised = useTypedSelector<boolean>(state => state.app.isInitialised)
+
     useEffect(()=>{
         dispatch(authoriseMeTC())
     }, [])
