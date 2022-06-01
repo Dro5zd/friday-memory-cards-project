@@ -38,7 +38,7 @@ export const loginFormTC = (data: LoginParamsType) => (dispatch: Dispatch) => {
       dispatch(loginAC(res.data))
     })
     .catch((e) => {
-      dispatch(setLoginErrorAC(`Error: ${e.message}`))
+      dispatch(setLoginErrorAC(e.message))
       // const error = e.res ? e.res.data.error : (e.message + ', more details in the console')
       // console.log(error)
       // console.log('Error: ', {...e})

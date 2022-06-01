@@ -58,6 +58,7 @@ const SuperInputText = React.forwardRef<HTMLInputElement, SuperInputTextPropsTyp
                 onChange={onChangeCallback}
                 onKeyPress={onKeyPressCallback}
                 className={finalInputClassName}
+                ref={ref}
 
                 {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
             />
