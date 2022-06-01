@@ -14,11 +14,13 @@ export const ProfileEdit = (props: ProfileEditType) => {
 
     const avatar = useTypedSelector(state => state.profile.avatar)
     const name = useTypedSelector(state => state.profile.name)
+    const authName = useTypedSelector(state => state.auth.name)
+    const authAvatar = useTypedSelector(state => state.auth.avatar)
 
     const dispatch = useTypedDispatch()
 
-    const [newName, setNewName] = useState(name || '')
-    const [newAvatar, setNewAvatar] = useState(avatar || '')
+    const [newName, setNewName] = useState(name || authName || '')
+    const [newAvatar, setNewAvatar] = useState(avatar || authAvatar || '')
 
     const onChangeNewNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewName(e.currentTarget.value)
@@ -42,7 +44,7 @@ export const ProfileEdit = (props: ProfileEditType) => {
 
                 <div className={s.avatar}>
                     <h2 className={s.profileName}>Personal Information</h2>
-                    <img src={avatar || noPhoto} alt={'ava'}/>
+                    <img src={avatar || authAvatar || noPhoto} alt={'ava'}/>
                 </div>
 
                 <div className={s.inputBlock}>
