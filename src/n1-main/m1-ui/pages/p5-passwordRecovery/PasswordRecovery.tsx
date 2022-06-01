@@ -1,7 +1,7 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import SuperInputText from "../../common/c1-SuperInputText/SuperInputText";
 import SuperButton from "../../common/c2-SuperButton/SuperButton";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {PATH} from "../../routes/Routs";
 import s from './PasswordRecovery.module.css'
 import {useForm} from "react-hook-form";
@@ -12,6 +12,7 @@ import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
 export const PasswordRecovery = () => {
   const serverMessage = useTypedSelector<string>(state => state.passwordRecovery.info)
   const dispatch = useTypedDispatch();
+  const navigate = useNavigate()
   const {register, handleSubmit, reset, formState: {errors}} = useForm<{ email: string }>()
   const onSubmit = (data: { email: string }) => {
     dispatch(setRecoveryTC(data.email))
@@ -20,6 +21,16 @@ export const PasswordRecovery = () => {
       dispatch(setRecoveryInfoAC(''))
     }, 7000)
   }
+  /*написал навигейт на страницу для уведомления юзака об отправленом ему письме на почту,
+  тем самым скрыл котейку которую рисовал Игнат
+  сорян Давид влез в твой код без твоего ведома*/
+
+  useEffect(() => {
+    if(serverMessage) {
+      navigate(PATH.EMAIL_ANSWER)
+    }
+  }, [serverMessage, navigate])
+
   return (
     <div className={s.recoveryContainer}>
       <div className={s.components}>

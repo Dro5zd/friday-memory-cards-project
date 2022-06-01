@@ -1,13 +1,15 @@
 import React from 'react'
 import {Navigate, Route, Routes} from 'react-router-dom';
-import {Error404} from '../pages/p1 - error/Error404';
+import {Error404} from '../pages/p1-error/Error404';
 import {NewPassword} from '../pages/p6-newPassword/NewPassword';
-import {Test} from '../pages/p7 - test/Test';
+import {Test} from '../pages/p7-test/Test';
 import {PasswordRecovery} from '../pages/p5-passwordRecovery/PasswordRecovery';
-import {Profile} from '../pages/p3 - profile/Profile';
-import Registration from "../pages/p4 - registration/Registration";
-import {Login} from "../pages/p2 - login/Login";
-import {PacksList} from "../pages/p8 - packsList/PacksList";
+import {Profile} from '../pages/p3-profile/Profile';
+import Registration from "../pages/p4-registration/Registration";
+import {Login} from "../pages/p2-login/Login";
+import {PacksList} from "../pages/p8-packsList/PacksList";
+import {EmailAnswer} from "../pages/p9-emailAnswer/EmailAnswer";
+
 
 export const PATH = {
     LOGIN: '/login',
@@ -16,7 +18,8 @@ export const PATH = {
     PASSWORD_RECOVERY: '/password-recovery',
     ENTERING_NEW_PASSWORD: '/set-new-password/:token',
     TEST: '/test',
-    PACKS_LIST: '/packs-list'
+    PACKS_LIST: '/packs-list',
+    EMAIL_ANSWER: '/email-answer'
 }
 
 export const Routs = () => {
@@ -28,6 +31,7 @@ export const Routs = () => {
                 <Route path={PATH.REGISTER} element={<Registration/>}/>
                 <Route path={PATH.PROFILE} element={<Profile/>}/>
                 <Route path={PATH.PASSWORD_RECOVERY} element={<PasswordRecovery/>}/>
+                <Route path={PATH.EMAIL_ANSWER} element={<EmailAnswer/>}/>
                 <Route path={PATH.ENTERING_NEW_PASSWORD} element={<NewPassword/>}/>
                 <Route path={PATH.PACKS_LIST} element={<PacksList/>}/>
                 <Route path={PATH.TEST} element={<Test/>}/>

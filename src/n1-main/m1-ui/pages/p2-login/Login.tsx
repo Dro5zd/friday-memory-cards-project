@@ -29,9 +29,8 @@ export const Login = () => {
   return (
     <div className={s.loginContainer}>
       <div className={s.components}>
-        {/*<div className={s.loginTitle}>B.A.D. <br/> Memory Cards</div>*/}
-        <div className={s.loginTitle}><img src={mainLogo} alt="main_logo"/></div>
-
+        <div className={s.loginTitle}><img src={mainLogo} alt="main_logo"/>
+        </div>
         <span className={s.loginSubTitle}>Sign in</span>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.inputWrapper}>

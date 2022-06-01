@@ -1,0 +1,86 @@
+.answerContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--greyLight-1);
+}
+
+.components {
+  position: relative;
+  width: 400px;
+  height: 600px;
+  border-radius: 3rem;
+  box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+  padding: 4rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 60px;
+}
+
+.loginTitle img {
+  height: 90px;
+  margin-top: 20px;
+}
+
+.close {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 25px;
+  width: 2px;
+  background-color: var(--primary);
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+
+
+.emailRound {
+  position: relative;
+  background-color: var(--greyDark);
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+  align-items: start;
+}
+
+.email {
+  position: absolute;
+  top: 45px;
+  left: 40px;
+  justify-content: center;
+  width: 70px;
+  height: 60px;
+}
+
+.emailSubTitle {
+  margin-top: 32px;
+  font-weight: 500;
+  font-size: 23px;
+}
+
+.instructionsSpan {
+  margin-right: 10px;
+}
