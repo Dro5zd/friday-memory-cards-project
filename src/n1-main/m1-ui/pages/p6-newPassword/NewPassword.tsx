@@ -8,6 +8,7 @@ import {useForm} from "react-hook-form";
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {PATH} from "../../routes/Routs";
 import {useNavigate, useParams} from "react-router-dom";
+import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
 
 export const NewPassword = () => {
   const passChanged = useTypedSelector(state => state.newPassword.passChanged)
@@ -38,7 +39,7 @@ export const NewPassword = () => {
   return (
     <div className={s.newPassContainer}>
       <div className={s.components}>
-        <div className={s.newPassTitle}>B.A.D. <br/> Memory Cards</div>
+        <div className={s.newPassTitle}><img src={mainLogo} alt="main_logo"/></div>
         <div className={s.newPassSubTitle}>Create new password</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.inputNewPassWrapper}>

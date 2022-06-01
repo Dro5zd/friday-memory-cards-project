@@ -3,10 +3,11 @@ import s from './profilePage.module.css';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import noPhoto from '../../../../assets/img/noPhoto.png'
 import {ProfileEdit} from './ProfileEdit';
-import {useNavigate} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 import {PATH} from '../../routes/Routs';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {logOutMeTC} from '../../../m2-bll/appReducer';
+import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
 
 export const Profile = () => {
     const isAuthorised = useTypedSelector<boolean>(state => state.app.isAuthorised)
@@ -38,7 +39,13 @@ export const Profile = () => {
         <div className={s.profileContainer}>
             {mode ? <div className={s.components}>
                 <div className={s.avatar}>
-                    <img src={ avatar || avatarMe || noPhoto} alt={'ava'}/>
+                    <div className={s.avatarBorder}>
+                        <img src={ avatar || avatarMe || noPhoto} alt={'ava'}/>
+                    </div>
+                    <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
+                        <div className={s.close}>fff</div>
+                    </NavLink>
+
 
                     <h2 className={s.profileName}>{ name || nameMe || 'Name'}</h2>
                 </div>

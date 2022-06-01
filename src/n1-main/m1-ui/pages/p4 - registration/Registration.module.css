@@ -19,11 +19,12 @@
     margin-top: 60px;
 }
 
-.registrationTitle {
-    text-transform: uppercase;
-    font-weight: 600;
-    margin-top: 30px;
-    font-size: 35px;
+.registrationTitle img {
+    /*text-transform: uppercase;*/
+    /*font-weight: 600;*/
+    height: 90px;
+    margin-top: 20px;
+    /*font-size: 35px;*/
 }
 
 .registrationSubTitle {

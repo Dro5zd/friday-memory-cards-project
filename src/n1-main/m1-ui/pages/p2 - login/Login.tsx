@@ -8,6 +8,7 @@ import {PATH} from "../../routes/Routs";
 import {useForm} from "react-hook-form";
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {loginFormTC} from "../../../m2-bll/loginReducer";
+import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
 
 export const Login = () => {
   const {register, handleSubmit, reset, formState: {errors}} = useForm<LoginFormType>()
@@ -21,14 +22,16 @@ export const Login = () => {
   }
   useEffect(() => {
     if (isAuthorised) {
-      navigate(PATH.PROFILE)
+      navigate(PATH.PACKS_LIST)
     }
   }, [isAuthorised, navigate])
 
   return (
     <div className={s.loginContainer}>
       <div className={s.components}>
-        <div className={s.loginTitle}>B.A.D. <br/> Memory Cards</div>
+        {/*<div className={s.loginTitle}>B.A.D. <br/> Memory Cards</div>*/}
+        <div className={s.loginTitle}><img src={mainLogo} alt="main_logo"/></div>
+
         <span className={s.loginSubTitle}>Sign in</span>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.inputWrapper}>

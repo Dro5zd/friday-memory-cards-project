@@ -44,7 +44,9 @@ export const ProfileEdit = (props: ProfileEditType) => {
 
                 <div className={s.avatar}>
                     <h2 className={s.profileName}>Personal Information</h2>
-                    <img src={avatar || authAvatar || noPhoto} alt={'ava'}/>
+                    <div className={s.avatarBorder}>
+                        <img src={ avatar || authAvatar || noPhoto} alt={'ava'}/>
+                    </div>
                 </div>
 
                 <div className={s.inputBlock}>

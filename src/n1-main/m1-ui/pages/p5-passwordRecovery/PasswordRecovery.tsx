@@ -7,6 +7,7 @@ import s from './PasswordRecovery.module.css'
 import {useForm} from "react-hook-form";
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {setRecoveryInfoAC, setRecoveryTC} from "../../../m2-bll/passwordRecoveryReducer";
+import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
 
 export const PasswordRecovery = () => {
   const serverMessage = useTypedSelector<string>(state => state.passwordRecovery.info)
@@ -22,7 +23,7 @@ export const PasswordRecovery = () => {
   return (
     <div className={s.recoveryContainer}>
       <div className={s.components}>
-        <div className={s.recoveryTitle}>B.A.D. <br/> Memory Cards</div>
+        <div className={s.recoveryTitle}><img src={mainLogo} alt="main_logo"/></div>
         <div className={s.recoverySubTitle}>Forgot password?</div>
         <form className={s.inputWrapper} onSubmit={handleSubmit(onSubmit)}>
           <SuperInputText

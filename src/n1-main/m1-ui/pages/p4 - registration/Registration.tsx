@@ -7,6 +7,7 @@ import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {registerTC} from "../../../m2-bll/registerReducer";
 import {useNavigate, NavLink} from "react-router-dom";
 import {PATH} from "../../routes/Routs";
+import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
 
 export type RegistrationFormType = {
     email: string
@@ -33,7 +34,8 @@ const Registration = () => {
     return (
         <div className={s.registrationContainer}>
             <div className={s.components}>
-                <div className={s.registrationTitle}>B.A.D. <br/> Memory Cards</div>
+                {/*<div className={s.registrationTitle}>B.A.D. <br/> Memory Cards</div>*/}
+                <div className={s.registrationTitle}><img src={mainLogo} alt="main_logo"/></div>
                 <div className={s.registrationSubTitle}>Sign up</div>
                 <form onSubmit={handleSubmit(onSubmit)} className={s.inputWrapper}>
                     <SuperInputText {...register('email', {
