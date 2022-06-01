@@ -22,7 +22,7 @@ export const PasswordRecovery = () => {
   return (
     <div className={s.recoveryContainer}>
       <div className={s.components}>
-        <div className={s.recoveryTitle}>Friday project</div>
+        <div className={s.recoveryTitle}>B.A.D. <br/> Memory Cards</div>
         <div className={s.recoverySubTitle}>Forgot password?</div>
         <form className={s.inputWrapper} onSubmit={handleSubmit(onSubmit)}>
           <SuperInputText

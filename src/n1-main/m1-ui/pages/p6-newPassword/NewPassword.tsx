@@ -38,7 +38,7 @@ export const NewPassword = () => {
   return (
     <div className={s.newPassContainer}>
       <div className={s.components}>
-        <div className={s.newPassTitle}>Friday Project</div>
+        <div className={s.newPassTitle}>B.A.D. <br/> Memory Cards</div>
         <div className={s.newPassSubTitle}>Create new password</div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.inputNewPassWrapper}>

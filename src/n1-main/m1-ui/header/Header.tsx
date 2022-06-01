@@ -3,6 +3,8 @@ import s from './Header.module.css'
 import {NavLink} from 'react-router-dom';
 import {PATH} from '../routes/Routs';
 import {useTypedSelector} from '../../m2-bll/store';
+// @ts-ignore
+// import user from '../../../assets/img/user.svg'
 
 export const Header = () => {
 
@@ -10,21 +12,34 @@ export const Header = () => {
 
   return (
     <div className={s.header}>
+      <div className={s.logo}>
+        <span>B.A.D. Memory cards</span>
+      </div>
 
       {isAuthorised ?
-        <div>
-          <NavLink to={PATH.PROFILE} className={navData => navData.isActive ? s.active : s.link}>
-            Profile
-          </NavLink>
-          <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
-            Packs List
-          </NavLink>
+        <div className={s.wrapper}>
+
+            <div className={s.headerItem}>
+              <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
+                Packs List
+              </NavLink>
+            </div>
+
+            <div className={s.headerItem}>
+
+              <NavLink to={PATH.PROFILE} className={navData => navData.isActive ? s.active : s.link}>
+                {/*<img className={s.user} src={user} alt="user"/>*/}
+                Profile
+              </NavLink>
+            </div>
+
         </div>
 
         :
-        <span>login</span>
+        ''
+        // <span>login</span>
       }
-     {/*   <NavLink to={PATH.LOGIN} className={navData => navData.isActive ? s.active : s.link}>
+      {/*   <NavLink to={PATH.LOGIN} className={navData => navData.isActive ? s.active : s.link}>
            Login
          </NavLink>*/}
       {/*<NavLink to={PATH.REGISTER} className={navData => navData.isActive ? s.active : s.link}>*/}

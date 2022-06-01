@@ -33,7 +33,7 @@ const Registration = () => {
     return (
         <div className={s.registrationContainer}>
             <div className={s.components}>
-                <div className={s.registrationTitle}>Friday project</div>
+                <div className={s.registrationTitle}>B.A.D. <br/> Memory Cards</div>
                 <div className={s.registrationSubTitle}>Sign up</div>
                 <form onSubmit={handleSubmit(onSubmit)} className={s.inputWrapper}>
                     <SuperInputText {...register('email', {

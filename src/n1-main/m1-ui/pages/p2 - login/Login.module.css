@@ -1,16 +1,9 @@
-* {
-  font-family: 'Poppins', sans-serif;
-  font-style: normal;
-  color: var(--greyDark-2);
-}
-
 .loginContainer {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Poppins', sans-serif;
   background: var(--greyLight-1);
 }
 
@@ -23,6 +16,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  margin-top: 60px;
 }
 
 .loginTitle {

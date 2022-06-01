@@ -4,7 +4,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: 'Poppins', sans-serif;
     background: var(--greyLight-1);
 }
 
@@ -17,6 +16,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-top: 60px;
 }
 
 .registrationTitle {
@@ -82,7 +82,7 @@
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
-    color: #6d5dfc;
+    color: var(--primary);
 }
 .errorBlock {
     margin-top: 10px;

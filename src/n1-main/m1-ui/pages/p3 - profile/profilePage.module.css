@@ -5,6 +5,7 @@
     justify-content: center;
     align-items: center;
     background: var(--greyLight-1);
+
 }
 
 .components {
@@ -17,6 +18,7 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
+    margin-top: 60px;
 }
 
 .picture img {
@@ -48,11 +50,9 @@
     margin-bottom: 45px;
     font-size: 35px;
     text-align: center;
-    color: var(--greyDark-2);
 }
 
 .profileStatus{
-    color: var(--greyDark-2);
     margin: 5px;
     font-size: 20px;
     text-align: center;

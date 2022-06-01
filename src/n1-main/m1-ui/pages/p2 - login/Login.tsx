@@ -28,7 +28,7 @@ export const Login = () => {
   return (
     <div className={s.loginContainer}>
       <div className={s.components}>
-        <div className={s.loginTitle}>Friday Project</div>
+        <div className={s.loginTitle}>B.A.D. <br/> Memory Cards</div>
         <span className={s.loginSubTitle}>Sign in</span>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className={s.inputWrapper}>
