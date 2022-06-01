@@ -3,7 +3,7 @@ import s from './profilePage.module.css';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import noPhoto from '../../../../assets/img/noPhoto.png'
 import {ProfileEdit} from './ProfileEdit';
-import {NavLink, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {PATH} from '../../routes/Routs';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {logOutMeTC} from '../../../m2-bll/appReducer';
@@ -33,6 +33,7 @@ export const Profile = () => {
     const nameMe = useTypedSelector(state => state.auth.name)
     const avatar = useTypedSelector(state => state.profile.avatar)
     const avatarMe = useTypedSelector(state => state.auth.avatar)
+
     return (
         <div className={s.profileContainer}>
             {mode ? <div className={s.components}>

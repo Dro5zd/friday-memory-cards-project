@@ -26,7 +26,7 @@ export const authAPI = {
     return instance.post<LoginParamsType, AxiosResponse>('auth/login', data)
   },
   me() {
-    return instance.post<AxiosResponse<AuthResponseType>>('auth/me')
+    return instance.post<AuthResponseType>('auth/me')
   },
   newPass(newPassData: NewPassParamsType) {
     return instanceHeroku.post('/auth/set-new-password', newPassData)

@@ -12,12 +12,13 @@ type ProfileEditType = {
 
 export const ProfileEdit = (props: ProfileEditType) => {
 
-    const avatar = useTypedSelector(state => state.auth.avatar)
+    const avatar = useTypedSelector(state => state.profile.avatar)
+    const name = useTypedSelector(state => state.profile.name)
 
     const dispatch = useTypedDispatch()
 
-    const [newName, setNewName] = useState('')
-    const [newAvatar, setNewAvatar] = useState('')
+    const [newName, setNewName] = useState(name || '')
+    const [newAvatar, setNewAvatar] = useState(avatar || '')
 
     const onChangeNewNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
         setNewName(e.currentTarget.value)
@@ -26,9 +27,13 @@ export const ProfileEdit = (props: ProfileEditType) => {
         setNewAvatar(e.currentTarget.value)
     }
 
+    const cancelButtonHandler = ()=>{
+        props.changeMode(true)
+    }
 
     const updateProfile = (name: string, avatar: string) => {
         dispatch(updateProfileTC({name, avatar}))
+        props.changeMode(true)
     }
 
     return (
@@ -41,13 +46,13 @@ export const ProfileEdit = (props: ProfileEditType) => {
                 </div>
 
                 <div className={s.inputBlock}>
-                    <SuperInputText placeholder={'Enter new name'} onChange={onChangeNewNameHandler} onBlur={()=>updateProfile(newName, newAvatar)}/>
-                    <SuperInputText placeholder={'Enter link to new avatar'} onChange={onChangeNewAvatarHandler} onBlur={()=>updateProfile(newName, newAvatar)}/>
+                    <SuperInputText placeholder={'Enter new name'} onChange={onChangeNewNameHandler} value={newName}/>
+                    <SuperInputText placeholder={'Enter link to new avatar'} onChange={onChangeNewAvatarHandler} value={newAvatar}/>
                 </div>
 
                 <div className={s.buttonBlock}>
-                    <SuperButton className={s.cancelButton} title={'Cancel'} onClick={() => props.changeMode(true)}/>
-                    <SuperButton title={'Save'} onClick={() => props.changeMode(true)}/>
+                    <SuperButton className={s.cancelButton} title={'Cancel'} onClick={cancelButtonHandler}/>
+                    <SuperButton title={'Save'} onClick={()=>updateProfile(newName, newAvatar)}/>
                 </div>
             </div>
         </div>

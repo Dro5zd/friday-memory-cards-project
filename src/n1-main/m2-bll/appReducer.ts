@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {authAPI} from "../m3-dal/auth-api";
+import {updateProfileAC} from './profileReducer';
 
 const SET_CHANGED_PASS = "SET-CHANGED-PASS"
 
@@ -39,6 +40,7 @@ export const authoriseMeTC = () => (dispatch: Dispatch<ActionType>) => {
     authAPI.me().then((res) => {
         dispatch(setIsAuthorisedAC(true))
         dispatch(setChangedPassAC(true))
+        dispatch(updateProfileAC(res.data.name, res.data.avatar))
     }).finally(() => {
         dispatch(setIsInitialisedAC(true))
     })
@@ -56,4 +58,5 @@ type ActionType =
   | ReturnType<typeof setIsInitialisedAC>
   | ReturnType<typeof setChangedPassAC>
   | ReturnType<typeof logOutAC>
+    | ReturnType<typeof updateProfileAC>
 
