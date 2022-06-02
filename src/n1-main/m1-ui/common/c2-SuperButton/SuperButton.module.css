@@ -1,6 +1,6 @@
 .default {
-    width: 15rem;
-    height: 4rem;
+    width: 21.4rem;
+    height: 55px;
     border-radius: 1rem;
     border: none;
     justify-self: center;
@@ -13,6 +13,7 @@
     color: var(--greyLight-1);
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
+    text-transform: uppercase;
     box-shadow: inset .2rem .2rem 1rem var(--primary-light), inset -.2rem -.2rem 1rem var(--primary-dark),.3rem .3rem .6rem var(--greyLight-2), -.2rem -.2rem .5rem var(--white);
 }
 

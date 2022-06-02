@@ -21,36 +21,19 @@
 
 .loginTitle img {
     height: 90px;
-    margin-top: 20px;
-    /*font-weight: 600;*/
-    /*font-size: 35px;*/
-    /*text-transform: uppercase;*/
+    margin-bottom: 40px;
 }
 
 .loginSubTitle {
-    margin-top: 32px;
     font-weight: 500;
     font-size: 23px;
-    /*text-transform: uppercase;*/
+    margin-bottom: 38px;
 }
 
 .inputWrapper {
-    margin-top: 38px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     position: relative;
-}
-
-.emailInput {
-    height: 55px;
-}
-
-.passInput {
-    margin-top: 25px;
-    height: 55px;
-
 }
 
 .passwordControl {
@@ -64,11 +47,11 @@
 }
 
 .rememberWrapper {
-    margin-top: 35px;
     display: flex;
     align-items: center;
     width: 21.4rem;
     justify-content: start;
+    margin-bottom: 70px;
 }
 
 .rememberWrapper span {
@@ -86,25 +69,20 @@
 }
 
 .loginButton {
-    margin-top: 40px;
     width: 21.4rem;
     height: 50px;
     text-transform: uppercase;
+    margin-bottom: 40px;
 }
 
 .footerWrapper {
     display: flex;
     width: 21.4rem;
     justify-content: space-between;
-    margin-top: 40px;
 }
 
 .newUserSpan {
     margin-right: 10px;
-}
-
-.signUpSpan {
-    color: #6d5dfc;
 }
 
 .toRegisterLink {
@@ -112,13 +90,21 @@
     font-weight: bold;
 }
 
-.forgotLink span {
-    color: #6d5dfc;
+.toRegisterLink span {
+    color: var(--primary);
 }
 
 .forgotPassLink {
     text-decoration: none;
     font-weight: bold;
+}
+
+.forgotPassLink span{
+    color: var(--primary);
+}
+
+.errorBlock{
+    height: 40px;
 }
 
 .errorBlock span {

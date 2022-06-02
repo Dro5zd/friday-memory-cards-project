@@ -47,7 +47,6 @@ const Registration = () => {
     return (
         <div className={s.registrationContainer}>
             <div className={s.components}>
-                {/*<div className={s.registrationTitle}>B.A.D. <br/> Memory Cards</div>*/}
                 <div className={s.registrationTitle}><img src={mainLogo} alt="main_logo"/></div>
                 <div className={s.registrationSubTitle}>Sign up</div>
                 <form onSubmit={handleSubmit(onSubmit)} className={s.inputWrapper}>
@@ -58,7 +57,7 @@ const Registration = () => {
                                     style={{height: '55px'}}/>
 
                     <div className={s.passwordInput}>
-                        <SuperInputText className={s.input} {...register('password', {required: true, minLength: 8})}
+                        <SuperInputText {...register('password', {required: true, minLength: 8})}
                                         type={inputType}
                                         placeholder={'Password'}/><img className={s.passwordControl}
                                                                        src={passOn ? passViewOn : passViewOff} alt="passwordOn/Off"
@@ -66,8 +65,7 @@ const Registration = () => {
                     </div>
 
                     <div className={s.passwordConfirmInput}>
-                        <SuperInputText
-                            className={s.input} {...register('confirmPassword', {
+                        <SuperInputText{...register('confirmPassword', {
                             validate: (value: string) => {
                                 if (watch('password') !== value) {
                                     return 'Your passwords do no match'

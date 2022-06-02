@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState} from 'react'
-import s from './profilePage.module.css';
+import s from './profileEditPage.module.css';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import noPhoto from '../../../../assets/img/noPhoto.png'
 import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
@@ -39,9 +39,8 @@ export const ProfileEdit = (props: ProfileEditType) => {
     }
 
     return (
-        <div className={s.profileContainer}>
+        <div className={s.profileEditContainer}>
             <div className={s.components}>
-
                 <div className={s.avatar}>
                     <h2 className={s.profileName}>Personal Information</h2>
                     <div className={s.avatarBorder}>

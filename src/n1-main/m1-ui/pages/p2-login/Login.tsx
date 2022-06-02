@@ -47,7 +47,6 @@ export const Login = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={s.inputWrapper}>
                         <SuperInputText
-                            className={s.emailInput}
                             {...register('email', {
                                 required: true,
                                 pattern: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
@@ -60,7 +59,6 @@ export const Login = () => {
                                 required: true,
                                 minLength: 8,
                             })}
-                            className={s.passInput}
                             type={inputType}
                             placeholder={'Password'}
                         /> <img className={s.passwordControl} src={passOn ? passViewOn : passViewOff} alt="passwordOn/Off"
@@ -83,7 +81,7 @@ export const Login = () => {
                     <div>
                         <span className={s.newUserSpan}>New User?</span>
                         <NavLink to={PATH.REGISTER} className={s.toRegisterLink}>
-                            <span className={s.signUpSpan}>Sing Up</span>
+                            <span>Sing Up</span>
                         </NavLink>
                     </div>
                     <div className={s.forgotLink}>

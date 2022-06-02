@@ -1,7 +1,8 @@
 .superInput {
     width: 20.4rem;
-    height: 4rem;
+    height: 55px;
     border: none;
+    margin-bottom: 25px;
     border-radius: 1rem;
     font-size: 1.4rem;
     padding-left: 1.4rem;
