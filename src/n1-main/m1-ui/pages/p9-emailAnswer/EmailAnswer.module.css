@@ -59,12 +59,16 @@
 
 .emailRound {
   position: relative;
-  background-color: var(--greyDark);
+  background-color: var(--greyLight-1);
   border-radius: 50%;
   height: 150px;
   width: 150px;
-  align-items: start;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white), inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
 }
+
 
 .email {
   position: absolute;
@@ -76,11 +80,11 @@
 }
 
 .emailSubTitle {
-  margin-top: 32px;
+  margin-top: 10px;
   font-weight: 500;
   font-size: 23px;
 }
 
 .instructionsSpan {
-  margin-right: 10px;
+  font-weight: bold;
 }

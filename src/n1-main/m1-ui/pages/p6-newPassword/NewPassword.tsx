@@ -20,7 +20,7 @@ export const NewPassword = () => {
   const onSubmit = (newPassData: InputPassType) => {
     const payload: NewPassParamsType = {
       password: newPassData.password,
-      // если undefined || null дает строку
+      // если undefined || null тогда дает строку
       resetPasswordToken: token ?? ''
     }
     dispatch(newPassTC(payload))
@@ -29,8 +29,7 @@ export const NewPassword = () => {
 
   useEffect(() => {
     if (passChanged) {
-      //если диспатчить меня редиректит на профайл а должно на логин
-      // диспатч для того чтоб пассЧендж на фолс
+      //если диспатч кинуть в зависимости меня редиректит на профайл а должно на логин
       dispatch(setPassChangedAC(false))
       navigate(PATH.LOGIN)
     }
