@@ -65,6 +65,7 @@
     margin: 5px 0 0 50px;
     font-size: 30px;
     font-weight: 600;
+    transition: all 0.5s ease;
 }
 
 .headerItem {
@@ -97,6 +98,10 @@
 
 .avatar:hover h2{
     color: var(--primary);
+}
+
+.logo:hover{
+    transform: scale(1.02);
 }
 
 .profileName {

@@ -5,6 +5,7 @@ import {PATH} from '../routes/Routs';
 import {useTypedSelector} from '../../m2-bll/store';
 import mainLogo from '../../../assets/img/B.A.D._logo3.png'
 import noPhoto from '../../../assets/img/noPhoto.png';
+import Switcher from '../common/c8-Switcher/Switcher';
 
 export const Header = () => {
   const name = useTypedSelector(state => state.profile.name)
