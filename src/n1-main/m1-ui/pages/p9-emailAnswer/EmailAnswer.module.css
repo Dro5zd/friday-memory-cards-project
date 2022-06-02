@@ -22,7 +22,7 @@
 
 .loginTitle img {
   height: 90px;
-margin-bottom: 100px;
+  margin-bottom: 100px;
 }
 
 .close {
@@ -55,18 +55,16 @@ margin-bottom: 100px;
   transform: rotate(-45deg);
 }
 
-
 .emailRound {
   position: relative;
-  background-color: var(--greyLight-1);
+  background-color: var(--bg);
   border-radius: 50%;
   height: 150px;
   width: 150px;
   align-items: center;
   display: flex;
   justify-content: center;
-  box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white), inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
-  /*align-items: start;*/
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2), inset 0.2rem 0.2rem 0.5rem var(--shadow-1), inset -0.2rem -0.2rem 0.5rem var(--shadow-2);
   margin-bottom: 120px;
 }
 

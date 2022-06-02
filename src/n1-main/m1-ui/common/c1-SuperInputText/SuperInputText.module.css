@@ -12,6 +12,11 @@
     color: var(--greyDark);
 }
 
+input:-webkit-autofill {
+    -webkit-text-fill-color: var(--greyDark) !important;
+}
+
+
 .superInput:focus{
     outline: none;
     box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);

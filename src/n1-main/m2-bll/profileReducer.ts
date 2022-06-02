@@ -10,6 +10,7 @@ export const profileReducer = (state: changeProfileRequestType = initState, acti
     switch (action.type) {
         case 'UPDATE-PROFILE':
             return {name: action.newName, avatar: action.newAvatar}
+
         default:
             return state
     }
@@ -30,4 +31,3 @@ export const updateProfileTC = (data: changeProfileRequestType) => {
 
 type ActionsType =
     | ReturnType<typeof updateProfileAC>
-

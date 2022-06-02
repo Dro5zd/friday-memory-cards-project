@@ -21,7 +21,6 @@
     height: 0.65em;
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
     transform-origin: bottom left;
-    transition: background-color 500ms ease;
     background-color: var(--checboxColor);
     font-size: 25px;
 }

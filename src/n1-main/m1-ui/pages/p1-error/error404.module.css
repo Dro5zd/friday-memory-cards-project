@@ -7,6 +7,7 @@
 
 .png{
     display: flex;
+    top: 230px;
     position: relative;
     justify-content: center;
     z-index: 2;
@@ -18,6 +19,7 @@
 }
 
 .title1{
+    top: 140px;
     display: flex;
     justify-content: center;
     margin-top: -800px;
@@ -29,6 +31,7 @@
 }
 
 .title2 {
+    top: 230px;
     display: flex;
     justify-content: center;
     margin: 0 auto;

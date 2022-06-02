@@ -6,30 +6,27 @@ import Preloader from "./common/c7-Preloader/Preloader";
 import s from './App.module.css';
 
 export const App = () => {
-    const dispatch = useTypedDispatch()
-    const isInitialised = useTypedSelector<boolean>(state => state.app.isInitialised)
+  const dispatch = useTypedDispatch()
+  const isInitialised = useTypedSelector<boolean>(state => state.app.isInitialised)
+  const mode = useTypedSelector(state => state.ui.mode)
 
-    const mode = useTypedSelector(state => state.ui.mode)
+  let mainTheme = `${s.App} ${s.themeWhite}`;
 
+  if (!mode) {
+    mainTheme = `${s.App} ${s.themeDark}`
+  }
 
-    let mainTheme = `${s.App} ${s.themeWhite}`;
+  useEffect(() => {
+    dispatch(authoriseMeTC())
+  }, [])
+  if (!isInitialised) {
+    return <Preloader/>
+  }
 
-    if (!mode) {
-        mainTheme = `${s.App} ${s.themeDark}`
-    }
-
-    useEffect(()=>{
-        dispatch(authoriseMeTC())
-    }, [])
-    if (!isInitialised) {
-        return <Preloader/>
-    }
-
-    return (
-        <div className={mainTheme}>
-            <Main/>
-
-        </div>
-    );
+  return (
+    <div className={mainTheme}>
+      <Main/>
+    </div>
+  );
 }
 

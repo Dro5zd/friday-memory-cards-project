@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import s from './NewPassword.module.css'
 import SuperInputText from "../../common/c1-SuperInputText/SuperInputText";
 import SuperButton from "../../common/c2-SuperButton/SuperButton";
@@ -11,11 +11,13 @@ import {useNavigate, useParams} from "react-router-dom";
 import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
 import passViewOn from '../../../../assets/img/view.svg';
 import passViewOff from '../../../../assets/img/no-view.svg';
+import {passwordToggleAC} from "../../../m2-bll/uiReducer";
 
 export const NewPassword = () => {
   const passChanged = useTypedSelector(state => state.newPassword.passChanged)
   const {register, handleSubmit, reset, formState: {errors}} = useForm<InputPassType>()
   const newPassError = useTypedSelector(state => state.newPassword.error)
+  const passOn = useTypedSelector(state => state.ui.passOn)
   const dispatch = useTypedDispatch()
   const navigate = useNavigate()
   const {token} = useParams<{ token: string }>()
@@ -37,10 +39,10 @@ export const NewPassword = () => {
     }
   }, [passChanged, navigate])
 
-  const [passOn, setPassOn] = useState(true)
-
+  // проблема в том что не могу спозиционировать EyeComponent так чтоб  глаз отрисовало в инпуте
+  // по этому дублирую код и все отрабатывает правильно, пока не найдем решение !!!
   const changeView = () => {
-    setPassOn(!passOn)
+    dispatch(passwordToggleAC(!passOn))
   }
   let inputType = 'text'
   if (passOn) {
@@ -59,13 +61,21 @@ export const NewPassword = () => {
                 required: true,
                 minLength: 8,
               })}
-              style={{height: '55px'}}
               className={s.newPassInput}
               type={inputType}
               placeholder={'New password'}
             />
-            <img className={s.passwordControl} src={passOn ? passViewOn : passViewOff} alt="passwordOn/Off"
-                 onClick={changeView}/>
+
+            {/*!!!!!!!!!!!!!!!!!!!!*/}
+
+            {/*<EyeComponent/>*/}
+            <img className={s.passwordControl}
+                 src={passOn ? passViewOn : passViewOff}
+                 alt="passwordOn/Off"
+                 onClick={changeView}
+            />
+
+            {/*!!!!!!!!!!!!!!!!!!!!*/}
           </div>
           <div className={s.instructionsSpan}>
           <span>
@@ -75,10 +85,7 @@ export const NewPassword = () => {
           </span>
           </div>
           <div className={s.newPassButtonWrapper}>
-            <SuperButton
-              className={s.newPassButton}
-              title={'Create New Password'}
-            />
+            <SuperButton className={s.newPassButton} title={'Create New Password'}/>
           </div>
         </form>
         <div className={s.errorBlock}>

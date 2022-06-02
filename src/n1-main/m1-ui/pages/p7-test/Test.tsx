@@ -5,13 +5,12 @@ import SuperCheckbox from '../../common/c3-SuperCheckbox/SuperCheckbox';
 import s from './test.module.css'
 
 export const Test = () => {
+
     return (
         <div className={s.container}>
             <div className={s.components}>
-                <SuperInputText/>
-                <SuperButton>
-                    BUTTON
-                </SuperButton>
+                <SuperInputText placeholder='Test'/>
+                <SuperButton title='BUTTON'/>
                 <SuperCheckbox/>
             </div>
 

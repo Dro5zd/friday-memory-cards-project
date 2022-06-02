@@ -5,32 +5,33 @@ import {PATH} from '../routes/Routs';
 import {useTypedDispatch, useTypedSelector} from '../../m2-bll/store';
 import mainLogo from '../../../assets/img/B.A.D._logo3.png'
 import noPhoto from '../../../assets/img/noPhoto.png';
-import Switcher from '../common/c8-Switcher/Switcher';
+import {Switcher} from '../common/c8-Switcher/Switcher';
 import {changeThemeAC} from '../../m2-bll/uiReducer';
 
 export const Header = () => {
+
   const name = useTypedSelector(state => state.profile.name)
   const nameMe = useTypedSelector(state => state.auth.name)
   const avatar = useTypedSelector(state => state.profile.avatar)
   const avatarMe = useTypedSelector(state => state.auth.avatar)
   const isAuthorised = useTypedSelector<boolean>(state => state.app.isAuthorised)
-
   const mode = useTypedSelector(state => state.ui.mode)
 
-    const dispatch = useTypedDispatch()
+  const dispatch = useTypedDispatch()
 
-    const onChangeThemeHandler = () => {
-        return dispatch(changeThemeAC(!mode))
-    }
+  const onChangeThemeHandler = () => {
+    return dispatch(changeThemeAC(!mode))
+  }
 
   return (
     <header className={s.header}>
-       <NavLink to={isAuthorised ? PATH.PACKS_LIST : PATH.LOGIN} className={navData => navData.isActive ? s.active : s.link}>
+      <NavLink to={isAuthorised ? PATH.PACKS_LIST : PATH.LOGIN}
+               className={navData => navData.isActive ? s.active : s.link}>
         <div className={s.logo}>
           <img src={mainLogo} alt="main_logo"/>
         </div>
       </NavLink>
-        <Switcher onChangeThemeHandler={onChangeThemeHandler}/>
+      <Switcher onChangeThemeHandler={onChangeThemeHandler}/>
       {isAuthorised ?
         <div className={s.wrapper}>
 
@@ -57,7 +58,7 @@ export const Header = () => {
 
         </div>
         :
-       ''
+        ''
       }
       {/*   <NavLink to={PATH.LOGIN} className={navData => navData.isActive ? s.active : s.link}>
            Login

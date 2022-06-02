@@ -36,14 +36,8 @@
     position: relative;
 }
 
-.passwordControl {
-    position: absolute;
-    top: 92px;
-    right: 20px;
-    display: inline-block;
-    width: 25px;
-    height: 35px;
-    fill: var(--greyDark-2);
+.passwordInput{
+    position: relative;
 }
 
 .rememberWrapper {
@@ -90,7 +84,7 @@
 }
 
 .toRegisterLink span {
-    color: var(--textHover);
+    color: var(--textColor);
 }
 
 .forgotPassLink {
@@ -99,7 +93,7 @@
 }
 
 .forgotPassLink span{
-    color: var(--textHover);
+    color: var(--textColor);
 }
 
 .errorBlock{

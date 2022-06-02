@@ -14,11 +14,7 @@
   --greyLight-3: #bec8e4;
   --greyDark: #9baacf;
   --greyDark-2: #636b83;
-
 }
-
-
-
 
 .themeDark {
   --bg: var(--greyDark-2);
