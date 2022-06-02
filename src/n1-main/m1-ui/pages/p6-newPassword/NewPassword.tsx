@@ -50,7 +50,7 @@ export const NewPassword = () => {
               })}
               style={{height: '55px'}}
               className={s.newPassInput}
-              type={'password'}
+              type={'text'}
               placeholder={'New password'}
             />
           </div>

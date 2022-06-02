@@ -1,13 +1,15 @@
-import React from 'react';
-import SuperInputText from "../../common/c1-SuperInputText/SuperInputText";
-import {useForm} from "react-hook-form";
-import s from "./Registration.module.css"
-import SuperButton from "../../common/c2-SuperButton/SuperButton";
-import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
-import {registerTC} from "../../../m2-bll/registerReducer";
-import {useNavigate, NavLink} from "react-router-dom";
-import {PATH} from "../../routes/Routs";
+import React, {useState} from 'react';
+import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
+import {useForm} from 'react-hook-form';
+import s from './Registration.module.css'
+import SuperButton from '../../common/c2-SuperButton/SuperButton';
+import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
+import {registerTC} from '../../../m2-bll/registerReducer';
+import {useNavigate, NavLink} from 'react-router-dom';
+import {PATH} from '../../routes/Routs';
 import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
+import passViewOn from '../../../../assets/img/view.svg';
+import passViewOff from '../../../../assets/img/no-view.svg';
 
 export type RegistrationFormType = {
     email: string
@@ -31,6 +33,17 @@ const Registration = () => {
     if (isRegistered) {
         navigate(PATH.LOGIN)
     }
+
+    const [passOn, setPassOn] = useState(true)
+
+    const changeView = () => {
+        setPassOn(!passOn)
+    }
+    let inputType = 'text'
+    if (passOn) {
+        inputType = 'password'
+    }
+
     return (
         <div className={s.registrationContainer}>
             <div className={s.components}>
@@ -41,22 +54,33 @@ const Registration = () => {
                     <SuperInputText {...register('email', {
                         required: true,
                         pattern: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
-                    })} type={"text"} placeholder={'Email'}
+                    })} type={'text'} placeholder={'Email'}
                                     style={{height: '55px'}}/>
-                    <SuperInputText className={s.input} {...register('password', {required: true, minLength: 8})}
-                                    type={"password"}
-                                    placeholder={'Password'}/>
-                    <SuperInputText
-                        className={s.input} {...register('confirmPassword', {
-                        validate: (value: string) => {
-                            if (watch('password') !== value) {
-                                return 'Your passwords do no match'
+
+                    <div className={s.passwordInput}>
+                        <SuperInputText className={s.input} {...register('password', {required: true, minLength: 8})}
+                                        type={inputType}
+                                        placeholder={'Password'}/><img className={s.passwordControl}
+                                                                       src={passOn ? passViewOn : passViewOff} alt="passwordOn/Off"
+                                                                       onClick={changeView}/>
+                    </div>
+
+                    <div className={s.passwordConfirmInput}>
+                        <SuperInputText
+                            className={s.input} {...register('confirmPassword', {
+                            validate: (value: string) => {
+                                if (watch('password') !== value) {
+                                    return 'Your passwords do no match'
+                                }
                             }
-                        }
-                    })}
-                        type={"password"}
-                        placeholder={'Confirm Password'}/>
-                    <SuperButton className={s.registrationButton} title={'Sign Up'} type={"submit"}/>
+                        })}
+                            type={inputType}
+                            placeholder={'Confirm Password'}/><img className={s.passwordControl}
+                                                                   src={passOn ? passViewOn : passViewOff} alt="passwordOn/Off"
+                                                                   onClick={changeView}/>
+                    </div>
+
+                    <SuperButton className={s.registrationButton} title={'Sign Up'} type={'submit'}/>
                     <div className={s.navigateBlock}>
                         <span>Already have an account?</span>
                         <NavLink className={s.toLoginLink} to={PATH.LOGIN}>Login</NavLink>
