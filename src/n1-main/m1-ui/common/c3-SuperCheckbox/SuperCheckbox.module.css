@@ -1,5 +1,5 @@
 .checkbox {
-    box-shadow: 0.3rem 0.3rem 0.6rem #c8d0e7, -0.2rem -0.2rem 0.5rem #fff;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
     cursor: pointer;
     /*position: relative;*/
     display: flex;
@@ -22,20 +22,20 @@
     clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
     transform-origin: bottom left;
     transition: background-color 500ms ease;
-    background-color: var(--greyDark);
+    background-color: var(--checboxColor);
     font-size: 25px;
 }
 
 .checkbox:checked::before {
-    background-color: var(--primary);
+    background-color: var(--textHover);
 }
 
 .checkbox:hover::before {
-    background-color: var(--primary);
+    background-color: var(--textHover);
 }
 
 .checkbox:checked {
-    box-shadow: inset .1rem .1rem .3rem #c8d0e7, inset -.1rem -.1rem .3rem #fff;
+    box-shadow: inset .1rem .1rem .3rem var(--shadow-1), inset -.1rem -.1rem .3rem var(--shadow-2);
 }
 
 

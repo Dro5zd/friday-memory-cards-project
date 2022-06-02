@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './NewPassword.module.css'
 import SuperInputText from "../../common/c1-SuperInputText/SuperInputText";
 import SuperButton from "../../common/c2-SuperButton/SuperButton";
@@ -9,6 +9,8 @@ import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {PATH} from "../../routes/Routs";
 import {useNavigate, useParams} from "react-router-dom";
 import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
+import passViewOn from '../../../../assets/img/view.svg';
+import passViewOff from '../../../../assets/img/no-view.svg';
 
 export const NewPassword = () => {
   const passChanged = useTypedSelector(state => state.newPassword.passChanged)
@@ -36,6 +38,16 @@ export const NewPassword = () => {
     }
   }, [passChanged, navigate])
 
+  const [passOn, setPassOn] = useState(true)
+
+  const changeView = () => {
+    setPassOn(!passOn)
+  }
+  let inputType = 'text'
+  if (passOn) {
+    inputType = 'password'
+  }
+
   return (
     <div className={s.newPassContainer}>
       <div className={s.components}>
@@ -50,9 +62,11 @@ export const NewPassword = () => {
               })}
               style={{height: '55px'}}
               className={s.newPassInput}
-              type={'text'}
+              type={inputType}
               placeholder={'New password'}
             />
+            <img className={s.passwordControl} src={passOn ? passViewOn : passViewOff} alt="passwordOn/Off"
+                 onClick={changeView}/>
           </div>
           <div className={s.instructionsSpan}>
           <span>
@@ -63,7 +77,6 @@ export const NewPassword = () => {
           </div>
           <div className={s.newPassButtonWrapper}>
             <SuperButton
-              style={{height: '50px', width: '21.4rem'}}
               className={s.newPassButton}
               title={'Create New Password'}
             />

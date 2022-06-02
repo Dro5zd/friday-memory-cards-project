@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--greyLight-1);
+  background: var(--bg);
 }
 
 .components {
@@ -12,7 +12,7 @@
   width: 400px;
   height: 600px;
   border-radius: 3rem;
-  box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+  box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
   padding: 4rem;
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@
   border-radius: 50%;
   justify-content: center;
   align-items: center;
-  box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white), inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2), inset 0.2rem 0.2rem 0.5rem var(--shadow-1), inset -0.2rem -0.2rem 0.5rem var(--shadow-2);
 }
 
 .avatarBorder img {
@@ -70,8 +70,8 @@
   left: 15px;
   content: ' ';
   height: 25px;
-  width: 2px;
-  background-color: var(--primary);
+  width: 3px;
+  background-color: var(--textColor);
 }
 
 .close:before {
@@ -84,7 +84,7 @@
 
 .link {
   text-decoration: none;
-  color: var(--primary);
+  color: var(--textColor);
   font-weight: bold;
   cursor: pointer;
 }

@@ -4,7 +4,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: var(--greyLight-1);
+  background: var(--bg);
 }
 
 .components {
@@ -12,10 +12,9 @@
   width: 400px;
   height: 600px;
   border-radius: 3rem;
-  box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+  box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
   padding: 4rem;
   display: flex;
-  justify-content: space-around;
   align-items: center;
   flex-direction: column;
   margin-top: 60px;
@@ -23,7 +22,7 @@
 
 .loginTitle img {
   height: 90px;
-  margin-top: 20px;
+margin-bottom: 100px;
 }
 
 .close {
@@ -45,7 +44,7 @@
   content: ' ';
   height: 25px;
   width: 2px;
-  background-color: var(--primary);
+  background-color: var(--textColor);
 }
 
 .close:before {
@@ -64,6 +63,7 @@
   height: 150px;
   width: 150px;
   align-items: start;
+  margin-bottom: 120px;
 }
 
 .email {
@@ -76,11 +76,7 @@
 }
 
 .emailSubTitle {
-  margin-top: 32px;
   font-weight: 500;
   font-size: 23px;
-}
-
-.instructionsSpan {
-  margin-right: 10px;
+  margin-bottom: 60px;
 }

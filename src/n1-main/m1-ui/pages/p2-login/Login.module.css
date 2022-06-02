@@ -4,14 +4,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--greyLight-1);
+    background: var(--bg);
 }
 
 .components {
     width: 400px;
     height: 600px;
     border-radius: 3rem;
-    box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+    box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
     padding: 4rem;
     display: flex;
     align-items: center;
@@ -70,7 +70,6 @@
 
 .loginButton {
     width: 21.4rem;
-    height: 50px;
     text-transform: uppercase;
     margin-bottom: 40px;
 }
@@ -91,7 +90,7 @@
 }
 
 .toRegisterLink span {
-    color: var(--primary);
+    color: var(--textHover);
 }
 
 .forgotPassLink {
@@ -100,7 +99,7 @@
 }
 
 .forgotPassLink span{
-    color: var(--primary);
+    color: var(--textHover);
 }
 
 .errorBlock{

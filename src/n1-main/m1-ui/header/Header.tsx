@@ -2,10 +2,11 @@ import React from 'react';
 import s from './Header.module.css'
 import {NavLink} from 'react-router-dom';
 import {PATH} from '../routes/Routs';
-import {useTypedSelector} from '../../m2-bll/store';
+import {useTypedDispatch, useTypedSelector} from '../../m2-bll/store';
 import mainLogo from '../../../assets/img/B.A.D._logo3.png'
 import noPhoto from '../../../assets/img/noPhoto.png';
 import Switcher from '../common/c8-Switcher/Switcher';
+import {changeThemeAC} from '../../m2-bll/uiReducer';
 
 export const Header = () => {
   const name = useTypedSelector(state => state.profile.name)
@@ -14,13 +15,22 @@ export const Header = () => {
   const avatarMe = useTypedSelector(state => state.auth.avatar)
   const isAuthorised = useTypedSelector<boolean>(state => state.app.isAuthorised)
 
+  const mode = useTypedSelector(state => state.ui.mode)
+
+    const dispatch = useTypedDispatch()
+
+    const onChangeThemeHandler = () => {
+        return dispatch(changeThemeAC(!mode))
+    }
+
   return (
-    <div className={s.header}>
+    <header className={s.header}>
        <NavLink to={isAuthorised ? PATH.PACKS_LIST : PATH.LOGIN} className={navData => navData.isActive ? s.active : s.link}>
         <div className={s.logo}>
           <img src={mainLogo} alt="main_logo"/>
         </div>
       </NavLink>
+        <Switcher onChangeThemeHandler={onChangeThemeHandler}/>
       {isAuthorised ?
         <div className={s.wrapper}>
 
@@ -39,10 +49,12 @@ export const Header = () => {
                 </div>
               </div>
             </NavLink>
+
             {/*<NavLink to={PATH.PROFILE} className={navData => navData.isActive ? s.active : s.link}>*/}
             {/*    Profile*/}
             {/*</NavLink>*/}
           </div>
+
         </div>
         :
        ''
@@ -62,7 +74,7 @@ export const Header = () => {
       {/*<NavLink to={PATH.TEST} className={navData => navData.isActive ? s.active : s.link}>*/}
       {/*    PacksList*/}
       {/*</NavLink>*/}
-    </div>
+    </header>
   );
 }
 

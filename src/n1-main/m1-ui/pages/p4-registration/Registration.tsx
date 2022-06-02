@@ -53,8 +53,7 @@ const Registration = () => {
                     <SuperInputText {...register('email', {
                         required: true,
                         pattern: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
-                    })} type={'text'} placeholder={'Email'}
-                                    style={{height: '55px'}}/>
+                    })} type={'text'} placeholder={'Email'}/>
 
                     <div className={s.passwordInput}>
                         <SuperInputText {...register('password', {required: true, minLength: 8})}

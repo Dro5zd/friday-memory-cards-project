@@ -4,14 +4,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--greyLight-1);
+    background: var(--bg);
 }
 
 .components {
     width: 400px;
     height: 600px;
     border-radius: 3rem;
-    box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+    box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
     padding: 4rem;
     display: flex;
     align-items: center;
@@ -53,29 +53,18 @@
     display: inline-block;
     width: 25px;
     height: 35px;
-    fill: var(--greyDark-2);
+    fill: var(--bg);
 }
 
-
-/*Спросить у Давида разрешение___________________*/
-/*.emailInput {*/
-/*    height: 55px;*/
-/*}*/
-
-/*.passInput {*/
-/*    margin-top: 25px;*/
-/*    height: 55px;*/
-/*}*/
-/*Спросить у Давида разрешение___________________*/
 .linkCheckboxWrapper {
     display: flex;
 
 }
-/*Спросить у Давида разрешение___________________*/
+
 .registrationButton {
     margin-bottom: 40px;
 }
-/*Спросить у Давида разрешение___________________*/
+
 .label {
     margin: 10px 0 5px;
 
@@ -91,7 +80,7 @@
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
-    color: var(--primary);
+    color: var(--textColor);
 }
 
 .errorBlock{

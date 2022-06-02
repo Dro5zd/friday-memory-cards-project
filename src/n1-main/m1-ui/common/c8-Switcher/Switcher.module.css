@@ -1,39 +1,21 @@
-.themeDark {
-    --bg: black;
-    --curtainColor: #424242;
-    --titleBGColor: hsla(0,0%,100%,.15);
-    --textColor: white;
-    --navbarBG: #424242;
-    --buttonBG: #6666;
-    --filterIconColor: invert(0);
-    --colorH1: #ffb400;
-    --coloBlock: linear-gradient(180deg, rgb(0,87,184) 50%, rgb(255,215,0) 50%);
-}
-
-.themeWhite {
-    --bg: #f3f3f3;
-
-    --curtainColor: #e7e4e4;
-    --titleBGColor: rgba(30,37,48,.07);
-    --textColor: #666666;
-    --navbarBG: white;
-    --buttonBG: #e7e4e4;
-    --filterIconColor: invert(0.7);
-    --colorH1: #1b49af;
-    --coloBlock: linear-gradient(180deg, rgb(0,87,184) 50%, rgb(255,215,0) 50%);
-}
-
 .switcherBtn {
     align-items: center;
     justify-content: center;
     display: flex;
-    height: 52px;
-    width: 52px;
+    height: 45px;
+    width: 45px;
     border-radius: 50%;
-    background-color: var(--colorH1);
-    position: fixed;
-    right: 30px;
-    top: 24px;
+    /*background-color: var(--textColor);*/
+    position: absolute;
+    right: 16px;
+    top: 13px;
     z-index: 9999;
     cursor: pointer;
+}
+
+.mainBtnIcon {
+    z-index: 5;
+    display: flex;
+    height: 30px;
+    /*filter: invert(1);*/
 }

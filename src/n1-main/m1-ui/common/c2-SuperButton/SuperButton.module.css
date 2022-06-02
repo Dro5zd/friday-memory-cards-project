@@ -8,13 +8,12 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: 0.3s ease;
     background: var(--primary);
     color: var(--greyLight-1);
     font-family: 'Roboto', sans-serif;
     font-size: 25px;
     text-transform: uppercase;
-    box-shadow: inset .2rem .2rem 1rem var(--primary-light), inset -.2rem -.2rem 1rem var(--primary-dark),.3rem .3rem .6rem var(--greyLight-2), -.2rem -.2rem .5rem var(--white);
+    box-shadow: inset .2rem .2rem 1rem var(--shadow-3), inset -.2rem -.2rem 1rem var(--shadow-4),.3rem .3rem .6rem var(--shadow-1), -.2rem -.2rem .5rem var(--shadow-2);
 }
 
 .default:hover {
@@ -22,5 +21,5 @@
 }
 
 .default:active {
-    box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark), inset -0.2rem -0.2rem 1rem var(--primary-light);
+    box-shadow: inset 0.2rem 0.2rem 1rem var(--shadow-4), inset -0.2rem -0.2rem 1rem var(--shadow-3);
 }
