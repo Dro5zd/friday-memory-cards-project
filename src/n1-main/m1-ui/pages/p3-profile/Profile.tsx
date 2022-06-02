@@ -44,9 +44,6 @@ export const Profile = () => {
           <div className={s.avatarBorder}>
             <img src={avatar || avatarMe || noPhoto} alt={'ava'}/>
           </div>
-
-
-
           <h2 className={s.profileName}>{name || nameMe || 'Name'}</h2>
         </div>
         <SuperButton className={s.editButton} title={'Edit Profile'} onClick={changeMode}/>

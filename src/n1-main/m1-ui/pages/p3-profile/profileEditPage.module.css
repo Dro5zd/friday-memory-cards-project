@@ -1,4 +1,4 @@
-.profileContainer {
+.profileEditContainer {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,10 +25,17 @@
   justify-content: center;
 }
 
+.profileName {
+  margin: 0 0 40px 0 ;
+  font-size: 35px;
+  text-align: center;
+}
+
 .avatarBorder {
   display: flex;
   width: 180px;
   height: 180px;
+  margin-bottom: 50px;
   border-radius: 50%;
   justify-content: center;
   align-items: center;
@@ -42,49 +49,33 @@
   border-radius: 50%;
 }
 
-.profileName {
-  margin-bottom: 230px;
-  font-size: 35px;
-  text-align: center;
+.inputBlock {
+  margin-bottom: 35px;
+}
+
+.buttonBlock {
+  display: flex;
 }
 
 .editButton {
  margin-bottom: 40px;
 }
 
-.close {
-  position: absolute;
-  right: 50px;
-  top: 50px;
-  width: 32px;
-  height: 32px;
-  opacity: 0.3;
+.buttonBlock button {
+  width: 160px;
+  margin: 15px;
 }
 
-.close:hover {
-  opacity: 1;
+.cancelButton {
+  background: none;
+  color: var(--greyDark);
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
 }
 
-.close:before, .close:after {
-  position: absolute;
-  left: 15px;
-  content: ' ';
-  height: 25px;
-  width: 3px;
-  background-color: var(--textColor);
+.cancelButton:hover {
+  color: var(--textHover);
 }
 
-.close:before {
-  transform: rotate(45deg);
-}
-
-.close:after {
-  transform: rotate(-45deg);
-}
-
-.link {
-  text-decoration: none;
-  color: var(--textColor);
-  font-weight: bold;
-  cursor: pointer;
+.cancelButton:active {
+  box-shadow: inset .2rem .2rem .5rem var(--shadow-1), inset -.2rem -.2rem .5rem var(--shadow-2);
 }

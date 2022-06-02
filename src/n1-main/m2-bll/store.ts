@@ -8,6 +8,7 @@ import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import thunk, { ThunkDispatch } from 'redux-thunk';
 import {appReducer} from "./appReducer";
 import {loginReducer} from "./loginReducer";
+import {uiReducer} from './uiReducer';
 
 const reducers = combineReducers({
     auth: loginReducer,
@@ -17,6 +18,7 @@ const reducers = combineReducers({
     newPassword: newPasswordReducer,
     test: testReducer,
     app: appReducer,
+    ui: uiReducer
 })
 
 const store = createStore(reducers, applyMiddleware(thunk))

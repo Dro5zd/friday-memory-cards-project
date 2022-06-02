@@ -4,14 +4,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--greyLight-1);
+    background: var(--bg);
 }
 
 .components {
     width: 400px;
     height: 600px;
     border-radius: 3rem;
-    box-shadow: 0.8rem 0.8rem 1.4rem var(--greyLight-2), -0.2rem -0.2rem 1.8rem var(--white);
+    box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
     padding: 4rem;
     display: flex;
     align-items: center;
@@ -20,72 +20,74 @@
 }
 
 .registrationTitle img {
-    /*text-transform: uppercase;*/
-    /*font-weight: 600;*/
     height: 90px;
-    margin-top: 20px;
-    /*font-size: 35px;*/
+    margin-bottom: 40px;
 }
 
 .registrationSubTitle {
-    margin-top: 32px;
-    font-size: 23px;
     font-weight: 500;
+    font-size: 23px;
+    margin-bottom: 38px;
 }
 
 .inputWrapper {
-    margin-top: 38px;
     display: flex;
     flex-direction: column;
+    position: relative;
     align-items: center;
-    justify-content: center;
 }
-/*Спросить у Давида разрешение___________________*/
-/*.emailInput {*/
-/*    height: 55px;*/
-/*}*/
 
-/*.passInput {*/
-/*    margin-top: 25px;*/
-/*    height: 55px;*/
-/*}*/
-/*Спросить у Давида разрешение___________________*/
+.passwordInput{
+    position: relative;
+}
+
+.passwordConfirmInput{
+    position: relative;
+    margin-bottom: 24px;
+}
+
+.passwordControl {
+    position: absolute;
+    top: 11px;
+    right: 20px;
+    display: inline-block;
+    width: 25px;
+    height: 35px;
+    fill: var(--bg);
+}
+
 .linkCheckboxWrapper {
-    margin-top: 48px;
     display: flex;
 
 }
-/*Спросить у Давида разрешение___________________*/
+
 .registrationButton {
-    height: 50px;
-    margin-top: 45px;
-    width: 21.4rem;
-    text-transform: uppercase;
+    margin-bottom: 40px;
 }
-/*Спросить у Давида разрешение___________________*/
+
 .label {
     margin: 10px 0 5px;
 
 }
 .navigateBlock {
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     display: flex;
     justify-content: space-between;
     width: 21.4rem;
 }
-/*Спросить у Давида разрешение___________________*/
-.input {
-    margin-top: 25px;
-    height: 55px;
-}
-/*Спросить у Давида разрешение___________________*/
+
 .toLoginLink {
     text-decoration: none;
     font-weight: bold;
     cursor: pointer;
-    color: var(--primary);
+    color: var(--textColor);
 }
-.errorBlock {
+
+.errorBlock{
+    height: 40px;
+}
+
+.errorBlock span {
     margin-top: 10px;
     display: flex;
     flex-direction: column;

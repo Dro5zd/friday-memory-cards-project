@@ -45,22 +45,18 @@ const SuperInputText = React.forwardRef<HTMLInputElement, SuperInputTextPropsTyp
   }
 
   const finalSpanClassName = `${s.error} ${spanClassName ? spanClassName : ''}`
-  const finalInputClassName = `${s.input} ${error ? s.errorInput : s.superInput} ${className}` // need to fix
-  // with
-  // (?:) and
-  // s.superInput
+  const finalInputClassName = `${s.input} ${error ? s.errorInput : s.superInput} ${className}`
 
   return (
     <>
       <input
-        // type={'text'}
         type={type}
         onChange={onChangeCallback}
         onKeyPress={onKeyPressCallback}
         className={finalInputClassName}
         ref={ref}
 
-        {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
+        {...restProps}
       />
       {error && <span className={finalSpanClassName}>{error}</span>}
     </>

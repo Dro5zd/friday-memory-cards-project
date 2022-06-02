@@ -1,0 +1,21 @@
+.switcherBtn {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    /*background-color: var(--textColor);*/
+    position: absolute;
+    right: 16px;
+    top: 13px;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.mainBtnIcon {
+    z-index: 5;
+    display: flex;
+    height: 30px;
+    /*filter: invert(1);*/
+}
