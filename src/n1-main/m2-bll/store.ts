@@ -3,7 +3,6 @@ import {registerReducer} from './registerReducer';
 import {profileReducer} from './profileReducer';
 import {passwordRecoveryReducer} from './passwordRecoveryReducer';
 import {newPasswordReducer} from './newPasswordReducer';
-import {testReducer} from './testReducer';
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 import thunk, { ThunkDispatch } from 'redux-thunk';
 import {appReducer} from "./appReducer";
@@ -16,7 +15,6 @@ const reducers = combineReducers({
     profile: profileReducer,
     passwordRecovery: passwordRecoveryReducer,
     newPassword: newPasswordReducer,
-    test: testReducer,
     app: appReducer,
     ui: uiReducer
 })
