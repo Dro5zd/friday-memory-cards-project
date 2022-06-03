@@ -5,7 +5,8 @@
     height: 45px;
     width: 45px;
     border-radius: 50%;
-    /*background-color: var(--textColor);*/
+    background-color: var(--bg);
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
     position: absolute;
     right: 16px;
     top: 13px;
@@ -13,9 +14,12 @@
     cursor: pointer;
 }
 
+.switcherBtn:active {
+    box-shadow: inset .1rem .1rem .3rem var(--shadow-1), inset -.1rem -.1rem .3rem var(--shadow-2);
+}
+
 .mainBtnIcon {
     z-index: 5;
     display: flex;
     height: 30px;
-    /*filter: invert(1);*/
 }

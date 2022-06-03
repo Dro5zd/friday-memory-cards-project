@@ -70,6 +70,10 @@
     color: var(--textColor);
 }
 
+.toLoginLink:hover {
+    color: var(--textHover);
+}
+
 .errorBlock{
     height: 40px;
 }

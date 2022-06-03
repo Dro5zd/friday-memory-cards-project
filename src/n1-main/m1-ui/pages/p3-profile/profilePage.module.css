@@ -88,3 +88,7 @@
   font-weight: bold;
   cursor: pointer;
 }
+
+.link:hover {
+  color: var(--textHover);
+}

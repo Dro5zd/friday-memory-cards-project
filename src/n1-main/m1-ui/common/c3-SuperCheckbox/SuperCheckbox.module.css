@@ -11,9 +11,6 @@
     -webkit-appearance: none;
 }
 
-.spanClassName {
-
-}
 
 .checkbox::before {
     content: "";

@@ -23,21 +23,11 @@
   --shadow-3: #577aab;
   --shadow-4: #4607bb;
   --textColor: var(--greyLight-1);
-  --textHover: var(--greyLight-1);
+  --textHover: var(--white);
   --checboxColor: #53596e;
-
-
-  --navbarBG: #424242;
-
-
-  --buttonBG: #6666;
-  --filterIconColor: invert(0);
-  --colorH1: #ffb400;
-  --coloBlock: linear-gradient(180deg, rgb(0,87,184) 50%, rgb(255,215,0) 50%);
 }
 
 .themeWhite {
-
   --bg: var(--greyLight-1);
   --shadow-1: var(--greyLight-2);
   --shadow-2: var(--white);
@@ -46,14 +36,6 @@
   --textColor: var(--greyDark-2);
   --textHover: var(--primary);
   --checboxColor: var(--greyDark);
-
-  --curtainColor: #e7e4e4;
-  --titleBGColor: rgba(30,37,48,.07);
-  --navbarBG: white;
-  --buttonBG: #e7e4e4;
-  --filterIconColor: invert(0.7);
-  --colorH1: #1b49af;
-  --coloBlock: linear-gradient(180deg, rgb(0,87,184) 50%, rgb(255,215,0) 50%);
 }
 
 
