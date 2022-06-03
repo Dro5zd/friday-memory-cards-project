@@ -13,15 +13,13 @@ const instance = axios.create({
 const instanceHeroku = axios.create({
     baseURL: 'https://neko-back.herokuapp.com/2.0/',
     withCredentials: true,
-    headers: {
-        'API-KEY': ''
-    }
+    // headers: {
+    //     'API-KEY': ''
+    // }
 })
 
 export const authAPI = {
-  // getTest() {
-  //   return instance.get('ping')
-  // },
+
   loginPost(data: LoginParamsType) {
     return instance.post<LoginParamsType, AxiosResponse>('auth/login', data)
   },

@@ -24,7 +24,7 @@ export const NewPassword = () => {
   const onSubmit = (newPassData: InputPassType) => {
     const payload: NewPassParamsType = {
       password: newPassData.password,
-      // если undefined || null тогда дает строку
+      // если undefined || null тогда дает пустую строку
       resetPasswordToken: token ?? ''
     }
     dispatch(newPassTC(payload))
@@ -37,7 +37,7 @@ export const NewPassword = () => {
       dispatch(setPassChangedAC(false))
       navigate(PATH.LOGIN)
     }
-  }, [passChanged, navigate])
+  }, [passChanged, navigate, dispatch])
 
 
   return (

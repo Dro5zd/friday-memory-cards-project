@@ -16,7 +16,7 @@ export const EmailAnswer = () => {
                 для ввода нового пароля - эта линка отрабатывает не корректно
                 по этому нужно будет перенаправлять на поле логинизации...
                 пока оставлю так но потом нужно обратить внимание!!! */}
-          <NavLink to={PATH.LOGIN}
+          <NavLink to={PATH.ENTERING_NEW_PASSWORD}
                    className={navData => navData.isActive ? s.active : s.link}>
             <div className={s.close}></div>
           </NavLink>
