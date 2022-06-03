@@ -33,12 +33,8 @@
 .inputWrapper {
     display: flex;
     flex-direction: column;
-    position: relative;
 }
 
-.passwordInput{
-    position: relative;
-}
 
 .rememberWrapper {
     display: flex;

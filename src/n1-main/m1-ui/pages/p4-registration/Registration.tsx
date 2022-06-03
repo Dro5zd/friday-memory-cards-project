@@ -8,7 +8,6 @@ import {registerTC} from '../../../m2-bll/registerReducer';
 import {useNavigate, NavLink} from 'react-router-dom';
 import {PATH} from '../../routes/Routs';
 import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
-import {EyeComponent} from "../../common/c9-EyeComponent/EyeComponent";
 
 export type RegistrationFormType = {
   email: string
@@ -17,11 +16,13 @@ export type RegistrationFormType = {
 }
 
 const Registration = () => {
+
   const isRegistered = useTypedSelector<boolean>(state => state.register.isRegistered)
   const serverError = useTypedSelector<string | undefined>(state => state.register.error)
   const passOn = useTypedSelector(state => state.ui.passOn)
-  const dispatch = useTypedDispatch()
+
   const {register, handleSubmit, reset, watch, formState: {errors}} = useForm<RegistrationFormType>()
+  const dispatch = useTypedDispatch()
   const navigate = useNavigate()
   const onSubmit = (data: RegistrationFormType) => {
     const {email, password} = data
@@ -34,11 +35,6 @@ const Registration = () => {
     navigate(PATH.LOGIN)
   }
 
-  let inputType = 'text'
-  if (passOn) {
-    inputType = 'password'
-  }
-
   return (
     <div className={s.registrationContainer}>
       <div className={s.components}>
@@ -48,32 +44,24 @@ const Registration = () => {
           <SuperInputText {...register('email', {
             required: true,
             pattern: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
-          })} type={'text'} placeholder={'Email'}/>
+          })} type={'email'} placeholder={'Email'}/>
 
           <div className={s.passwordInput}>
             <SuperInputText {...register('password', {required: true, minLength: 8})}
-                            type={inputType}
+                            type={passOn ? 'password' : 'text'}
                             placeholder={'Password'}/>
-
-            {/*______________???????_______________*/}
-            {/*need to fix*/}
-            <EyeComponent/>
-
           </div>
 
           <div className={s.passwordConfirmInput}>
-            <SuperInputText{...register('confirmPassword', {
-              validate: (value: string) => {
-                if (watch('password') !== value) {
-                  return 'Your passwords do no match'
-                }
-              }
-            })}
-                           type={inputType}
-                           placeholder={'Confirm Password'}/>
-            {/*______________???????_______________*/}
-            {/*need to fix*/}
-            <EyeComponent/>
+            <SuperInputText
+              {...register('confirmPassword', {
+                validate: (value: string) => {
+                  if (watch('password') !== value) {
+                    return 'Your passwords do no match'
+                  }}})}
+              type={passOn ? 'password' : 'text'}
+              placeholder={'Confirm Password'}
+            />
           </div>
 
           <SuperButton className={s.registrationButton} title={'Sign Up'} type={'submit'}/>

@@ -9,17 +9,17 @@ import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {PATH} from "../../routes/Routs";
 import {useNavigate, useParams} from "react-router-dom";
 import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
-import passViewOn from '../../../../assets/img/view.svg';
-import passViewOff from '../../../../assets/img/no-view.svg';
-import {passwordToggleAC} from "../../../m2-bll/uiReducer";
 
 export const NewPassword = () => {
+
   const passChanged = useTypedSelector(state => state.newPassword.passChanged)
   const {register, handleSubmit, reset, formState: {errors}} = useForm<InputPassType>()
   const newPassError = useTypedSelector(state => state.newPassword.error)
   const passOn = useTypedSelector(state => state.ui.passOn)
+
   const dispatch = useTypedDispatch()
   const navigate = useNavigate()
+
   const {token} = useParams<{ token: string }>()
   const onSubmit = (newPassData: InputPassType) => {
     const payload: NewPassParamsType = {
@@ -39,15 +39,6 @@ export const NewPassword = () => {
     }
   }, [passChanged, navigate])
 
-  // проблема в том что не могу спозиционировать EyeComponent так чтоб  глаз отрисовало в инпуте
-  // по этому дублирую код и все отрабатывает правильно, пока не найдем решение !!!
-  const changeView = () => {
-    dispatch(passwordToggleAC(!passOn))
-  }
-  let inputType = 'text'
-  if (passOn) {
-    inputType = 'password'
-  }
 
   return (
     <div className={s.newPassContainer}>
@@ -62,20 +53,9 @@ export const NewPassword = () => {
                 minLength: 8,
               })}
               className={s.newPassInput}
-              type={inputType}
+              type={passOn ? 'password' : 'text'}
               placeholder={'New password'}
             />
-
-            {/*!!!!!!!!!!!!!!!!!!!!*/}
-
-            {/*<EyeComponent/>*/}
-            <img className={s.passwordControl}
-                 src={passOn ? passViewOn : passViewOff}
-                 alt="passwordOn/Off"
-                 onClick={changeView}
-            />
-
-            {/*!!!!!!!!!!!!!!!!!!!!*/}
           </div>
           <div className={s.instructionsSpan}>
           <span>

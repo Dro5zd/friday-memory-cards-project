@@ -9,7 +9,6 @@ import {useForm} from 'react-hook-form';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {loginFormTC} from '../../../m2-bll/loginReducer';
 import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
-import {EyeComponent} from "../../common/c9-EyeComponent/EyeComponent";
 
 export const Login = () => {
   const {register, handleSubmit, reset, formState: {errors}} = useForm<LoginFormType>()
@@ -31,11 +30,6 @@ export const Login = () => {
     }
   }, [isAuthorised, navigate])
 
-    let inputType = 'text'
-    if (passOn) {
-      inputType = 'password'
-    }
-
   return (
     <div className={s.loginContainer}>
       <div className={s.components}>
@@ -51,11 +45,11 @@ export const Login = () => {
                   required: true, pattern: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
                 })} type={'email'} placeholder={'Email'}/>
             <div>
-              <SuperInputText{...register('password',
+              <SuperInputText
+                {...register('password',
                 {
                   required: true, minLength: 8,
-                })} type={inputType} placeholder={'Password'}/>
-              <EyeComponent/>
+                })} type={passOn ? 'password' : 'text'} placeholder={'Password'}/>
             </div>
           </div>
           <div className={s.rememberWrapper}>

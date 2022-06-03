@@ -1,10 +1,9 @@
-import React, {
-  ChangeEvent,
-  DetailedHTMLProps,
-  InputHTMLAttributes,
-  KeyboardEvent,
-} from 'react'
+import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent,} from 'react'
 import s from './SuperInputText.module.css'
+import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
+import {passwordToggleAC} from "../../../m2-bll/uiReducer";
+import passViewOn from "../../../../assets/img/view.svg";
+import passViewOff from "../../../../assets/img/no-view.svg";
 
 // тип пропсов обычного инпута
 type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
@@ -44,22 +43,29 @@ const SuperInputText = React.forwardRef<HTMLInputElement, SuperInputTextPropsTyp
     && onEnter() // то вызвать его
   }
 
-  const finalSpanClassName = `${s.error} ${spanClassName ? spanClassName : ''}`
-  const finalInputClassName = `${s.input} ${error ? s.errorInput : s.superInput} ${className}`
+  const passOn = useTypedSelector(state => state.ui.passOn)
+  const dispatch = useTypedDispatch()
+
+  const changeView = () => {
+    dispatch(passwordToggleAC(!passOn))
+  }
 
   return (
-    <>
+    <div className={s.inputWrapper} >
       <input
         type={type}
         onChange={onChangeCallback}
         onKeyPress={onKeyPressCallback}
-        className={finalInputClassName}
+        className={s.superInput}
         ref={ref}
 
         {...restProps}
       />
-      {error && <span className={finalSpanClassName}>{error}</span>}
-    </>
+
+      {type === ('password') && <img className={s.passwordControl} src={passOn ? passViewOn : passViewOff} alt="passwordOn/Off" onClick={changeView}/>}
+      {type === ('text') && <img className={s.passwordControl} src={passOn ? passViewOn : passViewOff} alt="passwordOn/Off" onClick={changeView}/>}
+
+    </div>
   )
 })
 
