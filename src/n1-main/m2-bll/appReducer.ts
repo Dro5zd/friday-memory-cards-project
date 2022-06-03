@@ -23,8 +23,7 @@ export const appReducer = (state: InitStateType = initState, action: ActionType)
             return {...state, isInitialised: action.isInitialised}
         case SET_CHANGED_PASS:
             return {...state, passChanged: action.passChanged}
-        case "LOG-OUT":
-            return {...state, isAuthorised: action.isAuthorised}
+
         default:
             return state
     }
@@ -33,7 +32,6 @@ export const appReducer = (state: InitStateType = initState, action: ActionType)
 export const setIsAuthorisedAC = (isAuthorised: boolean) => ({type: "SET-IS-AUTHORISED", isAuthorised} as const)
 export const setIsInitialisedAC = (isInitialised: boolean) => ({type: "SET-IS-INITIALISED", isInitialised} as const)
 export const setChangedPassAC = (passChanged: boolean) => ({type: SET_CHANGED_PASS, passChanged} as const)
-export const logOutAC = (isAuthorised: boolean) => ({type: "LOG-OUT", isAuthorised} as const)
 
 export const authoriseMeTC = () => (dispatch: Dispatch<ActionType>) => {
     /*dispatch(setIsInitialisedAC(false))*/
@@ -57,6 +55,5 @@ type ActionType =
   | ReturnType<typeof setIsAuthorisedAC>
   | ReturnType<typeof setIsInitialisedAC>
   | ReturnType<typeof setChangedPassAC>
-  | ReturnType<typeof logOutAC>
-    | ReturnType<typeof updateProfileAC>
+  | ReturnType<typeof updateProfileAC>
 
