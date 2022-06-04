@@ -8,7 +8,7 @@ type RecoveryType = {
 }
 
 
-export const passwordRecoveryReducer = (state: RecoveryType = initState, action: ActionType): RecoveryType => {
+export const passwordRecoveryReducer = (state: RecoveryType = initState, action: PasswordRecoveryActionType): RecoveryType => {
     switch (action.type) {
         case 'SET-RECOVERY-INFO':
             return {...state, info: action.info}
@@ -19,8 +19,6 @@ export const passwordRecoveryReducer = (state: RecoveryType = initState, action:
     }
 }
 
-type ActionType = ReturnType<typeof setRecoveryInfoAC> | ReturnType<typeof setRecoveryErrorAC>
-
 export const setRecoveryInfoAC = (info: string) => {
     return ({type: 'SET-RECOVERY-INFO', info} as const)
 }
@@ -28,7 +26,7 @@ export const setRecoveryErrorAC = (error: string) => {
     return ({type: 'SET-RECOVERY-ERROR', error} as const)
 }
 
-export const setRecoveryTC = (email: string) => (dispatch: Dispatch<ActionType>) => {
+export const setRecoveryTC = (email: string) => (dispatch: Dispatch<PasswordRecoveryActionType>) => {
     const forgotData: RecoverPassRequestType = {
         email: email,
         from: `test-front-admin <ai73a@yandex.by>`,
@@ -46,3 +44,8 @@ export type RecoverPassRequestType = {
     from: string;
     message: string;
 }
+
+//types
+export type PasswordRecoveryActionType =
+  | ReturnType<typeof setRecoveryInfoAC>
+  | ReturnType<typeof setRecoveryErrorAC>

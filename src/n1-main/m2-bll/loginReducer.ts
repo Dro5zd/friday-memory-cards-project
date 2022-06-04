@@ -46,7 +46,7 @@ export const loginFormTC = (data: LoginParamsType) => (dispatch: Dispatch) => {
 }
 
 // types
-type LoginReducerType =
+export type LoginReducerType =
   | ReturnType<typeof loginAC>
   | ReturnType<typeof setLoginErrorAC>
 
