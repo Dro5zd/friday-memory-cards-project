@@ -50,13 +50,15 @@ const SuperInputText = React.forwardRef<HTMLInputElement, SuperInputTextPropsTyp
     dispatch(passwordToggleAC(!passOn))
   }
 
+    const finalInputClassName = `${s.input} ${error ? s.errorInput : s.superInput} ${className}`
+
   return (
     <div className={s.inputWrapper} >
       <input
         type={type}
         onChange={onChangeCallback}
         onKeyPress={onKeyPressCallback}
-        className={s.superInput}
+        className={finalInputClassName}
         ref={ref}
 
         {...restProps}

@@ -1,3 +1,7 @@
+*{
+    margin: 0;
+}
+
 .container {
     min-height: 100vh;
     display: flex;
@@ -17,25 +21,72 @@
     justify-content: space-around;
     align-items: center;
     margin-top: 60px;
-    background-color: #ef7f0e;
+    /*background-color: #ef7f0e;*/
+}
+
+.buttonsWrapper{
+    /*background-color: #8abdff;*/
+    margin-bottom: 40px;
+width: 250px;
+    height: 100px;
+}
+
+.buttonsWrapper span{
+    margin-bottom: 40px;
+
+    /*background-color: #e31616;*/
 }
 
 .leftSide {
     height: 100%;
     width: 20%;
-    background-color: #ea1010;
+    /*background-color: #ea1010;*/
+}
+
+.buttonsGroup {
+    display: flex;
+    margin-top: 20px;
+}
+
+.myBtn {
+    margin-right: 7px;
+    
 }
 
 .packsSide {
     width: 80%;
-    background-color: #85d766;
-    padding: 20px 40px;
+    /*background-color: #85d766;*/
+    padding: 0 40px;
+}
+
+.searchContainer{
+    display: flex;
+    height: 70px;
+    justify-content: space-between;
+    align-items: center;
+    /*background-color: #fff;*/
+}
+
+.searchButton{
+    width: 220px;
+    height: 40px;
+
+}
+
+.searchInput{
+    margin: 0;
+    width: 700px;
+    height: 40px;
+}
+
+.packsContainer{
+    height: 500px;
 }
 
 .packListHeader {
     display: flex;
     width: 100%;
-    background-color: #11eec5;
+    /*background-color: #11eec5;*/
 
 }
 
@@ -46,7 +97,7 @@
     width: 205px;
     height: 40px;
     margin-right: 10px;
-    background-color: #430bea;
+    /*background-color: #430bea;*/
 }
 .cardsTitle {
     display: flex;
@@ -54,7 +105,7 @@
     justify-content: center;
     width: 80px;
     margin-right: 10px;
-    background-color: #430bea;
+    /*background-color: #430bea;*/
 }
 .updateTitle {
     display: flex;
@@ -62,14 +113,14 @@
     justify-content: center;
     width: 150px;
     margin-right: 10px;
-    background-color: #430bea;
+    /*background-color: #430bea;*/
 }
 .actionsTitle {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 280px;
-    background-color: #430bea;
+    /*background-color: #430bea;*/
 }
 
 
@@ -80,4 +131,5 @@
 display: flex;
     flex-direction: column;
     align-items: center;
+
 }

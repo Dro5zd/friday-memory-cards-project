@@ -26,8 +26,8 @@ export const PacksList = () => {
                     <div className={s.buttonsWrapper}>
                         <span>Show packs Cards</span>
                         <div className={s.buttonsGroup}>
-                            <SuperButton title={'MY'}/>
-                            <SuperButton title={'ALL'}/>
+                            <SuperButton title={'MY'} className={s.myBtn}/>
+                            <SuperButton title={'ALL'} className={s.allBtn}/>
                         </div>
                     </div>
                     <div className={s.rangeWrapper}>
@@ -47,10 +47,10 @@ export const PacksList = () => {
 
                 </div>
                 <div className={s.packsSide}>
-                    <h2>PACKS LIST</h2>
+                    <h4>PACKS LIST</h4>
                     <div className={s.searchContainer}>
-                        <SuperInputText/>
-                        <SuperButton title={'ADD NEW PACK'}/>
+                        <SuperInputText className={s.searchInput}/>
+                        <SuperButton title={'ADD NEW PACK'} className={s.searchButton}/>
                     </div>
 
                     <div className={s.packsContainer}>
@@ -61,6 +61,15 @@ export const PacksList = () => {
                                 <div className={s.nameTitle}>Created by</div>
                                 <div className={s.actionsTitle}>Actions</div>
                         </div>
+                        <PackItem/>
+                        <PackItem/>
+                        <PackItem/>
+                        <PackItem/>
+                        <PackItem/>
+                        <PackItem/>
+                        <PackItem/>
+                        <PackItem/>
+                        <PackItem/>
                         <PackItem/>
                     </div>
 
