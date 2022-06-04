@@ -4,11 +4,12 @@ import {ProfileActionsType, profileReducer} from './profileReducer';
 import {PasswordRecoveryActionType, passwordRecoveryReducer} from './passwordRecoveryReducer';
 import {NewPassActionsType, newPasswordReducer} from './newPasswordReducer';
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
-import thunk, { ThunkDispatch, ThunkAction } from 'redux-thunk';
+import thunk, {ThunkDispatch, ThunkAction} from 'redux-thunk';
 import {AppActionType, appReducer} from "./appReducer";
 import {loginReducer, LoginReducerType} from "./loginReducer";
 import {UiActionsType, uiReducer} from './uiReducer';
 import {cardPacksReducer, CardPacksType} from "./cardPacksReducer";
+import {cardsReducer, CardsReducerActionTypes} from "./cardsReducer";
 
 const reducers = combineReducers({
     auth: loginReducer,
@@ -19,6 +20,7 @@ const reducers = combineReducers({
     app: appReducer,
     ui: uiReducer,
     packs: cardPacksReducer,
+    cards: cardsReducer,
 })
 
 const store = createStore(reducers, applyMiddleware(thunk))
@@ -40,6 +42,7 @@ type AppActionsType =
     | AppActionType
     | UiActionsType
     | CardPacksType
+    | CardsReducerActionTypes
 
 
 // @ts-ignore
