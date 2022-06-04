@@ -3,6 +3,7 @@ import s from './packsList.module.css'
 import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
+import {PackItem} from "./p1-packs/PackItem";
 
 export const PacksList = () => {
 
@@ -62,6 +63,7 @@ export const PacksList = () => {
                                 <li>Actions</li>
                             </ul>
                         </header>
+                        <PackItem/>
                     </div>
 
                     <div className={s.paginationContainer}>

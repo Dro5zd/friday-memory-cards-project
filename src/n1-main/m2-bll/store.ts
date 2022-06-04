@@ -8,6 +8,7 @@ import thunk, { ThunkDispatch } from 'redux-thunk';
 import {appReducer} from "./appReducer";
 import {loginReducer} from "./loginReducer";
 import {uiReducer} from './uiReducer';
+import {packsReducer} from "./packsReducer";
 
 const reducers = combineReducers({
     auth: loginReducer,
@@ -16,7 +17,8 @@ const reducers = combineReducers({
     passwordRecovery: passwordRecoveryReducer,
     newPassword: newPasswordReducer,
     app: appReducer,
-    ui: uiReducer
+    ui: uiReducer,
+    packs: packsReducer,
 })
 
 const store = createStore(reducers, applyMiddleware(thunk))
