@@ -54,15 +54,13 @@ export const PacksList = () => {
                     </div>
 
                     <div className={s.packsContainer}>
-                        <header>
-                            <ul>
-                                <li>Name</li>
-                                <li>Cards</li>
-                                <li>Last Updated</li>
-                                <li>Created by</li>
-                                <li>Actions</li>
-                            </ul>
-                        </header>
+                        <div className={s.packListHeader}>
+                                <div className={s.nameTitle}>Name</div>
+                                <div className={s.cardsTitle}>Cards</div>
+                                <div className={s.updateTitle}>Last Updated</div>
+                                <div className={s.nameTitle}>Created by</div>
+                                <div className={s.actionsTitle}>Actions</div>
+                        </div>
                         <PackItem/>
                     </div>
 

@@ -8,7 +8,7 @@
 }
 
 .components {
-    width: 100rem;
+    width: 1300px;
     height: 600px;
     border-radius: 3rem;
     box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
@@ -17,48 +17,67 @@
     justify-content: space-around;
     align-items: center;
     margin-top: 60px;
-}
-
-.packListTitle img {
-    height: 90px;
-    margin-top: 20px;
-    font-weight: 600;
-    font-size: 35px;
-    text-transform: uppercase;
-}
-
-.container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: var(--bg);
-}
-
-.components {
-    min-width: 1600px;
-    height: 600px;
-    border-radius: 3rem;
-    box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
-    padding: 4rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 60px;
+    background-color: #ef7f0e;
 }
 
 .leftSide {
     height: 100%;
     width: 20%;
-    background-color: #ef7f0e;
+    background-color: #ea1010;
 }
 
 .packsSide {
     width: 80%;
-    background-color: #ea1010;
+    background-color: #85d766;
+    padding: 20px 40px;
 }
 
-.packsContainer {
+.packListHeader {
+    display: flex;
+    width: 100%;
+    background-color: #11eec5;
 
+}
+
+.nameTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 205px;
+    height: 40px;
+    margin-right: 10px;
+    background-color: #430bea;
+}
+.cardsTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    margin-right: 10px;
+    background-color: #430bea;
+}
+.updateTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    margin-right: 10px;
+    background-color: #430bea;
+}
+.actionsTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 280px;
+    background-color: #430bea;
+}
+
+
+
+
+
+.packsContainer {
+display: flex;
+    flex-direction: column;
+    align-items: center;
 }
