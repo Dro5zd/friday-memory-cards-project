@@ -7,7 +7,7 @@ const SET_LOGIN_ERROR = 'SET-LOGIN-ERROR'
 
 const initState = {} as InitStateType
 
-export const loginReducer = (state: AppStoreType = initState, action: LoginReducerType): AppStoreType => {
+export const loginReducer = (state: LoginStateType = initState, action: LoginReducerType): LoginStateType => {
   switch (action.type) {
     case LOGIN:
       return {...action.data}
@@ -50,7 +50,7 @@ export type LoginReducerType =
   | ReturnType<typeof loginAC>
   | ReturnType<typeof setLoginErrorAC>
 
-type AppStoreType = typeof initState
+type LoginStateType = typeof initState
 type InitStateType = {
   _id: string;
   email: string;

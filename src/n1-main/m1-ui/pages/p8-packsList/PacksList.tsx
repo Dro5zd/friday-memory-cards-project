@@ -4,8 +4,13 @@ import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
 import {PackItem} from "./p1-packs/PackItem";
+import {postPacksTC} from "../../../m2-bll/cardPacksReducer";
+import {useTypedDispatch} from "../../../m2-bll/store";
+
 
 export const PacksList = () => {
+
+    const dispatch = useTypedDispatch()
 
     const [value1, setValue1] = useState(40)
     const [value2, setValue2] = useState(100)
@@ -19,6 +24,11 @@ export const PacksList = () => {
         setValue1(nums[0])
         setValue2(nums[1])
     }
+
+    const createPackHandler = () => {
+        dispatch(postPacksTC())
+    }
+
     return (
         <div className={s.container}>
             <div className={s.components}>
@@ -50,7 +60,7 @@ export const PacksList = () => {
                     <h4>PACKS LIST</h4>
                     <div className={s.searchContainer}>
                         <SuperInputText className={s.searchInput}/>
-                        <SuperButton title={'ADD NEW PACK'} className={s.searchButton}/>
+                        <SuperButton  onClick={createPackHandler} title={'ADD NEW PACK'} className={s.searchButton}/>
                     </div>
 
                     <div className={s.packsContainer}>
@@ -73,4 +83,7 @@ export const PacksList = () => {
     )
 }
 
+//type
+type init = {
 
+}

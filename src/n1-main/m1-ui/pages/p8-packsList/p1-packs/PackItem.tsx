@@ -1,28 +1,49 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from './packItem.module.css';
-import {useTypedDispatch} from "../../../../m2-bll/store";
-import {cardPackTC} from "../../../../m2-bll/cardPacksReducer";
+import {useTypedDispatch, useTypedSelector} from "../../../../m2-bll/store";
+import {cardPackTC, deletePacksTC, updatePacksTC} from "../../../../m2-bll/cardPacksReducer";
+import SuperButton from "../../../common/c2-SuperButton/SuperButton";
 
 export const PackItem = () => {
 
+  const pack = useTypedSelector(state => state.packs.cardPacks)
   const dispatch = useTypedDispatch()
 
-  const handler = () => {
+
+
+  useEffect(() => {
     dispatch(cardPackTC())
+  }, [dispatch])
+
+  const deleteHandler = (id: string) => {
+    dispatch(deletePacksTC(id))
   }
-    return (
-        <div>
-            <div className={s.packItemContainer}>
-                <div className={s.nameColumn}><span>Pack Name</span></div>
-                <div className={s.cardsColumn}><span>27</span></div>
-                <div className={s.updateColumn}><span>04.06.2022</span></div>
-                <div className={s.nameColumn}>Lorenso Lamas</div>
+
+const updateHandler = (id: any) => {
+    dispatch(updatePacksTC(id))
+}
+
+  return (
+    <div>
+      {
+        pack.map((pack) => {
+            return (
+              <div key={pack.created} className={s.packItemContainer}>
+                <div className={s.nameColumn}><span>{pack.name}</span></div>
+                <div className={s.cardsColumn}><span>{pack.cardsCount}</span></div>
+                <div className={s.updateColumn}><span>{pack.created}</span></div>
+                <div className={s.nameColumn}>{pack.user_id}</div>
                 <div className={s.actionsColumn}>
-                    <button  onClick={handler}>Delete</button>
-                    <button>Edit</button>
-                    <button>Learn</button>
+                  <SuperButton onClick={() => deleteHandler(pack._id)} title={'Delete'} className={s.myBtn}/>
+                  <SuperButton onClick={() => updateHandler(pack._id)} title={'Edit'} className={s.myBtn}/>
+                  <SuperButton title={'Learn'} className={s.myBtn}/>
                 </div>
-            </div>
-        </div>
-    );
+              </div>
+            )
+          }
+        )
+      }
+
+    </div>
+  );
 };

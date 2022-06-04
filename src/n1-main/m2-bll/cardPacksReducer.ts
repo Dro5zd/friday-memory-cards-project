@@ -1,13 +1,31 @@
-import {cardPacksAPI} from "../m3-dal/cardPacks-api";
+import {cardPacksAPI, CardsPackType} from "../m3-dal/cardPacks-api";
 import {AppThunk} from "./store";
 
-const initState = {} as initStateType
+const SET_PACKS = 'POST-PACKS'
 
-const GET_PACKS = 'GET-PACKS'
+const initState = {
+  cardPacks: [
+    {
+      _id: '',
+      user_id: '',
+      name: '',
+      cardsCount: 10,
+      created: '',
+      updated: '',
+    },
+  ],
+  cardPacksTotalCount: 1,
+  // количество колод
+  maxCardsCount: 1,
+  minCardsCount: 1,
+  page: 1, // выбранная страница
+  pageCount: 1,
+} as InitStateType
 
-export const cardPacksReducer = (state: initStateType = initState, action: CardPacksType): initStateType => {
+export const cardPacksReducer = (state: InitStateType = initState , action: CardPacksType): InitStateType => {
   switch (action.type) {
-    case GET_PACKS:
+
+    case SET_PACKS:
       return {...action.data}
 
     default:
@@ -15,24 +33,42 @@ export const cardPacksReducer = (state: initStateType = initState, action: CardP
   }
 }
 
-
 //actions
-export const cardPacksAC = (data: initStateType) => ({
-  type: GET_PACKS,
+export const getCardPacksAC = (data: InitStateType) => ({
+  type: SET_PACKS,
   data
 } as const)
+
 
 //thunk
 export const cardPackTC = (): AppThunk => (dispatch, getState) => {
   const data = getState().packs
   cardPacksAPI.getPacks(data)
     .then((res) => {
-      dispatch(cardPacksAC(res.data))
+      dispatch(getCardPacksAC(res.data))
+    })
+}
+export const postPacksTC = (): AppThunk => (dispatch) => {
+  cardPacksAPI.postPacks()
+    .then((res) => {
+      dispatch(getCardPacksAC(res.data._id))
+    })
+}
+export const deletePacksTC = (packId: string): AppThunk => (dispatch) => {
+  cardPacksAPI.deletePacks(packId)
+    .then((res) => {
+      dispatch(getCardPacksAC(res.data))
+    })
+}
+export const updatePacksTC = (data: CardsPackType): AppThunk => (dispatch) => {
+  cardPacksAPI.updatePacks(data)
+    .then((res) => {
+      dispatch(getCardPacksAC(res.data))
     })
 }
 
 //types
-type initStateType = {
+export type InitStateType = {
   cardPacks: [
     {
       _id: string
@@ -52,4 +88,4 @@ type initStateType = {
 }
 
 export type CardPacksType =
-  | ReturnType<typeof cardPacksAC>
+  | ReturnType<typeof getCardPacksAC>
