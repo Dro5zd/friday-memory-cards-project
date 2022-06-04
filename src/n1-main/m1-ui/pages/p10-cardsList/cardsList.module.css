@@ -1,0 +1,28 @@
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg);
+}
+
+.components {
+    width: 100rem;
+    height: 600px;
+    border-radius: 3rem;
+    box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
+    padding: 4rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.packListTitle img {
+    height: 90px;
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 35px;
+    text-transform: uppercase;
+}

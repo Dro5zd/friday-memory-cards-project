@@ -9,6 +9,7 @@ import Registration from "../pages/p4-registration/Registration";
 import {Login} from "../pages/p2-login/Login";
 import {PacksList} from "../pages/p8-packsList/PacksList";
 import {EmailAnswer} from "../pages/p9-emailAnswer/EmailAnswer";
+import {CardsList} from '../pages/p10-cardsList/PacksList';
 
 export const PATH = {
   LOGIN: '/login',
@@ -18,6 +19,7 @@ export const PATH = {
   ENTERING_NEW_PASSWORD: '/set-new-password/:token',
   TEST: '/test',
   PACKS_LIST: '/packs-list',
+  CARDS_LIST: '/cards-list',
   EMAIL_ANSWER: '/email-answer'
 }
 
@@ -34,6 +36,7 @@ export const Routs = () => {
         <Route path={PATH.EMAIL_ANSWER} element={<EmailAnswer/>}/>
         <Route path={PATH.ENTERING_NEW_PASSWORD} element={<NewPassword/>}/>
         <Route path={PATH.PACKS_LIST} element={<PacksList/>}/>
+        <Route path={PATH.CARDS_LIST} element={<CardsList/>}/>
         <Route path={PATH.TEST} element={<Test/>}/>
         <Route path="/*" element={<Error404/>}/>
       </Routes>
