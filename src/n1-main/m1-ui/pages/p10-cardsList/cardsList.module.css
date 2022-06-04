@@ -8,7 +8,7 @@
 }
 
 .components {
-    width: 100rem;
+    width: 30rem;
     height: 600px;
     border-radius: 3rem;
     box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
