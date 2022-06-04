@@ -9,7 +9,7 @@ import Registration from "../pages/p4-registration/Registration";
 import {Login} from "../pages/p2-login/Login";
 import {PacksList} from "../pages/p8-packsList/PacksList";
 import {EmailAnswer} from "../pages/p9-emailAnswer/EmailAnswer";
-import {CardsList} from '../pages/p10-cardsList/PacksList';
+import {CardsList} from '../pages/p10-cardsList/CardsList';
 
 export const PATH = {
   LOGIN: '/login',

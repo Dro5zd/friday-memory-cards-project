@@ -1,0 +1,16 @@
+.double {
+    position: relative;
+}
+
+.inputPosition {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.rangePosition {
+    position: absolute;
+    width: 100%;
+}
