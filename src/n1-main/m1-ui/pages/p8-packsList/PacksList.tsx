@@ -62,15 +62,6 @@ export const PacksList = () => {
                                 <div className={s.actionsTitle}>Actions</div>
                         </div>
                         <PackItem/>
-                        <PackItem/>
-                        <PackItem/>
-                        <PackItem/>
-                        <PackItem/>
-                        <PackItem/>
-                        <PackItem/>
-                        <PackItem/>
-                        <PackItem/>
-                        <PackItem/>
                     </div>
 
                     <div className={s.paginationContainer}>

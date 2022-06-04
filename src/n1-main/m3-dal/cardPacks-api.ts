@@ -10,7 +10,7 @@ const instance = axios.create({
 })
 
 export const cardPacksAPI = {
-  packs(data: PacksDataType) {
+  getPacks(data: PacksDataType) {
     return instance.get('cards/pack', {data})
   },
 }

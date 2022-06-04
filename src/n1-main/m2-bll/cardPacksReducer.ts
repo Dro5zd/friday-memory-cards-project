@@ -1,5 +1,4 @@
-import {Dispatch} from "redux";
-import {cardPacksAPI, PacksDataType} from "../m3-dal/cardPacks-api";
+import {cardPacksAPI} from "../m3-dal/cardPacks-api";
 import {AppThunk} from "./store";
 
 const initState = {} as initStateType
@@ -26,7 +25,7 @@ export const cardPacksAC = (data: initStateType) => ({
 //thunk
 export const cardPackTC = (): AppThunk => (dispatch, getState) => {
   const data = getState().packs
-  cardPacksAPI.packs(data)
+  cardPacksAPI.getPacks(data)
     .then((res) => {
       dispatch(cardPacksAC(res.data))
     })
