@@ -38,18 +38,14 @@ export const registerTC = (data: RequestRegisterType) => /*async*/ (dispatch: Di
             }
         }*/
     registrationAPI.register(data).then(res => {
-        if (res.status === 201) {
             dispatch(setIsRegisteredAC(true))
-        } else if (res.data.error) {
-            dispatch(setRegisterErrorAC(res.data.error))
-        }
     }).catch((error) => dispatch(setRegisterErrorAC(error.message)))
 }
 
 //types
 export type RegistrationActionType =
-  | ReturnType<typeof setRegisterErrorAC>
-  | ReturnType<typeof setIsRegisteredAC>
+    | ReturnType<typeof setRegisterErrorAC>
+    | ReturnType<typeof setIsRegisteredAC>
 
 
 type InitStateType = {

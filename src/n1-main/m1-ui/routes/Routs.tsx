@@ -12,34 +12,34 @@ import {EmailAnswer} from "../pages/p9-emailAnswer/EmailAnswer";
 import {CardsList} from '../pages/p10-cardsList/CardsList';
 
 export const PATH = {
-  LOGIN: '/login',
-  REGISTER: '/register',
-  PROFILE: '/profile',
-  PASSWORD_RECOVERY: '/password-recovery',
-  ENTERING_NEW_PASSWORD: '/set-new-password/:token',
-  TEST: '/test',
-  PACKS_LIST: '/packs-list',
-  CARDS_LIST: '/cards-list',
-  EMAIL_ANSWER: '/email-answer'
+    LOGIN: '/login',
+    REGISTER: '/register',
+    PROFILE: '/profile',
+    PASSWORD_RECOVERY: '/password-recovery',
+    ENTERING_NEW_PASSWORD: '/set-new-password/:token',
+    TEST: '/test',
+    PACKS_LIST: '/packs-list',
+    CARDS_LIST: '/cards-list/:urlCardsPackId',
+    EMAIL_ANSWER: '/email-answer'
 }
 
 export const Routs = () => {
 
-  return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Navigate replace to={PATH.PROFILE}/>}/>
-        <Route path={PATH.LOGIN} element={<Login/>}/>
-        <Route path={PATH.REGISTER} element={<Registration/>}/>
-        <Route path={PATH.PROFILE} element={<Profile/>}/>
-        <Route path={PATH.PASSWORD_RECOVERY} element={<PasswordRecovery/>}/>
-        <Route path={PATH.EMAIL_ANSWER} element={<EmailAnswer/>}/>
-        <Route path={PATH.ENTERING_NEW_PASSWORD} element={<NewPassword/>}/>
-        <Route path={PATH.PACKS_LIST} element={<PacksList/>}/>
-        <Route path={PATH.CARDS_LIST} element={<CardsList/>}/>
-        <Route path={PATH.TEST} element={<Test/>}/>
-        <Route path="/*" element={<Error404/>}/>
-      </Routes>
-    </div>
-  )
+    return (
+        <div>
+            <Routes>
+                <Route path="/" element={<Navigate replace to={PATH.PROFILE}/>}/>
+                <Route path={PATH.LOGIN} element={<Login/>}/>
+                <Route path={PATH.REGISTER} element={<Registration/>}/>
+                <Route path={PATH.PROFILE} element={<Profile/>}/>
+                <Route path={PATH.PASSWORD_RECOVERY} element={<PasswordRecovery/>}/>
+                <Route path={PATH.EMAIL_ANSWER} element={<EmailAnswer/>}/>
+                <Route path={PATH.ENTERING_NEW_PASSWORD} element={<NewPassword/>}/>
+                <Route path={PATH.PACKS_LIST} element={<PacksList/>}/>
+                <Route path={PATH.CARDS_LIST} element={<CardsList/>}/>
+                <Route path={PATH.TEST} element={<Test/>}/>
+                <Route path="/*" element={<Error404/>}/>
+            </Routes>
+        </div>
+    )
 }

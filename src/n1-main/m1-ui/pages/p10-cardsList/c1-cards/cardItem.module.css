@@ -1,0 +1,21 @@
+.cardContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cardButton {
+    height: 30px;
+    width: 80px;
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+.buttonBlock {
+    justify-self: flex-end;
+    display: flex;
+    width: 180px;
+}
+
+.values {
+    width: 180px;
+}
