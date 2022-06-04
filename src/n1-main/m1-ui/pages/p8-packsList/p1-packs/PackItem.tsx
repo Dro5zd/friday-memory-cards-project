@@ -9,8 +9,6 @@ export const PackItem = () => {
   const pack = useTypedSelector(state => state.packs.cardPacks)
   const dispatch = useTypedDispatch()
 
-
-
   useEffect(() => {
     dispatch(cardPackTC())
   }, [dispatch])
@@ -19,8 +17,8 @@ export const PackItem = () => {
     dispatch(deletePacksTC(id))
   }
 
-const updateHandler = (id: any) => {
-    dispatch(updatePacksTC(id))
+const updateHandler = (id: string, name: string) => {
+    dispatch(updatePacksTC(id, name))
 }
 
   return (
@@ -35,7 +33,7 @@ const updateHandler = (id: any) => {
                 <div className={s.nameColumn}>{pack.user_id}</div>
                 <div className={s.actionsColumn}>
                   <SuperButton onClick={() => deleteHandler(pack._id)} title={'Delete'} className={s.myBtn}/>
-                  <SuperButton onClick={() => updateHandler(pack._id)} title={'Edit'} className={s.myBtn}/>
+                  <SuperButton onClick={() => updateHandler(pack._id, pack.name)} title={'Edit'} className={s.myBtn}/>
                   <SuperButton title={'Learn'} className={s.myBtn}/>
                 </div>
               </div>

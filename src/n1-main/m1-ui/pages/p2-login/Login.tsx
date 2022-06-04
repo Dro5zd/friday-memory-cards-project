@@ -43,7 +43,7 @@ export const Login = () => {
               {...register('email',
                 {
                   required: true, pattern: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
-                })} type={'email'} placeholder={'Email'}/>
+                })} type='email' placeholder={'Email'}/>
             <div>
               <SuperInputText
                 {...register('password',

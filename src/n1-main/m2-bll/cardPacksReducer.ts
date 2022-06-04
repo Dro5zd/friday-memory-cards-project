@@ -1,4 +1,4 @@
-import {cardPacksAPI, CardsPackType} from "../m3-dal/cardPacks-api";
+import {cardPacksAPI} from "../m3-dal/cardPacks-api";
 import {AppThunk} from "./store";
 
 const SET_PACKS = 'POST-PACKS'
@@ -8,18 +8,18 @@ const initState = {
     {
       _id: '',
       user_id: '',
-      name: '',
-      cardsCount: 10,
+      name: '🇷🇺 ⛴ => 🖕🏻',
+      cardsCount: 100,
       created: '',
       updated: '',
     },
   ],
-  cardPacksTotalCount: 1,
+  cardPacksTotalCount: 10,
   // количество колод
-  maxCardsCount: 1,
-  minCardsCount: 1,
-  page: 1, // выбранная страница
-  pageCount: 1,
+  maxCardsCount: 9,
+  minCardsCount: 3,
+  page: 10, // выбранная страница
+  pageCount: 10,
 } as InitStateType
 
 export const cardPacksReducer = (state: InitStateType = initState , action: CardPacksType): InitStateType => {
@@ -60,10 +60,10 @@ export const deletePacksTC = (packId: string): AppThunk => (dispatch) => {
       dispatch(getCardPacksAC(res.data))
     })
 }
-export const updatePacksTC = (data: CardsPackType): AppThunk => (dispatch) => {
-  cardPacksAPI.updatePacks(data)
+export const updatePacksTC = (id: string, name: string): AppThunk => (dispatch) => {
+  cardPacksAPI.updatePacks(id, name)
     .then((res) => {
-      dispatch(getCardPacksAC(res.data))
+      dispatch(getCardPacksAC(res.data._id))
     })
 }
 
