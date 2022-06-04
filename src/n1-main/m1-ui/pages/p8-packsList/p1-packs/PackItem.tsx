@@ -1,7 +1,15 @@
 import React from 'react';
 import s from './packItem.module.css';
+import {useTypedDispatch} from "../../../../m2-bll/store";
+import {cardPackTC} from "../../../../m2-bll/cardPacksReducer";
 
 export const PackItem = () => {
+
+  const dispatch = useTypedDispatch()
+
+  const handler = () => {
+    dispatch(cardPackTC())
+  }
     return (
         <div>
             <div className={s.packItemContainer}>
@@ -10,7 +18,7 @@ export const PackItem = () => {
                 <div className={s.updateColumn}><span>04.06.2022</span></div>
                 <div className={s.nameColumn}>Lorenso Lamas</div>
                 <div className={s.actionsColumn}>
-                    <button>Delete</button>
+                    <button  onClick={handler}>Delete</button>
                     <button>Edit</button>
                     <button>Learn</button>
                 </div>

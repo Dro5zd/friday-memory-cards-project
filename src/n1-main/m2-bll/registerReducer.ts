@@ -5,16 +5,8 @@ const initState = {
     isRegistered: false
 }
 
-type InitStateType = {
-    isRegistered: boolean
-    error?: string
-}
-export type RequestRegisterType = {
-    email: string
-    password: string
-}
 
-export const registerReducer = (state: InitStateType = initState, action: ActionType): InitStateType => {
+export const registerReducer = (state: InitStateType = initState, action: RegistrationActionType): InitStateType => {
     switch (action.type) {
         case 'SET-ERROR':
             return {...state, error: action.error}
@@ -25,15 +17,13 @@ export const registerReducer = (state: InitStateType = initState, action: Action
     }
 }
 
-type ActionType = ReturnType<typeof setRegisterErrorAC> | ReturnType<typeof setIsRegisteredAC>
-
 export const setRegisterErrorAC = (error?: string) => {
     return ({type: 'SET-ERROR', error} as const)
 };
 export const setIsRegisteredAC = (isRegistered: boolean) => {
     return ({type: 'SET-IS-REGISTERED', isRegistered} as const)
 };
-export const registerTC = (data: RequestRegisterType) => /*async*/ (dispatch: Dispatch<ActionType>) => {
+export const registerTC = (data: RequestRegisterType) => /*async*/ (dispatch: Dispatch<RegistrationActionType>) => {
     /*const response = await registrationAPI.register(data)
     try {
             if (response.data?.error
@@ -54,4 +44,19 @@ export const registerTC = (data: RequestRegisterType) => /*async*/ (dispatch: Di
             dispatch(setRegisterErrorAC(res.data.error))
         }
     }).catch((error) => dispatch(setRegisterErrorAC(error.message)))
+}
+
+//types
+export type RegistrationActionType =
+  | ReturnType<typeof setRegisterErrorAC>
+  | ReturnType<typeof setIsRegisteredAC>
+
+
+type InitStateType = {
+    isRegistered: boolean
+    error?: string
+}
+export type RequestRegisterType = {
+    email: string
+    password: string
 }

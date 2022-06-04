@@ -8,7 +8,7 @@ const initState = {
   editMode: true,
 }
 
-export const uiReducer = (state: InitStateType = initState, action: ActionsType): InitStateType => {
+export const uiReducer = (state: InitStateType = initState, action: UiActionsType): InitStateType => {
   switch (action.type) {
     case CHANGE_THEME:
       return {...state, mode: action.mode}
@@ -34,7 +34,7 @@ export const changeEditModeAC = (editMode: boolean) => {
 }
 
 //types
-type ActionsType =
+export type UiActionsType =
   | ReturnType<typeof changeThemeAC>
   | ReturnType<typeof passwordToggleAC>
   | ReturnType<typeof changeEditModeAC>

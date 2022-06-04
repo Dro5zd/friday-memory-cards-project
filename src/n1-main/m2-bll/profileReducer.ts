@@ -6,7 +6,7 @@ const initState = {
     avatar: ''
 }
 
-export const profileReducer = (state: changeProfileRequestType = initState, action: ActionsType): changeProfileRequestType  => {
+export const profileReducer = (state: changeProfileRequestType = initState, action: ProfileActionsType): changeProfileRequestType  => {
     switch (action.type) {
         case 'UPDATE-PROFILE':
             return {name: action.newName, avatar: action.newAvatar}
@@ -21,7 +21,7 @@ export const updateProfileAC = (newName: string, newAvatar: string ) => {
 }
 
 export const updateProfileTC = (data: changeProfileRequestType) => {
-    return (dispatch: Dispatch<ActionsType>) => {
+    return (dispatch: Dispatch<ProfileActionsType>) => {
         profileAPI.changeProfile(data)
             .then(res => {
                 dispatch(updateProfileAC(res.data.updatedUser.name, res.data.updatedUser.avatar))
@@ -29,5 +29,5 @@ export const updateProfileTC = (data: changeProfileRequestType) => {
     }
 }
 
-type ActionsType =
+export type ProfileActionsType =
     | ReturnType<typeof updateProfileAC>
