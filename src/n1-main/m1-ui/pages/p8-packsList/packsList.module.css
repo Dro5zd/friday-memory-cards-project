@@ -26,3 +26,39 @@
     font-size: 35px;
     text-transform: uppercase;
 }
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg);
+}
+
+.components {
+    min-width: 1600px;
+    height: 600px;
+    border-radius: 3rem;
+    box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
+    padding: 4rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.leftSide {
+    height: 100%;
+    width: 20%;
+    background-color: #ef7f0e;
+}
+
+.packsSide {
+    width: 80%;
+    background-color: #ea1010;
+}
+
+.packsContainer {
+
+}
