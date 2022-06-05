@@ -11,7 +11,7 @@ const initialState = {
             grade: 2,
             shots: 2,
             created: 'df2322',
-            user_id: '12354f',
+            user_id: '1234',
             updated: '04.06.2022',
         }
     ],
@@ -66,7 +66,7 @@ export const getCardsTC = (data: GetCardsDataType): AppThunk => async (dispatch,
     }
 }
 export const createNewCardTC = (newCard: PostCardDataType): AppThunk => async (dispatch, getState) => {
-    const packId = getState().cards.cards[0].cardsPack_id //NEED TO CHANGE FOR PACK STATE
+    const packId = newCard.cardsPack_id
     try {
         const response = await cardsAPI.postCard(newCard)
         dispatch(getCardsTC({cardsPack_id: packId}))
@@ -74,16 +74,18 @@ export const createNewCardTC = (newCard: PostCardDataType): AppThunk => async (d
         console.log(e.response.data.error)
     }
 }
-export const deleteCardTC = (id: string): AppThunk => async (dispatch) => {
+export const deleteCardTC = (id: string, packId: string): AppThunk => async (dispatch) => {
     try {
         const response = await cardsAPI.deleteCard(id)
+        dispatch(getCardsTC({cardsPack_id: packId}))
     } catch (e: any) {
         console.log(e.response.data.error)
     }
 }
-export const updateCardTC = (cardId: string): AppThunk => async (dispatch) => {
+export const updateCardTC = (cardId: string, packId: string): AppThunk => async (dispatch) => {
     try {
-        const response = await cardsAPI.updateCard({_id: cardId})
+        const response = await cardsAPI.updateCard({_id: cardId, question: 'WTF'})
+        dispatch(getCardsTC({cardsPack_id: packId}))
     } catch (e: any) {
         console.log(e.response.data.error)
     }
