@@ -12,25 +12,25 @@ export const CardItem: React.FC<CardItemType> = ({card, deleteCard, updateCard})
 
     return (
         <div>
-            <div className={s.cardContainer}>
-                <div className={s.values}>{card.question}</div>
-                <div className={s.values}>{card.answer}</div>
-                <div className={s.values}>{card.updated}</div>
-                <div className={s.values}>{card.grade}</div>
+            <div className={s.cardItemContainer}>
+                <div className={s.nameColumn}>{card.question}</div>
+                <div className={s.nameColumn}>{card.answer}</div>
+                <div className={s.updateColumn}>{card.updated}</div>
+                <div className={s.actionsColumn}>{card.grade}</div>
                 <div className={s.buttonBlock}>
                     <SuperButton onClick={() => {
-                        deleteCard(card._id)
-                    }} title={'delete'} className={s.cardButton}/>
-                    <SuperButton onClick={() => {
                         updateCard(card._id)
-                    }} title={'edit'} className={s.cardButton}/>
+                    }} title={'edit'} className={s.cardEditButton}/>
+                    <SuperButton onClick={() => {
+                        deleteCard(card._id)
+                    }} title={'delete'} className={s.cardDeleteButton}/>
                 </div>
             </div>
         </div>
     );
 };
 
-//
+
 // export const CardItem = () => {
 //   return (
 //     <div>

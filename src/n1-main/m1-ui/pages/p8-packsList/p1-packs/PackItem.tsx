@@ -20,7 +20,7 @@ export const PackItem = () => {
 const updateHandler = (id: string, name: string) => {
     dispatch(updatePacksTC(id, name))
 }
-
+  console.log(pack);
   return (
     <div>
       {

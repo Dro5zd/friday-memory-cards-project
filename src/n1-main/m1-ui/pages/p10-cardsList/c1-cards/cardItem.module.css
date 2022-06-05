@@ -1,89 +1,3 @@
-/*<<<<<<< HEAD*/
-/*.cardContainer {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*}*/
-
-/*.cardButton {*/
-/*    height: 30px;*/
-/*    width: 80px;*/
-/*    margin-left: 10px;*/
-/*    font-size: 16px;*/
-/*}*/
-
-/*.buttonBlock {*/
-/*    justify-self: flex-end;*/
-/*    display: flex;*/
-/*    width: 180px;*/
-/*}*/
-
-/*.values {*/
-/*    width: 180px;*/
-/*}*/
-/*=======*/
-
-/*.cardItemContainer {*/
-/*    display: flex;*/
-/*    width: 100%;*/
-/*    height: 40px;*/
-/*    !*background-color: #11eec5;*!*/
-
-/*}*/
-
-/*.nameColumn {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    width: 490px;*/
-/*    height: 40px;*/
-/*    margin-right: 10px;*/
-/*    !*background-color: #eabd0b;*!*/
-/*}*/
-
-/*.updateColumn {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    width: 145px;*/
-/*    margin-right: 10px;*/
-/*    !*background-color: #EABD0BFF;*!*/
-/*}*/
-/*.actionsColumn {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: center;*/
-/*    width: 145px;*/
-/*    !*background-color: #430bea;*!*/
-/*}*/
-/*>>>>>>> origin/dev2week*/
-
-
-/*
-B css
-*/
-
-/*.cardContainer {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*}*/
-
-/*.cardButton {*/
-/*    height: 30px;*/
-/*    width: 80px;*/
-/*    margin-left: 10px;*/
-/*    font-size: 16px;*/
-/*}*/
-
-/*.buttonBlock {*/
-/*    justify-self: flex-end;*/
-/*    display: flex;*/
-/*    width: 180px;*/
-/*}*/
-
-/*.values {*/
-/*    width: 180px;*/
-/*}*/
-
 
 .cardItemContainer {
     display: flex;
@@ -97,7 +11,7 @@ B css
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 490px;
+    width: 400px;
     height: 40px;
     margin-right: 10px;
     /*background-color: #eabd0b;*/
@@ -117,4 +31,41 @@ B css
     justify-content: center;
     width: 145px;
     /*background-color: #430bea;*/
+}
+
+.buttonBlock {
+    justify-self: flex-end;
+    display: flex;
+    width: 180px;
+    align-items: center;
+}
+
+.buttonBlock button {
+    font-size: 17px;
+    height: 25px;
+    margin: 3px;
+    border-radius: 10px;
+}
+
+.cardEditButton {
+    background: none;
+    color: var(--greyDark);
+    box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+}
+
+.cardEditButton:hover {
+    color: var(--textHover);
+}
+
+.cardEditButton:active {
+    box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);
+}
+/*____*/
+
+.cardDeleteButton {
+    box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+}
+
+.cardDeleteButton:hover {
+    color: var(--white);
 }

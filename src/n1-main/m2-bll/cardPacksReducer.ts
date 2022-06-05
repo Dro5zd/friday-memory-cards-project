@@ -9,7 +9,7 @@ const initState = {
       _id: '',
       user_id: '',
       name: '🇷🇺 ⛴ => 🖕🏻',
-      cardsCount: 100,
+      cardsCount: 1000,
       created: '',
       updated: '',
     },
@@ -48,22 +48,23 @@ export const cardPackTC = (): AppThunk => (dispatch, getState) => {
       dispatch(getCardPacksAC(res.data))
     })
 }
-export const postPacksTC = (): AppThunk => (dispatch) => {
+
+export const postPacksTC = (): AppThunk => (dispatch, getState) => {
   cardPacksAPI.postPacks()
     .then((res) => {
-      dispatch(getCardPacksAC(res.data._id))
+      dispatch(cardPackTC())
     })
 }
 export const deletePacksTC = (packId: string): AppThunk => (dispatch) => {
   cardPacksAPI.deletePacks(packId)
     .then((res) => {
-      dispatch(getCardPacksAC(res.data))
+      dispatch(cardPackTC())
     })
 }
 export const updatePacksTC = (id: string, name: string): AppThunk => (dispatch) => {
   cardPacksAPI.updatePacks(id, name)
     .then((res) => {
-      dispatch(getCardPacksAC(res.data._id))
+      dispatch(cardPackTC())
     })
 }
 

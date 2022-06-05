@@ -4,7 +4,7 @@ import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
 import {PackItem} from "./p1-packs/PackItem";
-import {postPacksTC} from "../../../m2-bll/cardPacksReducer";
+import {cardPackTC, postPacksTC} from "../../../m2-bll/cardPacksReducer";
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 
 
@@ -41,6 +41,10 @@ export const PacksList = () => {
 
   const showAllPacksHAndler = () => {
 
+  }
+
+  const sortUpdatedHandler = () => {
+    dispatch(cardPackTC())
   }
 
   return (
@@ -83,7 +87,7 @@ export const PacksList = () => {
             <div className={s.packListHeader}>
               <div className={s.nameTitle}>Name</div>
               <div className={s.cardsTitle}>Cards</div>
-              <div className={s.updateTitle}>Last Updated</div>
+              <div onClick={sortUpdatedHandler} className={s.updateTitle}>Last Updated</div>
               <div className={s.nameTitle}>Created by</div>
               <div className={s.actionsTitle}>Actions</div>
             </div>
