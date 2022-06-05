@@ -12,7 +12,7 @@ const initState = {
       cardsCount: 1000,
       created: '',
       updated: '',
-      user_name: ''
+      user_name: '',
     },
   ],
   cardPacksTotalCount: 10,
@@ -24,7 +24,7 @@ const initState = {
 
 } as InitStateType
 
-export const cardPacksReducer = (state: InitStateType = initState , action: CardPacksType): InitStateType => {
+export const cardPacksReducer = (state: InitStateType = initState, action: CardPacksType): InitStateType => {
   switch (action.type) {
 
     case SET_PACKS:

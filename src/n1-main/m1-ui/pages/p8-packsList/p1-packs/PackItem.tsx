@@ -4,7 +4,6 @@ import {useTypedDispatch, useTypedSelector} from "../../../../m2-bll/store";
 import {getCardPackTC, deletePacksTC, updatePacksTC} from "../../../../m2-bll/cardPacksReducer";
 import SuperButton from "../../../common/c2-SuperButton/SuperButton";
 import {useNavigate} from "react-router-dom";
-import {PATH} from "../../../routes/Routs";
 
 export const PackItem = () => {
 const navigate = useNavigate()
