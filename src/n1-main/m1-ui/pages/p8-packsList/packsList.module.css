@@ -81,6 +81,9 @@ width: 250px;
 
 .packsContainer{
     height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .packListHeader {
@@ -121,15 +124,4 @@ width: 250px;
     justify-content: center;
     width: 280px;
     /*background-color: #430bea;*/
-}
-
-
-
-
-
-.packsContainer {
-display: flex;
-    flex-direction: column;
-    align-items: center;
-
 }

@@ -1,0 +1,34 @@
+
+.cardItemContainer {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    /*background-color: #11eec5;*/
+
+}
+
+.nameColumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 490px;
+    height: 40px;
+    margin-right: 10px;
+    /*background-color: #eabd0b;*/
+}
+
+.updateColumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 145px;
+    margin-right: 10px;
+    /*background-color: #EABD0BFF;*/
+}
+.actionsColumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 145px;
+    /*background-color: #430bea;*/
+}
