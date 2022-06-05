@@ -4,17 +4,18 @@ import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
 import {PackItem} from "./p1-packs/PackItem";
-import {getCardPackTC, postPacksTC} from "../../../m2-bll/cardPacksReducer";
+import {getCardPackTC, InitStateType, postPacksTC} from "../../../m2-bll/cardPacksReducer";
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
+import {CreatePackDataType} from "../../../m3-dal/cardPacks-api";
 
 
 export const PacksList = () => {
   const pack = useTypedSelector(state => state.packs)
   const dispatch = useTypedDispatch()
-
+  const initValue = {} as InitStateType
   const [value1, setValue1] = useState(pack.minCardsCount)
   const [value2, setValue2] = useState(pack.maxCardsCount)
-  const [value, setValue] = useState('')
+  const [inputValue, setInputValue] = useState(pack.cardPacks[0].name)
 
   // const onChangeInputRangeHandle = (num: number) => {
   //     if (num >= value2) return
@@ -26,13 +27,13 @@ export const PacksList = () => {
     setValue2(nums[1])
   }
 
-  const createPackHandler = () => {
-    dispatch(postPacksTC())
+  const createPackHandler = (data: CreatePackDataType) => {
+    dispatch(postPacksTC(data))
   }
 
   const addPackNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value)
-    setValue('')
+    setInputValue(e.currentTarget.value)
+    setInputValue('')
   }
 
   const showMyPacksHAndler = () => {
@@ -44,7 +45,7 @@ export const PacksList = () => {
   }
 
   const sortUpdatedHandler = () => {
-    dispatch(getCardPackTC())
+    dispatch(getCardPackTC(initValue))
   }
 
   return (
@@ -80,7 +81,8 @@ export const PacksList = () => {
           <h4>PACKS LIST</h4>
           <div className={s.searchContainer}>
             <SuperInputText onChange={addPackNameHandler} className={s.searchInput}/>
-            <SuperButton value={value} onClick={createPackHandler} title={'ADD NEW PACK'} className={s.searchButton}/>
+            <SuperButton value={inputValue} onClick={() => createPackHandler({cardsPack: pack.cardPacks[0]})}
+                         title={'ADD NEW PACK'} className={s.searchButton}/>
           </div>
 
           <div className={s.packsContainer}>

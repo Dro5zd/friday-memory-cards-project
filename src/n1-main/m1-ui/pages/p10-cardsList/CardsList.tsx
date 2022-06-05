@@ -8,64 +8,64 @@ import {useParams} from "react-router-dom";
 import SuperButton from "../../common/c2-SuperButton/SuperButton";
 
 export const CardsList = () => {
-    const {urlCardsPackId} = useParams<string>();
-    //const testId = '627e522711ad202f585a05f5';
-    const dispatch = useTypedDispatch();
-    const cards = useTypedSelector(state => state.cards);
-    const userId = useTypedSelector<string>(state => state.auth._id);
-    const packUserId = useTypedSelector<string>(state => state.cards.packUserId)
-    const isOwner = userId === packUserId
+  const {urlCardsPackId} = useParams<string>();
+  //const testId = '627e522711ad202f585a05f5';
+  const dispatch = useTypedDispatch();
+  const cards = useTypedSelector(state => state.cards);
+  const userId = useTypedSelector<string>(state => state.auth._id);
+  const packUserId = useTypedSelector<string>(state => state.cards.packUserId)
+  const isOwner = userId === packUserId
 
-    useEffect(() => {
-        if (urlCardsPackId) {
-            dispatch(getCardsTC({cardsPack_id: urlCardsPackId}))
-        }
-    }, [dispatch, urlCardsPackId]);
-
-    const deleteCard = (cardId: string, packId: string) => {
-        dispatch(deleteCardTC(cardId, packId))
-    };
-    const addNewCard = () => {
-        if (urlCardsPackId) {
-            dispatch(createNewCardTC({cardsPack_id: urlCardsPackId}))
-        }
+  useEffect(() => {
+    if (urlCardsPackId) {
+      dispatch(getCardsTC({cardsPack_id: urlCardsPackId}))
     }
-    const updateCard = (cardId: string, packId: string) => {
-        dispatch(updateCardTC(cardId, packId))
-    }
+  }, [dispatch, urlCardsPackId]);
 
-    return (
-        <div className={s.container}>
-            <div className={s.components}>
-                <div className={s.packSide}>
-                    <h4>PACKS LIST</h4>
-                    <div className={s.searchContainer}>
-                        <SuperInputText className={s.searchInput}/>
-                        <SuperButton title={'Question'} className={s.searchButton}/>
-                        <SuperInputText className={s.searchInput}/>
-                        <SuperButton title={'Answer'} className={s.searchButton}/>
-                    </div>
-                    {isOwner && <SuperButton onClick={addNewCard} title={'Add new card'}/>}
-                    <div className={s.packsContainer}>
-                        <div className={s.packListHeader}>
-                            <div className={s.nameTitle}>Question</div>
-                            <div className={s.nameTitle}>Answer</div>
-                            <div className={s.updateTitle}>Last Updated</div>
-                            <div className={s.gradeTitle}>Grade</div>
-                            <div className={s.actionsTitle}>Actions</div>
-                        </div>
-                        {cards.cards.map((card) => {
-                            return <CardItem isOwner={isOwner} key={card._id} card={card} deleteCard={deleteCard}
-                                             updateCard={updateCard}/>
-                        })}
-                    </div>
-                    <div className={s.paginationContainer}>
-                        123456789
-                    </div>
-                </div>
+  const deleteCard = (cardId: string, packId: string) => {
+    dispatch(deleteCardTC(cardId, packId))
+  };
+  const addNewCard = () => {
+    if (urlCardsPackId) {
+      dispatch(createNewCardTC({cardsPack_id: urlCardsPackId}))
+    }
+  }
+  const updateCard = (cardId: string, packId: string) => {
+    dispatch(updateCardTC(cardId, packId))
+  }
+
+  return (
+    <div className={s.container}>
+      <div className={s.components}>
+        <div className={s.packSide}>
+          <h4>PACKS LIST</h4>
+          <div className={s.searchContainer}>
+            <SuperInputText className={s.searchInput}/>
+            <SuperButton title={'Question'} className={s.searchButton}/>
+            <SuperInputText className={s.searchInput}/>
+            <SuperButton title={'Answer'} className={s.searchButton}/>
+          </div>
+          {isOwner && <SuperButton onClick={addNewCard} title={'Add new card'}/>}
+          <div className={s.packsContainer}>
+            <div className={s.packListHeader}>
+              <div className={s.nameTitle}>Question</div>
+              <div className={s.nameTitle}>Answer</div>
+              <div className={s.updateTitle}>Last Updated</div>
+              <div className={s.gradeTitle}>Grade</div>
+              <div className={s.actionsTitle}>Actions</div>
             </div>
+            {cards.cards.map((card) => {
+              return <CardItem isOwner={isOwner} key={card._id} card={card} deleteCard={deleteCard}
+                               updateCard={updateCard}/>
+            })}
+          </div>
+          <div className={s.paginationContainer}>
+            123456789
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  )
 }
 
 

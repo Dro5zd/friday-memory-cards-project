@@ -1,4 +1,4 @@
-import {cardPacksAPI} from "../m3-dal/cardPacks-api";
+import {cardPacksAPI, CreatePackDataType, UpdateCardsPackType} from "../m3-dal/cardPacks-api";
 import {AppThunk} from "./store";
 
 const SET_PACKS = 'POST-PACKS'
@@ -8,8 +8,8 @@ const initState = {
     {
       _id: '',
       user_id: '',
-      name: '🇷🇺 ⛴ => 🖕🏻',
-      cardsCount: 1000,
+      name: '',
+      cardsCount: 1,
       created: '',
       updated: '',
       user_name: '',
@@ -21,6 +21,26 @@ const initState = {
   minCardsCount: 3,
   page: 1, // выбранная страница
   pageCount: 10,
+
+  // cardsCount: 0,
+  // created: "2022-06-05T20:33:14.268Z",
+  // deckCover: "",
+  // grade: 0,
+  //
+  // name: "Where the russian warship was sent? ®",
+  // path: "/def",
+  // private: false,
+  // rating: 0,
+  // shots: 0,
+  // type: "pack",
+  // updated: "2022-06-05T20:33:14.268Z",
+  // user_id: "6291cfe9f2b0e900049f70ac",
+  // user_name: "Bogdan Mykhailov",
+  // __v: 0,
+  // _id: "629d130af0ffde100d74e033",
+  // token: "b944a7f0-e50e-11ec-9c6c-2785a2807848",
+  // tokenDeathTime: 1654471994223,
+
 
 } as InitStateType
 
@@ -36,37 +56,36 @@ export const cardPacksReducer = (state: InitStateType = initState, action: CardP
 }
 
 //actions
-export const getCardPacksAC = (data: InitStateType) => ({
+export const setCardPacksAC = (data: InitStateType) => ({
   type: SET_PACKS,
   data
 } as const)
 
-
 //thunk
-export const getCardPackTC = (): AppThunk => (dispatch, getState) => {
+export const getCardPackTC = (data: InitStateType): AppThunk => (dispatch, getState) => {
   const data = getState().packs
   cardPacksAPI.getPacks(data)
     .then((res) => {
-      dispatch(getCardPacksAC(res.data))
+      dispatch(setCardPacksAC(res.data))
     })
 }
 
-export const postPacksTC = (): AppThunk => (dispatch, getState) => {
-  cardPacksAPI.postPacks()
+export const postPacksTC = (data: CreatePackDataType): AppThunk => (dispatch, getState) => {
+  cardPacksAPI.postPacks(data)
     .then((res) => {
-      dispatch(getCardPackTC())
+      dispatch(getCardPackTC(res.data))
     })
 }
 export const deletePacksTC = (packId: string): AppThunk => (dispatch) => {
   cardPacksAPI.deletePacks(packId)
     .then((res) => {
-      dispatch(getCardPackTC())
+      dispatch(getCardPackTC(res.data))
     })
 }
-export const updatePacksTC = (id: string, name: string): AppThunk => (dispatch) => {
-  cardPacksAPI.updatePacks(id, name)
+export const updatePacksTC = (data: UpdateCardsPackType): AppThunk => (dispatch) => {
+  cardPacksAPI.updatePacks(data)  /*{cardsPack: {_id: data.cardsPack._id, name: data.cardsPack.name}}*/
     .then((res) => {
-      dispatch(getCardPackTC())
+      dispatch(getCardPackTC(res.data))
     })
 }
 
@@ -92,4 +111,4 @@ export type InitStateType = {
 }
 
 export type CardPacksType =
-  | ReturnType<typeof getCardPacksAC>
+  | ReturnType<typeof setCardPacksAC>
