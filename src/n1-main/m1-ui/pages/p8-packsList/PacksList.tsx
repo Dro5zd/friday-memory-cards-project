@@ -4,7 +4,7 @@ import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
 import {PackItem} from "./p1-packs/PackItem";
-import {cardPackTC, postPacksTC} from "../../../m2-bll/cardPacksReducer";
+import {getCardPackTC, postPacksTC} from "../../../m2-bll/cardPacksReducer";
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 
 
@@ -44,7 +44,7 @@ export const PacksList = () => {
   }
 
   const sortUpdatedHandler = () => {
-    dispatch(cardPackTC())
+    dispatch(getCardPackTC())
   }
 
   return (

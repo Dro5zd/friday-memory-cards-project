@@ -12,7 +12,7 @@ const instance = axios.create({
 export const cardPacksAPI = {
 
   getPacks(data: PacksDataType) {
-    return instance.get(`cards/pack?sortPacks=0created`, {params: data})
+    return instance.get(`cards/pack`, {params: data})
   },
   // sortPAck(data: PacksDataType) {
   //   return instance.get(`cards/pack&sortPacks=0updated`, {params: data})
@@ -21,7 +21,7 @@ export const cardPacksAPI = {
   // getPacks() {
   //   return instance.get(`cards/pack`, {
   //     params: {
-  //       packName: '🇺🇦',
+  //       packName: 'Where the russian ship was sent?',
   //       min: 9,
   //       max: 3,
   //       sortPacks: 1,
@@ -33,13 +33,11 @@ export const cardPacksAPI = {
   // },
 
   postPacks() {
-    return instance.post(`cards/pack`, {
-      cardsPack: {
-        name: '🇺🇦',
+    return instance.post(`cards/pack`, {cardsPack: {
+        name: 'Where the russian warship was sent? ®',
         deckCover: '',
         private: false
-      }
-    })
+      }})
   },
 
   deletePacks(id: string) {
@@ -56,7 +54,7 @@ export type PacksDataType = {
   packName?: string,
   min?: number,
   max?: number,
-  sortPacks?: any,
+  sortPacks?: string,
   page?: number,
   pageCount?: number,
   user_id?: string
@@ -66,12 +64,12 @@ export type PacksDataType = {
 //   _id: string
 //   name: string
 // }
-
+//
 // export type CreatePackDataType = {
 //   cardsPack: {
 //     // name: 'Where the russian ship was sent?',
-//     name: string,
-//     deckCover: string,
-//     private: boolean
+//     name?: string,
+//     deckCover?: string,
+//     private?: boolean
 //   }
 // }

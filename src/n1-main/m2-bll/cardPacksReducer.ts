@@ -12,14 +12,16 @@ const initState = {
       cardsCount: 1000,
       created: '',
       updated: '',
+      user_name: ''
     },
   ],
   cardPacksTotalCount: 10,
   // количество колод
   maxCardsCount: 9,
   minCardsCount: 3,
-  page: 10, // выбранная страница
+  page: 1, // выбранная страница
   pageCount: 10,
+
 } as InitStateType
 
 export const cardPacksReducer = (state: InitStateType = initState , action: CardPacksType): InitStateType => {
@@ -41,7 +43,7 @@ export const getCardPacksAC = (data: InitStateType) => ({
 
 
 //thunk
-export const cardPackTC = (): AppThunk => (dispatch, getState) => {
+export const getCardPackTC = (): AppThunk => (dispatch, getState) => {
   const data = getState().packs
   cardPacksAPI.getPacks(data)
     .then((res) => {
@@ -52,19 +54,19 @@ export const cardPackTC = (): AppThunk => (dispatch, getState) => {
 export const postPacksTC = (): AppThunk => (dispatch, getState) => {
   cardPacksAPI.postPacks()
     .then((res) => {
-      dispatch(cardPackTC())
+      dispatch(getCardPackTC())
     })
 }
 export const deletePacksTC = (packId: string): AppThunk => (dispatch) => {
   cardPacksAPI.deletePacks(packId)
     .then((res) => {
-      dispatch(cardPackTC())
+      dispatch(getCardPackTC())
     })
 }
 export const updatePacksTC = (id: string, name: string): AppThunk => (dispatch) => {
   cardPacksAPI.updatePacks(id, name)
     .then((res) => {
-      dispatch(cardPackTC())
+      dispatch(getCardPackTC())
     })
 }
 
@@ -78,6 +80,7 @@ export type InitStateType = {
       cardsCount: number
       created: string
       updated: string
+      user_name: string
     },
   ]
   cardPacksTotalCount: number
