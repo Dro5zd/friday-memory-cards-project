@@ -9,8 +9,10 @@ import {UpdateCardsPackType} from "../../../../m3-dal/cardPacks-api";
 export const PackItem = () => {
   const navigate = useNavigate()
   const pack = useTypedSelector(state => state.packs.cardPacks)
+  const userId = useTypedSelector(state => state.auth._id)
+
   const dispatch = useTypedDispatch()
- const initValue = {} as InitStateType
+  const initValue = {} as InitStateType
 
   useEffect(() => {
     dispatch(getCardPackTC(initValue))
@@ -41,9 +43,12 @@ export const PackItem = () => {
                 <div className={s.nameColumn}>{pack.user_name}</div>
                 <div className={s.actionsColumn}>
                   <div className={s.buttonBlock}>
-                    <SuperButton onClick={() => deleteHandler(pack._id)} title={'Delete'} className={s.packDeleteButton}/>
                     <SuperButton title={'Learn'} className={s.packLearnButton}/>
-                    <SuperButton onClick={() => updateHandler({cardsPack: {_id: pack._id, name: pack.name}})} title={'Edit'} className={s.packEditButton}/>
+                    {userId === pack.user_id &&
+                        <SuperButton onClick={() => updateHandler({cardsPack: {_id: pack._id, name: '🇺🇦🇺🇦🇺🇦🇺🇦'}})}
+                                     title={'Edit'} className={s.packEditButton}/>}
+                    {userId === pack.user_id && <SuperButton onClick={() => deleteHandler(pack._id)} title={'Delete'}
+                                                             className={s.packDeleteButton}/>}
                   </div>
                 </div>
               </div>

@@ -15,7 +15,7 @@ export const PacksList = () => {
   const initValue = {} as InitStateType
   const [value1, setValue1] = useState(pack.minCardsCount)
   const [value2, setValue2] = useState(pack.maxCardsCount)
-  const [inputValue, setInputValue] = useState(pack.cardPacks[0].name)
+  const [packName, setPackName] = useState('')
 
   // const onChangeInputRangeHandle = (num: number) => {
   //     if (num >= value2) return
@@ -27,20 +27,19 @@ export const PacksList = () => {
     setValue2(nums[1])
   }
 
-  const createPackHandler = (data: CreatePackDataType) => {
+
+  const onchangeAddPackNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setPackName(e.currentTarget.value)
+  }
+
+  const createPackButtonHandler = (data: CreatePackDataType) => {
     dispatch(postPacksTC(data))
   }
 
-  const addPackNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.currentTarget.value)
-    setInputValue('')
-  }
-
-  const showMyPacksHAndler = () => {
+  const showMyPacksHandler = () => {
 
   }
-
-  const showAllPacksHAndler = () => {
+  const showAllPacksHandler = () => {
 
   }
 
@@ -53,10 +52,12 @@ export const PacksList = () => {
       <div className={s.components}>
         <div className={s.leftSide}>
           <div className={s.buttonsWrapper}>
-            <span>Show packs Cards</span>
+            <div className={s.buttonsGroupSpan}>
+              <span>Show packs Cards</span>
+            </div>
             <div className={s.buttonsGroup}>
-              <SuperButton onClick={showMyPacksHAndler} title={'MY'} className={s.myBtn}/>
-              <SuperButton onClick={showAllPacksHAndler} title={'ALL'} className={s.allBtn}/>
+              <SuperButton onClick={showMyPacksHandler} title={'MY'} className={s.myBtn}/>
+              <SuperButton onClick={showAllPacksHandler} title={'ALL'} className={s.allBtn}/>
             </div>
           </div>
           <div className={s.rangeWrapper}>
@@ -80,9 +81,17 @@ export const PacksList = () => {
         <div className={s.packsSide}>
           <h4>PACKS LIST</h4>
           <div className={s.searchContainer}>
-            <SuperInputText onChange={addPackNameHandler} className={s.searchInput}/>
-            <SuperButton value={inputValue} onClick={() => createPackHandler({cardsPack: pack.cardPacks[0]})}
-                         title={'ADD NEW PACK'} className={s.searchButton}/>
+            <SuperInputText
+              onChange={onchangeAddPackNameHandler}
+              className={s.searchInput}
+            />
+            <SuperButton
+              value={packName}
+              onClick={() => createPackButtonHandler({cardsPack: {name: packName}})}
+              title={'ADD NEW PACK'}
+              className={s.searchButton}
+              disabled={packName === ''}
+            />
           </div>
 
           <div className={s.packsContainer}>

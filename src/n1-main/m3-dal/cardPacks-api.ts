@@ -24,7 +24,7 @@ export const cardPacksAPI = {
   },
 
   updatePacks(data: UpdateCardsPackType) {
-    return instance.put(`cards/pack`, {params: data})
+    return instance.put(`cards/pack`, data)
   },
 }
 
@@ -49,7 +49,7 @@ export type UpdateCardsPackType = {
 
 type CardsPackCreatePackType = {
   // name: 'Where the russian ship was sent?',
-  name?: string,
+  name: string,
   deckCover?: string,
   private?: boolean
 }
