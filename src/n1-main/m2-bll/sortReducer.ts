@@ -1,6 +1,5 @@
-import {cardPacksAPI} from "../m3-dal/cardPacks-api";
+import {cardPacksAPI, PacksDataType} from "../m3-dal/cardPacks-api";
 import {AppThunk} from "./store";
-import {getCardPackTC} from './cardPacksReducer';
 
 const SET_USER_PACKS = 'POST-PACKS'
 
@@ -9,7 +8,7 @@ const initState = {
     {
       _id: '',
       user_id: '',
-      name: '🇷🇺 ⛴ => 🖕🏻',
+      name: '🇺🇦🇺🇦🇺🇦🇺🇦🇺🇦',
       cardsCount: 1000,
       created: '',
       updated: '',
@@ -44,8 +43,9 @@ export const getUserPacksAC = (data: InitStateType) => ({
 
 
 //thunk
-export const getUserPacksTC = (userId: string): AppThunk => (dispatch) => {
-  cardPacksAPI.getUserPacks(userId)
+export const getUserPacksTC = (data: PacksDataType): AppThunk => (dispatch) => {
+  const pageCount = 10
+  cardPacksAPI.getPacks({user_id: data.user_id, pageCount: pageCount})
     .then((res) => {
       dispatch(getUserPacksAC(res.data))
     })

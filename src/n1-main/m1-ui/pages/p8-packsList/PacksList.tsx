@@ -9,14 +9,11 @@ import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {CreatePackDataType, PacksDataType} from "../../../m3-dal/cardPacks-api";
 import {Pagination} from "../../common/c11-Pagination/Pagination";
 import {getUserPacksTC} from '../../../m2-bll/sortReducer';
-import {CreatePackDataType} from "../../../m3-dal/cardPacks-api";
-
 
 export const PacksList = () => {
   const pack = useTypedSelector(state => state.packs)
   const userId = useTypedSelector(state => state.auth._id)
   const dispatch = useTypedDispatch()
-  const initValue = {} as PacksDataType
   const [value1, setValue1] = useState(pack.minCardsCount)
   const [value2, setValue2] = useState(pack.maxCardsCount)
   const [packName, setPackName] = useState('')
@@ -30,27 +27,24 @@ export const PacksList = () => {
     setValue1(nums[0])
     setValue2(nums[1])
   }
-
-
   const onchangeAddPackNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setPackName(e.currentTarget.value)
   }
-
   const createPackButtonHandler = (data: CreatePackDataType) => {
     dispatch(postPacksTC(data))
   }
-
-  const showMyPacksHandler = () => {
-    dispatch(getUserPacksTC(userId))
+  const showMyPacksHandler = (data: PacksDataType) => {
+    dispatch(getUserPacksTC({user_id: data.user_id}))
   }
   const showAllPacksHandler = () => {
-
-  const showAllPacksHAndler = () => {
-    dispatch(getCardPackTC(initValue))
+    dispatch(getCardPackTC())
+  }
+  const sortUpdatedHandler = () => {
+    dispatch(getCardPackTC())
   }
 
-  const sortUpdatedHandler = () => {
-    dispatch(getCardPackTC(initValue))
+  const changeCurrentPackPage = () => {
+
   }
 
   return (
@@ -62,8 +56,16 @@ export const PacksList = () => {
               <span>Show packs Cards</span>
             </div>
             <div className={s.buttonsGroup}>
-              <SuperButton onClick={showMyPacksHandler} title={'MY'} className={s.myBtn}/>
-              <SuperButton onClick={showAllPacksHandler} title={'ALL'} className={s.allBtn}/>
+              <SuperButton
+                onClick={() => showMyPacksHandler({user_id: userId})}
+                title={'MY'}
+                className={s.myBtn}
+              />
+              <SuperButton
+                onClick={showAllPacksHandler}
+                title={'ALL'}
+                className={s.allBtn}
+              />
             </div>
           </div>
           <div className={s.rangeWrapper}>
@@ -112,7 +114,12 @@ export const PacksList = () => {
           </div>
 
           <div className={s.paginationContainer}>
-         <Pagination totalItemsCount={pack.cardPacksTotalCount} pageSize={1} currentPage={1} onPageChanged={()=> {}}/>
+            <Pagination
+              totalItemsCount={pack.cardPacksTotalCount}
+              pageSize={pack.pageCount}
+              currentPage={pack.page}
+              onPageChanged={changeCurrentPackPage}
+            />
           </div>
         </div>
       </div>

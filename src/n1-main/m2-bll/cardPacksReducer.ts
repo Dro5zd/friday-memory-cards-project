@@ -8,7 +8,7 @@ const initState = {
     {
       _id: '',
       user_id: '',
-      name: '',
+      name: '🇺🇦🇺🇦🇺🇦🇺🇦🇺🇦',
       cardsCount: 1,
       created: '',
       updated: '',
@@ -16,33 +16,11 @@ const initState = {
     },
   ],
   cardPacksTotalCount: 10,
-  // количество колод
   maxCardsCount: 9,
   minCardsCount: 3,
-  page: 1, // выбранная страница
+  page: 1,
   pageCount: 10,
-
-  // cardsCount: 0,
-  // created: "2022-06-05T20:33:14.268Z",
-  // deckCover: "",
-  // grade: 0,
-  //
-  // name: "Where the russian warship was sent? ®",
-  // path: "/def",
-  // private: false,
-  // rating: 0,
-  // shots: 0,
-  // type: "pack",
-  // updated: "2022-06-05T20:33:14.268Z",
-  // user_id: "6291cfe9f2b0e900049f70ac",
-  // user_name: "Bogdan Mykhailov",
-  // __v: 0,
-  // _id: "629d130af0ffde100d74e033",
-  // token: "b944a7f0-e50e-11ec-9c6c-2785a2807848",
-  // tokenDeathTime: 1654471994223,
-
-
-} as InitStateType
+}
 
 export const cardPacksReducer = (state: InitStateType = initState, action: CardPacksType): InitStateType => {
   switch (action.type) {
@@ -62,51 +40,49 @@ export const setCardPacksAC = (data: InitStateType) => ({
 } as const)
 
 //thunk
-export const getCardPackTC = (data: PacksDataType): AppThunk => (dispatch, getState) => {
-  // const data = getState().packs
-  cardPacksAPI.getPacks(data)
+export const getCardPackTC = (): AppThunk => (dispatch, getState) => {
+  const pageCount = 10
+  const currentPage = getState().app.packsCurrentPage
+  cardPacksAPI.getPacks({pageCount: pageCount, page: currentPage})
     .then((res) => {
       dispatch(setCardPacksAC(res.data))
     })
 }
-
-export const postPacksTC = (data: CreatePackDataType): AppThunk => (dispatch, getState) => {
+export const postPacksTC = (data: CreatePackDataType): AppThunk => (dispatch) => {
   cardPacksAPI.postPacks(data)
     .then((res) => {
-      dispatch(getCardPackTC(res.data))
+      dispatch(getCardPackTC())
     })
 }
 export const deletePacksTC = (packId: string): AppThunk => (dispatch) => {
   cardPacksAPI.deletePacks(packId)
     .then((res) => {
-      dispatch(getCardPackTC(res.data))
+      dispatch(getCardPackTC())
     })
 }
 export const updatePacksTC = (data: UpdateCardsPackType): AppThunk => (dispatch) => {
   cardPacksAPI.updatePacks(data)  /*{cardsPack: {_id: data.cardsPack._id, name: data.cardsPack.name}}*/
     .then((res) => {
-      dispatch(getCardPackTC(res.data))
+      dispatch(getCardPackTC())
     })
 }
 
 //types
+type CardPackType = {
+  _id: string
+  user_id: string
+  name: string
+  cardsCount: number
+  created: string
+  updated: string
+  user_name: string
+}
 export type InitStateType = {
-  cardPacks: [
-    {
-      _id: string
-      user_id: string
-      name: string
-      cardsCount: number
-      created: string
-      updated: string
-      user_name: string
-    },
-  ]
+  cardPacks: CardPackType[]
   cardPacksTotalCount: number
-  // количество колод
   maxCardsCount: number
   minCardsCount: number
-  page: number // выбранная страница
+  page: number
   pageCount: number
 }
 

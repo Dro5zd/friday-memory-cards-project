@@ -11,17 +11,13 @@ const instance = axios.create({
 
 export const cardPacksAPI = {
 
-  getPacks(data: PacksDataType) {
-    return instance.get(`cards/pack`, {params: data})
+  getPacks(uriParams: PacksDataType) {
+    return instance.get(`cards/pack`, {params: uriParams})
   },
-
-  getUserPacks(userId: string) {
-    return instance.get(`cards/pack?user_id=${userId}`)
-  },
-
-  sortUpdatePack(data: PacksDataType) {
-    return instance.get(`cards/pack&sortPacks=1updated`, {params: data})
-  },
+  //
+  // sortUpdatePack(data: PacksDataType) {
+  //   return instance.get(`cards/pack&sortPacks=1updated`, {params: data})
+  // },
 
   postPacks(data: CreatePackDataType) {
     return instance.post(`cards/pack`, data)
@@ -38,13 +34,13 @@ export const cardPacksAPI = {
 
 //types
 export type PacksDataType = {
-  packName: string,
+  packName?: string,
   min?: number,
   max?: number,
-  sortPacks: string,
-  page: number,
-  pageCount: number,
-  user_id: string
+  sortPacks?: string,
+  page?: number,
+  pageCount?: number,
+  user_id?: string
 }
 type CardsPackType = {
   _id: string

@@ -4,18 +4,17 @@ import {useTypedDispatch, useTypedSelector} from "../../../../m2-bll/store";
 import {deletePacksTC, getCardPackTC, updatePacksTC} from "../../../../m2-bll/cardPacksReducer";
 import SuperButton from "../../../common/c2-SuperButton/SuperButton";
 import {useNavigate} from "react-router-dom";
-import {PacksDataType, UpdateCardsPackType} from "../../../../m3-dal/cardPacks-api";
+import {UpdateCardsPackType} from "../../../../m3-dal/cardPacks-api";
 
 export const PackItem = () => {
   const navigate = useNavigate()
   const pack = useTypedSelector(state => state.packs.cardPacks)
   const userId = useTypedSelector(state => state.auth._id)
-
   const dispatch = useTypedDispatch()
-  const initValue = {} as PacksDataType
+
 
   useEffect(() => {
-    dispatch(getCardPackTC(initValue))
+    dispatch(getCardPackTC())
   }, [dispatch])
 
   const deleteHandler = (id: string) => {
@@ -59,5 +58,3 @@ export const PackItem = () => {
     </div>
   );
 };
-
-// спросить по поводу инпута, по поводу апдейт, по поводу отрисовки кнопок если юзак трушный
