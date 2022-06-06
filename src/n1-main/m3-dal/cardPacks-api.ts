@@ -14,14 +14,19 @@ export const cardPacksAPI = {
   getPacks(data: PacksDataType) {
     return instance.get(`cards/pack`, {params: data})
   },
-  // sortPAck(data: PacksDataType) {
-  //   return instance.get(`cards/pack&sortPacks=0updated`, {params: data})
-  // },
+
+  getUserPacks(userId: string) {
+    return instance.get(`cards/pack?user_id=${userId}`)
+  },
+
+  sortUpdatePack(data: PacksDataType) {
+    return instance.get(`cards/pack&sortPacks=1updated`, {params: data})
+  },
 
   // getPacks() {
   //   return instance.get(`cards/pack`, {
   //     params: {
-  //       packName: 'Where the russian ship was sent?',
+  //       packName: '🇺🇦',
   //       min: 9,
   //       max: 3,
   //       sortPacks: 1,
@@ -54,7 +59,7 @@ export type PacksDataType = {
   packName?: string,
   min?: number,
   max?: number,
-  sortPacks?: string,
+  sortPacks?: any,
   page?: number,
   pageCount?: number,
   user_id?: string
@@ -64,12 +69,12 @@ export type PacksDataType = {
 //   _id: string
 //   name: string
 // }
-//
+
 // export type CreatePackDataType = {
 //   cardsPack: {
 //     // name: 'Where the russian ship was sent?',
-//     name?: string,
-//     deckCover?: string,
-//     private?: boolean
+//     name: string,
+//     deckCover: string,
+//     private: boolean
 //   }
 // }

@@ -4,12 +4,15 @@ import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
 import {PackItem} from "./p1-packs/PackItem";
-import {getCardPackTC, postPacksTC} from "../../../m2-bll/cardPacksReducer";
+import {getCardPackTC, postPacksTC} from '../../../m2-bll/cardPacksReducer';
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
+import {getUserPacksTC} from '../../../m2-bll/sortReducer';
 
 
 export const PacksList = () => {
   const pack = useTypedSelector(state => state.packs)
+  const userId = useTypedSelector(state => state.auth._id)
+  console.log(userId)
   const dispatch = useTypedDispatch()
 
   const [value1, setValue1] = useState(pack.minCardsCount)
@@ -36,15 +39,15 @@ export const PacksList = () => {
   }
 
   const showMyPacksHAndler = () => {
-
+    dispatch(getUserPacksTC(userId))
   }
 
   const showAllPacksHAndler = () => {
-
+    dispatch(getCardPackTC())
   }
 
   const sortUpdatedHandler = () => {
-    dispatch(getCardPackTC())
+
   }
 
   return (
