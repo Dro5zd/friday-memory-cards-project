@@ -1,0 +1,18 @@
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.paginationItem {
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 24px;
+}
+.currentPage {
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #6d5dfc;
+    font-weight: bolder;
+    text-decoration: underline;
+}

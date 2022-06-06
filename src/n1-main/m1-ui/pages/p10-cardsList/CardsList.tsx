@@ -6,10 +6,11 @@ import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {createNewCardTC, deleteCardTC, getCardsTC, updateCardTC} from "../../../m2-bll/cardsReducer";
 import {useParams} from "react-router-dom";
 import SuperButton from "../../common/c2-SuperButton/SuperButton";
+import {Pagination} from "../../common/c11-Pagination/Pagination";
+import {changeCardsCurrentPageAC} from "../../../m2-bll/appReducer";
 
 export const CardsList = () => {
     const {urlCardsPackId} = useParams<string>();
-    //const testId = '627e522711ad202f585a05f5';
     const dispatch = useTypedDispatch();
     const cards = useTypedSelector(state => state.cards);
     const userId = useTypedSelector<string>(state => state.auth._id);
@@ -18,7 +19,7 @@ export const CardsList = () => {
 
     useEffect(() => {
         if (urlCardsPackId) {
-            dispatch(getCardsTC({cardsPack_id: urlCardsPackId}))
+            dispatch(getCardsTC(urlCardsPackId))
         }
     }, [dispatch, urlCardsPackId]);
 
@@ -29,10 +30,14 @@ export const CardsList = () => {
         if (urlCardsPackId) {
             dispatch(createNewCardTC({cardsPack_id: urlCardsPackId}))
         }
-    }
+    };
     const updateCard = (cardId: string, packId: string) => {
         dispatch(updateCardTC(cardId, packId))
-    }
+    };
+    const changeCurrentPage = (page: number) => {
+        dispatch(changeCardsCurrentPageAC(page));
+        urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
+    };
 
     return (
         <div className={s.container}>
@@ -60,7 +65,8 @@ export const CardsList = () => {
                         })}
                     </div>
                     <div className={s.paginationContainer}>
-                        123456789
+                        <Pagination totalItemsCount={cards.cardsTotalCount} pageSize={cards.pageCount}
+                                    currentPage={cards.page} onPageChanged={changeCurrentPage}/>
                     </div>
                 </div>
             </div>
