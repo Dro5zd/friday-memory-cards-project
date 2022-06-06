@@ -4,17 +4,18 @@ import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
 import {PackItem} from "./p1-packs/PackItem";
-import {getCardPackTC, postPacksTC} from "../../../m2-bll/cardPacksReducer";
+import {getCardPackTC, InitStateType, postPacksTC} from "../../../m2-bll/cardPacksReducer";
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
+import {CreatePackDataType} from "../../../m3-dal/cardPacks-api";
 
 
 export const PacksList = () => {
   const pack = useTypedSelector(state => state.packs)
   const dispatch = useTypedDispatch()
-
+  const initValue = {} as InitStateType
   const [value1, setValue1] = useState(pack.minCardsCount)
   const [value2, setValue2] = useState(pack.maxCardsCount)
-  const [value, setValue] = useState('')
+  const [packName, setPackName] = useState('')
 
   // const onChangeInputRangeHandle = (num: number) => {
   //     if (num >= value2) return
@@ -26,25 +27,24 @@ export const PacksList = () => {
     setValue2(nums[1])
   }
 
-  const createPackHandler = () => {
-    dispatch(postPacksTC())
+
+  const onchangeAddPackNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setPackName(e.currentTarget.value)
   }
 
-  const addPackNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value)
-    setValue('')
+  const createPackButtonHandler = (data: CreatePackDataType) => {
+    dispatch(postPacksTC(data))
   }
 
-  const showMyPacksHAndler = () => {
+  const showMyPacksHandler = () => {
 
   }
-
-  const showAllPacksHAndler = () => {
+  const showAllPacksHandler = () => {
 
   }
 
   const sortUpdatedHandler = () => {
-    dispatch(getCardPackTC())
+    dispatch(getCardPackTC(initValue))
   }
 
   return (
@@ -52,10 +52,12 @@ export const PacksList = () => {
       <div className={s.components}>
         <div className={s.leftSide}>
           <div className={s.buttonsWrapper}>
-            <span>Show packs Cards</span>
+            <div className={s.buttonsGroupSpan}>
+              <span>Show packs Cards</span>
+            </div>
             <div className={s.buttonsGroup}>
-              <SuperButton onClick={showMyPacksHAndler} title={'MY'} className={s.myBtn}/>
-              <SuperButton onClick={showAllPacksHAndler} title={'ALL'} className={s.allBtn}/>
+              <SuperButton onClick={showMyPacksHandler} title={'MY'} className={s.myBtn}/>
+              <SuperButton onClick={showAllPacksHandler} title={'ALL'} className={s.allBtn}/>
             </div>
           </div>
           <div className={s.rangeWrapper}>
@@ -79,8 +81,17 @@ export const PacksList = () => {
         <div className={s.packsSide}>
           <h4>PACKS LIST</h4>
           <div className={s.searchContainer}>
-            <SuperInputText onChange={addPackNameHandler} className={s.searchInput}/>
-            <SuperButton value={value} onClick={createPackHandler} title={'ADD NEW PACK'} className={s.searchButton}/>
+            <SuperInputText
+              onChange={onchangeAddPackNameHandler}
+              className={s.searchInput}
+            />
+            <SuperButton
+              value={packName}
+              onClick={() => createPackButtonHandler({cardsPack: {name: packName}})}
+              title={'ADD NEW PACK'}
+              className={s.searchButton}
+              disabled={packName === ''}
+            />
           </div>
 
           <div className={s.packsContainer}>

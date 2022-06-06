@@ -14,38 +14,17 @@ export const cardPacksAPI = {
   getPacks(data: PacksDataType) {
     return instance.get(`cards/pack`, {params: data})
   },
-  // sortPAck(data: PacksDataType) {
-  //   return instance.get(`cards/pack&sortPacks=0updated`, {params: data})
-  // },
 
-  // getPacks() {
-  //   return instance.get(`cards/pack`, {
-  //     params: {
-  //       packName: 'Where the russian ship was sent?',
-  //       min: 9,
-  //       max: 3,
-  //       sortPacks: 1,
-  //       page: 1,
-  //       pageCount: 10,
-  //       user_id: ''
-  //     }
-  //   })
-  // },
-
-  postPacks() {
-    return instance.post(`cards/pack`, {cardsPack: {
-        name: 'Where the russian warship was sent? ®',
-        deckCover: '',
-        private: false
-      }})
+  postPacks(data: CreatePackDataType) {
+    return instance.post(`cards/pack`, data)
   },
 
   deletePacks(id: string) {
     return instance.delete(`cards/pack?id=${id}`)
   },
 
-  updatePacks(id: string, name: string) {
-    return instance.put(`cards/pack`, {id, name})
+  updatePacks(data: UpdateCardsPackType) {
+    return instance.put(`cards/pack`, data)
   },
 }
 
@@ -60,16 +39,20 @@ export type PacksDataType = {
   user_id?: string
 }
 
-// export type CardsPackType = {
-//   _id: string
-//   name: string
-// }
-//
-// export type CreatePackDataType = {
-//   cardsPack: {
-//     // name: 'Where the russian ship was sent?',
-//     name?: string,
-//     deckCover?: string,
-//     private?: boolean
-//   }
-// }
+type CardsPackType = {
+  _id: string
+  name: string
+}
+export type UpdateCardsPackType = {
+  cardsPack: CardsPackType
+}
+
+type CardsPackCreatePackType = {
+  // name: 'Where the russian ship was sent?',
+  name: string,
+  deckCover?: string,
+  private?: boolean
+}
+export type CreatePackDataType = {
+  cardsPack: CardsPackCreatePackType
+}

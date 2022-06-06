@@ -22,10 +22,10 @@ export const CardItem: React.FC<CardItemType> = ({card, deleteCard, updateCard, 
                     {isOwner && <SuperButton disabled={!isOwner} onClick={() => {
                         updateCard(card._id, card.cardsPack_id)
                     }} title={'edit'} className={s.cardEditButton}/>}
+                    <SuperButton title={'Learn'}/>
                     {isOwner && <SuperButton disabled={!isOwner} onClick={() => {
                         deleteCard(card._id, card.cardsPack_id)
                     }} title={'delete'} className={s.cardDeleteButton}/>}
-                    <SuperButton title={'Learn'}/>
                 </div>
             </div>
         </div>
