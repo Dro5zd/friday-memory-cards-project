@@ -63,7 +63,7 @@ export const setCardPacksAC = (data: InitStateType) => ({
 
 //thunk
 export const getCardPackTC = (data: InitStateType): AppThunk => (dispatch, getState) => {
-  const data = getState().packs
+  // const data = getState().packs
   cardPacksAPI.getPacks(data)
     .then((res) => {
       dispatch(setCardPacksAC(res.data))

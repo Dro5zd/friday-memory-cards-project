@@ -12,6 +12,7 @@ import {CreatePackDataType} from "../../../m3-dal/cardPacks-api";
 
 export const PacksList = () => {
   const pack = useTypedSelector(state => state.packs)
+  const userId = useTypedSelector(state => state.auth._id)
   const dispatch = useTypedDispatch()
   const initValue = {} as InitStateType
   const [value1, setValue1] = useState(pack.minCardsCount)
@@ -42,7 +43,7 @@ export const PacksList = () => {
   }
 
   const showAllPacksHAndler = () => {
-    dispatch(getCardPackTC())
+    dispatch(getCardPackTC(initValue))
   }
 
   const sortUpdatedHandler = () => {
