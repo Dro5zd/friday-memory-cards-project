@@ -1,4 +1,4 @@
-import {cardPacksAPI, CreatePackDataType, PacksDataType, UpdateCardsPackType} from "../m3-dal/cardPacks-api";
+import {cardPacksAPI, CreatePackDataType, UpdateCardsPackType} from "../m3-dal/cardPacks-api";
 import {AppThunk} from "./store";
 
 const SET_PACKS = 'POST-PACKS'

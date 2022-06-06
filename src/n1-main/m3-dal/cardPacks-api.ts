@@ -15,6 +15,14 @@ export const cardPacksAPI = {
     return instance.get(`cards/pack`, {params: data})
   },
 
+  getUserPacks(userId: string) {
+    return instance.get(`cards/pack?user_id=${userId}`)
+  },
+
+  sortUpdatePack(data: PacksDataType) {
+    return instance.get(`cards/pack&sortPacks=1updated`, {params: data})
+  },
+
   postPacks(data: CreatePackDataType) {
     return instance.post(`cards/pack`, data)
   },
@@ -38,7 +46,6 @@ export type PacksDataType = {
   pageCount: number,
   user_id: string
 }
-
 type CardsPackType = {
   _id: string
   name: string

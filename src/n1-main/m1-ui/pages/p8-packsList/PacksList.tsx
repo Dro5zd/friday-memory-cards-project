@@ -8,10 +8,13 @@ import {getCardPackTC, postPacksTC} from "../../../m2-bll/cardPacksReducer";
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {CreatePackDataType, PacksDataType} from "../../../m3-dal/cardPacks-api";
 import {Pagination} from "../../common/c11-Pagination/Pagination";
+import {getUserPacksTC} from '../../../m2-bll/sortReducer';
+import {CreatePackDataType} from "../../../m3-dal/cardPacks-api";
 
 
 export const PacksList = () => {
   const pack = useTypedSelector(state => state.packs)
+  const userId = useTypedSelector(state => state.auth._id)
   const dispatch = useTypedDispatch()
   const initValue = {} as PacksDataType
   const [value1, setValue1] = useState(pack.minCardsCount)
@@ -38,10 +41,12 @@ export const PacksList = () => {
   }
 
   const showMyPacksHandler = () => {
-
+    dispatch(getUserPacksTC(userId))
   }
   const showAllPacksHandler = () => {
 
+  const showAllPacksHAndler = () => {
+    dispatch(getCardPackTC(initValue))
   }
 
   const sortUpdatedHandler = () => {
