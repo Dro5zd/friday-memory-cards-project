@@ -30,13 +30,13 @@ export const cardPacksAPI = {
 
 //types
 export type PacksDataType = {
-  packName?: string,
+  packName: string,
   min?: number,
   max?: number,
-  sortPacks?: string,
-  page?: number,
-  pageCount?: number,
-  user_id?: string
+  sortPacks: string,
+  page: number,
+  pageCount: number,
+  user_id: string
 }
 
 type CardsPackType = {

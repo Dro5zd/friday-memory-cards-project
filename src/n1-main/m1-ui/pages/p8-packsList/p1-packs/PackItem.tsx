@@ -1,10 +1,10 @@
 import React, {useEffect} from 'react';
 import s from './packItem.module.css';
 import {useTypedDispatch, useTypedSelector} from "../../../../m2-bll/store";
-import {deletePacksTC, getCardPackTC, InitStateType, updatePacksTC} from "../../../../m2-bll/cardPacksReducer";
+import {deletePacksTC, getCardPackTC, updatePacksTC} from "../../../../m2-bll/cardPacksReducer";
 import SuperButton from "../../../common/c2-SuperButton/SuperButton";
 import {useNavigate} from "react-router-dom";
-import {UpdateCardsPackType} from "../../../../m3-dal/cardPacks-api";
+import {PacksDataType, UpdateCardsPackType} from "../../../../m3-dal/cardPacks-api";
 
 export const PackItem = () => {
   const navigate = useNavigate()
@@ -12,7 +12,7 @@ export const PackItem = () => {
   const userId = useTypedSelector(state => state.auth._id)
 
   const dispatch = useTypedDispatch()
-  const initValue = {} as InitStateType
+  const initValue = {} as PacksDataType
 
   useEffect(() => {
     dispatch(getCardPackTC(initValue))
@@ -40,7 +40,7 @@ export const PackItem = () => {
                 </div>
                 <div className={s.cardsColumn}><span>{pack.cardsCount}</span></div>
                 <div className={s.updateColumn}><span>{pack.created}</span></div>
-                <div className={s.nameColumn}>{pack.user_name}</div>
+                <div className={s.userNameColumn}>{pack.user_name}</div>
                 <div className={s.actionsColumn}>
                   <div className={s.buttonBlock}>
                     <SuperButton title={'Learn'} className={s.packLearnButton}/>

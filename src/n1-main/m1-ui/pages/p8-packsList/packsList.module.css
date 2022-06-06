@@ -42,8 +42,7 @@
   width: 20%;
   border-radius: 2rem;
   background-color: var(--bg);
-  box-shadow: inset .1rem .1rem .3rem var(--shadow-1), inset -.1rem -.1rem .3rem var(--shadow-2),
-  0.3rem 0.3rem 0.6rem var(--shadow-2), -0.2rem -0.2rem 0.5rem var(--shadow-1);
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
 }
 
 .buttonsGroup {
@@ -60,12 +59,12 @@
 }
 
 .myBtn {
-  color: var(--white);
+  color: var(--greyLight-1);
   box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
 }
 
 .myBtn:hover {
-  color: var(--textColor);
+  color: var(--white);
 }
 
 .myBtn:active {
@@ -73,8 +72,12 @@
 }
 
 .allBtn {
-  color: var(--white);
+  color: var(--greyLight-1);
   box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+}
+
+.allBtn:hover {
+  color: var(--white);
 }
 
 .allBtn:active {
@@ -117,15 +120,20 @@
 .packListHeader {
   display: flex;
   width: 100%;
-  background-color: #11eec5;
+  background-color: var(--bg);
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  justify-content: center;
+  /*background-color: #9f0000;*/
+  height: 50px;
 }
 
 .nameTitle {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 205px;
-  height: 40px;
+  width: 220px;
   margin-right: 10px;
   /*background-color: #430bea;*/
 }
@@ -138,6 +146,16 @@
   margin-right: 10px;
   /*background-color: #430bea;*/
 }
+
+.userNameColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 190px;
+  margin-right: 10px;
+  /*background-color: #430bea;*/
+}
+
 
 .updateTitle {
   display: flex;

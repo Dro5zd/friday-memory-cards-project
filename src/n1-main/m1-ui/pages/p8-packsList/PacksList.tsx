@@ -4,15 +4,16 @@ import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
 import {PackItem} from "./p1-packs/PackItem";
-import {getCardPackTC, InitStateType, postPacksTC} from "../../../m2-bll/cardPacksReducer";
+import {getCardPackTC, postPacksTC} from "../../../m2-bll/cardPacksReducer";
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
-import {CreatePackDataType} from "../../../m3-dal/cardPacks-api";
+import {CreatePackDataType, PacksDataType} from "../../../m3-dal/cardPacks-api";
+import {Pagination} from "../../common/c11-Pagination/Pagination";
 
 
 export const PacksList = () => {
   const pack = useTypedSelector(state => state.packs)
   const dispatch = useTypedDispatch()
-  const initValue = {} as InitStateType
+  const initValue = {} as PacksDataType
   const [value1, setValue1] = useState(pack.minCardsCount)
   const [value2, setValue2] = useState(pack.maxCardsCount)
   const [packName, setPackName] = useState('')
@@ -99,14 +100,14 @@ export const PacksList = () => {
               <div className={s.nameTitle}>Name</div>
               <div className={s.cardsTitle}>Cards</div>
               <div onClick={sortUpdatedHandler} className={s.updateTitle}>Last Updated</div>
-              <div className={s.nameTitle}>Created by</div>
+              <div className={s.userNameColumn}>Created by</div>
               <div className={s.actionsTitle}>Actions</div>
             </div>
             <PackItem/>
           </div>
 
           <div className={s.paginationContainer}>
-            123456789
+         <Pagination totalItemsCount={pack.cardPacksTotalCount} pageSize={1} currentPage={1} onPageChanged={()=> {}}/>
           </div>
         </div>
       </div>

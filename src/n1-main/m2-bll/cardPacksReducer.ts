@@ -1,4 +1,4 @@
-import {cardPacksAPI, CreatePackDataType, UpdateCardsPackType} from "../m3-dal/cardPacks-api";
+import {cardPacksAPI, CreatePackDataType, PacksDataType, UpdateCardsPackType} from "../m3-dal/cardPacks-api";
 import {AppThunk} from "./store";
 
 const SET_PACKS = 'POST-PACKS'
@@ -62,8 +62,8 @@ export const setCardPacksAC = (data: InitStateType) => ({
 } as const)
 
 //thunk
-export const getCardPackTC = (data: InitStateType): AppThunk => (dispatch, getState) => {
-  const data = getState().packs
+export const getCardPackTC = (data: PacksDataType): AppThunk => (dispatch, getState) => {
+  // const data = getState().packs
   cardPacksAPI.getPacks(data)
     .then((res) => {
       dispatch(setCardPacksAC(res.data))
