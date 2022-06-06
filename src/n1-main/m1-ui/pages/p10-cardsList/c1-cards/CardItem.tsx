@@ -5,10 +5,11 @@ import s from './cardItem.module.css';
 
 type CardItemType = {
     card: CardType;
-    deleteCard: (cardId: string) => void;
-    updateCard: (cardId: string) => void;
+    deleteCard: (cardId: string, packId: string) => void;
+    updateCard: (cardId: string, packId: string) => void;
+    isOwner: boolean;
 }
-export const CardItem: React.FC<CardItemType> = ({card, deleteCard, updateCard}) => {
+export const CardItem: React.FC<CardItemType> = ({card, deleteCard, updateCard, isOwner}) => {
 
     return (
         <div>
@@ -18,12 +19,13 @@ export const CardItem: React.FC<CardItemType> = ({card, deleteCard, updateCard})
                 <div className={s.updateColumn}>{card.updated}</div>
                 <div className={s.actionsColumn}>{card.grade}</div>
                 <div className={s.buttonBlock}>
-                    <SuperButton onClick={() => {
-                        updateCard(card._id)
-                    }} title={'edit'} className={s.cardEditButton}/>
-                    <SuperButton onClick={() => {
-                        deleteCard(card._id)
-                    }} title={'delete'} className={s.cardDeleteButton}/>
+                    {isOwner && <SuperButton disabled={!isOwner} onClick={() => {
+                        updateCard(card._id, card.cardsPack_id)
+                    }} title={'edit'} className={s.cardEditButton}/>}
+                    <SuperButton title={'Learn'}/>
+                    {isOwner && <SuperButton disabled={!isOwner} onClick={() => {
+                        deleteCard(card._id, card.cardsPack_id)
+                    }} title={'delete'} className={s.cardDeleteButton}/>}
                 </div>
             </div>
         </div>

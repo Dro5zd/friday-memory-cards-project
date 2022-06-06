@@ -38,8 +38,8 @@ export const registerTC = (data: RequestRegisterType) => /*async*/ (dispatch: Di
             }
         }*/
     registrationAPI.register(data).then(res => {
-            dispatch(setIsRegisteredAC(true))
-    }).catch((error) => dispatch(setRegisterErrorAC(error.message)))
+        dispatch(setIsRegisteredAC(true))
+    }).catch((error) => dispatch(setRegisterErrorAC(error.response.data.error))) //FIX MESSAGE
 }
 
 //types

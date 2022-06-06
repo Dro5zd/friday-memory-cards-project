@@ -32,7 +32,7 @@ export const setRecoveryTC = (email: string) => (dispatch: Dispatch<PasswordReco
         from: `test-front-admin <ai73a@yandex.by>`,
         message: `<div style="background-color: lime; padding: 15px">
                     password recovery link: 
-                    <a href='http://localhost:3000/friday-memory-cards-project#/set-new-password/$token$'>link</a>
+                    <a href='https://dro5zd.github.io/friday-memory-cards-project#/set-new-password/$token$'>link</a> 
                   </div>`
     }
     authAPI.forgot(forgotData).then((res) => {

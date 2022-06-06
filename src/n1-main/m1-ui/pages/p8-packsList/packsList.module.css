@@ -1,127 +1,157 @@
-*{
-    margin: 0;
+* {
+  margin: 0;
 }
 
 .container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
 }
 
 .components {
-    width: 1300px;
-    height: 600px;
-    border-radius: 3rem;
-    box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
-    padding: 4rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 60px;
-    /*background-color: #ef7f0e;*/
+  width: 1300px;
+  height: 600px;
+  border-radius: 3rem;
+  box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
+  padding: 4rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 60px;
+  /*background-color: #ef7f0e;*/
 }
 
-.buttonsWrapper{
-    /*background-color: #8abdff;*/
-    margin-bottom: 40px;
-width: 250px;
-    height: 100px;
+.buttonsWrapper {
+  /*background-color: #8abdff;*/
+  margin-bottom: 40px;
+  width: 250px;
+  height: 150px;
+  justify-content: center;
 }
 
-.buttonsWrapper span{
-    margin-bottom: 40px;
-
-    /*background-color: #e31616;*/
+.buttonsGroupSpan {
+  font-weight: bold;
+  margin-top: 40px;
 }
 
 .leftSide {
-    height: 100%;
-    width: 20%;
-    /*background-color: #ea1010;*/
+  height: 100%;
+  width: 20%;
+  border-radius: 2rem;
+  background-color: var(--bg);
+  box-shadow: inset .1rem .1rem .3rem var(--shadow-1), inset -.1rem -.1rem .3rem var(--shadow-2),
+  0.3rem 0.3rem 0.6rem var(--shadow-2), -0.2rem -0.2rem 0.5rem var(--shadow-1);
 }
 
 .buttonsGroup {
-    display: flex;
-    margin-top: 20px;
+  margin-top: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonsGroup button {
+  margin: 10px;
+  height: 30px;
+  width: 90px;
+  border-radius: 10px;
 }
 
 .myBtn {
-    margin-right: 7px;
-    
+  color: var(--white);
+  box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
 }
+
+.myBtn:hover {
+  color: var(--textColor);
+}
+
+.myBtn:active {
+  box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);
+}
+
+.allBtn {
+  color: var(--white);
+  box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+}
+
+.allBtn:active {
+  box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);
+}
+
 
 .packsSide {
-    width: 80%;
-    /*background-color: #85d766;*/
-    padding: 0 40px;
+  width: 80%;
+  /*background-color: #85d766;*/
+  padding: 0 40px;
 }
 
-.searchContainer{
-    display: flex;
-    height: 70px;
-    justify-content: space-between;
-    align-items: center;
-    /*background-color: #fff;*/
+.searchContainer {
+  display: flex;
+  height: 70px;
+  justify-content: space-between;
+  align-items: center;
+  /*background-color: #fff;*/
 }
 
-.searchButton{
-    width: 220px;
-    height: 40px;
-
+.searchButton {
+  width: 220px;
+  height: 40px;
 }
 
-.searchInput{
-    margin: 0;
-    width: 700px;
-    height: 40px;
+.searchInput {
+  margin: 0;
+  width: 700px;
+  height: 40px;
 }
 
-.packsContainer{
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.packsContainer {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .packListHeader {
-    display: flex;
-    width: 100%;
-    /*background-color: #11eec5;*/
-
+  display: flex;
+  width: 100%;
+  background-color: #11eec5;
 }
 
 .nameTitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 205px;
-    height: 40px;
-    margin-right: 10px;
-    /*background-color: #430bea;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 205px;
+  height: 40px;
+  margin-right: 10px;
+  /*background-color: #430bea;*/
 }
+
 .cardsTitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 80px;
-    margin-right: 10px;
-    /*background-color: #430bea;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  margin-right: 10px;
+  /*background-color: #430bea;*/
 }
+
 .updateTitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 150px;
-    margin-right: 10px;
-    /*background-color: #430bea;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  margin-right: 10px;
+  /*background-color: #430bea;*/
 }
+
 .actionsTitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 280px;
-    /*background-color: #430bea;*/
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 280px;
+  /*background-color: #430bea;*/
 }

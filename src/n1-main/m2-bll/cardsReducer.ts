@@ -1,5 +1,5 @@
 import {AppThunk} from "./store";
-import {cardsAPI, GetCardsDataType, PostCardDataType} from "../m3-dal/cards-api";
+import {cardsAPI, PostCardDataType} from "../m3-dal/cards-api";
 
 const initialState = {
     cards: [
@@ -11,7 +11,7 @@ const initialState = {
             grade: 2,
             shots: 2,
             created: 'df2322',
-            user_id: '12354f',
+            user_id: '1234',
             updated: '04.06.2022',
         }
     ],
@@ -21,7 +21,7 @@ const initialState = {
     packUserId: '1234',
     page: 1,
     pageCount: 10,
-} as CardsReducerInitialStateType
+};
 
 export type CardsReducerInitialStateType = {
     cards: CardType[];
@@ -46,7 +46,7 @@ export type CardType = {
 
 export const cardsReducer = (state = initialState, action: CardsReducerActionTypes): CardsReducerInitialStateType => {
     switch (action.type) {
-        case "SET-CARDS-STATE": {
+        case "cards/SET-CARDS-STATE": {
             return {...action.data}
         }
         default:
@@ -54,36 +54,40 @@ export const cardsReducer = (state = initialState, action: CardsReducerActionTyp
     }
 }
 
-export const setCardsStateAC = (data: CardsReducerInitialStateType) => ({type: 'SET-CARDS-STATE', data} as const)
-export type CardsReducerActionTypes = ReturnType<typeof setCardsStateAC>
+export const setCardsStateAC = (data: CardsReducerInitialStateType) => ({type: 'cards/SET-CARDS-STATE', data} as const)
+export type CardsReducerActionTypes = ReturnType<typeof setCardsStateAC>;
 
-export const getCardsTC = (data: GetCardsDataType): AppThunk => async (dispatch, getState) => {
+export const getCardsTC = (cardsPack_id: string): AppThunk => async (dispatch, getState) => {
+    const pageCount = 10
+    const currentPage = getState().app.cardsCurrentPage
     try {
-        const response = await cardsAPI.getCards(data);
+        const response = await cardsAPI.getCards({cardsPack_id: cardsPack_id, pageCount: pageCount, page: currentPage});
         dispatch(setCardsStateAC(response.data))
     } catch (e: any) {
         console.log(e.response.data.error)
     }
 }
 export const createNewCardTC = (newCard: PostCardDataType): AppThunk => async (dispatch, getState) => {
-    const packId = getState().cards.cards[0].cardsPack_id //NEED TO CHANGE FOR PACK STATE
+    const packId = newCard.cardsPack_id
     try {
-        const response = await cardsAPI.postCard(newCard)
-        dispatch(getCardsTC({cardsPack_id: packId}))
+        await cardsAPI.postCard(newCard)
+        dispatch(getCardsTC(packId))
     } catch (e: any) {
         console.log(e.response.data.error)
     }
 }
-export const deleteCardTC = (id: string): AppThunk => async (dispatch) => {
+export const deleteCardTC = (id: string, packId: string): AppThunk => async (dispatch) => {
     try {
-        const response = await cardsAPI.deleteCard(id)
+        await cardsAPI.deleteCard(id)
+        dispatch(getCardsTC(packId))
     } catch (e: any) {
         console.log(e.response.data.error)
     }
 }
-export const updateCardTC = (cardId: string): AppThunk => async (dispatch) => {
+export const updateCardTC = (cardId: string, packId: string): AppThunk => async (dispatch) => {
     try {
-        const response = await cardsAPI.updateCard({_id: cardId})
+        await cardsAPI.updateCard({_id: cardId, question: 'WTF'})
+        dispatch(getCardsTC(packId))
     } catch (e: any) {
         console.log(e.response.data.error)
     }
