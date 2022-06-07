@@ -2,7 +2,6 @@ import React, {ChangeEvent, useState} from 'react'
 import s from './packsList.module.css'
 import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
-import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
 import {PackItem} from "./p1-packs/PackItem";
 import {getCardPackTC, postPacksTC} from "../../../m2-bll/cardPacksReducer";
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
@@ -10,6 +9,7 @@ import {CreatePackDataType, PacksDataType} from "../../../m3-dal/cardPacks-api";
 import {Pagination} from "../../common/c11-Pagination/Pagination";
 import {getUserPacksTC} from '../../../m2-bll/sortReducer';
 import {changePacksCurrentPageAC} from "../../../m2-bll/appReducer";
+import {SuperDoubleRange} from "../../common/c9-SuperDoubleRange/SuperDoubleRange";
 
 export const PacksList = () => {
   const pack = useTypedSelector(state => state.packs)
