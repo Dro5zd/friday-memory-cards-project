@@ -58,11 +58,20 @@ export const setCardsStateAC = (data: CardsReducerInitialStateType) => ({type: '
 export type CardsReducerActionTypes = ReturnType<typeof setCardsStateAC>;
 
 export const getCardsTC = (cardsPack_id: string): AppThunk => async (dispatch, getState) => {
-    const pageCount = 10
-    const currentPage = getState().app.cardsCurrentPage
+    const pageCount = 10;
+    const currentPage = getState().app.cardsCurrentPage;
+    const questionValue = getState().sort.cardsQuestionValue;
+    const answerValue = getState().sort.cardsAnswerValue;
     const sortCards = getState().sort.sortCards
     try {
-        const response = await cardsAPI.getCards({cardsPack_id: cardsPack_id, pageCount: pageCount, page: currentPage, sortCards: sortCards});
+        const response = await cardsAPI.getCards({
+            cardsPack_id: cardsPack_id,
+            pageCount: pageCount,
+            page: currentPage,
+            cardQuestion: questionValue,
+            cardAnswer: answerValue,
+            sortCards: sortCards
+        });
         dispatch(setCardsStateAC(response.data))
     } catch (e: any) {
         console.log(e.response.data.error)

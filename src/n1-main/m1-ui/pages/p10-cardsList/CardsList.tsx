@@ -9,77 +9,81 @@ import SuperButton from "../../common/c2-SuperButton/SuperButton";
 import {Pagination} from "../../common/c11-Pagination/Pagination";
 import {changeCardsCurrentPageAC} from "../../../m2-bll/appReducer";
 import {setUpdateCardFilterAC} from "../../../m2-bll/sortReducer";
-
+import {DebounceSearch} from "../../common/c13-DebounceSearch/DebounceSearch";
+import {setCardsQuestionValue} from "../../../m2-bll/sortReducer";
 
 export const CardsList = () => {
-  const {urlCardsPackId} = useParams<string>();
-  const dispatch = useTypedDispatch();
-  const cards = useTypedSelector(state => state.cards);
-  const userId = useTypedSelector<string>(state => state.auth._id);
-  const packUserId = useTypedSelector<string>(state => state.cards.packUserId)
-  const sortCards = useTypedSelector<string>(state => state.sort.sortCards)
-  const isOwner = userId === packUserId
+    const {urlCardsPackId} = useParams<string>();
+    const dispatch = useTypedDispatch();
+    const cards = useTypedSelector(state => state.cards);
+    const userId = useTypedSelector<string>(state => state.auth._id);
+    const packUserId = useTypedSelector<string>(state => state.cards.packUserId)
+    const isOwner = userId === packUserId
+    const sortCards = useTypedSelector<string>(state => state.sort.sortCards)
 
-  useEffect(() => {
-    if (urlCardsPackId) {
-      dispatch(getCardsTC(urlCardsPackId))
-    }
-  }, [dispatch, urlCardsPackId]);
+    useEffect(() => {
+        if (urlCardsPackId) {
+            dispatch(getCardsTC(urlCardsPackId))
+        }
+    }, [dispatch, urlCardsPackId]);
 
-  const deleteCard = (cardId: string, packId: string) => {
-    dispatch(deleteCardTC(cardId, packId))
-  };
-  const addNewCard = () => {
-    if (urlCardsPackId) {
-      dispatch(createNewCardTC({cardsPack_id: urlCardsPackId}))
-    }
-  };
-  const updateCard = (cardId: string, packId: string) => {
-    dispatch(updateCardTC(cardId, packId))
-  };
-  const changeCurrentPage = (page: number) => {
-    dispatch(changeCardsCurrentPageAC(page));
-    urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
-  };
-
+    const deleteCard = (cardId: string, packId: string) => {
+        dispatch(deleteCardTC(cardId, packId))
+    };
+    const addNewCard = () => {
+        if (urlCardsPackId) {
+            dispatch(createNewCardTC({cardsPack_id: urlCardsPackId}))
+        }
+    };
+    const updateCard = (cardId: string, packId: string) => {
+        dispatch(updateCardTC(cardId, packId))
+    };
+    const changeCurrentPage = (page: number) => {
+        dispatch(changeCardsCurrentPageAC(page));
+        urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
+    };
+    const debounceHandler = (text: string) => {
+        dispatch(setCardsQuestionValue(text))
+        urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
+    };
   const sortUpdatedCardsHandler = (value: string) => {
     sortCards === `0${value}`
-      ? dispatch(setUpdateCardFilterAC(`1${value}`))
-      : dispatch(setUpdateCardFilterAC(`0${value}`))
+        ? dispatch(setUpdateCardFilterAC(`1${value}`))
+        : dispatch(setUpdateCardFilterAC(`0${value}`))
     urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
   }
-
-  return (
-    <div className={s.container}>
-      <div className={s.components}>
-        <div className={s.packSide}>
-          <h4>PACKS LIST</h4>
-          <div className={s.searchContainer}>
-            <SuperInputText className={s.searchInput}/>
-            <SuperButton title={'Question'} className={s.searchButton}/>
-            <SuperInputText className={s.searchInput}/>
-            <SuperButton title={'Answer'} className={s.searchButton}/>
-          </div>
-          {isOwner && <SuperButton onClick={addNewCard} title={'Add new card'}/>}
-          <div className={s.packsContainer}>
-            <div className={s.packListHeader}>
-              <div className={s.nameTitle}>Question</div>
-              <div className={s.nameTitle}>Answer</div>
-              <div className={s.updateTitle}>Last Updated</div>
-              <div onClick={() => sortUpdatedCardsHandler('grade')} className={s.gradeTitle}>Grade</div>
-              <div className={s.actionsTitle}>Actions</div>
+    return (
+        <div className={s.container}>
+            <div className={s.components}>
+                <div className={s.packSide}>
+                    <h4>CARDS LIST</h4>
+                    <div className={s.searchContainer}>
+                        <DebounceSearch className={s.searchInput} delay={2000} callback={debounceHandler}/>
+                        {/*<SuperInputText className={s.searchInput}/>*/}
+                        <SuperButton title={'Question'} className={s.searchButton}/>
+                        <SuperInputText className={s.searchInput}/>
+                        <SuperButton title={'Answer'} className={s.searchButton}/>
+                    </div>
+                    {isOwner && <SuperButton onClick={addNewCard} title={'Add new card'}/>}
+                    <div className={s.packsContainer}>
+                        <div className={s.packListHeader}>
+                            <div className={s.nameTitle}>Question</div>
+                            <div className={s.nameTitle}>Answer</div>
+                            <div className={s.updateTitle}>Last Updated</div>
+                            <div onClick={() => sortUpdatedCardsHandler('grade')} className={s.gradeTitle}>Grade</div>
+                            <div className={s.actionsTitle}>Actions</div>
+                        </div>
+                        {cards.cards.map((card) => {
+                            return <CardItem isOwner={isOwner} key={card._id} card={card} deleteCard={deleteCard}
+                                             updateCard={updateCard}/>
+                        })}
+                    </div>
+                    <div className={s.paginationContainer}>
+                        <Pagination totalItemsCount={cards.cardsTotalCount} pageSize={cards.pageCount}
+                                    currentPage={cards.page} onPageChanged={changeCurrentPage}/>
+                    </div>
+                </div>
             </div>
-            {cards.cards.map((card) => {
-              return <CardItem isOwner={isOwner} key={card._id} card={card} deleteCard={deleteCard}
-                               updateCard={updateCard}/>
-            })}
-          </div>
-          <div className={s.paginationContainer}>
-            <Pagination totalItemsCount={cards.cardsTotalCount} pageSize={cards.pageCount}
-                        currentPage={cards.page} onPageChanged={changeCurrentPage}/>
-          </div>
         </div>
-      </div>
-    </div>
-  )
+    )
 }
