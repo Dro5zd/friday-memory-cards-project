@@ -8,8 +8,8 @@ import {useParams} from "react-router-dom";
 import SuperButton from "../../common/c2-SuperButton/SuperButton";
 import {Pagination} from "../../common/c11-Pagination/Pagination";
 import {changeCardsCurrentPageAC} from "../../../m2-bll/appReducer";
-import {setUpdateCardFilterAC, setUpdatedFilterAC} from "../../../m2-bll/sortReducer";
-import {getCardPackTC} from "../../../m2-bll/cardPacksReducer";
+import {setUpdateCardFilterAC} from "../../../m2-bll/sortReducer";
+
 
 export const CardsList = () => {
   const {urlCardsPackId} = useParams<string>();

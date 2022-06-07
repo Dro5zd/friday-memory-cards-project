@@ -37,6 +37,8 @@
     display: flex;
     width: 180px;
     align-items: center;
+    position: relative;
+    background-color: transparent;
 }
 
 .buttonBlock button {
@@ -46,25 +48,64 @@
     border-radius: 10px;
 }
 
-.cardEditButton {
-    background: none;
-    color: var(--greyDark);
+.packEditIcon {
+    width: 18px;
+    position: absolute;
+    top: 12px;
+    left: 9px;
+
+}
+.packDeleteIcon {
+    width: 18px;
+    position: absolute;
+    top: 10px;
+    left: 81px;
+}
+.packLearnIcon {
+    width: 18px;
+    position: absolute;
+    top: 10px;
+    left: 45px;
+}
+
+.editeWrapper {
+    width: 30px;
+    height: 30px;
     box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: transparent;
+    z-index: -4;
 
-.cardEditButton:hover {
-    color: var(--textHover);
 }
-
-.cardEditButton:active {
+.editeWrapper:active {
     box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);
 }
-/*____*/
-
-.cardDeleteButton {
+.deleteWrapper {
+    width: 30px;
+    height: 30px;
     box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: none;
 }
-
-.cardDeleteButton:hover {
-    color: var(--white);
+.deleteWrapper:active {
+    box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);
+}
+.learnWrapper {
+    width: 30px;
+    height: 30px;
+    box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: none;
+}
+.learnWrapper:active {
+    box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);
 }
