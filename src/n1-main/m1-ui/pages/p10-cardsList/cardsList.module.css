@@ -20,59 +20,110 @@
     display: flex;
     align-items: center;
     margin-top: 60px;
+    position: relative;
     /*background-color: #ef7f0e;*/
+}
+
+.arrowWrapper {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    top: 40px;
+    left: 80px;
+    background-color: var(--bg);
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.arrowWrapper:active {
+    box-shadow: inset .1rem .1rem .3rem var(--shadow-1), inset -.1rem -.1rem .3rem var(--shadow-2);
+}
+
+.arrowLeft {
+    height: 15px;
+    transition: all 0.5s ease;
+    cursor: pointer;
+}
+
+.arrowLeft:hover {
+    transform: scale(1.05);
+    transition: all 0.5s ease;
+}
+
+.cardListTitle {
+    margin-bottom: 20px;
 }
 
 .searchContainer{
     display: flex;
     height: 70px;
     width: 1300px;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-around;
     /*background-color: #fff;*/
 }
 
 .searchButton{
-    width: 220px;
+    display: flex;
     height: 40px;
-
+    width: 250px;
+    border-radius: 10px;
 }
 
 .searchInput{
-    margin: 0;
-    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 470px;
     height: 40px;
+    margin: 0;
 }
 
 .packsContainer{
     height: 500px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /*background-color: #577aab;*/
 }
 
 .packListHeader {
     display: flex;
     width: 100%;
-    /*background-color: #11eec5;*/
-
+    background-color: var(--bg);
+    box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+    justify-content: space-around;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    height: 50px;
 }
 
-.nameTitle {
+.questionColumn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 400px;
+    width: 390px;
     height: 40px;
-    margin-right: 10px;
-    /*background-color: #430bea;*/
+    /*background-color: gray;*/
 }
-.updateTitle {
+
+.answerTitle {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 145px;
-    margin-right: 10px;
+    width: 390px;
+    height: 40px;
+    /*background-color: green;*/
+}
+
+.updateTitle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
     /*background-color: #430bea;*/
 }
 
@@ -80,14 +131,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 145px;
+    width: 120px;
+    cursor: pointer;
+    /*background-color: #6d5dfc;*/
 }
 
 .actionsTitle {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 180px;
+    width: 130px;
     /*background-color: #430bea;*/
 }
 

@@ -22,7 +22,7 @@ export const DebounceSearch: React.FC<IDebounceSearch> = React.memo(({callback, 
 
     return (
         <div>
-            <SuperInputText className={className} onChange={onChangeHandler}/>
+            <SuperInputText placeholder={'Search...'} className={className} onChange={onChangeHandler}/>
         </div>
     );
 });
