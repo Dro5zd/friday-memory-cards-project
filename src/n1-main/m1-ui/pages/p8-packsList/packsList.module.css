@@ -166,6 +166,7 @@
   justify-content: center;
   width: 235px;
   margin-right: 10px;
+  cursor: pointer;
   /*background-color: #430bea;*/
 }
 
@@ -175,6 +176,7 @@
   justify-content: center;
   width: 80px;
   margin-right: 10px;
+  cursor: pointer;
   /*background-color: #430bea;*/
 }
 
@@ -184,6 +186,7 @@
   justify-content: center;
   width: 190px;
   margin-right: 10px;
+  cursor: pointer;
   /*background-color: #430bea;*/
 }
 

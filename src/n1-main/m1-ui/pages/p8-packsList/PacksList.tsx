@@ -44,16 +44,16 @@ export const PacksList = () => {
         dispatch(setMyAllFilterAC(''))
         dispatch(getCardPackTC())
     }
-    const sortUpdatedHandler = () => {
-        sortPacks === '0updated' ?
-            dispatch(setUpdatedFilterAC('1updated')) :
-            dispatch(setUpdatedFilterAC('0updated'))
+    const sortUpdatedHandler = (value: string) => {
+        sortPacks === `0${value}` ?
+            dispatch(setUpdatedFilterAC(`1${value}`)) :
+            dispatch(setUpdatedFilterAC(`0${value}`))
         dispatch(getUserPacksTC())
     }
 
     const changeCurrentPackPage = (page: number) => {
         dispatch(changePacksCurrentPageAC(page))
-        dispatch(getCardPackTC())
+        dispatch(getUserPacksTC())
     }
 
     return (
@@ -116,12 +116,12 @@ export const PacksList = () => {
 
                         <div className={s.packsContainer}>
                             <div className={s.packListHeader}>
-                                <div className={s.nameTitle}>Name</div>
-                                <div className={s.cardsTitle}>Cards</div>
-                                <div onClick={() => sortUpdatedHandler()}
+                                <div className={s.nameTitle} onClick={() => sortUpdatedHandler('name')}>Name</div>
+                                <div className={s.cardsTitle} onClick={() => sortUpdatedHandler('cardsCount')}>Cards</div>
+                                <div onClick={() => sortUpdatedHandler('updated')}
                                      className={s.updateTitle}>Last Updated
                                 </div>
-                                <div className={s.userNameColumn}>Created by</div>
+                                <div className={s.userNameColumn} onClick={() => sortUpdatedHandler('user_name')}>Created by</div>
                                 <div className={s.actionsTitle}>Actions</div>
                             </div>
                             <PackItem/>
