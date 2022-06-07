@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react'
+import React, {ChangeEvent, useEffect, useState} from 'react'
 import s from './packsList.module.css'
 import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
@@ -8,23 +8,24 @@ import {getCardPackTC, postPacksTC} from '../../../m2-bll/cardPacksReducer';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {CreatePackDataType} from '../../../m3-dal/cardPacks-api';
 import {Pagination} from '../../common/c11-Pagination/Pagination';
-import {getUserPacksTC, setMyAllFilterAC, setUpdatedFilterAC} from '../../../m2-bll/sortReducer';
+import {setMyAllFilterAC, setRangeValueAC, setUpdatedFilterAC} from '../../../m2-bll/sortReducer';
 import {changePacksCurrentPageAC} from '../../../m2-bll/appReducer';
 
 export const PacksList = () => {
     const pack = useTypedSelector(state => state.packs)
     const userId = useTypedSelector(state => state.auth._id)
     const sortPacks = useTypedSelector(state => state.sort.sortPacks)
+    const sortUserId = useTypedSelector(state => state.sort.user_id)
     const dispatch = useTypedDispatch()
     const [value1, setValue1] = useState(pack.minCardsCount)
     const [value2, setValue2] = useState(pack.maxCardsCount)
     const [packName, setPackName] = useState('')
 
-
-    // const onChangeInputRangeHandle = (num: number) => {
-    //     if (num >= value2) return
-    //     setValue1(num)
-    // }
+    useEffect(() => {
+        setValue1(pack.minCardsCount)
+        setValue2(pack.maxCardsCount)
+        dispatch(getCardPackTC())
+    }, [pack.minCardsCount, pack.maxCardsCount, sortUserId])
 
     const onChangeDoubleInputRangeHandle = (nums: Array<number>) => {
         setValue1(nums[0])
@@ -38,22 +39,26 @@ export const PacksList = () => {
     }
     const showMyPacksHandler = () => {
         dispatch(setMyAllFilterAC(userId))
-        dispatch(getUserPacksTC())
+        dispatch(setRangeValueAC(0, value2))
     }
     const showAllPacksHandler = () => {
         dispatch(setMyAllFilterAC(''))
-        dispatch(getCardPackTC())
     }
     const sortUpdatedHandler = (value: string) => {
         sortPacks === `0${value}` ?
             dispatch(setUpdatedFilterAC(`1${value}`)) :
             dispatch(setUpdatedFilterAC(`0${value}`))
-        dispatch(getUserPacksTC())
+        dispatch(getCardPackTC())
     }
 
     const changeCurrentPackPage = (page: number) => {
         dispatch(changePacksCurrentPageAC(page))
-        dispatch(getUserPacksTC())
+        dispatch(getCardPackTC())
+    }
+
+    const onMouseUpSetFilter = () => {
+        dispatch(setRangeValueAC(value1, value2))
+        dispatch(getCardPackTC())
     }
 
     return (
@@ -89,6 +94,7 @@ export const PacksList = () => {
                             <div className={s.range}>
                                 <SuperDoubleRange
                                     onChangeRange={onChangeDoubleInputRangeHandle}
+                                    onMouseUpSetFilter={onMouseUpSetFilter}
                                     value={[value1, value2]}
                                     setValue1={setValue1}
                                     setValue2={setValue2}
@@ -117,11 +123,14 @@ export const PacksList = () => {
                         <div className={s.packsContainer}>
                             <div className={s.packListHeader}>
                                 <div className={s.nameTitle} onClick={() => sortUpdatedHandler('name')}>Name</div>
-                                <div className={s.cardsTitle} onClick={() => sortUpdatedHandler('cardsCount')}>Cards</div>
+                                <div className={s.cardsTitle} onClick={() => sortUpdatedHandler('cardsCount')}>Cards
+                                </div>
                                 <div onClick={() => sortUpdatedHandler('updated')}
                                      className={s.updateTitle}>Last Updated
                                 </div>
-                                <div className={s.userNameColumn} onClick={() => sortUpdatedHandler('user_name')}>Created by</div>
+                                <div className={s.userNameColumn}
+                                     onClick={() => sortUpdatedHandler('user_name')}>Created by
+                                </div>
                                 <div className={s.actionsTitle}>Actions</div>
                             </div>
                             <PackItem/>
