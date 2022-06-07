@@ -14,10 +14,11 @@ export const cardPacksAPI = {
   getPacks(uriParams: PacksDataType) {
     return instance.get(`cards/pack`, {params: uriParams})
   },
-  //
-  // sortUpdatePack(data: PacksDataType) {
-  //   return instance.get(`cards/pack&sortPacks=1updated`, {params: data})
-  // },
+
+  sortUpdatePack(data: PacksDataType) {
+    return instance.get(`cards/pack&sortPacks=1updated`, {params: data})
+  },
+
   postPacks(data: CreatePackDataType) {
     return instance.post(`cards/pack`, data)
   },

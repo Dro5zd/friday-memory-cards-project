@@ -12,7 +12,6 @@ export const PackItem = () => {
   const userId = useTypedSelector(state => state.auth._id)
   const dispatch = useTypedDispatch()
 
-
   useEffect(() => {
     dispatch(getCardPackTC())
   }, [dispatch])

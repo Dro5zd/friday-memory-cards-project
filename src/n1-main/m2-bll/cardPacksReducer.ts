@@ -16,8 +16,8 @@ const initState = {
     },
   ],
   cardPacksTotalCount: 10,
-  maxCardsCount: 9,
-  minCardsCount: 3,
+  maxCardsCount: 103,
+  minCardsCount: 0,
   page: 1,
   pageCount: 10,
 }
@@ -43,10 +43,14 @@ export const setCardPacksAC = (data: InitStateType) => ({
 export const getCardPackTC = (): AppThunk => (dispatch, getState) => {
   const pageCount = 10
   const currentPage = getState().app.packsCurrentPage
-  cardPacksAPI.getPacks({pageCount: pageCount, page: currentPage})
-    .then((res) => {
-      dispatch(setCardPacksAC(res.data))
-    })
+  const user_id = getState().sort.user_id
+  const sortPacks = getState().sort.sortPacks
+  const minValue = getState().sort.packMinValue
+  const maxValue = getState().sort.packMaxValue
+  cardPacksAPI.getPacks({user_id: user_id, pageCount: pageCount, sortPacks: sortPacks, page: currentPage, min: minValue, max: maxValue})
+      .then((res) => {
+        dispatch(setCardPacksAC(res.data))
+      })
 }
 export const postPacksTC = (data: CreatePackDataType): AppThunk => (dispatch) => {
   cardPacksAPI.postPacks(data)

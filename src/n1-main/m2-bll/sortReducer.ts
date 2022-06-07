@@ -1,76 +1,53 @@
-import {cardPacksAPI, PacksDataType} from "../m3-dal/cardPacks-api";
-import {AppThunk} from "./store";
-
-const SET_USER_PACKS = 'POST-PACKS'
-
 const initState = {
-  cardPacks: [
-    {
-      _id: '',
-      user_id: '',
-      name: '🇺🇦🇺🇦🇺🇦🇺🇦🇺🇦',
-      cardsCount: 1000,
-      created: '',
-      updated: '',
-      user_name: ''
-    },
-  ],
-  cardPacksTotalCount: 10,
-  // количество колод
-  maxCardsCount: 9,
-  minCardsCount: 3,
-  page: 1, // выбранная страница
-  pageCount: 10,
-
+    user_id: '',
+    sortPacks: '0updated',
+    packMinValue: 0,
+    packMaxValue: 3000
 } as InitStateType
 
-export const sortReducer = (state: InitStateType = initState , action: CardPacksType): InitStateType => {
-  switch (action.type) {
+export const sortReducer = (state: InitStateType = initState, action: SortReducerActionType): InitStateType => {
+    switch (action.type) {
 
-    case SET_USER_PACKS:
-      return {...action.data}
+        case 'SET-MY-ALL-FILTER':
+            return {...state, user_id: action.user_id}
 
-    default:
-      return state
-  }
+        case 'SET-UPDATED-FILTER':
+            return {...state, sortPacks: action.sortPacks}
+
+        case 'SET-RANGE-VALUE':
+            return {...state, packMinValue: action.payload.value1, packMaxValue: action.payload.value2 }
+
+        default:
+            return state
+    }
 }
 
 //actions
-export const getUserPacksAC = (data: InitStateType) => ({
-  type: SET_USER_PACKS,
-  data
+export const setMyAllFilterAC = (user_id: string) => ({
+    type: 'SET-MY-ALL-FILTER',
+    user_id
+} as const)
+
+export const setUpdatedFilterAC = (sortPacks: string) => ({
+    type: 'SET-UPDATED-FILTER',
+    sortPacks
+} as const)
+
+export const setRangeValueAC = (value1: number, value2: number) => ({
+    type: 'SET-RANGE-VALUE',
+    payload: {value1, value2}
 } as const)
 
 
-//thunk
-export const getUserPacksTC = (data: PacksDataType): AppThunk => (dispatch) => {
-  const pageCount = 10
-  cardPacksAPI.getPacks({user_id: data.user_id, pageCount: pageCount})
-    .then((res) => {
-      dispatch(getUserPacksAC(res.data))
-    })
-}
-
 //types
 export type InitStateType = {
-  cardPacks: [
-    {
-      _id: string
-      user_id: string
-      name: string
-      cardsCount: number
-      created: string
-      updated: string
-      user_name: string
-    },
-  ]
-  cardPacksTotalCount: number
-  // количество колод
-  maxCardsCount: number
-  minCardsCount: number
-  page: number // выбранная страница
-  pageCount: number
+    user_id: string
+    sortPacks: string
+    packMinValue: number
+    packMaxValue: number
 }
 
-export type CardPacksType =
-  | ReturnType<typeof getUserPacksAC>
+export type SortReducerActionType =
+    | ReturnType<typeof setMyAllFilterAC>
+    | ReturnType<typeof setUpdatedFilterAC>
+    | ReturnType<typeof setRangeValueAC>
