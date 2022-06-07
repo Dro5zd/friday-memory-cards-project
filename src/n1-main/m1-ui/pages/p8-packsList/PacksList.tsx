@@ -9,6 +9,7 @@ import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {CreatePackDataType, PacksDataType} from "../../../m3-dal/cardPacks-api";
 import {Pagination} from "../../common/c11-Pagination/Pagination";
 import {getUserPacksTC} from '../../../m2-bll/sortReducer';
+import {changePacksCurrentPageAC} from "../../../m2-bll/appReducer";
 
 export const PacksList = () => {
   const pack = useTypedSelector(state => state.packs)
@@ -43,84 +44,89 @@ export const PacksList = () => {
     dispatch(getCardPackTC())
   }
 
-  const changeCurrentPackPage = () => {
-
+  const changeCurrentPackPage = (page: number) => {
+    dispatch(changePacksCurrentPageAC(page))
+    dispatch(getCardPackTC())
   }
 
   return (
     <div className={s.container}>
       <div className={s.components}>
-        <div className={s.leftSide}>
-          <div className={s.buttonsWrapper}>
-            <div className={s.buttonsGroupSpan}>
-              <span>Show packs Cards</span>
+        <h2 className={s.packListTitle}>PACKS LIST</h2>
+        <div className={s.wrapper}>
+          <div className={s.leftSide}>
+            <div className={s.buttonsWrapper}>
+              <div className={s.buttonsGroupSpan}>
+                <span>Show packs Cards</span>
+              </div>
+              <div className={s.buttonsGroup}>
+                <SuperButton
+                  onClick={() => showMyPacksHandler({user_id: userId})}
+                  title={'MY'}
+                  className={s.myBtn}
+                />
+                <SuperButton
+                  onClick={showAllPacksHandler}
+                  title={'ALL'}
+                  className={s.allBtn}
+                />
+              </div>
             </div>
-            <div className={s.buttonsGroup}>
-              <SuperButton
-                onClick={() => showMyPacksHandler({user_id: userId})}
-                title={'MY'}
-                className={s.myBtn}
-              />
-              <SuperButton
-                onClick={showAllPacksHandler}
-                title={'ALL'}
-                className={s.allBtn}
-              />
+            <div className={s.rangeWrapper}>
+              <div className={s.rangeSpan}>
+                <span>Number of Cards</span>
+              </div>
+              <div className={s.valueContainer}>
+                <span>{`${value1} - ${value2}`}</span>
+              </div>
+              <div className={s.range}>
+                <SuperDoubleRange
+                  onChangeRange={onChangeDoubleInputRangeHandle}
+                  value={[value1, value2]}
+                  setValue1={setValue1}
+                  setValue2={setValue2}
+                  min={pack.minCardsCount}
+                  max={pack.maxCardsCount}
+                />
+              </div>
             </div>
-          </div>
-          <div className={s.rangeWrapper}>
-            <span>Number of Cards</span>
-            <div className={s.valueContainer}>
-              <span>{value1}</span>
-              <span>{' '}</span>
-              <span>{value2}</span>
-            </div>
-            <SuperDoubleRange
-              onChangeRange={onChangeDoubleInputRangeHandle}
-              value={[value1, value2]}
-              setValue1={setValue1}
-              setValue2={setValue2}
-              min={0}
-              max={100}
-            />
-          </div>
 
+          </div>
+          <div className={s.packsSide}>
+            <div className={s.searchContainer}>
+              <SuperInputText
+                onChange={onchangeAddPackNameHandler}
+                className={s.searchInput}
+              />
+              <SuperButton
+                value={packName}
+                onClick={() => createPackButtonHandler({cardsPack: {name: packName}})}
+                title={'ADD NEW PACK'}
+                className={s.searchButton}
+                disabled={packName === ''}
+              />
+            </div>
+
+            <div className={s.packsContainer}>
+              <div className={s.packListHeader}>
+                <div className={s.nameTitle}>Name</div>
+                <div className={s.cardsTitle}>Cards</div>
+                <div onClick={sortUpdatedHandler} className={s.updateTitle}>Last Updated</div>
+                <div className={s.userNameColumn}>Created by</div>
+                <div className={s.actionsTitle}>Actions</div>
+              </div>
+              <PackItem/>
+            </div>
+
+          </div>
         </div>
-        <div className={s.packsSide}>
-          <h4>PACKS LIST</h4>
-          <div className={s.searchContainer}>
-            <SuperInputText
-              onChange={onchangeAddPackNameHandler}
-              className={s.searchInput}
-            />
-            <SuperButton
-              value={packName}
-              onClick={() => createPackButtonHandler({cardsPack: {name: packName}})}
-              title={'ADD NEW PACK'}
-              className={s.searchButton}
-              disabled={packName === ''}
-            />
-          </div>
-
-          <div className={s.packsContainer}>
-            <div className={s.packListHeader}>
-              <div className={s.nameTitle}>Name</div>
-              <div className={s.cardsTitle}>Cards</div>
-              <div onClick={sortUpdatedHandler} className={s.updateTitle}>Last Updated</div>
-              <div className={s.userNameColumn}>Created by</div>
-              <div className={s.actionsTitle}>Actions</div>
-            </div>
-            <PackItem/>
-          </div>
-
-          <div className={s.paginationContainer}>
-            <Pagination
-              totalItemsCount={pack.cardPacksTotalCount}
-              pageSize={pack.pageCount}
-              currentPage={pack.page}
-              onPageChanged={changeCurrentPackPage}
-            />
-          </div>
+        <div className={s.paginationContainer}>
+          <Pagination
+            totalItemsCount={pack.cardPacksTotalCount}
+            pageSize={pack.pageCount}
+            currentPage={pack.page}
+            onPageChanged={changeCurrentPackPage}
+          />
         </div>
       </div>
     </div>

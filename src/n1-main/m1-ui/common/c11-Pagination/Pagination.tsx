@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s from './Pagination.module.css';
+import angleLeft from '../../../../assets/img/angleLeft.png'
+import angleRight from '../../../../assets/img/angleRight.png'
 
 interface IPagination {
     totalItemsCount: number;
@@ -35,7 +37,7 @@ export const Pagination: React.FC<IPagination> = ({
 
     return (
         <div className={s.paginationContainer}>
-            {portionNumber > 1 && <button onClick={changeToPreviousPage}>⇦</button>}
+            {portionNumber > 1 && <div onClick={changeToPreviousPage}><img className={s.angle} src={angleLeft} alt="angleLeft"/></div>}
             {pages
                 .filter((p) => p >= leftPortionNumber && p <= rightPortionNumber)
                 .map((p) => {
@@ -51,7 +53,7 @@ export const Pagination: React.FC<IPagination> = ({
                         </div>
                     );
                 })}
-            {portionCount > portionNumber && <button onClick={changeToNextPage}>⇨</button>}
+            {portionCount > portionNumber && <div onClick={changeToNextPage}><img className={s.angle} src={angleRight} alt="angleRight"/></div>}
         </div>
     );
 };

@@ -7,18 +7,19 @@
     /*background-color: #11eec5;*/
     border-radius: 10px;
     box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
-
 }
 
 .nameColumn {
     cursor: pointer;
     display: flex;
     align-items: center;
-    width: 205px;
+    width: 235px;
     height: 40px;
-    margin-right: 10px;
+    margin-right: 5px;
     padding-left: 10px;
     /*background-color: #eabd0b;*/
+    /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
+    /*border-radius: 10px 0 0 10px;*/
 }
 .userNameColumn {
     cursor: pointer;
@@ -27,38 +28,45 @@
     width: 205px;
     height: 40px;
     justify-content: center;
+    margin-right: 5px;
     /*background-color: #eabd0b;*/
+    /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
 }
 .cardsColumn {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 80px;
-    margin-right: 10px;
+    margin-right: 5px;
     /*background-color: #EABD0BFF;*/
+    /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
 }
 .updateColumn {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 150px;
-    margin-right: 10px;
+    margin-right: 5px;
     /*background-color: #EABD0BFF;*/
+    /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
 }
 .actionsColumn {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 280px;
+    width: 250px;
     /*background-color: #EABD0BFF;*/
+    /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
+    /*border-radius: 0 10px 10px 0;*/
 }
 
 
 .buttonBlock {
     justify-self: flex-end;
     display: flex;
-    width: 180px;
+    width: 200px;
     align-items: center;
+    /*background-color: #9f0000;*/
 }
 
 .buttonBlock button {

@@ -21,7 +21,16 @@
   justify-content: space-around;
   align-items: center;
   margin-top: 60px;
+  flex-direction: column;
   /*background-color: #ef7f0e;*/
+}
+
+.packListTitle {
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  display: flex;
 }
 
 .buttonsWrapper {
@@ -32,11 +41,6 @@
   justify-content: center;
 }
 
-.buttonsGroupSpan {
-  font-weight: bold;
-  margin-top: 40px;
-}
-
 .leftSide {
   height: 100%;
   width: 20%;
@@ -45,8 +49,29 @@
   box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
 }
 
+.range {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rangeWrapper {
+  margin-top: 100px;
+}
+
+.rangeSpan {
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.valueContainer {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
 .buttonsGroup {
-  margin-top: 25px;
+  margin-top: 50px;
   display: flex;
   justify-content: center;
 }
@@ -56,6 +81,11 @@
   height: 30px;
   width: 90px;
   border-radius: 10px;
+}
+
+.buttonsGroupSpan {
+  font-weight: bold;
+  margin-top: 100px;
 }
 
 .myBtn {
@@ -89,6 +119,7 @@
   width: 80%;
   /*background-color: #85d766;*/
   padding: 0 40px;
+  margin-bottom: 20px;
 }
 
 .searchContainer {
@@ -121,7 +152,7 @@
   display: flex;
   width: 100%;
   background-color: var(--bg);
-  box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
+  box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
   border-radius: 10px;
   margin-bottom: 8px;
   justify-content: center;
@@ -133,7 +164,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 220px;
+  width: 235px;
   margin-right: 10px;
   /*background-color: #430bea;*/
 }
@@ -170,6 +201,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 280px;
+  width: 250px;
   /*background-color: #430bea;*/
+}
+
+.paginationContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

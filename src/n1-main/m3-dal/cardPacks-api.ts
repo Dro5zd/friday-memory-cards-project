@@ -18,7 +18,6 @@ export const cardPacksAPI = {
   // sortUpdatePack(data: PacksDataType) {
   //   return instance.get(`cards/pack&sortPacks=1updated`, {params: data})
   // },
-
   postPacks(data: CreatePackDataType) {
     return instance.post(`cards/pack`, data)
   },

@@ -61,7 +61,7 @@ export const deletePacksTC = (packId: string): AppThunk => (dispatch) => {
     })
 }
 export const updatePacksTC = (data: UpdateCardsPackType): AppThunk => (dispatch) => {
-  cardPacksAPI.updatePacks(data)  /*{cardsPack: {_id: data.cardsPack._id, name: data.cardsPack.name}}*/
+  cardPacksAPI.updatePacks(data)
     .then((res) => {
       dispatch(getCardPackTC())
     })
