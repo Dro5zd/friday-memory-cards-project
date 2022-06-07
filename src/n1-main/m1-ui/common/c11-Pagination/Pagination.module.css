@@ -2,23 +2,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 550px;
+    min-width: 550px;
+    margin-top: 20px;
 }
 .paginationItem {
-    margin: 0 10px;
+    margin: 0 7px;
     cursor: pointer;
     font-size: 20px;
     font-weight: 300;
-    color: var(--greyDark);
+    color: var(--pagination);
 }
 .currentPage {
     cursor: pointer;
-    color: var(--textHover);
+    color: var(--textColor);
     font-weight: bolder;
     font-size: 20px;
     margin: 0 10px;
+    border: 1px solid var(--textHover);
+    border-radius: 3px;
 }
-
 .angle {
     height: 11px;
     margin: 0 25px;

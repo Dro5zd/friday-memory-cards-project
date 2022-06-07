@@ -35,14 +35,14 @@ export const Header = () => {
             {isAuthorised ?
                 <div className={s.wrapper}>
 
-                    <div className={s.headerButtons}>
-                        <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
-                            Packs List
-                        </NavLink>
-                        <NavLink to={PATH.CARDS_LIST} className={navData => navData.isActive ? s.active : s.link}>
-                            Cards List
-                        </NavLink>
-                    </div>
+                    {/*<div className={s.headerButtons}>*/}
+                    {/*    <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>*/}
+                    {/*        Packs List*/}
+                    {/*    </NavLink>*/}
+                    {/*    <NavLink to={PATH.CARDS_LIST} className={navData => navData.isActive ? s.active : s.link}>*/}
+                    {/*        Cards List*/}
+                    {/*    </NavLink>*/}
+                    {/*</div>*/}
 
                     <div className={s.headerItem}>
                         <NavLink to={PATH.PROFILE} className={navData => navData.isActive ? s.active : s.link}>

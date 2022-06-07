@@ -137,7 +137,7 @@
 
 .searchInput {
   margin: 0;
-  width: 700px;
+  width: 670px;
   height: 40px;
 }
 
@@ -184,7 +184,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 190px;
+  width: 210px;
   margin-right: 10px;
   cursor: pointer;
   /*background-color: #430bea;*/
@@ -195,7 +195,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 150px;
+  width: 170px;
   margin-right: 10px;
   cursor: pointer;
   /*background-color: #430bea;*/
@@ -205,7 +205,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 250px;
+  width: 200px;
   /*background-color: #430bea;*/
 }
 

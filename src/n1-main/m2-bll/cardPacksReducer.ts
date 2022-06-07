@@ -11,7 +11,7 @@ const initState = {
       name: '🇺🇦🇺🇦🇺🇦🇺🇦🇺🇦',
       cardsCount: 1,
       created: '',
-      updated: '',
+      updated: 'Date.now()',
       user_name: '',
     },
   ],

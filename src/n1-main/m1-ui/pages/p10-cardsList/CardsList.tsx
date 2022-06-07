@@ -8,6 +8,8 @@ import {useParams} from "react-router-dom";
 import SuperButton from "../../common/c2-SuperButton/SuperButton";
 import {Pagination} from "../../common/c11-Pagination/Pagination";
 import {changeCardsCurrentPageAC} from "../../../m2-bll/appReducer";
+import {setUpdateCardFilterAC, setUpdatedFilterAC} from "../../../m2-bll/sortReducer";
+import {getCardPackTC} from "../../../m2-bll/cardPacksReducer";
 
 export const CardsList = () => {
   const {urlCardsPackId} = useParams<string>();
@@ -15,6 +17,7 @@ export const CardsList = () => {
   const cards = useTypedSelector(state => state.cards);
   const userId = useTypedSelector<string>(state => state.auth._id);
   const packUserId = useTypedSelector<string>(state => state.cards.packUserId)
+  const sortCards = useTypedSelector<string>(state => state.sort.sortCards)
   const isOwner = userId === packUserId
 
   useEffect(() => {
@@ -39,6 +42,13 @@ export const CardsList = () => {
     urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
   };
 
+  const sortUpdatedCardsHandler = (value: string) => {
+    sortCards === `0${value}`
+      ? dispatch(setUpdateCardFilterAC(`1${value}`))
+      : dispatch(setUpdateCardFilterAC(`0${value}`))
+    urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
+  }
+
   return (
     <div className={s.container}>
       <div className={s.components}>
@@ -56,7 +66,7 @@ export const CardsList = () => {
               <div className={s.nameTitle}>Question</div>
               <div className={s.nameTitle}>Answer</div>
               <div className={s.updateTitle}>Last Updated</div>
-              <div className={s.gradeTitle}>Grade</div>
+              <div onClick={() => sortUpdatedCardsHandler('grade')} className={s.gradeTitle}>Grade</div>
               <div className={s.actionsTitle}>Actions</div>
             </div>
             {cards.cards.map((card) => {

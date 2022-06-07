@@ -25,10 +25,10 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    width: 205px;
+    width: 235px;
     height: 40px;
     justify-content: center;
-    margin-right: 5px;
+    /*margin-right: 10px;*/
     /*background-color: #eabd0b;*/
     /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
 }
@@ -37,7 +37,7 @@
     align-items: center;
     justify-content: center;
     width: 80px;
-    margin-right: 5px;
+    /*margin-right: 5px;*/
     /*background-color: #EABD0BFF;*/
     /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
 }
@@ -45,8 +45,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 150px;
-    margin-right: 5px;
+    width: 170px;
+    /*margin-right: 5px;*/
     /*background-color: #EABD0BFF;*/
     /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
 }
@@ -54,19 +54,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 250px;
+    width: 200px;
     /*background-color: #EABD0BFF;*/
-    /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
-    /*border-radius: 0 10px 10px 0;*/
 }
 
 
 .buttonBlock {
-    justify-self: flex-end;
+    /*justify-self: flex-end;*/
     display: flex;
-    width: 200px;
+    width: 130px;
     align-items: center;
+    justify-content: space-between;
     /*background-color: #9f0000;*/
+    /*margin-left: 60px;*/
 }
 
 .buttonBlock button {
@@ -76,40 +76,50 @@
     border-radius: 10px;
 }
 
-.packEditButton {
-    background: none;
-    color: var(--greyDark);
+
+.packEditIcon {
+    width: 18px;
+}
+.packDeleteIcon {
+    width: 18px;
+}
+.packLearnIcon {
+    width: 18px;
+}
+
+.editeWrapper {
+    width: 30px;
+    height: 30px;
     box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
-
-.packEditButton:hover {
-    color: var(--textHover);
-}
-
-.packEditButton:active {
+.editeWrapper:active {
     box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);
 }
-
-.packDeleteButton {
-    width: 78px;
-    background-color: firebrick;
-    box-shadow: 0.03rem 0.03rem 0.03rem #ab1800, -0.03rem -0.03rem 0.03rem #9f0000;
-}
-
-.packDeleteButton:active {
-    background-color: #d70000;
-    box-shadow: inset .3rem .3rem .3rem #a20000, inset -.3rem -.3rem .3rem #c03400;
-}
-
-.packDeleteButton:hover {
-    color: var(--white);
-}
-
-.packLearnButton {
-    width: 69px;
+.deleteWrapper {
+    width: 30px;
+    height: 30px;
     box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
-
-.packLearnButton:hover {
-    color: var(--white);
+.deleteWrapper:active {
+    box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);
+}
+.learnWrapper {
+    width: 30px;
+    height: 30px;
+    box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.learnWrapper:active {
+    box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);
 }

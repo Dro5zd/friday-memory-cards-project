@@ -2,7 +2,8 @@ const initState = {
     user_id: '',
     sortPacks: '0updated',
     packMinValue: 0,
-    packMaxValue: 3000
+    packMaxValue: 3000,
+    sortCards: ''
 } as InitStateType
 
 export const sortReducer = (state: InitStateType = initState, action: SortReducerActionType): InitStateType => {
@@ -13,6 +14,9 @@ export const sortReducer = (state: InitStateType = initState, action: SortReduce
 
         case 'SET-UPDATED-FILTER':
             return {...state, sortPacks: action.sortPacks}
+
+        case 'SET-UPDATED-CARD-FILTER':
+            return {...state, sortCards: action.sortCards}
 
         case 'SET-RANGE-VALUE':
             return {...state, packMinValue: action.payload.value1, packMaxValue: action.payload.value2 }
@@ -33,6 +37,11 @@ export const setUpdatedFilterAC = (sortPacks: string) => ({
     sortPacks
 } as const)
 
+export const setUpdateCardFilterAC = (sortCards: string) => ({
+    type: 'SET-UPDATED-CARD-FILTER',
+    sortCards
+} as const)
+
 export const setRangeValueAC = (value1: number, value2: number) => ({
     type: 'SET-RANGE-VALUE',
     payload: {value1, value2}
@@ -45,9 +54,11 @@ export type InitStateType = {
     sortPacks: string
     packMinValue: number
     packMaxValue: number
+    sortCards: string
 }
 
 export type SortReducerActionType =
     | ReturnType<typeof setMyAllFilterAC>
     | ReturnType<typeof setUpdatedFilterAC>
     | ReturnType<typeof setRangeValueAC>
+    | ReturnType<typeof setUpdateCardFilterAC>
