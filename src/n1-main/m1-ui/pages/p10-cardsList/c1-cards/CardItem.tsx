@@ -9,6 +9,7 @@ import learn from "../../../../../assets/img/bookOpen.png";
 import learnWhite from "../../../../../assets/img/bookOpenWhite.png";
 import trash from "../../../../../assets/img/trash.png";
 import trashWhite from "../../../../../assets/img/trashWhite.png";
+import moment from 'moment';
 
 type CardItemType = {
   card: CardType;
@@ -25,7 +26,7 @@ export const CardItem: React.FC<CardItemType> = ({card, deleteCard, updateCard, 
       <div className={s.cardItemContainer}>
         <div className={s.questionColumn}>{card.question}</div>
         <div className={s.answerColumn}>{card.answer}</div>
-        <div className={s.updateColumn}>{card.updated}</div>
+        <div className={s.updateColumn}>{moment(card.updated).format( 'MM.DD.YYYY, HH:mm')}</div>
         <div className={s.gradeColumn}><MainRating value={card.grade} addRating={() => {}}/></div>
         <div className={s.buttonBlock}>
           <div className={s.learnWrapper} onClick={() => {}}>

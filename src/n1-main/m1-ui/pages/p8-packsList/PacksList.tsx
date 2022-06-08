@@ -35,6 +35,7 @@ export const PacksList = () => {
         setPackName(e.currentTarget.value)
     }
     const createPackButtonHandler = (data: CreatePackDataType) => {
+        dispatch(changePacksCurrentPageAC(1))
         dispatch(postPacksTC(data))
     }
     const showMyPacksHandler = () => {
@@ -133,7 +134,10 @@ export const PacksList = () => {
                                 </div>
                                 <div className={s.actionsTitle}>Actions</div>
                             </div>
-                            <PackItem/>
+                            <div className={s.packItem}>
+                                <PackItem />
+                            </div>
+
                         </div>
 
                     </div>

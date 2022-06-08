@@ -65,6 +65,7 @@
     width: 130px;
     align-items: center;
     justify-content: space-between;
+    flex-direction: row-reverse;
     /*background-color: #9f0000;*/
     /*margin-left: 60px;*/
 }
@@ -81,7 +82,7 @@
     width: 18px;
 }
 .packDeleteIcon {
-    width: 18px;
+    width: 15px;
 }
 .packLearnIcon {
     width: 18px;

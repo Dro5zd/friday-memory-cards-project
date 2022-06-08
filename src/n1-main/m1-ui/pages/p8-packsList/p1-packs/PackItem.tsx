@@ -10,6 +10,7 @@ import edit from '../../../../../assets/img/sliders.png'
 import editWhite from '../../../../../assets/img/slidersWhite.png'
 import learn from '../../../../../assets/img/bookOpen.png'
 import learnWhite from '../../../../../assets/img/bookOpenWhite.png'
+import moment from 'moment';
 
 export const PackItem = () => {
   const navigate = useNavigate()
@@ -34,6 +35,7 @@ export const PackItem = () => {
     navigate('/cards-list/' + packId)
   }
 
+
   return (
     <div>
       {
@@ -43,7 +45,7 @@ export const PackItem = () => {
                 <div onClick={() => openCardsListHandler(pack._id)} className={s.nameColumn}><span>{pack.name}</span>
                 </div>
                 <div className={s.cardsColumn}><span>{pack.cardsCount}</span></div>
-                <div className={s.updateColumn}><span>{pack.created}</span></div>
+                <div className={s.updateColumn}><span>{moment(pack.created).format( 'MM.DD.YYYY, HH:mm')}</span></div>
                 <div className={s.userNameColumn}>{pack.user_name}</div>
                 <div className={s.actionsColumn}>
                   <div className={s.buttonBlock}>
