@@ -24,4 +24,5 @@
 .angle {
     height: 11px;
     margin: 0 25px;
+    cursor: pointer;
 }
