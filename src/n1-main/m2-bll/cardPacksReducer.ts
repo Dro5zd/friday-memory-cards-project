@@ -1,6 +1,5 @@
 import {cardPacksAPI, CreatePackDataType, UpdateCardsPackType} from "../m3-dal/cardPacks-api";
 import {AppThunk} from "./store";
-import {setPackNameValue} from './sortReducer';
 
 const SET_PACKS = 'POST-PACKS'
 
@@ -75,7 +74,7 @@ export const updatePacksTC = (data: UpdateCardsPackType): AppThunk => (dispatch)
 }
 
 //types
-type CardPackType = {
+export type CardPackType = {
   _id: string
   user_id: string
   name: string

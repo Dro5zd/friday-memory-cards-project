@@ -1,7 +1,7 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import s from './packItem.module.css';
 import {useTypedDispatch, useTypedSelector} from "../../../../m2-bll/store";
-import {deletePacksTC, getCardPackTC, updatePacksTC} from "../../../../m2-bll/cardPacksReducer";
+import {CardPackType, deletePacksTC, updatePacksTC} from "../../../../m2-bll/cardPacksReducer";
 import {useNavigate} from "react-router-dom";
 import {UpdateCardsPackType} from "../../../../m3-dal/cardPacks-api";
 import trash from '../../../../../assets/img/trash.png'
@@ -12,10 +12,8 @@ import learn from '../../../../../assets/img/bookOpen.png'
 import learnWhite from '../../../../../assets/img/bookOpenWhite.png'
 import moment from 'moment';
 
-export const PackItem = () => {
+export const PackItem: React.FC<PackItemType> = ({pack, userId}) => {
   const navigate = useNavigate()
-  const pack = useTypedSelector(state => state.packs.cardPacks)
-  const userId = useTypedSelector(state => state.auth._id)
   const dispatch = useTypedDispatch()
   const mode = useTypedSelector(state => state.ui.mode)
 
@@ -31,13 +29,9 @@ export const PackItem = () => {
     navigate('/cards-list/' + packId)
   }
 
-
   return (
     <div>
-      {
-        pack.map((pack) => {
-            return (
-              <div key={pack.created} className={s.packItemContainer}>
+              <div className={s.packItemContainer}>
                 <div onClick={() => openCardsListHandler(pack._id)} className={s.nameColumn}><span>{pack.name}</span>
                 </div>
                 <div className={s.cardsColumn}><span>{pack.cardsCount}</span></div>
@@ -61,10 +55,12 @@ export const PackItem = () => {
                   </div>
                 </div>
               </div>
-            )
-          }
-        )
-      }
     </div>
   );
 };
+
+//type
+type PackItemType = {
+  pack: CardPackType
+  userId: string
+}

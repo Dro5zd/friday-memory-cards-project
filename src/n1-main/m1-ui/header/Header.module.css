@@ -88,12 +88,12 @@
 
 .avatar {
     display: flex;
-    height: 60px;
+    height: 50px;
     margin-right: 75px;
 }
 
 .avatar img {
-    height: 56px;
+    height: 45px;
     border-radius: 50%;
     margin-left: 8px;
     border: 2px var(--textColor) solid;

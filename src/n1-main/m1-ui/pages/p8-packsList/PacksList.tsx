@@ -36,9 +36,7 @@ export const PacksList = () => {
         setValue1(nums[0])
         setValue2(nums[1])
     }
-    // const onchangeAddPackNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    //     setPackName(e.currentTarget.value)
-    // }
+
     const createPackButtonHandler = (data: CreatePackDataType) => {
         dispatch(changePacksCurrentPageAC(1))
         dispatch(postPacksTC(data))
@@ -96,30 +94,6 @@ export const PacksList = () => {
                             <div className={s.buttonsGroupSpan}>
                                 <span>Show packs Cards</span>
                             </div>
-                            {/*<div className={s.buttonsGroup}>*/}
-                            {/*    <SuperButton*/}
-                            {/*        onClick={() => showMyPacksHandler()}*/}
-                            {/*        title={'MY'}*/}
-                            {/*        className={s.myBtn}*/}
-                            {/*    />*/}
-                            {/*    <SuperButton*/}
-                            {/*        onClick={showAllPacksHandler}*/}
-                            {/*        title={'ALL'}*/}
-                            {/*        className={s.allBtn}*/}
-                            {/*    />*/}
-                            {/*</div>*/}
-
-                            {/*<div className={s.segmentedControl}>*/}
-                            {/*    <label className={s.containerR}>My*/}
-                            {/*        <input type="radio" checked name="radio"/>*/}
-                            {/*            <span className={s.checkmark}></span>*/}
-                            {/*    </label>*/}
-                            {/*    <label className={s.containerR}>All*/}
-                            {/*        <input type="radio" name="radio"/>*/}
-                            {/*            <span className={s.checkmark}></span>*/}
-                            {/*    </label>*/}
-                            {/*    <div className={s.segmentedControlColor}></div>*/}
-                            {/*</div>*/}
 
                             <div className={s.segmentedControl}>
 
@@ -159,7 +133,6 @@ export const PacksList = () => {
                     </div>
                     <div className={s.packsSide}>
 
-
                         <div className={s.packsContainer}>
                             <div className={s.packListHeader}>
                                 <div className={s.nameTitle} onClick={() => sortUpdatedHandler('name')}>Name</div>
@@ -174,7 +147,9 @@ export const PacksList = () => {
                                 <div className={s.actionsTitle}>Actions</div>
                             </div>
                             <div className={s.packItem}>
-                                <PackItem/>
+                                {
+                                    pack.cardPacks.map(p => <PackItem userId={userId} pack={p} key={p._id}/>)
+                                }
                             </div>
 
                         </div>
