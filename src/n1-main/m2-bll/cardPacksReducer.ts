@@ -1,5 +1,6 @@
 import {cardPacksAPI, CreatePackDataType, UpdateCardsPackType} from "../m3-dal/cardPacks-api";
 import {AppThunk} from "./store";
+import {setPackNameValue} from './sortReducer';
 
 const SET_PACKS = 'POST-PACKS'
 
@@ -47,7 +48,9 @@ export const getCardPackTC = (): AppThunk => (dispatch, getState) => {
   const sortPacks = getState().sort.sortPacks
   const minValue = getState().sort.packMinValue
   const maxValue = getState().sort.packMaxValue
-  cardPacksAPI.getPacks({user_id: user_id, pageCount: pageCount, sortPacks: sortPacks, page: currentPage, min: minValue, max: maxValue})
+  const packName = getState().sort.packName
+  cardPacksAPI.getPacks({user_id: user_id, pageCount: pageCount, sortPacks: sortPacks,
+    page: currentPage, min: minValue, max: maxValue, packName: packName})
       .then((res) => {
         dispatch(setCardPacksAC(res.data))
       })

@@ -19,14 +19,22 @@
   padding: 4rem;
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  /*align-items: center;*/
   margin-top: 60px;
   flex-direction: column;
   /*background-color: #ef7f0e;*/
 }
 
+.header{
+  display: flex;
+  width: 100%;
+  /*background-color: #e71010;*/
+  justify-content: space-between;
+  align-items: center;
+}
+
 .packListTitle {
-  margin-bottom: 20px;
+
 }
 
 .wrapper {
@@ -42,11 +50,11 @@
 }
 
 .leftSide {
-  height: 100%;
+  height: 500px;
   width: 20%;
-  border-radius: 2rem;
+  border-radius: 10px;
   background-color: var(--bg);
-  box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
+  box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
 }
 
 .range {
@@ -133,12 +141,13 @@
 .searchButton {
   width: 220px;
   height: 40px;
+  margin-left: 20px;
   border-radius: 10px;
 }
 
 .searchInput {
   margin: 0;
-  width: 670px;
+  width: 450px;
   height: 40px;
   border-radius: 10px;
 }
@@ -153,12 +162,12 @@
 .packListHeader {
   display: flex;
   width: 100%;
+
   background-color: var(--bg);
   box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
   border-radius: 10px;
-  margin-bottom: 8px;
+  /*margin-bottom: 8px;*/
   /*justify-content: center;*/
-  /*background-color: #9f0000;*/
   height: 50px;
 }
 
@@ -166,7 +175,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 290px;
+  width: 370px;
   margin-right: 10px;
   cursor: pointer;
   /*background-color: #430bea;*/
@@ -220,3 +229,167 @@
 .packItem span:nth-child(n+2) {
   background-color: #d90909;
 }
+
+
+
+
+.segmentedControl {
+  width: 240px;
+  height: 4rem;
+  box-shadow: .3rem .3rem .6rem var(--greyLight-2),
+  -.2rem -.2rem .5rem var(--white);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.segmentedControl input {
+  /*display: none;*/
+}
+
+.segmentedControl > input:checked + label {
+  transition: all 0.5s ease;
+  color: var(--primary);
+}
+
+.segmentedControl1, .segmentedControl2 {
+  width: 6.8rem;
+  height: 3.6rem;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: #fff;
+  color: var(--primary);
+  transition: all 0.5s ease;
+}
+
+.segmentedControl1:hover p, .segmentedControl2:hover p {
+  color: var(--primary);
+}
+
+
+#radio:checked .segmentedControl1 p {
+  color: red;
+}
+
+
+
+
+.segmentedControlColor {
+  position: absolute;
+  height: 3.4rem;
+  width: 6.2rem;
+  margin-left: 0.3rem;
+  border-radius: 0.8rem;
+  box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
+  pointer-events: none;
+}
+
+#tab-1:checked ~ .segmentedControlColor {
+  transform: translateX(0);
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+#tab-2:checked ~ .segmentedControlColor {
+  transform: translateX(6.8rem);
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+
+
+
+
+/* The container */
+.containerR {
+  /*!*display: flex;*!*/
+  /*!*position: absolute;*!*/
+  /*padding-left: 35px;*/
+  /*margin-bottom: 12px;*/
+  /*!*cursor: pointer;*!*/
+  /*!*font-size: 22px;*!*/
+  /*-webkit-user-select: none;*/
+  /*-moz-user-select: none;*/
+  /*-ms-user-select: none;*/
+  /*user-select: none;*/
+
+  width: 6.8rem;
+  height: 3.6rem;
+  font-size: 1.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--white);
+  transition: all 0.5s ease;
+}
+
+/* Hide the browser's default radio button */
+.containerR input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  height: 3.4rem;
+  width: 6.2rem;
+  margin-left: 0.3rem;
+  border-radius: 0.8rem;
+  color: white;
+  /*box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);*/
+  pointer-events: none;
+}
+
+
+/* On mouse-over, add a grey background color */
+.containerR:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.containerR input:checked ~ .segmentedControlColor {
+  transform: translateX(6.8rem);
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  /*background-color: var(--primary);*/
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+
+.segmentedControlColor:after {
+  transform: translateX(6.8rem);
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+
+.containerR input:checked ~ .segmentedControlColor:after {
+  transform: translateX(6.8rem);
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  /*display: block;*/
+}
+
+.containerR input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.containerR .checkmark:after {
+  top: 9px;
+  left: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+

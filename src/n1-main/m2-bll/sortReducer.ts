@@ -6,6 +6,7 @@ const initState = {
     packMaxValue: 150,
     cardsQuestionValue: '',
     cardsAnswerValue: '',
+    packName: ''
 } as InitStateType
 
 export const sortReducer = (state: InitStateType = initState, action: SortReducerActionType): InitStateType => {
@@ -22,6 +23,8 @@ export const sortReducer = (state: InitStateType = initState, action: SortReduce
             return {...state, cardsQuestionValue: action.searchValue};
         case "SET-CARDS-ANSWER-VALUE":
             return {...state, cardsAnswerValue: action.searchValue}
+        case "SET-PACK-NAME-VALUE":
+            return {...state, packName: action.searchValue}
         default:
             return state;
     }
@@ -46,8 +49,10 @@ export const setRangeValueAC = (value1: number, value2: number) => ({
     type: 'SET-RANGE-VALUE',
     payload: {value1, value2}
 } as const)
+
 export const setCardsQuestionValue = (searchValue: string) => ({type: 'SET-CARDS-QUESTION-VALUE', searchValue} as const);
 export const setCardsAnswerValue = (searchValue: string) => ({type: 'SET-CARDS-ANSWER-VALUE', searchValue} as const);
+export const setPackNameValue = (searchValue: string) => ({type: 'SET-PACK-NAME-VALUE', searchValue} as const);
 
 
 //types
@@ -59,6 +64,7 @@ export type InitStateType = {
     sortCards: string;
     cardsQuestionValue: string;
     cardsAnswerValue: string;
+    packName?: string,
 }
 
 export type SortReducerActionType =
@@ -68,3 +74,4 @@ export type SortReducerActionType =
     | ReturnType<typeof setCardsQuestionValue>
     | ReturnType<typeof setCardsAnswerValue>
     | ReturnType<typeof setUpdateCardFilterAC>
+    | ReturnType<typeof setPackNameValue>

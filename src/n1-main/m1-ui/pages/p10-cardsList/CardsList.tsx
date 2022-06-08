@@ -24,13 +24,14 @@ export const CardsList = () => {
     const isOwner = userId === packUserId
     const sortCards = useTypedSelector<string>(state => state.sort.sortCards)
     const mode = useTypedSelector(state => state.ui.mode)
+    const question = useTypedSelector(state => state.sort.cardsQuestionValue)
     const navigate = useNavigate()
 
     useEffect(() => {
         if (urlCardsPackId) {
             dispatch(getCardsTC(urlCardsPackId))
         }
-    }, [dispatch, urlCardsPackId]);
+    }, [dispatch, urlCardsPackId, question]);
 
     const deleteCard = (cardId: string, packId: string) => {
         dispatch(deleteCardTC(cardId, packId))
@@ -49,7 +50,7 @@ export const CardsList = () => {
     };
     const debounceHandler = (text: string) => {
         dispatch(setCardsQuestionValue(text))
-        urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
+        // urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
     };
   const sortUpdatedCardsHandler = (value: string) => {
     sortCards === `0${value}`
@@ -69,7 +70,7 @@ export const CardsList = () => {
                    </div>
                     <h2 className={s.cardListTitle}>CARDS LIST</h2>
                     <div className={s.searchContainer}>
-                        <DebounceSearch className={s.searchInput} delay={2000} callback={debounceHandler}/>
+                        <DebounceSearch className={s.searchInput} delay={1500} callback={debounceHandler}/>
                         {/*<SuperInputText className={s.searchInput}/>*/}
                         {/*<SuperButton title={'Question'} className={s.searchButton}/>*/}
                         <SuperInputText placeholder={'Search...'} className={s.searchInput}/>

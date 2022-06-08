@@ -19,10 +19,6 @@ export const PackItem = () => {
   const dispatch = useTypedDispatch()
   const mode = useTypedSelector(state => state.ui.mode)
 
-  useEffect(() => {
-    dispatch(getCardPackTC())
-  }, [dispatch])
-
   const deleteHandler = (id: string) => {
     dispatch(deletePacksTC(id))
   }

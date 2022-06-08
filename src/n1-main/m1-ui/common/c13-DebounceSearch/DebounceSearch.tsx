@@ -17,7 +17,7 @@ export const DebounceSearch: React.FC<IDebounceSearch> = React.memo(({callback, 
     useEffect(() => {
         if (debouncedSearchValue) {
             callback(debouncedSearchValue)
-        }
+        } callback(debouncedSearchValue)
     }, [debouncedSearchValue])
 
     return (
