@@ -13,7 +13,7 @@ import {
 } from '../../../m2-bll/sortReducer';
 import {changePacksCurrentPageAC} from '../../../m2-bll/appReducer';
 import {DebounceSearch} from '../../common/c13-DebounceSearch/DebounceSearch';
-import {PacksContainer} from '../../common/c14-PackContainer/PacksContainer';
+import {PacksContainer} from './p1-packs/PackContainer/PacksContainer';
 
 export const PacksList = () => {
     const pack = useTypedSelector(state => state.packs)

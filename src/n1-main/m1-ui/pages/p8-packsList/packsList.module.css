@@ -33,9 +33,6 @@
   align-items: center;
 }
 
-.packListTitle {
-
-}
 
 .wrapper {
   display: flex;
@@ -153,86 +150,13 @@
   border-radius: 10px;
 }
 
-.packsContainer {
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.packListHeader {
-  display: flex;
-  width: 100%;
-
-  background-color: var(--bg);
-  box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
-  border-radius: 10px;
-  /*margin-bottom: 8px;*/
-  /*justify-content: center;*/
-  height: 50px;
-}
-
-.nameTitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 370px;
-  margin-right: 10px;
-  cursor: pointer;
-  /*background-color: #430bea;*/
-}
-
-.cardsTitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 70px;
-  margin-right: 10px;
-  cursor: pointer;
-  /*background-color: #430bea;*/
-}
-
-.userNameColumn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 240px;
-  margin-right: 10px;
-  cursor: pointer;
-  /*background-color: #430bea;*/
-}
-
-
-.updateTitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 160px;
-  margin-right: 10px;
-  cursor: pointer;
-  /*background-color: #430bea;*/
-}
-
-.actionsTitle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 115px;
-  /*background-color: #430bea;*/
-}
-
 .paginationContainer {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.packItem span:nth-child(n+2) {
-  background-color: #d90909;
-}
-
-
-
+/*//////////////////////////////////////////////////////////*/
 
 .segmentedControl {
   width: 240px;

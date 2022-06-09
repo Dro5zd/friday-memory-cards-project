@@ -83,82 +83,8 @@
     border-radius: 10px;
 }
 
-.packsContainer{
-    height: 500px;
-    display: flex;
-    flex-direction: column;
-    /*background-color: #577aab;*/
-}
-
-.packListHeader {
-    display: flex;
-    width: 100%;
-    background-color: var(--bg);
-    box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
-    /*justify-content: space-around;*/
-    border-radius: 10px;
-    margin-bottom: 8px;
-    height: 50px;
-}
-
-.questionColumn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 465px;
-    /*height: 40px;*/
-    /*background-color: gray;*/
-}
-
-.answerTitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 455px;
-    /*height: 40px;*/
-    /*background-color: green;*/
-}
-
-.updateTitle {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 130px;
-    /*background-color: #430bea;*/
-}
-
-.gradeTitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 120px;
-    cursor: pointer;
-    /*background-color: #6d5dfc;*/
-}
-
-.actionsTitle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 130px;
-    /*background-color: #430bea;*/
-}
-
 .paginationContainer {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-
-/*.cardsListHeader {*/
-/*    display: flex;*/
-/*    width: 1000px;*/
-/*    justify-content: space-between;*/
-/*    margin-bottom: 20px;*/
-/*}*/
-
-/*.titles {*/
-/*    width: 180px;*/
-/*}*/

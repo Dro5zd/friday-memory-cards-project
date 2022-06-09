@@ -15,8 +15,6 @@
   background-color: var(--bg);
   box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
   border-radius: 10px;
-  /*margin-bottom: 8px;*/
-  /*justify-content: center;*/
   height: 50px;
 }
 
@@ -27,7 +25,6 @@
   width: 370px;
   margin-right: 10px;
   cursor: pointer;
-  /*background-color: #430bea;*/
 }
 
 .cardsTitle {
@@ -37,7 +34,6 @@
   width: 70px;
   margin-right: 10px;
   cursor: pointer;
-  /*background-color: #430bea;*/
 }
 
 .updateTitle {
@@ -47,7 +43,6 @@
   width: 160px;
   margin-right: 10px;
   cursor: pointer;
-  /*background-color: #430bea;*/
 }
 
 .creatorTitle {
@@ -57,7 +52,6 @@
   width: 240px;
   margin-right: 10px;
   cursor: pointer;
-  /*background-color: #430bea;*/
 }
 
 .actionsTitle {
@@ -65,11 +59,10 @@
   align-items: center;
   justify-content: center;
   width: 115px;
-  /*background-color: #430bea;*/
 }
 
-.packItem:nth-child(n+2) {
-  background-color: #d90909;
+tbody tr:nth-child(odd) {
+  background-color: var(--shadow-1);
 }
 
 

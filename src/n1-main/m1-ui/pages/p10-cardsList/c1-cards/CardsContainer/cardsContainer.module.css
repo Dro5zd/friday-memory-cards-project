@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+}
+
+.packsContainer{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.packListHeader {
+    display: flex;
+    width: 100%;
+    background-color: var(--bg);
+    box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    height: 50px;
+}
+
+.questionTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 465px;
+}
+
+.answerTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 455px;
+    /*height: 40px;*/
+    /*background-color: green;*/
+}
+
+.updateTitle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    /*background-color: #430bea;*/
+}
+
+.gradeTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    cursor: pointer;
+    /*background-color: #6d5dfc;*/
+}
+
+.actionsTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 130px;
+    /*background-color: #430bea;*/
+}
+
+tbody tr:nth-child(odd) {
+    background-color: var(--shadow-1);
+}
