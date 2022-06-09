@@ -91,16 +91,11 @@ export const PacksList = () => {
                             </div>
 
                             <div className={s.segmentedControl}>
+                                <input type="radio" name="radio"  id="tab1" checked/>
+                                <label htmlFor="tab1" className={s.segmentedControlItem1} onClick={showAllPacksHandler}>ALL</label>
 
-                                <label htmlFor="tab-2" className={s.segmentedControl2} onClick={showAllPacksHandler}>
-                                    <input type="radio" name="radio2" value="4" id="tab-2" checked/>
-                                    <p>All</p></label>
-
-
-                                <label htmlFor="tab-1" className={s.segmentedControl1}  onClick={() => showMyPacksHandler()}>
-                                    <input type="radio" name="radio2" value="3" id="tab-1" />
-                                    <p>My</p>
-                                </label>
+                                <input type="radio" name="radio"  id="tab2" />
+                                <label htmlFor="tab2" className={s.segmentedControlItem2} onClick={showMyPacksHandler}>MY</label>
                                 <div className={s.segmentedControlColor}></div>
                             </div>
 

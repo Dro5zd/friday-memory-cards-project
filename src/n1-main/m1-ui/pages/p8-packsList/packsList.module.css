@@ -43,11 +43,12 @@
   margin-bottom: 40px;
   width: 250px;
   height: 150px;
-  justify-content: center;
+  align-items: center;
 }
 
 .leftSide {
   height: 500px;
+  justify-content: center;
   width: 20%;
   border-radius: 10px;
   background-color: var(--bg);
@@ -159,7 +160,7 @@
 /*//////////////////////////////////////////////////////////*/
 
 .segmentedControl {
-  width: 240px;
+  width: 220px;
   height: 4rem;
   box-shadow: .3rem .3rem .6rem var(--greyLight-2),
   -.2rem -.2rem .5rem var(--white);
@@ -170,7 +171,7 @@
 }
 
 .segmentedControl input {
-  /*display: none;*/
+  display: none;
 }
 
 .segmentedControl > input:checked + label {
@@ -178,7 +179,7 @@
   color: var(--primary);
 }
 
-.segmentedControl1, .segmentedControl2 {
+.segmentedControlItem1, .segmentedControlItem2 {
   width: 6.8rem;
   height: 3.6rem;
   font-size: 1.4rem;
@@ -186,22 +187,14 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  background-color: #fff;
-  color: var(--primary);
+  /*background-color: #fff;*/
+  /*color: var(--primary);*/
   transition: all 0.5s ease;
 }
 
-.segmentedControl1:hover p, .segmentedControl2:hover p {
+.segmentedControlItem1:hover, .segmentedControlItem2:hover {
   color: var(--primary);
 }
-
-
-#radio:checked .segmentedControl1 p {
-  color: red;
-}
-
-
-
 
 .segmentedControlColor {
   position: absolute;
@@ -211,110 +204,11 @@
   border-radius: 0.8rem;
   box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);
   pointer-events: none;
+  transition: 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-#tab-1:checked ~ .segmentedControlColor {
-  transform: translateX(0);
-  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-#tab-2:checked ~ .segmentedControlColor {
-  transform: translateX(6.8rem);
-  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+input[id='tab2']:checked ~ .segmentedControlColor{
+    transform: translateX(6.8rem);
 }
 
-
-
-
-
-/* The container */
-.containerR {
-  /*!*display: flex;*!*/
-  /*!*position: absolute;*!*/
-  /*padding-left: 35px;*/
-  /*margin-bottom: 12px;*/
-  /*!*cursor: pointer;*!*/
-  /*!*font-size: 22px;*!*/
-  /*-webkit-user-select: none;*/
-  /*-moz-user-select: none;*/
-  /*-ms-user-select: none;*/
-  /*user-select: none;*/
-
-  width: 6.8rem;
-  height: 3.6rem;
-  font-size: 1.4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  color: var(--white);
-  transition: all 0.5s ease;
-}
-
-/* Hide the browser's default radio button */
-.containerR input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Create a custom radio button */
-.checkmark {
-  position: absolute;
-  justify-content: center;
-  align-items: center;
-  height: 3.4rem;
-  width: 6.2rem;
-  margin-left: 0.3rem;
-  border-radius: 0.8rem;
-  color: white;
-  /*box-shadow: inset 0.2rem 0.2rem 0.5rem var(--greyLight-2), inset -0.2rem -0.2rem 0.5rem var(--white);*/
-  pointer-events: none;
-}
-
-
-/* On mouse-over, add a grey background color */
-.containerR:hover input ~ .checkmark {
-  background-color: #ccc;
-}
-
-/* When the radio button is checked, add a blue background */
-.containerR input:checked ~ .segmentedControlColor {
-  transform: translateX(6.8rem);
-  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  /*background-color: var(--primary);*/
-}
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-
-.segmentedControlColor:after {
-  transform: translateX(6.8rem);
-  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-
-.containerR input:checked ~ .segmentedControlColor:after {
-  transform: translateX(6.8rem);
-  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
-  /*display: block;*/
-}
-
-.containerR input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* Style the indicator (dot/circle) */
-.containerR .checkmark:after {
-  top: 9px;
-  left: 9px;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: white;
-}
 

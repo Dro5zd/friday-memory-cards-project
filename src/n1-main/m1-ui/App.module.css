@@ -35,7 +35,7 @@
   --bg: var(--greyLight-1);
   --shadow-1: var(--greyLight-2);
   --shadow-2: var(--white);
-  --shadow-3: #8abdff;
+  --shadow-3: var(--primary-light);
   --shadow-4: var(--primary-dark);
   --shadow-5: #53596e;
   --textColor: var(--greyDark-2);
@@ -43,7 +43,6 @@
   --checboxColor: var(--greyDark);
   --packItem: rgba(192, 200, 220, 0.3);
 }
-
 
 .App {
   text-align: center;
