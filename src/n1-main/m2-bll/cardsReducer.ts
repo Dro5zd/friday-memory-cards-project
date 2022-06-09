@@ -1,5 +1,6 @@
 import {AppThunk} from "./store";
 import {cardsAPI, PostCardDataType} from "../m3-dal/cards-api";
+import {serverErrorHandler} from "../utils/serverErrorHandler";
 
 const initialState = {
     cards: [
@@ -83,7 +84,7 @@ export const createNewCardTC = (newCard: PostCardDataType): AppThunk => async (d
         await cardsAPI.postCard(newCard)
         dispatch(getCardsTC(packId))
     } catch (e: any) {
-        console.log(e.response.data.error)
+        serverErrorHandler(e.response.data.error, dispatch)
     }
 }
 export const deleteCardTC = (id: string, packId: string): AppThunk => async (dispatch) => {
