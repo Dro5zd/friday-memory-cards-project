@@ -1,8 +1,8 @@
-import React, {ChangeEvent, useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './packsList.module.css'
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
-import {PackItem} from './p1-packs/PackItem';
+
 import {getCardPackTC, postPacksTC} from '../../../m2-bll/cardPacksReducer';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {CreatePackDataType} from '../../../m3-dal/cardPacks-api';
@@ -10,15 +10,14 @@ import {Pagination} from '../../common/c11-Pagination/Pagination';
 import {
     setMyAllFilterAC, setPackNameValue,
     setRangeValueAC,
-    setUpdatedFilterAC
 } from '../../../m2-bll/sortReducer';
 import {changePacksCurrentPageAC} from '../../../m2-bll/appReducer';
 import {DebounceSearch} from '../../common/c13-DebounceSearch/DebounceSearch';
+import {PacksContainer} from '../../common/c14-PackContainer/PacksContainer';
 
 export const PacksList = () => {
     const pack = useTypedSelector(state => state.packs)
     const userId = useTypedSelector(state => state.auth._id)
-    const sortPacks = useTypedSelector(state => state.sort.sortPacks)
     const sortUserId = useTypedSelector(state => state.sort.user_id)
     const packNameValue = useTypedSelector(state => state.sort.packName)
     const dispatch = useTypedDispatch()
@@ -48,12 +47,7 @@ export const PacksList = () => {
     const showAllPacksHandler = () => {
         dispatch(setMyAllFilterAC(''))
     }
-    const sortUpdatedHandler = (value: string) => {
-        sortPacks === `0${value}` ?
-            dispatch(setUpdatedFilterAC(`1${value}`)) :
-            dispatch(setUpdatedFilterAC(`0${value}`))
-        dispatch(getCardPackTC())
-    }
+
 
     const changeCurrentPackPage = (page: number) => {
         dispatch(changePacksCurrentPageAC(page))
@@ -132,28 +126,7 @@ export const PacksList = () => {
 
                     </div>
                     <div className={s.packsSide}>
-
-                        <div className={s.packsContainer}>
-                            <div className={s.packListHeader}>
-                                <div className={s.nameTitle} onClick={() => sortUpdatedHandler('name')}>Name</div>
-                                <div className={s.cardsTitle} onClick={() => sortUpdatedHandler('cardsCount')}>Cards
-                                </div>
-                                <div onClick={() => sortUpdatedHandler('updated')}
-                                     className={s.updateTitle}>Last Updated
-                                </div>
-                                <div className={s.userNameColumn}
-                                     onClick={() => sortUpdatedHandler('user_name')}>Created by
-                                </div>
-                                <div className={s.actionsTitle}>Actions</div>
-                            </div>
-                            <div className={s.packItem}>
-                                {
-                                    pack.cardPacks.map(p => <PackItem userId={userId} pack={p} key={p._id}/>)
-                                }
-                            </div>
-
-                        </div>
-
+                        <PacksContainer/>
                     </div>
                 </div>
                 <div className={s.paginationContainer}>
