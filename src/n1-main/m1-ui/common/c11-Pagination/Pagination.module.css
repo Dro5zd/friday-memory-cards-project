@@ -34,8 +34,8 @@
      cursor: pointer;
  }
 
-.paginationItem.selected {
-     background-color: rgba(0, 0, 0, 0.08);
+.paginationItem.selected li {
+  color: var(--textHover);
  }
 
 .currentPage {

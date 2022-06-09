@@ -21,11 +21,11 @@ export const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
 ) => {
 
     const f1 = (n: number) => {
-        if (value[1] <= n) return
+        if ((value[1] - 9) <= n) return
         props.setValue1(n)
     }
     const f2 = (n: number) => {
-        if (value[0] >= n) return
+        if ((value[0] + 9) >= n) return
         props.setValue2(n)
     }
 
