@@ -1,43 +1,54 @@
 import axios, {AxiosResponse} from 'axios';
 import {RecoverPassRequestType} from '../m2-bll/passwordRecoveryReducer';
+import {RequestRegisterType} from '../m2-bll/registerReducer';
 
 const instance = axios.create({
     baseURL: 'http://localhost:7542/2.0/',
     // baseURL: 'https://neko-back.herokuapp.com/2.0/',
     withCredentials: true,
-    // headers: {
-    //   'API-KEY': ''
-    // }
 })
 
 const instanceHeroku = axios.create({
     baseURL: 'https://neko-back.herokuapp.com/2.0/',
     withCredentials: true,
-    headers: {
-        'API-KEY': ''
-    }
 })
 
 export const authAPI = {
+    me() {
+        return instance.post<AuthResponseType>('auth/me')
+    },
+
+    register(data: RequestRegisterType) {
+        return instance.post<RegistrationResponseType>('/auth/register', data)
+    },
 
     loginPost(data: LoginParamsType) {
         return instance.post<LoginParamsType, AxiosResponse>('auth/login', data)
     },
-    me() {
-        return instance.post<AuthResponseType>('auth/me')
+
+    changeProfile(data: changeProfileRequestType) {
+        return instance.put<changeProfileResponseType>('/auth/me', data)
     },
+
     newPass(newPassData: NewPassParamsType) {
         return instance.post('/auth/set-new-password', newPassData)
     },
-    logOut() {
-        return instance.delete<AxiosResponse<InfoResponseType>>('auth/me')
-    },
+
     forgot(forgotData: RecoverPassRequestType) {
         return instanceHeroku.post<InfoResponseType>('auth/forgot', forgotData)
+    },
+
+    logOut() {
+        return instance.delete<AxiosResponse<InfoResponseType>>('auth/me')
     }
+
 }
 
 //types
+type RegistrationResponseType = {
+    error?: string
+}
+
 export type LoginParamsType = {
     email: string,
     password: string,
@@ -62,5 +73,15 @@ export type AuthResponseType = {
 }
 type InfoResponseType = {
     info: string;
+    error?: string
+}
+
+export type changeProfileRequestType = {
+    name?: string
+    avatar?: string
+}
+
+type changeProfileResponseType = {
+    updatedUser: AuthResponseType
     error?: string
 }

@@ -1,5 +1,5 @@
 import {Dispatch} from "redux";
-import {registrationAPI} from "../m3-dal/registration-api";
+import {authAPI} from '../m3-dal/auth-api';
 
 const initState = {
     isRegistered: false
@@ -37,9 +37,9 @@ export const registerTC = (data: RequestRegisterType) => /*async*/ (dispatch: Di
                 dispatch(setRegisterErrorAC(error.message))
             }
         }*/
-    registrationAPI.register(data).then(res => {
+    authAPI.register(data).then(res => {
         dispatch(setIsRegisteredAC(true))
-    }).catch((error) => dispatch(setRegisterErrorAC(error.response.data.error))) //FIX MESSAGE
+    }).catch((error) => dispatch(setRegisterErrorAC(error.response.data.error)))
 }
 
 //types

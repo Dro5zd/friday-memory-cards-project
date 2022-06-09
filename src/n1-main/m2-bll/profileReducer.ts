@@ -1,5 +1,6 @@
-import {changeProfileRequestType, profileAPI} from '../m3-dal/profile-api';
+
 import {Dispatch} from 'redux';
+import {authAPI, changeProfileRequestType} from '../m3-dal/auth-api';
 
 const initState = {
     name: '',
@@ -22,7 +23,7 @@ export const updateProfileAC = (newName: string, newAvatar: string ) => {
 
 export const updateProfileTC = (data: changeProfileRequestType) => {
     return (dispatch: Dispatch<ProfileActionsType>) => {
-        profileAPI.changeProfile(data)
+        authAPI.changeProfile(data)
             .then(res => {
                 dispatch(updateProfileAC(res.data.updatedUser.name, res.data.updatedUser.avatar))
             })
