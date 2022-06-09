@@ -2,16 +2,42 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 550px;
+    /*min-width: 550px;*/
     margin-top: 20px;
+    list-style-type: none;
 }
-.paginationItem {
+.paginationContainer .paginationItem {
     margin: 0 7px;
     cursor: pointer;
     font-size: 20px;
     /*font-weight: 300;*/
     color: var(--textColor);
+    padding: 0 12px;
+    height: 32px;
+    text-align: center;
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    letter-spacing: 0.01071em;
+    border-radius: 16px;
+    line-height: 1.43;
+    min-width: 32px;
 }
+
+.paginationItemDots:hover{
+    background-color: transparent;
+    cursor: default;
+}
+
+.paginationItem:hover {
+     background-color: rgba(0, 0, 0, 0.04);
+     cursor: pointer;
+ }
+
+.paginationItem.selected {
+     background-color: rgba(0, 0, 0, 0.08);
+ }
+
 .currentPage {
     cursor: pointer;
     color: var(--textHover);
@@ -23,6 +49,20 @@
 }
 .angle {
     height: 11px;
-    margin: 0 25px;
+    /*margin: 0 25px;*/
     cursor: pointer;
 }
+
+.paginationContainer .paginationItem.disabled {
+    pointer-events: none;
+}
+
+.paginationContainer .paginationItem.disabled .angle::before {
+    border-right: 0.12em solid rgba(0, 0, 0, 0.43);
+    border-top: 0.12em solid rgba(0, 0, 0, 0.43);
+}
+
+.paginationContainer .paginationItem.disabled:hover {
+     background-color: transparent;
+     cursor: default;
+ }

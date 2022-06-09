@@ -14,6 +14,7 @@ import {
 import {changePacksCurrentPageAC} from '../../../m2-bll/appReducer';
 import {DebounceSearch} from '../../common/c13-DebounceSearch/DebounceSearch';
 import {PacksContainer} from './p1-packs/PackContainer/PacksContainer';
+import {PaginationNew} from '../../common/c11-Pagination/PaginationNew';
 
 export const PacksList = () => {
     const pack = useTypedSelector(state => state.packs)
@@ -130,12 +131,21 @@ export const PacksList = () => {
                     </div>
                 </div>
                 <div className={s.paginationContainer}>
-                    <Pagination
-                        totalItemsCount={pack.cardPacksTotalCount}
+                    {/*<Pagination*/}
+                    {/*    totalItemsCount={pack.cardPacksTotalCount}*/}
+                    {/*    pageSize={pack.pageCount}*/}
+                    {/*    currentPage={pack.page}*/}
+                    {/*    onPageChanged={changeCurrentPackPage}*/}
+                    {/*/>*/}
+
+                    <PaginationNew
+                        totalCount={pack.cardPacksTotalCount}
                         pageSize={pack.pageCount}
                         currentPage={pack.page}
-                        onPageChanged={changeCurrentPackPage}
+                        onPageChange={changeCurrentPackPage}
+                        siblingCount={1}
                     />
+
                 </div>
             </div>
         </div>

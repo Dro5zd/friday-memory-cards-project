@@ -68,7 +68,9 @@ export const CardsList = () => {
             <DebounceSearch className={s.searchInput} delay={1500} callback={debounceAnswerHandler}/>
             {isOwner && <SuperButton className={s.searchButton} onClick={addNewCard} title={'Add new card'}/>}
           </div>
+
           <CardsContainer/>
+
           <div className={s.paginationContainer}>
             <Pagination totalItemsCount={cards.cardsTotalCount} pageSize={cards.pageCount}
                         currentPage={cards.page} onPageChanged={changeCurrentPage}/>

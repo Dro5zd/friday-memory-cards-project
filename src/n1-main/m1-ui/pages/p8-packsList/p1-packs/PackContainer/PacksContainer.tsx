@@ -35,10 +35,13 @@ export const PacksContainer = () => {
                     <th className={s.actionsTitle}>Actions</th>
                 </tr>
                 </thead>
-                <tbody>
-                {pack.cardPacks.map(p =>
-                    <PackItem userId={userId} pack={p} key={p._id}/>)}
-                </tbody>
+                <div className={s.packListBody}>
+                    <tbody >
+                    {pack.cardPacks.map(p =>
+                        <PackItem userId={userId} pack={p} key={p._id}/>)}
+                    </tbody>
+                </div>
+
             </table>
         </div>
     );
