@@ -6,7 +6,6 @@ import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRang
 import {getCardPackTC, postPacksTC} from '../../../m2-bll/cardPacksReducer';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {CreatePackDataType} from '../../../m3-dal/cardPacks-api';
-import {Pagination} from '../../common/c11-Pagination/Pagination';
 import {
     setMyAllFilterAC, setPackNameValue,
     setRangeValueAC,
