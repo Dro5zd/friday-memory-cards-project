@@ -14,12 +14,14 @@ import {changePacksCurrentPageAC} from '../../../m2-bll/appReducer';
 import {DebounceSearch} from '../../common/c13-DebounceSearch/DebounceSearch';
 import {PacksContainer} from './p1-packs/PackContainer/PacksContainer';
 import {PaginationNew} from '../../common/c11-Pagination/PaginationNew';
+import ServerErrors from "../../common/c0-ErrorsBlock/ServerErrors";
 
 export const PacksList = () => {
     const pack = useTypedSelector(state => state.packs)
     const userId = useTypedSelector(state => state.auth._id)
     const sortUserId = useTypedSelector(state => state.sort.user_id)
     const packNameValue = useTypedSelector(state => state.sort.packName)
+    const serverErrors = useTypedSelector(state => state.app.errors)
     const dispatch = useTypedDispatch()
     const [value1, setValue1] = useState(pack.minCardsCount)
     const [value2, setValue2] = useState(pack.maxCardsCount)
@@ -71,6 +73,8 @@ export const PacksList = () => {
                 <div className={s.header}>
                     <h2 className={s.packListTitle}>PACKS LIST</h2>
                     <div className={s.searchContainer}>
+                        {serverErrors && <ServerErrors errors={serverErrors}/>}
+
                         <DebounceSearch className={s.searchInput} delay={1000} callback={debounceHandler}/>
                         <SuperButton
                             value={packName}
@@ -96,8 +100,9 @@ export const PacksList = () => {
                                     <p>All</p></label>
 
 
-                                <label htmlFor="tab-1" className={s.segmentedControl1}  onClick={() => showMyPacksHandler()}>
-                                    <input type="radio" name="radio2" value="3" id="tab-1" />
+                                <label htmlFor="tab-1" className={s.segmentedControl1}
+                                       onClick={() => showMyPacksHandler()}>
+                                    <input type="radio" name="radio2" value="3" id="tab-1"/>
                                     <p>My</p>
                                 </label>
                                 <div className={s.segmentedControlColor}></div>

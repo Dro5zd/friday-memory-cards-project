@@ -36,7 +36,7 @@ export const CardsContainer = () => {
                 <tr className={s.packListHeader}>
                     <th className={s.questionTitle}>Question</th>
                     <th className={s.answerTitle}>Answer</th>
-                    <th className={s.updateTitle}>Last Updated</th>
+                    <th onClick={() => sortUpdatedCardsHandler('updated')} className={s.updateTitle}>Last Updated</th>
                     <th onClick={() => sortUpdatedCardsHandler('grade')} className={s.gradeTitle}>Grade</th>
                     <th className={s.actionsTitle}>Actions</th>
                 </tr>

@@ -75,8 +75,7 @@ export const getCardsTC = (cardsPack_id: string): AppThunk => async (dispatch, g
     });
     dispatch(setCardsStateAC(response.data))
   } catch (e: any) {
-
-    serverErrorHandler(e.message, dispatch)
+    serverErrorHandler('Sorry, not able to get cards, that You are looking for, try again', dispatch)
   }
 }
 export const createNewCardTC = (newCard: PostCardDataType): AppThunk => async (dispatch, getState) => {
@@ -85,7 +84,8 @@ export const createNewCardTC = (newCard: PostCardDataType): AppThunk => async (d
     await cardsAPI.postCard(newCard)
     dispatch(getCardsTC(packId))
   } catch (e: any) {
-    console.log(e.response.data.error)
+    //console.log(e.response.data.error)
+    serverErrorHandler('Sorry, not able to create new card, try again', dispatch)
   }
 }
 export const deleteCardTC = (id: string, packId: string): AppThunk => async (dispatch) => {
@@ -93,7 +93,7 @@ export const deleteCardTC = (id: string, packId: string): AppThunk => async (dis
     await cardsAPI.deleteCard(id)
     dispatch(getCardsTC(packId))
   } catch (e: any) {
-    console.log(e.response.data.error)
+    serverErrorHandler('Sorry, not able to delete card, try again', dispatch)
   }
 }
 export const updateCardTC = (cardId: string, packId: string): AppThunk => async (dispatch) => {
@@ -101,6 +101,6 @@ export const updateCardTC = (cardId: string, packId: string): AppThunk => async 
     await cardsAPI.updateCard({_id: cardId, question: 'WTF'})
     dispatch(getCardsTC(packId))
   } catch (e: any) {
-    console.log(e.response.data.error)
+    serverErrorHandler('Sorry, not able to edit card, try again', dispatch)
   }
 }

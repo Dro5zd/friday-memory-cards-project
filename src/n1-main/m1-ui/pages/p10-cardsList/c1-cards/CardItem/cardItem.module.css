@@ -18,13 +18,11 @@
     height: 40px;
     margin-left: 10px;
     margin-right: 10px;
-    cursor: pointer;
     /*margin-right: 10px;*/
     /*background-color: red;*/
 
 }
 .answerColumn {
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -35,7 +33,6 @@
 }
 
 .updateColumn {
-    cursor: pointer;
     display: flex;
     width: 130px;
     align-items: center;
@@ -44,7 +41,6 @@
     /*background-color: pink;*/
 }
 .gradeColumn {
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;

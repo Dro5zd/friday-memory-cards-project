@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './Login.module.css'
 import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
 import SuperCheckbox from '../../common/c3-SuperCheckbox/SuperCheckbox';
@@ -12,10 +12,9 @@ import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
 
 export const Login = () => {
   const {register, handleSubmit, reset, formState: {errors}} = useForm<LoginFormType>()
-
   const isAuthorised = useTypedSelector(state => state.app.isAuthorised)
   const loginError = useTypedSelector(state => state.auth.error)
-  const passOn = useTypedSelector(state => state.ui.passOn)
+  const [passOn, setPassOn] = useState(true)
 
   const dispatch = useTypedDispatch()
   const navigate = useNavigate()
@@ -49,7 +48,7 @@ export const Login = () => {
                 {...register('password',
                 {
                   required: true, minLength: 8,
-                })} type={passOn ? 'password' : 'text'} placeholder={'Password'}/>
+                })} type={passOn ? 'password' : 'text'} placeholder={'Password'} passOn={passOn} setPassOn={setPassOn}/>
             </div>
           </div>
           <div className={s.rememberWrapper}>

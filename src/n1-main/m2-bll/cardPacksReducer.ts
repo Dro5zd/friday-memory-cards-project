@@ -1,5 +1,6 @@
 import {cardPacksAPI, CreatePackDataType, UpdateCardsPackType} from '../m3-dal/cardPacks-api';
 import {AppThunk} from './store';
+import {serverErrorHandler} from "../utils/serverErrorHandler";
 
 const SET_PACKS = 'POST-PACKS'
 
@@ -55,11 +56,17 @@ export const getCardPackTC = (): AppThunk => (dispatch, getState) => {
         .then((res) => {
             dispatch(setCardPacksAC(res.data))
         })
+        .catch(() => {
+            serverErrorHandler('Sorry, not able to get packs, that You are looking for, try again', dispatch)
+        })
 }
 export const postPacksTC = (data: CreatePackDataType): AppThunk => (dispatch) => {
     cardPacksAPI.postPacks(data)
         .then((res) => {
             dispatch(getCardPackTC())
+        })
+        .catch(() => {
+            serverErrorHandler('Sorry, not able to create pack, try again', dispatch)
         })
 }
 export const deletePacksTC = (packId: string): AppThunk => (dispatch) => {
@@ -67,11 +74,17 @@ export const deletePacksTC = (packId: string): AppThunk => (dispatch) => {
         .then((res) => {
             dispatch(getCardPackTC())
         })
+        .catch(() => {
+            serverErrorHandler('Sorry, not able to delete pack, try again', dispatch)
+        })
 }
 export const updatePacksTC = (data: UpdateCardsPackType): AppThunk => (dispatch) => {
     cardPacksAPI.updatePacks(data)
         .then((res) => {
             dispatch(getCardPackTC())
+        })
+        .catch(() => {
+            serverErrorHandler('Sorry, not able to update pack, try again', dispatch)
         })
 }
 
