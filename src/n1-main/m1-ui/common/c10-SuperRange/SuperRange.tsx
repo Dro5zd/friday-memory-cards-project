@@ -88,7 +88,7 @@ const SuperRange: React.FC<SuperRangePropsType> = (
 
   const pointPosition = value * 100 / max
   //--- заливка progress до ползунка
-  const progressBGColor = bgColor ? bgColor : 'olive'
+  const progressBGColor = bgColor ? bgColor : '#6d5dfc'
   //--- заливка progress до ползунка: дозаливка
   const restProgressBGColor = bgColor ? bgColor : 'olive'
 
@@ -108,15 +108,18 @@ const SuperRange: React.FC<SuperRangePropsType> = (
           boxShadow: `3px 0 0 0 ${restProgressBGColor}`
         }}/>
       </div>
-      <input
-        step={1}
-        max={max}
-        value={value}
-        type={'range'}
-        onChange={onChangeCallback}
-        className={finalRangeClassName}
-        {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
-      />
+        <div className={s.input}>
+            <input
+                step={1}
+                max={max}
+                value={value}
+                type={'range'}
+                onChange={onChangeCallback}
+                className={finalRangeClassName}
+                {...restProps} // отдаём инпуту остальные пропсы если они есть (value например там внутри)
+            />
+            <div className={s.innerRound}></div>
+        </div>
     </div>
   )
 }

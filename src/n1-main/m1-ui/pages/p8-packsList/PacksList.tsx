@@ -103,9 +103,9 @@ export const PacksList = () => {
                             <div className={s.rangeSpan}>
                                 <span>Number of Cards</span>
                             </div>
-                            <div className={s.valueContainer}>
-                                <span>{`${value1} - ${value2}`}</span>
-                            </div>
+                            {/*<div className={s.valueContainer}>*/}
+                            {/*    <span>{`${value1} - ${value2}`}</span>*/}
+                            {/*</div>*/}
                             <div className={s.range}>
                                 <SuperDoubleRange
                                     onChangeRange={onChangeDoubleInputRangeHandle}

@@ -40,10 +40,12 @@
 
 .buttonsWrapper {
   /*background-color: #8abdff;*/
+  display: flex;
   margin-bottom: 40px;
   width: 250px;
   height: 150px;
   align-items: center;
+  flex-direction: column;
 }
 
 .leftSide {
