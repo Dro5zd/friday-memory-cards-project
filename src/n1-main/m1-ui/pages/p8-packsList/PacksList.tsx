@@ -97,7 +97,6 @@ export const PacksList = () => {
                                 <label htmlFor="tab2" className={s.segmentedControlItem2} onClick={showMyPacksHandler}>MY</label>
                                 <div className={s.segmentedControlColor}></div>
                             </div>
-
                         </div>
                         <div className={s.rangeWrapper}>
                             <div className={s.rangeSpan}>

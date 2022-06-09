@@ -11,7 +11,7 @@
 }
 
 .rangePosition {
-    --bgProgress: var(--greyLight-1);
+    --bgProgress: var(--bg);
     --zIndexProgress: 2;
     position: absolute;
     width: 100%;

@@ -24,6 +24,7 @@
   --shadow-3: #577aab;
   --shadow-4: #4607bb;
   --shadow-5: #7f84a6;
+  --shadow-6: var(--greyDark);
   --textColor: var(--greyLight-1);
   --textHover: var(--white);
   --checboxColor: #53596e;
@@ -38,6 +39,7 @@
   --shadow-3: var(--primary-light);
   --shadow-4: var(--primary-dark);
   --shadow-5: #53596e;
+  --shadow-6: var(--primary);
   --textColor: var(--greyDark-2);
   --textHover: var(--primary);
   --checboxColor: var(--greyDark);
