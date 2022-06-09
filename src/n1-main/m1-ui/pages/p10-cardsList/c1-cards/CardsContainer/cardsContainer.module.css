@@ -61,5 +61,5 @@
 }
 
 tbody tr:nth-child(odd) {
-    background-color: var(--shadow-1);
+    background-color: var(--packItem);
 }

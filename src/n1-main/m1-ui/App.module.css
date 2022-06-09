@@ -23,10 +23,11 @@
   --shadow-2: #7f84a6;
   --shadow-3: #577aab;
   --shadow-4: #4607bb;
-  --shadow-5: var(--shadow-2);
+  --shadow-5: #7f84a6;
   --textColor: var(--greyLight-1);
   --textHover: var(--white);
   --checboxColor: #53596e;
+  --packItem: rgba(83, 89, 110, 0.32);
 }
 
 .themeWhite {
@@ -36,10 +37,11 @@
   --shadow-2: var(--white);
   --shadow-3: #8abdff;
   --shadow-4: var(--primary-dark);
-  --shadow-5: var(--shadow-1);
+  --shadow-5: #53596e;
   --textColor: var(--greyDark-2);
   --textHover: var(--primary);
   --checboxColor: var(--greyDark);
+  --packItem: rgba(192, 200, 220, 0.3);
 }
 
 
