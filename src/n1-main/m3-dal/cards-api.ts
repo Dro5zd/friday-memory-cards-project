@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://localhost:7542/2.0/',
-    // baseURL: 'https://neko-back.herokuapp.com/2.0/',
+    // baseURL: 'http://localhost:7542/2.0/',
+    baseURL: 'https://neko-back.herokuapp.com/2.0/',
     withCredentials: true,
 });
 
@@ -26,16 +26,16 @@ export type GetCardsDataType = {
     cardsPack_id: string;
     min?: number;
     max?: number;
-    sortCards?: string; //0|1+fieldName
+    sortCards?: string;
     page?: number;
     pageCount?: number;
 };
 export type PostCardDataType = {
     cardsPack_id: string;
-    question?: string; // если не отправить будет таким "no question"
-    answer?: string; // если не отправить будет таким "no question"
-    grade?: number; // 0-5
-    shots?: number; // attempts
+    question?: string;
+    answer?: string;
+    grade?: number;
+    shots?: number;
     answerImg?: string;
     questionImg?: string;
     questionVideo?: string;
