@@ -10,7 +10,7 @@ type PackSettingsType = {
     maxCardsCount: number;
 }
 
-export const PackSettings: React.FC<PackSettingsType>= ({minCardsCount, maxCardsCount}) => {
+export const PackSettings: React.FC<PackSettingsType> = ({minCardsCount, maxCardsCount}) => {
 
 
     useEffect(() => {
