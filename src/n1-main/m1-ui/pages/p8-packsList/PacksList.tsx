@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './packsList.module.css'
 import {getCardPackTC} from '../../../m2-bll/cardPacksReducer';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
@@ -13,15 +13,16 @@ export const PacksList = () => {
   const sortUserId = useTypedSelector(state => state.sort.user_id)
   const packNameValue = useTypedSelector(state => state.sort.packName)
   const dispatch = useTypedDispatch()
-  // const [value1, setValue1] = useState(pack.minCardsCount)
-  // const [value2, setValue2] = useState(pack.maxCardsCount)
+  const [value1, setValue1] = useState(pack.minCardsCount)
+  const [value2, setValue2] = useState(pack.maxCardsCount)
   // const [packName, setPackName] = useState('')
 
   useEffect(() => {
-    // setValue1(pack.minCardsCount)
-    // setValue2(pack.maxCardsCount)
+    debugger
+    setValue1(pack.minCardsCount)
+    setValue2(pack.maxCardsCount)
     dispatch(getCardPackTC())
-  }, [sortUserId, packNameValue])
+  }, [sortUserId, packNameValue, pack.minCardsCount, pack.maxCardsCount])
 
   // const onChangeDoubleInputRangeHandle = (nums: Array<number>) => {
   //     setValue1(nums[0])
@@ -62,7 +63,7 @@ export const PacksList = () => {
       <div className={s.components}>
         <PackHeader/>
         <div className={s.wrapper}>
-          <PackSettings/>
+          <PackSettings value1={value1} value2={value2} setValue1={setValue1} setValue2={setValue2}/>
           <PacksContainer/>
         </div>
         <PaginationNew

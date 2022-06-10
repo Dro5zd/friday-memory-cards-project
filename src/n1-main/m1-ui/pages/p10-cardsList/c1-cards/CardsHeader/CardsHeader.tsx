@@ -41,7 +41,7 @@ export const CardsHeader = () => {
   };
 
   const goBackHandler = () => {
-    dispatch(setMyAllFilterAC(''))
+    // dispatch(setMyAllFilterAC(''))
     navigate(PATH.PACKS_LIST)
   }
 

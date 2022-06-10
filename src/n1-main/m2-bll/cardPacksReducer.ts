@@ -41,6 +41,7 @@ export const setCardPacksAC = (data: InitStateType) => ({
 
 //thunk
 export const getCardPackTC = (): AppThunk => (dispatch, getState) => {
+    debugger
     const pageCount = 10
     const currentPage = getState().app.packsCurrentPage
     const user_id = getState().sort.user_id

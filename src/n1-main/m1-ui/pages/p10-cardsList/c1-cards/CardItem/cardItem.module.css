@@ -11,9 +11,11 @@
 }
 
 .questionColumn {
-    display: flex;
-    align-items: center;
-    justify-content: start;
+    display: inline-block;
+    margin-top: 11px;
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: start;*/
     width: 445px;
     height: 40px;
     margin-left: 10px;
@@ -21,17 +23,20 @@
     cursor: pointer;
     /*margin-right: 10px;*/
     /*background-color: red;*/
+    white-space: nowrap;
+    text-overflow: ellipsis ;
+    overflow: hidden;
 
 }
 .answerColumn {
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    width: 445px;
+    display: inline-block;
+    padding: 12px 20px;
+    width: 405px;
     height: 40px;
-    /*margin-right: 10px;*/
-    /*background-color: #eabd0b;*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis ;
 }
 
 .updateColumn {
