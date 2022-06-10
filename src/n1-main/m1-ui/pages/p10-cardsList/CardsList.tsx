@@ -60,7 +60,7 @@ export const CardsList = () => {
           pageSize={cards.pageCount}
           currentPage={cards.page}
           onPageChange={changeCurrentPage}
-          siblingCount={1}
+          siblingCount={3}
         />
       </div>
     </div>

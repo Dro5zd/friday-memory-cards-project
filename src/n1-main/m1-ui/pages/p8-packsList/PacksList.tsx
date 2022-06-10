@@ -70,7 +70,7 @@ export const PacksList = () => {
           pageSize={pack.pageCount}
           currentPage={pack.page}
           onPageChange={changeCurrentPackPage}
-          siblingCount={1}
+          siblingCount={3}
         />
       </div>
     </div>

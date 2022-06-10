@@ -4,7 +4,7 @@ import {DebounceSearch} from "../../../../common/c13-DebounceSearch/DebounceSear
 import SuperButton from "../../../../common/c2-SuperButton/SuperButton";
 import arrowLeftBlackWhite from "../../../../../../assets/img/arrowLeftBlackWhite.png";
 import arrowLeftWhite from "../../../../../../assets/img/arrowLeft.png";
-import {setCardsAnswerValue, setCardsQuestionValue} from "../../../../../m2-bll/sortReducer";
+import {setCardsAnswerValue, setCardsQuestionValue, setMyAllFilterAC} from '../../../../../m2-bll/sortReducer';
 import {PATH} from "../../../../routes/Routs";
 import {createNewCardTC, getCardsTC} from "../../../../../m2-bll/cardsReducer";
 import {useTypedDispatch, useTypedSelector} from "../../../../../m2-bll/store";
@@ -41,6 +41,7 @@ export const CardsHeader = () => {
   };
 
   const goBackHandler = () => {
+    dispatch(setMyAllFilterAC(''))
     navigate(PATH.PACKS_LIST)
   }
 
