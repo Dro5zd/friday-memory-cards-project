@@ -1,21 +1,35 @@
 {
   "files": {
-    "main.css": "/friday-memory-cards-project/static/css/main.5a568a5b.css",
-    "main.js": "/friday-memory-cards-project/static/js/main.5055c189.js",
+    "main.css": "/friday-memory-cards-project/static/css/main.31e749f5.css",
+    "main.js": "/friday-memory-cards-project/static/js/main.51110674.js",
     "static/media/png.png": "/friday-memory-cards-project/static/media/png.7ce8b7a4c01b0f282fa6.png",
     "static/media/B.A.D._logo3.png": "/friday-memory-cards-project/static/media/B.A.D._logo3.49cfafa9bc461b0ad180.png",
     "static/media/noPhoto.png": "/friday-memory-cards-project/static/media/noPhoto.2fa103f863619e551043.png",
+    "static/media/slidersWhite.png": "/friday-memory-cards-project/static/media/slidersWhite.593affa1de76b14fa06a.png",
+    "static/media/slidersBlack.png": "/friday-memory-cards-project/static/media/slidersBlack.adbbac2a0d3d3fed69e6.png",
+    "static/media/bookOpenWhite.png": "/friday-memory-cards-project/static/media/bookOpenWhite.52c8b724b5c278582b7a.png",
+    "static/media/bookOpenBlack.png": "/friday-memory-cards-project/static/media/bookOpenBlack.5407654fe8b8163fb036.png",
+    "static/media/trashWhite.png": "/friday-memory-cards-project/static/media/trashWhite.e4a45d4f704b1b46bd7e.png",
+    "static/media/trashBlack.png": "/friday-memory-cards-project/static/media/trashBlack.c1dcd32af2876f38ab4d.png",
+    "static/media/arrowLeft.png": "/friday-memory-cards-project/static/media/arrowLeft.6cb8d6d61dad5ea2ef3a.png",
+    "static/media/arrowLeftBlackWhite.png": "/friday-memory-cards-project/static/media/arrowLeftBlackWhite.efa53c2820f5b29de702.png",
+    "static/media/angleRight.png": "/friday-memory-cards-project/static/media/angleRight.7d48e98c3d06f0b4677b.png",
+    "static/media/angleLeft.png": "/friday-memory-cards-project/static/media/angleLeft.d27c1040fa5f6e36e5df.png",
+    "static/media/sortDownWhite.png": "/friday-memory-cards-project/static/media/sortDownWhite.59ef153154e9c7a5f77d.png",
+    "static/media/sortDownBlack.png": "/friday-memory-cards-project/static/media/sortDownBlack.638d092484dbaecf7554.png",
+    "static/media/sortUpWhite.png": "/friday-memory-cards-project/static/media/sortUpWhite.af17a32bc6296a48aff9.png",
+    "static/media/sortUpBlack.png": "/friday-memory-cards-project/static/media/sortUpBlack.2ea72c4f7e77e0f4cfef.png",
     "static/media/Dual Ball-1.3s-108px.svg": "/friday-memory-cards-project/static/media/Dual Ball-1.3s-108px.d20aa0eb4538474d43972be13962d187.svg",
     "static/media/sun.svg": "/friday-memory-cards-project/static/media/sun.5ed124b6736434fd7ddbe7dcba4417bd.svg",
     "index.html": "/friday-memory-cards-project/index.html",
     "static/media/no-view.svg": "/friday-memory-cards-project/static/media/no-view.176cfd75f182c4eafaaa17e10f98faa4.svg",
     "static/media/moon.svg": "/friday-memory-cards-project/static/media/moon.cb5a709d793a602bcaf2173d5130d809.svg",
     "static/media/view.svg": "/friday-memory-cards-project/static/media/view.38fa3f9fbccead55ad9b126a3d9369d8.svg",
-    "main.5a568a5b.css.map": "/friday-memory-cards-project/static/css/main.5a568a5b.css.map",
-    "main.5055c189.js.map": "/friday-memory-cards-project/static/js/main.5055c189.js.map"
+    "main.31e749f5.css.map": "/friday-memory-cards-project/static/css/main.31e749f5.css.map",
+    "main.51110674.js.map": "/friday-memory-cards-project/static/js/main.51110674.js.map"
   },
   "entrypoints": [
-    "static/css/main.5a568a5b.css",
-    "static/js/main.5055c189.js"
+    "static/css/main.31e749f5.css",
+    "static/js/main.51110674.js"
   ]
 }
