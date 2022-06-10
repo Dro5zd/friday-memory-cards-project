@@ -3,7 +3,7 @@ import s from './PackSettings.module.css';
 import {SuperDoubleRange} from '../../../../common/c9-SuperDoubleRange/SuperDoubleRange';
 import {setMyAllFilterAC, setRangeValueAC} from '../../../../../m2-bll/sortReducer';
 import {useTypedDispatch, useTypedSelector} from '../../../../../m2-bll/store';
-import {changeCardsCurrentPageAC, changePacksCurrentPageAC} from '../../../../../m2-bll/appReducer';
+import {changePacksCurrentPageAC} from '../../../../../m2-bll/appReducer';
 
 type PackSettingsType = {
     minCardsCount: number;
@@ -23,8 +23,6 @@ export const PackSettings: React.FC<PackSettingsType>= ({minCardsCount, maxCards
     const [value1, setValue1] = useState(minCardsCount)
     const [value2, setValue2] = useState(maxCardsCount)
 
-    // const sortUserId = useTypedSelector(state => state.sort.user_id)
-    // const packNameValue = useTypedSelector(state => state.sort.packName)
     const dispatch = useTypedDispatch()
 
     const onChangeDoubleInputRangeHandle = (nums: Array<number>) => {

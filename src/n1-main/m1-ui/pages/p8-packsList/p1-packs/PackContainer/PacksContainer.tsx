@@ -4,6 +4,9 @@ import {PackItem} from '../PackItem/PackItem';
 import {setUpdatedFilterAC} from '../../../../../m2-bll/sortReducer';
 import {getCardPackTC} from '../../../../../m2-bll/cardPacksReducer';
 import {useTypedDispatch, useTypedSelector} from '../../../../../m2-bll/store';
+import sortUpBlack from '../../../../../../assets/img/sortUpBlack.png'
+import sortDownBlack from '../../../../../../assets/img/sortDownBlack.png'
+import {changePacksCurrentPageAC} from "../../../../../m2-bll/appReducer";
 
 export const PacksContainer = () => {
   const pack = useTypedSelector(state => state.packs)
@@ -15,6 +18,7 @@ export const PacksContainer = () => {
     sortPacks === `0${value}` ?
       dispatch(setUpdatedFilterAC(`1${value}`)) :
       dispatch(setUpdatedFilterAC(`0${value}`))
+    dispatch(changePacksCurrentPageAC(1));
     dispatch(getCardPackTC())
   }
 
@@ -24,14 +28,34 @@ export const PacksContainer = () => {
         <table>
           <thead>
           <tr className={s.packListHeader}>
-            <th className={s.nameTitle} onClick={() => sortUpdatedHandler('name')}>Name <div><img src={} alt=""/></div></th>
-            <th className={s.cardsTitle} onClick={() => sortUpdatedHandler('cardsCount')}>Cards
+            <th
+              className={s.nameTitle}
+              onClick={() => sortUpdatedHandler('name')}
+            >Name <div
+              className={s.sortUp}>{sortPacks === `0name`
+              ? <img src={sortUpBlack} alt="sortUpWhite"/>
+              : <img src={sortDownBlack} alt="sortDownBlack"/>}
+            </div>
+            </th>
+            <th className={s.cardsTitle} onClick={() => sortUpdatedHandler('cardsCount')}>Cards <div
+              className={s.sortUp}>{sortPacks === `0cardsCount`
+              ? <img src={sortUpBlack} alt="sortUpWhite"/>
+              : <img src={sortDownBlack} alt="sortDownBlack"/>}
+            </div>
             </th>
             <th className={s.updateTitle} onClick={() => sortUpdatedHandler('updated')}
-            >Last Updated
+            >Last Updated <div
+              className={s.sortUp}>{sortPacks === `0updated`
+              ? <img src={sortUpBlack} alt="sortUpWhite"/>
+              : <img src={sortDownBlack} alt="sortDownBlack"/>}
+            </div>
             </th>
             <th className={s.creatorTitle}
-                onClick={() => sortUpdatedHandler('user_name')}>Created by
+                onClick={() => sortUpdatedHandler('user_name')}>Created by <div
+              className={s.sortUp}>{sortPacks === `0user_name`
+              ? <img src={sortUpBlack} alt="sortUpWhite"/>
+              : <img src={sortDownBlack} alt="sortDownBlack"/>}
+            </div>
             </th>
             <th className={s.actionsTitle}>Actions</th>
           </tr>
@@ -42,7 +66,6 @@ export const PacksContainer = () => {
               <PackItem userId={userId} pack={p} key={p._id}/>)}
             </tbody>
           </div>
-
         </table>
       </div>
     </div>

@@ -19,6 +19,17 @@
     height: 45px;
 }
 
+.sortUp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+}
+
+.sortUp img{
+    width: 9px;
+}
+
 .questionTitle {
     display: flex;
     align-items: center;
