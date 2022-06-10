@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import s from './packsList.module.css'
 import {getCardPackTC} from '../../../m2-bll/cardPacksReducer';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
@@ -13,17 +13,18 @@ export const PacksList = () => {
   const pack = useTypedSelector(state => state.packs)
   const sortUserId = useTypedSelector(state => state.sort.user_id)
   const packNameValue = useTypedSelector(state => state.sort.packName)
+  const requestPackMinValue = useTypedSelector(state => state.sort.packMinValue)
+  const requestPackMaxValue = useTypedSelector(state => state.sort.packMaxValue)
   const dispatch = useTypedDispatch()
-  const [value1, setValue1] = useState(pack.minCardsCount)
-  const [value2, setValue2] = useState(pack.maxCardsCount)
+
     const serverErrors = useTypedSelector(state => state.app.errors)
   // const [packName, setPackName] = useState('')
 
   useEffect(() => {
-    setValue1(pack.minCardsCount)
-    setValue2(pack.maxCardsCount)
     dispatch(getCardPackTC())
-  }, [sortUserId, packNameValue, pack.minCardsCount, pack.maxCardsCount])
+  }, [sortUserId, packNameValue, requestPackMinValue, requestPackMaxValue])
+
+
 
   // const onChangeDoubleInputRangeHandle = (nums: Array<number>) => {
   //     setValue1(nums[0])
@@ -65,7 +66,7 @@ export const PacksList = () => {
         <PackHeader/>
           {serverErrors && <ServerErrors errors={serverErrors}/>}
         <div className={s.wrapper}>
-          <PackSettings value1={value1} value2={value2} setValue1={setValue1} setValue2={setValue2}/>
+          <PackSettings maxCardsCount={pack.maxCardsCount} minCardsCount={pack.minCardsCount}/>
           <PacksContainer/>
         </div>
         <PaginationNew

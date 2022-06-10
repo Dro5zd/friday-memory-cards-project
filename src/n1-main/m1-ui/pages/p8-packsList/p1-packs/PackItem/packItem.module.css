@@ -11,7 +11,8 @@
 .nameColumn {
     cursor: pointer;
     display: inline-block;
-    padding: 12px 0;
+    /*padding: 12px 0;*/
+    margin-top: 10px;
     width: 360px;
     height: 40px;
     margin-right: 10px;
@@ -23,7 +24,8 @@
 .userNameColumn {
     cursor: pointer;
     display: inline-block;
-    padding: 12px 0;
+    /*padding: 12px 0;*/
+    margin-top: 10px;
     width: 240px;
     margin-right: 10px;
     height: 40px;
