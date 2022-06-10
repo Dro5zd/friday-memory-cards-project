@@ -7,6 +7,7 @@ import {useTypedDispatch, useTypedSelector} from '../../../../../m2-bll/store';
 import {useParams} from 'react-router-dom';
 import sortUpBlack from '../../../../../../assets/img/sortUpBlack.png'
 import sortDownBlack from '../../../../../../assets/img/sortDownBlack.png'
+import {SortArrows} from "../../../../common/SortArrows/SortArrows";
 
 export const CardsContainer = () => {
     const {urlCardsPackId} = useParams<string>();
@@ -36,26 +37,10 @@ export const CardsContainer = () => {
             <table>
                 <thead>
                 <tr className={s.packListHeader}>
-                    <th className={s.questionTitle} onClick={() => sortUpdatedCardsHandler('question')}>Question <div
-                      className={s.sortUp}>{sortCards === `0question`
-                      ? <img src={sortUpBlack} alt="sortUpWhite"/>
-                      : <img src={sortDownBlack} alt="sortDownBlack"/>}
-                    </div></th>
-                    <th className={s.answerTitle} onClick={() => sortUpdatedCardsHandler('answer')}>Answer <div
-                      className={s.sortUp}>{sortCards === `0answer`
-                      ? <img src={sortUpBlack} alt="sortUpWhite"/>
-                      : <img src={sortDownBlack} alt="sortDownBlack"/>}
-                    </div></th>
-                    <th onClick={() => sortUpdatedCardsHandler('updated')} className={s.updateTitle}>Last Updated <div
-                      className={s.sortUp}>{sortCards === `0updated`
-                      ? <img src={sortUpBlack} alt="sortUpWhite"/>
-                      : <img src={sortDownBlack} alt="sortDownBlack"/>}
-                    </div></th>
-                    <th onClick={() => sortUpdatedCardsHandler('grade')} className={s.gradeTitle}>Grade <div
-                      className={s.sortUp}>{sortCards === `0grade`
-                      ? <img src={sortUpBlack} alt="sortUpWhite"/>
-                      : <img src={sortDownBlack} alt="sortDownBlack"/>}
-                    </div></th>
+                    <th className={s.questionTitle} onClick={() => sortUpdatedCardsHandler('question')}>Question <SortArrows/> </th>
+                    <th className={s.answerTitle} onClick={() => sortUpdatedCardsHandler('answer')}>Answer <SortArrows/> </th>
+                    <th onClick={() => sortUpdatedCardsHandler('updated')} className={s.updateTitle}>Last Updated <SortArrows/> </th>
+                    <th onClick={() => sortUpdatedCardsHandler('grade')} className={s.gradeTitle}>Grade <SortArrows/></th>
                     <th className={s.actionsTitle}>Actions</th>
                 </tr>
                 </thead>
