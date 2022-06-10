@@ -5,6 +5,7 @@ import {getCardsTC} from "../../../m2-bll/cardsReducer";
 import {useParams} from "react-router-dom";
 import {changeCardsCurrentPageAC} from "../../../m2-bll/appReducer";
 import {CardsContainer} from './c1-cards/CardsContainer/CardsContainer';
+import ServerErrors from "../../common/c0-ErrorsBlock/ServerErrors";
 import {PaginationNew} from "../../common/c11-Pagination/PaginationNew";
 import {CardsHeader} from "./c1-cards/CardsHeader/CardsHeader";
 
@@ -19,6 +20,7 @@ export const CardsList = () => {
   // const question = useTypedSelector(state => state.sort.cardsQuestionValue)
   // const answer = useTypedSelector(state => state.sort.cardsAnswerValue)
   // const isOwner = userId === packUserId
+  const serverErrors = useTypedSelector(state => state.app.errors)
 
 
   // useEffect(() => {
@@ -53,6 +55,7 @@ export const CardsList = () => {
       <div className={s.components}>
         <div className={s.packSide}>
           <CardsHeader/>
+          {serverErrors && <ServerErrors errors={serverErrors}/>}
           <CardsContainer/>
         </div>
         <PaginationNew

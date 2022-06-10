@@ -5,5 +5,5 @@ export const serverErrorHandler = (error: string, dispatch: TypedDispatch) => {
     dispatch(setErrorsAC(error));
     setTimeout(() => {
         dispatch(clearErrorsAC())
-    }, 2000)
+    }, 4000)
 };

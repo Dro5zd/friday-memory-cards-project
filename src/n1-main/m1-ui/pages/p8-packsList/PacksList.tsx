@@ -7,6 +7,7 @@ import {PacksContainer} from './p1-packs/PackContainer/PacksContainer';
 import {PaginationNew} from '../../common/c11-Pagination/PaginationNew';
 import {PackSettings} from "./p1-packs/PackSettings/PackSettings";
 import {PackHeader} from "./p1-packs/PackHeader/PackHeader";
+import ServerErrors from "../../common/c0-ErrorsBlock/ServerErrors";
 
 export const PacksList = () => {
   const pack = useTypedSelector(state => state.packs)
@@ -15,10 +16,10 @@ export const PacksList = () => {
   const dispatch = useTypedDispatch()
   const [value1, setValue1] = useState(pack.minCardsCount)
   const [value2, setValue2] = useState(pack.maxCardsCount)
+    const serverErrors = useTypedSelector(state => state.app.errors)
   // const [packName, setPackName] = useState('')
 
   useEffect(() => {
-    debugger
     setValue1(pack.minCardsCount)
     setValue2(pack.maxCardsCount)
     dispatch(getCardPackTC())
@@ -62,6 +63,7 @@ export const PacksList = () => {
     <div className={s.container}>
       <div className={s.components}>
         <PackHeader/>
+          {serverErrors && <ServerErrors errors={serverErrors}/>}
         <div className={s.wrapper}>
           <PackSettings value1={value1} value2={value2} setValue1={setValue1} setValue2={setValue2}/>
           <PacksContainer/>

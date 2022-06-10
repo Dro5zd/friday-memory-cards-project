@@ -20,7 +20,6 @@
     height: 40px;
     margin-left: 10px;
     margin-right: 10px;
-    cursor: pointer;
     /*margin-right: 10px;*/
     /*background-color: red;*/
     white-space: nowrap;
@@ -29,7 +28,6 @@
 
 }
 .answerColumn {
-    cursor: pointer;
     display: inline-block;
     padding: 12px 20px;
     width: 405px;
@@ -40,7 +38,6 @@
 }
 
 .updateColumn {
-    cursor: pointer;
     display: flex;
     width: 130px;
     align-items: center;
@@ -49,7 +46,6 @@
     /*background-color: pink;*/
 }
 .gradeColumn {
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
