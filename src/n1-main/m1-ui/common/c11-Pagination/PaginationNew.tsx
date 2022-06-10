@@ -36,7 +36,11 @@ export const PaginationNew: React.FC<PaginationType> = ({
   }
 
   const onNext = () => {
-    onPageChange(currentPage + 1);
+    if (currentPage === lastPage) {
+      return
+    } else {
+      onPageChange(currentPage + 1)
+    }
   };
 
   const onPrevious = () => {
@@ -45,48 +49,48 @@ export const PaginationNew: React.FC<PaginationType> = ({
   // @ts-ignore
   let lastPage = paginationRange[paginationRange.length - 1];
   return (
-    <ul
-      className={classnames(s.paginationContainer)}
-    >
-      {/* Left navigation arrow */}
-      <li
-        className={classnames(s.paginationItem, {
-          disabled: currentPage === 1
-        })}
-        onClick={onPrevious}
-      >
-        <div className={s.angle}><img className={s.angle} src={angleLeft} alt="angleLeft"/></div>
-      </li>
-      {/*@ts-ignore*/}
-      {paginationRange.map((pageNumber, index) => {
+    <div className={s.paginationContainer}>
+      <ul className={s.paginationContainer}>
+        {/* Left navigation arrow */}
+        <li
+          className={classnames(s.paginationItem, {
+            disabled: currentPage === 1
+          })}
+          onClick={onPrevious}
+        >
+          <div className={s.angle}><img className={s.angle} src={angleLeft} alt="angleLeft"/></div>
+        </li>
+        {/*@ts-ignore*/}
+        {paginationRange.map((pageNumber, index) => {
 
-        // If the pageItem is a DOT, render the DOTS unicode character
-        if (pageNumber === '...') {
-          return <li key={index} className={s.paginationItemDots}>&#8230;</li>;
-        }
+          // If the pageItem is a DOT, render the DOTS unicode character
+          if (pageNumber === '...') {
+            return <li key={index} className={s.paginationItemDots}>&#8230;</li>;
+          }
 
-        // Render our Page Pills
-        return (
-          <li  key={index}
-            className={classnames(s.paginationItem, {
-              selected: pageNumber === currentPage
-            })}
-            // @ts-ignore
-            onClick={() => onPageChange(pageNumber)}
-          >
-            {pageNumber}
-          </li>
-        );
-      })}
-      {/*  Right Navigation arrow */}
-      <li
-        className={classnames(s.paginationItem, {
-          disabled: currentPage === lastPage
+          // Render our Page Pills
+          return (
+            <li key={index}
+                className={classnames(s.paginationItem, {
+                  selected: pageNumber === currentPage
+                })}
+              // @ts-ignore
+                onClick={() => onPageChange(pageNumber)}
+            >
+              {pageNumber}
+            </li>
+          );
         })}
-        onClick={onNext}
-      >
-        <div className={s.angle}><img className={s.angle} src={angleRight} alt="angleRight"/></div>
-      </li>
-    </ul>
+        {/*  Right Navigation arrow */}
+        <li
+          className={classnames(s.paginationItem, {
+            disabled: currentPage === lastPage
+          })}
+          onClick={onNext}
+        >
+          <div className={s.angle}><img className={s.angle} src={angleRight} alt="angleRight"/></div>
+        </li>
+      </ul>
+    </div>
   );
 };

@@ -21,70 +21,7 @@
     align-items: center;
     margin-top: 60px;
     position: relative;
+    flex-direction: column;
     /*background-color: #ef7f0e;*/
-}
-
-.arrowWrapper {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    position: absolute;
-    top: 40px;
-    /*left: 80px;*/
-    background-color: var(--bg);
-    box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-}
-
-.arrowWrapper:active {
-    box-shadow: inset .1rem .1rem .3rem var(--shadow-1), inset -.1rem -.1rem .3rem var(--shadow-2);
-}
-
-.arrowLeft {
-    height: 14px;
-    transition: all 0.5s ease;
-    cursor: pointer;
-}
-
-.arrowLeft:hover {
-    transform: scale(1.05);
-    transition: all 0.5s ease;
-}
-
-.cardListTitle {
-    margin-bottom: 20px;
-}
-
-.searchContainer{
-    display: flex;
-    height: 70px;
-    width: 1300px;
-    align-items: center;
-    justify-content: space-between;
-    /*background-color: #fff;*/
-}
-
-.searchButton{
-    display: flex;
-    height: 40px;
-    width: 250px;
-    border-radius: 10px;
-}
-
-.searchInput{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 470px;
-    height: 40px;
-    margin: 0;
-    border-radius: 10px;
-}
-
-.paginationContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
 }
