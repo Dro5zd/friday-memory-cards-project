@@ -24,7 +24,7 @@ export const PacksContainer = () => {
         <table>
           <thead>
           <tr className={s.packListHeader}>
-            <th className={s.nameTitle} onClick={() => sortUpdatedHandler('name')}>Name</th>
+            <th className={s.nameTitle} onClick={() => sortUpdatedHandler('name')}>Name <div><img src={} alt=""/></div></th>
             <th className={s.cardsTitle} onClick={() => sortUpdatedHandler('cardsCount')}>Cards
             </th>
             <th className={s.updateTitle} onClick={() => sortUpdatedHandler('updated')}
