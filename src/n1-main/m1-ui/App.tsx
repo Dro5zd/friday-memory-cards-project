@@ -4,6 +4,7 @@ import {useTypedDispatch, useTypedSelector} from "../m2-bll/store";
 import {authoriseMeTC} from "../m2-bll/appReducer";
 import Preloader from "./common/c7-Preloader/Preloader";
 import s from './App.module.css';
+import {ModalContainer} from "./common/c15-Modal/ModalContainer";
 
 export const App = () => {
   const dispatch = useTypedDispatch()
@@ -27,6 +28,7 @@ export const App = () => {
   return (
     <div className={mainTheme}>
       <Main/>
+      <ModalContainer/>
     </div>
   );
 }

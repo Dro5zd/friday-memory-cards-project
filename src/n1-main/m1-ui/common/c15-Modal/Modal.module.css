@@ -1,0 +1,32 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+}
+
+.background {
+  background: black;
+  opacity: 0.5;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  z-index: 1000000000;
+}
+
+.components {
+  width: 400px;
+  height: 600px;
+  border-radius: 3rem;
+  /*box-shadow: inset 0.8rem 0.8rem 1.4rem var(--shadow-1), inset -0.2rem -0.2rem 1.8rem var(--shadow-1);*/
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 60px;
+  z-index: 1000000001;
+  position: fixed;
+  background: var(--bg);
+}
