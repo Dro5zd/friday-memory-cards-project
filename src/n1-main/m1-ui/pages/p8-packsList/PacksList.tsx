@@ -8,6 +8,7 @@ import {PaginationNew} from '../../common/c11-Pagination/PaginationNew';
 import {PackSettings} from "./p1-packs/PackSettings/PackSettings";
 import {PackHeader} from "./p1-packs/PackHeader/PackHeader";
 import ServerErrors from "../../common/c0-ErrorsBlock/ServerErrors";
+import Preloader from "../../common/c7-Preloader/Preloader";
 
 export const PacksList = () => {
     const pack = useTypedSelector(state => state.packs)
@@ -15,6 +16,7 @@ export const PacksList = () => {
     const packNameValue = useTypedSelector(state => state.sort.packName)
     const requestPackMinValue = useTypedSelector(state => state.sort.packMinValue)
     const requestPackMaxValue = useTypedSelector(state => state.sort.packMaxValue)
+    const status = useTypedSelector(state => state.app.status)
     const dispatch = useTypedDispatch()
 
     const serverErrors = useTypedSelector(state => state.app.errors)
@@ -28,22 +30,30 @@ export const PacksList = () => {
         dispatch(getCardPackTC())
     }
 
+
     return (
         <div className={s.container}>
             <div className={s.components}>
-                <PackHeader/>
-                {serverErrors && <ServerErrors errors={serverErrors}/>}
-                <div className={s.wrapper}>
-                    <PackSettings maxCardsCount={requestPackMaxValue} minCardsCount={requestPackMinValue}/>
-                    <PacksContainer/>
-                </div>
-                <PaginationNew
-                    totalCount={pack.cardPacksTotalCount}
-                    pageSize={pack.pageCount}
-                    currentPage={pack.page}
-                    onPageChange={changeCurrentPackPage}
-                    siblingCount={3}
-                />
+                {
+                    status === 'loading'
+                      ? <Preloader/>
+                      : <>
+                          <PackHeader/>
+                          {serverErrors && <ServerErrors errors={serverErrors}/>}
+                          <div className={s.wrapper}>
+                              <PackSettings maxCardsCount={requestPackMaxValue} minCardsCount={requestPackMinValue}/>
+                              <PacksContainer/>
+                          </div>
+                          <PaginationNew
+                            totalCount={pack.cardPacksTotalCount}
+                            pageSize={pack.pageCount}
+                            currentPage={pack.page}
+                            onPageChange={changeCurrentPackPage}
+                            siblingCount={3}
+                          />
+                      </>
+                }
+
             </div>
         </div>
     )

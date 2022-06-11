@@ -8,6 +8,7 @@ import {PATH} from '../../routes/Routs';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {logOutMeTC} from '../../../m2-bll/appReducer';
 import {changeEditModeAC} from "../../../m2-bll/uiReducer";
+import Preloader from "../../common/c7-Preloader/Preloader";
 
 export const Profile = () => {
 
@@ -17,9 +18,11 @@ export const Profile = () => {
   const nameMe = useTypedSelector(state => state.auth.name)
   const avatar = useTypedSelector(state => state.profile.avatar)
   const avatarMe = useTypedSelector(state => state.auth.avatar)
+  const status = useTypedSelector(state => state.app.status)
 
   const navigate = useNavigate()
   const dispatch = useTypedDispatch()
+
 
   useEffect(() => {
     if (!isAuthorised) {
@@ -39,18 +42,25 @@ export const Profile = () => {
       {
         editMode
           ? <div className={s.components}>
-            <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
-              <div className={s.close}></div>
-            </NavLink>
-            <div className={s.avatar}>
-              <div className={s.avatarBorder}>
-                <img src={avatar || avatarMe || noPhoto} alt={'ava'}/>
-              </div>
-              <h2 className={s.profileName}>{name || nameMe || 'Name'}</h2>
-            </div>
-            <SuperButton className={s.editButton} title={'Edit Profile'} onClick={changeMode}/>
+            {
+              status === 'loading'
+                ? <Preloader/>
+                : <>
+                  <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
+                    <div className={s.close}></div>
+                  </NavLink>
+                  <div className={s.avatar}>
+                    <div className={s.avatarBorder}>
+                      <img src={avatar || avatarMe || noPhoto} alt={'ava'}/>
+                    </div>
+                    <h2 className={s.profileName}>{name || nameMe || 'Name'}</h2>
+                  </div>
+                  <SuperButton className={s.editButton} title={'Edit Profile'} onClick={changeMode}/>
 
-            <span className={s.link} onClick={logOutHandler}>Log Out</span></div>
+                  <span className={s.link} onClick={logOutHandler}>Log Out</span>
+                </>
+            }
+          </div>
           : <ProfileEdit changeMode={changeMode}/>
       }
     </div>

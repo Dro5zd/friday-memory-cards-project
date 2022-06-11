@@ -1,6 +1,7 @@
 import {AppThunk} from "./store";
 import {cardsAPI, PostCardDataType} from "../m3-dal/cards-api";
 import {serverErrorHandler} from "../utils/serverErrorHandler";
+import {setStatusAC} from "./appReducer";
 
 const initialState = {
   cards: [
@@ -64,6 +65,7 @@ export const getCardsTC = (cardsPack_id: string): AppThunk => async (dispatch, g
   const questionValue = getState().sort.cardsQuestionValue;
   const answerValue = getState().sort.cardsAnswerValue;
   const sortCards = getState().sort.sortCards
+  // dispatch(setStatusAC('loading')) // ???????????????
   try {
     const response = await cardsAPI.getCards({
       cardsPack_id: cardsPack_id,
@@ -74,32 +76,39 @@ export const getCardsTC = (cardsPack_id: string): AppThunk => async (dispatch, g
       sortCards: sortCards
     });
     dispatch(setCardsStateAC(response.data))
+    // dispatch(setStatusAC('succeeded')) // ???????????????
   } catch (e: any) {
     serverErrorHandler('Sorry, not able to get cards, that You are looking for, try again', dispatch)
   }
 }
 export const createNewCardTC = (newCard: PostCardDataType): AppThunk => async (dispatch, getState) => {
+  dispatch(setStatusAC('loading'))
   const packId = newCard.cardsPack_id
   try {
     await cardsAPI.postCard(newCard)
     dispatch(getCardsTC(packId))
+    dispatch(setStatusAC('succeeded'))
   } catch (e: any) {
     //console.log(e.response.data.error)
     serverErrorHandler('Sorry, not able to create new card, try again', dispatch)
   }
 }
 export const deleteCardTC = (id: string, packId: string): AppThunk => async (dispatch) => {
+  dispatch(setStatusAC('loading'))
   try {
     await cardsAPI.deleteCard(id)
     dispatch(getCardsTC(packId))
+    dispatch(setStatusAC('succeeded'))
   } catch (e: any) {
     serverErrorHandler('Sorry, not able to delete card, try again', dispatch)
   }
 }
 export const updateCardTC = (cardId: string, packId: string): AppThunk => async (dispatch) => {
+  dispatch(setStatusAC('loading'))
   try {
     await cardsAPI.updateCard({_id: cardId, question: 'WTF'})
     dispatch(getCardsTC(packId))
+    dispatch(setStatusAC('succeeded'))
   } catch (e: any) {
     serverErrorHandler('Sorry, not able to edit card, try again', dispatch)
   }

@@ -1,6 +1,7 @@
 import {cardPacksAPI, CreatePackDataType, UpdateCardsPackType} from '../m3-dal/cardPacks-api';
 import {AppThunk} from './store';
 import {serverErrorHandler} from "../utils/serverErrorHandler";
+import {setStatusAC} from "./appReducer";
 
 const SET_PACKS = 'POST-PACKS'
 
@@ -42,6 +43,7 @@ export const setCardPacksAC = (data: InitStateType) => ({
 
 //thunk
 export const getCardPackTC = (): AppThunk => (dispatch, getState) => {
+    // dispatch(setStatusAC('loading')) // ??????????
     const pageCount = 10
     const currentPage = getState().app.packsCurrentPage
     const user_id = getState().sort.user_id
@@ -55,33 +57,40 @@ export const getCardPackTC = (): AppThunk => (dispatch, getState) => {
     })
         .then((res) => {
             dispatch(setCardPacksAC(res.data))
+            // dispatch(setStatusAC('succeeded')) ???????????
         })
         .catch(() => {
             serverErrorHandler('Sorry, not able to get packs, that You are looking for, try again', dispatch)
         })
 }
 export const postPacksTC = (data: CreatePackDataType): AppThunk => (dispatch) => {
+    dispatch(setStatusAC('loading'))
     cardPacksAPI.postPacks(data)
         .then((res) => {
             dispatch(getCardPackTC())
+            dispatch(setStatusAC('succeeded'))
         })
         .catch(() => {
             serverErrorHandler('Sorry, not able to create pack, try again', dispatch)
         })
 }
 export const deletePacksTC = (packId: string): AppThunk => (dispatch) => {
+    dispatch(setStatusAC('loading'))
     cardPacksAPI.deletePacks(packId)
         .then((res) => {
             dispatch(getCardPackTC())
+            dispatch(setStatusAC('succeeded'))
         })
         .catch(() => {
             serverErrorHandler('Sorry, not able to delete pack, try again', dispatch)
         })
 }
 export const updatePacksTC = (data: UpdateCardsPackType): AppThunk => (dispatch) => {
+    dispatch(setStatusAC('loading'))
     cardPacksAPI.updatePacks(data)
         .then((res) => {
             dispatch(getCardPackTC())
+            dispatch(setStatusAC('succeeded'))
         })
         .catch(() => {
             serverErrorHandler('Sorry, not able to update pack, try again', dispatch)
