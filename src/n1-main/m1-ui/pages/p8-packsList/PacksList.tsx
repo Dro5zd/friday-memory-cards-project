@@ -10,7 +10,7 @@ import {PackHeader} from "./p1-packs/PackHeader/PackHeader";
 import ServerErrors from "../../common/c0-ErrorsBlock/ServerErrors";
 
 export const PacksList = () => {
-    const pack = useTypedSelector(state => state.packs)
+    const packs = useTypedSelector(state => state.packs)
     const sortUserId = useTypedSelector(state => state.sort.user_id)
     const packNameValue = useTypedSelector(state => state.sort.packName)
     const requestPackMinValue = useTypedSelector(state => state.sort.packMinValue)
@@ -34,13 +34,14 @@ export const PacksList = () => {
                 <PackHeader/>
                 {serverErrors && <ServerErrors errors={serverErrors}/>}
                 <div className={s.wrapper}>
-                    <PackSettings maxCardsCount={requestPackMaxValue} minCardsCount={requestPackMinValue}/>
+                    <PackSettings minRangeValue={packs.minCardsCount} maxRangeValue={packs.maxCardsCount}
+                                  maxCardsCount={requestPackMaxValue} minCardsCount={requestPackMinValue}/>
                     <PacksContainer/>
                 </div>
                 <PaginationNew
-                    totalCount={pack.cardPacksTotalCount}
-                    pageSize={pack.pageCount}
-                    currentPage={pack.page}
+                    totalCount={packs.cardPacksTotalCount}
+                    pageSize={packs.pageCount}
+                    currentPage={packs.page}
                     onPageChange={changeCurrentPackPage}
                     siblingCount={3}
                 />

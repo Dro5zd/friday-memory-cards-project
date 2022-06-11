@@ -3,7 +3,7 @@ const initState = {
     sortPacks: '0updated',
     packMinValue: 0,
     sortCards: '',
-    packMaxValue: 150,
+    packMaxValue: 110,
     cardsQuestionValue: '',
     cardsAnswerValue: '',
     packName: ''

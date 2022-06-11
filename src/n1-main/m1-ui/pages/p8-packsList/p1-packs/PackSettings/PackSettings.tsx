@@ -8,9 +8,16 @@ import {changePacksCurrentPageAC} from '../../../../../m2-bll/appReducer';
 type PackSettingsType = {
     minCardsCount: number;
     maxCardsCount: number;
+    minRangeValue: number;
+    maxRangeValue: number;
 }
 
-export const PackSettings: React.FC<PackSettingsType> = ({minCardsCount, maxCardsCount}) => {
+export const PackSettings: React.FC<PackSettingsType> = ({
+                                                             minCardsCount,
+                                                             maxCardsCount,
+                                                             minRangeValue,
+                                                             maxRangeValue
+                                                         }) => {
 
 
     useEffect(() => {
@@ -20,25 +27,26 @@ export const PackSettings: React.FC<PackSettingsType> = ({minCardsCount, maxCard
 
     const userId = useTypedSelector(state => state.auth._id)
     const checkedRadio = useTypedSelector(state => state.sort.user_id)
-    const [value1, setValue1] = useState(minCardsCount)
-    const [value2, setValue2] = useState(maxCardsCount)
+    const [value1, setValue1] = useState(minRangeValue)
+    const [value2, setValue2] = useState(maxRangeValue)
 
     const dispatch = useTypedDispatch()
 
-    const onChangeDoubleInputRangeHandle = (nums: Array<number>) => {
+   /* const onChangeDoubleInputRangeHandle = (nums: Array<number>) => {
+        debugger
         setValue1(nums[0])
         setValue2(nums[1])
-    }
+    }*/
 
     const showMyPacksHandler = () => {
         dispatch(setMyAllFilterAC(userId))
-        dispatch(setRangeValueAC(0, 2000))
+        dispatch(setRangeValueAC(minRangeValue, maxRangeValue))
         dispatch(changePacksCurrentPageAC(1));
     }
     const showAllPacksHandler = () => {
         dispatch(setMyAllFilterAC(''))
         dispatch(changePacksCurrentPageAC(1));
-        dispatch(setRangeValueAC(0, 2000))
+        dispatch(setRangeValueAC(minRangeValue, maxRangeValue))
     }
 
     const onMouseUpSetFilter = () => {
@@ -70,17 +78,15 @@ export const PackSettings: React.FC<PackSettingsType> = ({minCardsCount, maxCard
                     </div>
                     <div className={s.range}>
                         <SuperDoubleRange
-                            onChangeRange={onChangeDoubleInputRangeHandle}
                             onMouseUpSetFilter={onMouseUpSetFilter}
                             value={[value1, value2]}
                             setValue1={setValue1}
                             setValue2={setValue2}
-                            min={minCardsCount}
-                            max={maxCardsCount}
+                            min={minRangeValue}
+                            max={maxRangeValue}
                         />
                     </div>
                 </div>
-
             </div>
         </div>
     );
