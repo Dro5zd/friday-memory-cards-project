@@ -9,70 +9,74 @@ import sortUpBlack from '../../../../../../assets/img/sortUpBlack.png'
 import sortDownBlack from '../../../../../../assets/img/sortDownBlack.png'
 import Preloader from "../../../../common/c7-Preloader/Preloader";
 
-export const CardsContainer = () => {
-  const {urlCardsPackId} = useParams<string>();
-  const cards = useTypedSelector(state => state.cards);
-  const sortCards = useTypedSelector<string>(state => state.sort.sortCards)
-  const userId = useTypedSelector<string>(state => state.auth._id);
-  const packUserId = useTypedSelector<string>(state => state.cards.packUserId)
-  const status = useTypedSelector(state => state.app.status)
+interface ICardsContainer {
 
-  const dispatch = useTypedDispatch();
-  const isOwner = userId === packUserId
+}
 
-  const sortUpdatedCardsHandler = (value: string) => {
-    sortCards === `0${value}`
-      ? dispatch(setUpdateCardFilterAC(`1${value}`))
-      : dispatch(setUpdateCardFilterAC(`0${value}`))
-    urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
-  }
-  const deleteCard = (cardId: string, packId: string) => {
-    dispatch(deleteCardTC(cardId, packId))
-  };
+export const CardsContainer: React.FC<ICardsContainer> = () => {
+    const {urlCardsPackId} = useParams<string>();
+    const cards = useTypedSelector(state => state.cards);
+    const sortCards = useTypedSelector<string>(state => state.sort.sortCards)
+    const userId = useTypedSelector<string>(state => state.auth._id);
+    const packUserId = useTypedSelector<string>(state => state.cards.packUserId)
+    const status = useTypedSelector(state => state.app.status)
+    const dispatch = useTypedDispatch();
+    const isOwner = userId === packUserId
 
-  const updateCard = (cardId: string, packId: string) => {
-    dispatch(updateCardTC(cardId, packId))
-  };
+    const sortUpdatedCardsHandler = (value: string) => {
+        sortCards === `0${value}`
+            ? dispatch(setUpdateCardFilterAC(`1${value}`))
+            : dispatch(setUpdateCardFilterAC(`0${value}`))
+        urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
+    }
+    /* const deleteCard = (cardId: string, packId: string) => {
+       dispatch(deleteCardTC(cardId, packId))
+     };
 
-  return (
-    <div className={s.packsContainer}>
-      {
-        status === 'loading'
-          ? <Preloader/>
-          : <table>
-            <thead>
-            <tr className={s.packListHeader}>
-              <th className={s.questionTitle} onClick={() => sortUpdatedCardsHandler('question')}>Question <div
-                className={s.sortUp}>{sortCards === `0question`
-                ? <img src={sortUpBlack} alt="sortUpWhite"/>
-                : <img src={sortDownBlack} alt="sortDownBlack"/>}
-              </div></th>
-              <th className={s.answerTitle} onClick={() => sortUpdatedCardsHandler('answer')}>Answer <div
-                className={s.sortUp}>{sortCards === `0answer`
-                ? <img src={sortUpBlack} alt="sortUpWhite"/>
-                : <img src={sortDownBlack} alt="sortDownBlack"/>}
-              </div></th>
-              <th onClick={() => sortUpdatedCardsHandler('updated')} className={s.updateTitle}>Last Updated <div
-                className={s.sortUp}>{sortCards === `0updated`
-                ? <img src={sortUpBlack} alt="sortUpWhite"/>
-                : <img src={sortDownBlack} alt="sortDownBlack"/>}
-              </div></th>
-              <th onClick={() => sortUpdatedCardsHandler('grade')} className={s.gradeTitle}>Grade <div
-                className={s.sortUp}>{sortCards === `0grade`
-                ? <img src={sortUpBlack} alt="sortUpWhite"/>
-                : <img src={sortDownBlack} alt="sortDownBlack"/>}
-              </div></th>
-              <th className={s.actionsTitle}>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            {cards.cards.map((card) => {
-              return <CardItem isOwner={isOwner} key={card._id} card={card} deleteCard={deleteCard}
-                               updateCard={updateCard}/>
-            })}
-            </tbody>
-          </table>
-      }
-    </div>
-  );
+     const updateCard = (cardId: string, packId: string) => {
+       dispatch(updateCardTC(cardId, packId))
+     };*/
+
+    return (
+        <div className={s.packsContainer}>
+            {
+                status === 'loading'
+                    ? <Preloader/>
+                    : <table>
+                        <thead>
+                        <tr className={s.packListHeader}>
+                            <th className={s.questionTitle}
+                                onClick={() => sortUpdatedCardsHandler('question')}>Question <div
+                                className={s.sortUp}>{sortCards === `0question`
+                                ? <img src={sortUpBlack} alt="sortUpWhite"/>
+                                : <img src={sortDownBlack} alt="sortDownBlack"/>}
+                            </div></th>
+                            <th className={s.answerTitle} onClick={() => sortUpdatedCardsHandler('answer')}>Answer <div
+                                className={s.sortUp}>{sortCards === `0answer`
+                                ? <img src={sortUpBlack} alt="sortUpWhite"/>
+                                : <img src={sortDownBlack} alt="sortDownBlack"/>}
+                            </div></th>
+                            <th onClick={() => sortUpdatedCardsHandler('updated')} className={s.updateTitle}>Last
+                                Updated <div
+                                    className={s.sortUp}>{sortCards === `0updated`
+                                    ? <img src={sortUpBlack} alt="sortUpWhite"/>
+                                    : <img src={sortDownBlack} alt="sortDownBlack"/>}
+                                </div></th>
+                            <th onClick={() => sortUpdatedCardsHandler('grade')} className={s.gradeTitle}>Grade <div
+                                className={s.sortUp}>{sortCards === `0grade`
+                                ? <img src={sortUpBlack} alt="sortUpWhite"/>
+                                : <img src={sortDownBlack} alt="sortDownBlack"/>}
+                            </div></th>
+                            <th className={s.actionsTitle}>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {cards.cards.map((card) => {
+                            return <CardItem isOwner={isOwner} key={card._id} card={card}/>
+                        })}
+                        </tbody>
+                    </table>
+            }
+        </div>
+    );
 };
