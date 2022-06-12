@@ -43,7 +43,7 @@ export const setCardPacksAC = (data: InitStateType) => ({
 
 //thunk
 export const getCardPackTC = (): AppThunk => (dispatch, getState) => {
-    // dispatch(setStatusAC('loading')) // ??????????
+    dispatch(setStatusAC('loading')) // ??????????
     const pageCount = 10
     const currentPage = getState().app.packsCurrentPage
     const user_id = getState().sort.user_id
@@ -57,7 +57,7 @@ export const getCardPackTC = (): AppThunk => (dispatch, getState) => {
     })
         .then((res) => {
             dispatch(setCardPacksAC(res.data))
-            // dispatch(setStatusAC('succeeded')) ???????????
+            dispatch(setStatusAC('succeeded')) //???????????
         })
         .catch(() => {
             serverErrorHandler('Sorry, not able to get packs, that You are looking for, try again', dispatch)
