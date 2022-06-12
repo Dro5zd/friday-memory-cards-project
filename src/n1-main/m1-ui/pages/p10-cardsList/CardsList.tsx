@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './cardsList.module.css'
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {createNewCardTC, getCardsTC} from '../../../m2-bll/cardsReducer';
@@ -9,6 +9,7 @@ import ServerErrors from "../../common/c0-ErrorsBlock/ServerErrors";
 import {PaginationNew} from "../../common/c11-Pagination/PaginationNew";
 import {CardsHeader} from "./c1-cards/CardsHeader/CardsHeader";
 import Preloader from "../../common/c7-Preloader/Preloader";
+import {Modal} from '../../common/c15-Modal/Modal';
 
 export const CardsList = () => {
   const {urlCardsPackId} = useParams<string>();
@@ -42,8 +43,11 @@ export const CardsList = () => {
     urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
   };
 
+
+
   return (
     <div className={s.container}>
+
       <div className={s.components}>
         {
           status === 'loading'
@@ -64,6 +68,7 @@ export const CardsList = () => {
             </>
         }
       </div>
+
     </div>
   )
 }

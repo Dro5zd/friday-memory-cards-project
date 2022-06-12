@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {CardType, getCardsTC} from '../../../../../m2-bll/cardsReducer';
 import s from './cardItem.module.css';
 import {MainRating} from "../../../../common/c12-Rating/Rating";
@@ -11,6 +11,7 @@ import trash from "../../../../../../assets/img/trashBlack.png";
 import trashWhite from "../../../../../../assets/img/trashWhite.png";
 import moment from 'moment';
 import {setCardGradeTC} from '../../../../../m2-bll/gradeReducer';
+import {Modal} from '../../../../common/c15-Modal/Modal';
 
 type CardItemType = {
   card: CardType;
@@ -27,7 +28,9 @@ export const CardItem: React.FC<CardItemType> = ({card, deleteCard, updateCard, 
         dispatch(getCardsTC(card.cardsPack_id))
     }
 
-  return (
+
+
+    return (
       <tr className={s.cardItemContainer}>
         <td className={s.questionColumn}>{card.question}</td>
         <td className={s.answerColumn}>{card.answer}</td>

@@ -5,12 +5,10 @@ import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {changePacksCurrentPageAC} from '../../../m2-bll/appReducer';
 import {PacksContainer} from './p1-packs/PackContainer/PacksContainer';
 import {PaginationNew} from '../../common/c11-Pagination/PaginationNew';
-import {PackSettings} from "./p1-packs/PackSettings/PackSettings";
-import {PackHeader} from "./p1-packs/PackHeader/PackHeader";
-import ServerErrors from "../../common/c0-ErrorsBlock/ServerErrors";
-import Preloader from "../../common/c7-Preloader/Preloader";
-import {ModalContainer} from "../../common/c15-Modal/ModalContainer";
-import {ModalAddPack} from "../../common/c15-Modal/ModalAddPack";
+import {PackSettings} from './p1-packs/PackSettings/PackSettings';
+import {PackHeader} from './p1-packs/PackHeader/PackHeader';
+import ServerErrors from '../../common/c0-ErrorsBlock/ServerErrors';
+import Preloader from '../../common/c7-Preloader/Preloader';
 
 export const PacksList = () => {
     const pack = useTypedSelector(state => state.packs)
@@ -21,16 +19,16 @@ export const PacksList = () => {
     const status = useTypedSelector(state => state.app.status)
     const dispatch = useTypedDispatch()
 
-  const serverErrors = useTypedSelector(state => state.app.errors)
+    const serverErrors = useTypedSelector(state => state.app.errors)
 
-  useEffect(() => {
-    dispatch(getCardPackTC())
-  }, [sortUserId, packNameValue, requestPackMinValue, requestPackMaxValue])
+    useEffect(() => {
+        dispatch(getCardPackTC())
+    }, [sortUserId, packNameValue, requestPackMinValue, requestPackMaxValue])
 
-  const changeCurrentPackPage = (page: number) => {
-    dispatch(changePacksCurrentPageAC(page))
-    dispatch(getCardPackTC())
-  }
+    const changeCurrentPackPage = (page: number) => {
+        dispatch(changePacksCurrentPageAC(page))
+        dispatch(getCardPackTC())
+    }
 
     // <>
     //   {
@@ -49,6 +47,7 @@ export const PacksList = () => {
                     <PackSettings minRangeValue={pack.minCardsCount} maxRangeValue={pack.maxCardsCount}
                                   maxCardsCount={requestPackMaxValue} minCardsCount={requestPackMinValue}/>
                     <PacksContainer/>
+
                 </div>
                 <PaginationNew
                     totalCount={pack.cardPacksTotalCount}
