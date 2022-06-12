@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {UpdatedGradeType} from './cards-api';
 
 const instance = axios.create({
     baseURL: 'http://localhost:7542/2.0/',

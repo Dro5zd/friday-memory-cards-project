@@ -1,4 +1,5 @@
 import React from "react";
+import s from './Rating.module.css'
 
 export type RatingValueType = number
 
@@ -31,5 +32,5 @@ function Star(props: StarPropsType) {
   function onClickSpanHandler () {
     props.onClick(props.value)
   }
-  return <span onClick={onClickSpanHandler}>{props.selected ? '★' : '☆'}</span>
+  return <span className={s.star} onClick={onClickSpanHandler}>{props.selected ? '★' : '☆'}</span>
 }

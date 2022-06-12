@@ -1,8 +1,8 @@
 import React from 'react';
-import {CardType} from "../../../../../m2-bll/cardsReducer";
+import {CardType, getCardsTC} from '../../../../../m2-bll/cardsReducer';
 import s from './cardItem.module.css';
 import {MainRating} from "../../../../common/c12-Rating/Rating";
-import {useTypedSelector} from "../../../../../m2-bll/store";
+import {useTypedDispatch, useTypedSelector} from '../../../../../m2-bll/store';
 import edit from '../../../../../../assets/img/slidersBlack.png'
 import editWhite from "../../../../../../assets/img/slidersWhite.png";
 import learn from "../../../../../../assets/img/bookOpenBlack.png";
@@ -10,6 +10,7 @@ import learnWhite from "../../../../../../assets/img/bookOpenWhite.png";
 import trash from "../../../../../../assets/img/trashBlack.png";
 import trashWhite from "../../../../../../assets/img/trashWhite.png";
 import moment from 'moment';
+import {setCardGradeTC} from '../../../../../m2-bll/gradeReducer';
 
 type CardItemType = {
   card: CardType;
@@ -18,15 +19,21 @@ type CardItemType = {
   isOwner: boolean;
 }
 export const CardItem: React.FC<CardItemType> = ({card, deleteCard, updateCard, isOwner}) => {
-
+    const dispatch = useTypedDispatch();
   const mode = useTypedSelector(state => state.ui.mode)
+
+    const addRating = (value: number) => {
+        dispatch(setCardGradeTC( {grade: value, card_id: card._id}))
+        dispatch(getCardsTC(card.cardsPack_id))
+    }
 
   return (
       <tr className={s.cardItemContainer}>
         <td className={s.questionColumn}>{card.question}</td>
         <td className={s.answerColumn}>{card.answer}</td>
         <td className={s.updateColumn}>{moment(card.updated).format( 'MM.DD.YYYY, HH:mm')}</td>
-        <td className={s.gradeColumn}><MainRating value={card.grade} addRating={() => {}}/></td>
+
+        <td className={s.gradeColumn}><MainRating value={card.grade} addRating={addRating}/></td>
         <div className={s.buttonBlock}>
           <div className={s.learnWrapper} onClick={() => {}}>
             <img className={s.packLearnIcon} src={mode ? learn : learnWhite} alt="learn"/>
