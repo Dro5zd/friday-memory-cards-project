@@ -46,7 +46,7 @@ export const PacksList = () => {
                 <PackHeader/>
                 {serverErrors && <ServerErrors errors={serverErrors}/>}
                 <div className={s.wrapper}>
-                    <PackSettings minRangeValue={pack.minCardsCount} maxRangeValue={packs.maxCardsCount}
+                    <PackSettings minRangeValue={pack.minCardsCount} maxRangeValue={pack.maxCardsCount}
                                   maxCardsCount={requestPackMaxValue} minCardsCount={requestPackMinValue}/>
                     <PacksContainer/>
                 </div>
