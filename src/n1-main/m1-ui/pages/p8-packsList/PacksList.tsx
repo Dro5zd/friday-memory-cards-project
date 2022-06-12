@@ -25,7 +25,7 @@ export const PacksList = () => {
 
   useEffect(() => {
     dispatch(getCardPackTC())
-  }, [sortUserId, packNameValue, requestPackMinValue, requestPackMaxValue])
+  }, [sortUserId, packNameValue, requestPackMinValue, requestPackMaxValue, dispatch])
 
   const changeCurrentPackPage = (page: number) => {
     dispatch(changePacksCurrentPageAC(page))

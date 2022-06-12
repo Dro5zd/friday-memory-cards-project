@@ -1,5 +1,6 @@
-import axios from 'axios';
+import axios, {AxiosResponse} from 'axios';
 import {UpdatedGradeType} from './cards-api';
+import {InitStateType} from "../m2-bll/cardPacksReducer";
 
 const instance = axios.create({
     baseURL: 'http://localhost:7542/2.0/',
@@ -10,7 +11,7 @@ const instance = axios.create({
 export const cardPacksAPI = {
 
     getPacks(uriParams: PacksDataType) {
-        return instance.get(`cards/pack`, {params: uriParams})
+        return instance.get<InitStateType>(`cards/pack`, {params: uriParams})
     },
 
     postPacks(data: CreatePackDataType) {
