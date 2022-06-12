@@ -10,7 +10,7 @@ import {loginReducer, LoginReducerType} from "./loginReducer";
 import {UiActionsType, uiReducer} from './uiReducer';
 import {cardPacksReducer, CardPacksType} from "./cardPacksReducer";
 import {cardsReducer, CardsReducerActionTypes} from "./cardsReducer";
-import {sortReducer} from './sortReducer';
+import {sortReducer, SortReducerActionType} from './sortReducer';
 import {gradeReducer} from './gradeReducer';
 
 const reducers = combineReducers({
@@ -47,6 +47,7 @@ type AppActionsType =
     | UiActionsType
     | CardPacksType
     | CardsReducerActionTypes
+    | SortReducerActionType
 
 
 // @ts-ignore

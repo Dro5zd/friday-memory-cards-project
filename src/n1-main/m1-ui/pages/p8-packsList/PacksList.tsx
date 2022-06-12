@@ -19,16 +19,16 @@ export const PacksList = () => {
     const status = useTypedSelector(state => state.app.status)
     const dispatch = useTypedDispatch()
 
-    const serverErrors = useTypedSelector(state => state.app.errors)
+  const serverErrors = useTypedSelector(state => state.app.errors)
 
-    useEffect(() => {
-        dispatch(getCardPackTC())
-    }, [sortUserId, packNameValue, requestPackMinValue, requestPackMaxValue])
+  useEffect(() => {
+    dispatch(getCardPackTC())
+  }, [sortUserId, packNameValue, requestPackMinValue, requestPackMaxValue, dispatch])
 
-    const changeCurrentPackPage = (page: number) => {
-        dispatch(changePacksCurrentPageAC(page))
-        dispatch(getCardPackTC())
-    }
+  const changeCurrentPackPage = (page: number) => {
+    dispatch(changePacksCurrentPageAC(page))
+    dispatch(getCardPackTC())
+  }
 
     // <>
     //   {
@@ -47,7 +47,6 @@ export const PacksList = () => {
                     <PackSettings minRangeValue={pack.minCardsCount} maxRangeValue={pack.maxCardsCount}
                                   maxCardsCount={requestPackMaxValue} minCardsCount={requestPackMinValue}/>
                     <PacksContainer/>
-
                 </div>
                 <PaginationNew
                     totalCount={pack.cardPacksTotalCount}
