@@ -8,6 +8,7 @@ import {CardsContainer} from './c1-cards/CardsContainer/CardsContainer';
 import ServerErrors from "../../common/c0-ErrorsBlock/ServerErrors";
 import {PaginationNew} from "../../common/c11-Pagination/PaginationNew";
 import {CardsHeader} from "./c1-cards/CardsHeader/CardsHeader";
+import Preloader from "../../common/c7-Preloader/Preloader";
 
 export const CardsList = () => {
   const {urlCardsPackId} = useParams<string>();
@@ -19,6 +20,8 @@ export const CardsList = () => {
   const question = useTypedSelector(state => state.sort.cardsQuestionValue)
   const answer = useTypedSelector(state => state.sort.cardsAnswerValue)
   const serverErrors = useTypedSelector(state => state.app.errors)
+  const status = useTypedSelector(state => state.app.status)
+
 
   const isOwner = userId === packUserId
 
@@ -42,18 +45,24 @@ export const CardsList = () => {
   return (
     <div className={s.container}>
       <div className={s.components}>
-        <div className={s.packSide}>
-          <CardsHeader addNewCard={addNewCard} isOwner={isOwner}/>
-          {serverErrors && <ServerErrors errors={serverErrors}/>}
-          <CardsContainer/>
-        </div>
-        <PaginationNew
-          totalCount={cards.cardsTotalCount}
-          pageSize={cards.pageCount}
-          currentPage={cards.page}
-          onPageChange={changeCurrentPage}
-          siblingCount={3}
-        />
+        {
+          status === 'loading'
+            ? <Preloader/>
+            : <>
+              <div className={s.packSide}>
+                <CardsHeader addNewCard={addNewCard} isOwner={isOwner}/>
+                {serverErrors && <ServerErrors errors={serverErrors}/>}
+                <CardsContainer/>
+              </div>
+              <PaginationNew
+                totalCount={cards.cardsTotalCount}
+                pageSize={cards.pageCount}
+                currentPage={cards.page}
+                onPageChange={changeCurrentPage}
+                siblingCount={3}
+              />
+            </>
+        }
       </div>
     </div>
   )

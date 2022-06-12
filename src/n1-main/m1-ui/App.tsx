@@ -19,6 +19,7 @@ export const App = () => {
   useEffect(() => {
     dispatch(authoriseMeTC())
   }, [])
+
   if (!isInitialised) {
     return <Preloader/>
   }

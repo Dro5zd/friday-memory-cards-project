@@ -4,8 +4,6 @@ import {updateProfileAC} from './profileReducer';
 import {loginAC} from "./loginReducer";
 import {AppThunk} from "./store";
 
-const SET_CHANGED_PASS = "SET-CHANGED-PASS"
-
 const initState: InitStateType = {
     isAuthorised: false,
     isInitialised: false,
@@ -13,6 +11,7 @@ const initState: InitStateType = {
     cardsCurrentPage: 1,
     packsCurrentPage: 1,
     errors: [],
+    status: 'idle'
 }
 type InitStateType = {
     isAuthorised: boolean;
@@ -21,6 +20,7 @@ type InitStateType = {
     cardsCurrentPage: number;
     packsCurrentPage: number;
     errors: string[];
+    status: RequestStatusType
 }
 
 export const appReducer = (state = initState, action: AppActionType): InitStateType => {
@@ -29,7 +29,7 @@ export const appReducer = (state = initState, action: AppActionType): InitStateT
             return {...state, isAuthorised: action.isAuthorised}
         case "SET-IS-INITIALISED":
             return {...state, isInitialised: action.isInitialised}
-        case SET_CHANGED_PASS:
+        case 'SET-CHANGED-PASS':
             return {...state, passChanged: action.passChanged}
         case "CHANGE-CARDS-CURRENT-PAGE":
             return {...state, cardsCurrentPage: action.page}
@@ -39,21 +39,27 @@ export const appReducer = (state = initState, action: AppActionType): InitStateT
             return {...state, errors: [...state.errors, action.error]}
         case "CLEAR-SERVER-ERROR":
             return {...state, errors: []}
+        case 'SET-STATUS':
+            return {...state, status: action.status}
 
         default:
             return state
     }
 }
 
+export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
+
 export const setIsAuthorisedAC = (isAuthorised: boolean) => ({type: "SET-IS-AUTHORISED", isAuthorised} as const)
 export const setIsInitialisedAC = (isInitialised: boolean) => ({type: "SET-IS-INITIALISED", isInitialised} as const)
-export const setChangedPassAC = (passChanged: boolean) => ({type: SET_CHANGED_PASS, passChanged} as const)
+export const setChangedPassAC = (passChanged: boolean) => ({type: 'SET-CHANGED-PASS', passChanged} as const)
 export const changeCardsCurrentPageAC = (page: number) => ({type: 'CHANGE-CARDS-CURRENT-PAGE', page} as const)
 export const changePacksCurrentPageAC = (page: number) => ({type: 'CHANGE-PACKS-CURRENT-PAGE', page} as const)
 export const setErrorsAC = (error: string) => ({type: 'SET-SERVER-ERROR', error} as const)
 export const clearErrorsAC = () => ({type: 'CLEAR-SERVER-ERROR'} as const)
+export const setStatusAC = (status: RequestStatusType) => ({type: 'SET-STATUS', status} as const)
 
 export const authoriseMeTC = (): AppThunk => (dispatch) => {
+    dispatch(setStatusAC('loading'))
     authAPI.me().then((res) => {
         dispatch(loginAC(res.data))
         dispatch(setIsAuthorisedAC(true))
@@ -61,6 +67,7 @@ export const authoriseMeTC = (): AppThunk => (dispatch) => {
         dispatch(updateProfileAC(res.data.name, res.data.avatar))
     }).finally(() => {
         dispatch(setIsInitialisedAC(true))
+        dispatch(setStatusAC('succeeded'))
     })
 }
 
@@ -80,4 +87,5 @@ export type AppActionType =
     | ReturnType<typeof changePacksCurrentPageAC>
     | ReturnType<typeof setErrorsAC>
     | ReturnType<typeof clearErrorsAC>
+    | ReturnType<typeof setStatusAC>
 

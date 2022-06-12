@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {authAPI, NewPassParamsType} from "../m3-dal/auth-api";
+import {setStatusAC} from "./appReducer";
 
 const SET_NEW_PASS_ERROR = 'SET-NEW-PASS-ERROR'
 const SET_PASS_CHANGED = 'SET-PASS-CHANGED'
@@ -33,12 +34,16 @@ export const setPassChangedAC = (passChanged: boolean) => ({type: SET_PASS_CHANG
 
 //thunk
 export const newPassTC = (newPassData: NewPassParamsType) => (dispatch: Dispatch) => {
+  dispatch(setStatusAC('loading'))
   authAPI.newPass(newPassData)
-    .then(() => {  // можно и не делать
+    .then(() => {
       dispatch(setPassChangedAC(true))
     })
     .catch((e) => {
       dispatch(setNewPassErrorAC(e.message))
+    })
+    .finally(() => {
+      dispatch(setStatusAC('succeeded'))
     })
 }
 

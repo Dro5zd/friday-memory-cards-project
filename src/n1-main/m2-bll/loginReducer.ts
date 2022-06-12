@@ -1,6 +1,6 @@
 import {Dispatch} from "redux";
 import {authAPI, LoginParamsType} from "../m3-dal/auth-api";
-import {setIsAuthorisedAC} from "./appReducer";
+import {setIsAuthorisedAC, setStatusAC} from "./appReducer";
 
 const LOGIN = 'LOGIN'
 const SET_LOGIN_ERROR = 'SET-LOGIN-ERROR'
@@ -32,10 +32,12 @@ export const setLoginErrorAC = (error: string) => ({
 
 // thunk
 export const loginFormTC = (data: LoginParamsType) => (dispatch: Dispatch) => {
+  dispatch(setStatusAC('loading'))
   authAPI.loginPost(data)
     .then((res) => {
       dispatch(setIsAuthorisedAC(true))
       dispatch(loginAC(res.data))
+      dispatch(setStatusAC('succeeded'))
     })
     .catch((e) => {
       dispatch(setLoginErrorAC(e.message))
@@ -49,6 +51,7 @@ export const loginFormTC = (data: LoginParamsType) => (dispatch: Dispatch) => {
 export type LoginReducerType =
   | ReturnType<typeof loginAC>
   | ReturnType<typeof setLoginErrorAC>
+  | ReturnType<typeof setStatusAC>
 
 type LoginStateType = typeof initState
 type InitStateType = {

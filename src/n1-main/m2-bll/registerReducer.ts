@@ -1,5 +1,6 @@
 import {Dispatch} from "redux";
 import {authAPI} from '../m3-dal/auth-api';
+import {setStatusAC} from "./appReducer";
 
 const initState = {
     isRegistered: false
@@ -24,6 +25,7 @@ export const setIsRegisteredAC = (isRegistered: boolean) => {
     return ({type: 'SET-IS-REGISTERED', isRegistered} as const)
 };
 export const registerTC = (data: RequestRegisterType) => /*async*/ (dispatch: Dispatch<RegistrationActionType>) => {
+    dispatch(setStatusAC('loading'))
     /*const response = await registrationAPI.register(data)
     try {
             if (response.data?.error
@@ -39,13 +41,18 @@ export const registerTC = (data: RequestRegisterType) => /*async*/ (dispatch: Di
         }*/
     authAPI.register(data).then(res => {
         dispatch(setIsRegisteredAC(true))
-    }).catch((error) => dispatch(setRegisterErrorAC(error.response.data.error)))
+        dispatch(setStatusAC('succeeded'))
+    })
+      .catch((error) =>
+        dispatch(setRegisterErrorAC(error.response.data.error))
+      )
 }
 
 //types
 export type RegistrationActionType =
     | ReturnType<typeof setRegisterErrorAC>
     | ReturnType<typeof setIsRegisteredAC>
+    | ReturnType<typeof setStatusAC>
 
 
 type InitStateType = {

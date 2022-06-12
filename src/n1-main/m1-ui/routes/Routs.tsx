@@ -10,6 +10,7 @@ import {Login} from "../pages/p2-login/Login";
 import {PacksList} from "../pages/p8-packsList/PacksList";
 import {EmailAnswer} from "../pages/p9-emailAnswer/EmailAnswer";
 import {CardsList} from '../pages/p10-cardsList/CardsList';
+import {ModalContainer} from "../common/c15-Modal/ModalContainer";
 
 export const PATH = {
     LOGIN: '/login',
@@ -20,7 +21,8 @@ export const PATH = {
     TEST: '/test',
     PACKS_LIST: '/packs-list',
     CARDS_LIST: '/cards-list/:urlCardsPackId',
-    EMAIL_ANSWER: '/email-answer'
+    EMAIL_ANSWER: '/email-answer',
+    MODAL: '/modal'
 }
 
 export const Routs = () => {
@@ -38,6 +40,7 @@ export const Routs = () => {
                 <Route path={PATH.PACKS_LIST} element={<PacksList/>}/>
                 <Route path={PATH.CARDS_LIST} element={<CardsList/>}/>
                 <Route path={PATH.TEST} element={<Test/>}/>
+                <Route path={PATH.MODAL} element={<ModalContainer/>}/>
                 <Route path="/*" element={<Error404/>}/>
             </Routes>
         </div>
