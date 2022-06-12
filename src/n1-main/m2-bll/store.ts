@@ -11,6 +11,7 @@ import {UiActionsType, uiReducer} from './uiReducer';
 import {cardPacksReducer, CardPacksType} from "./cardPacksReducer";
 import {cardsReducer, CardsReducerActionTypes} from "./cardsReducer";
 import {sortReducer} from './sortReducer';
+import {gradeReducer} from './gradeReducer';
 
 const reducers = combineReducers({
     auth: loginReducer,
@@ -22,7 +23,8 @@ const reducers = combineReducers({
     ui: uiReducer,
     packs: cardPacksReducer,
     cards: cardsReducer,
-    sort: sortReducer
+    sort: sortReducer,
+    grade: gradeReducer
 })
 
 const store = createStore(reducers, applyMiddleware(thunk))
