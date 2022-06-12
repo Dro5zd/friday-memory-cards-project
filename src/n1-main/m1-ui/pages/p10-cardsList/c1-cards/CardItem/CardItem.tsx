@@ -11,7 +11,6 @@ import trash from "../../../../../../assets/img/trashBlack.png";
 import trashWhite from "../../../../../../assets/img/trashWhite.png";
 import moment from 'moment';
 import {setCardGradeTC} from '../../../../../m2-bll/gradeReducer';
-import {Modal} from '../../../../common/c15-Modal/Modal';
 
 type CardItemType = {
   card: CardType;
@@ -27,8 +26,6 @@ export const CardItem: React.FC<CardItemType> = ({card, deleteCard, updateCard, 
         dispatch(setCardGradeTC( {grade: value, card_id: card._id}))
         dispatch(getCardsTC(card.cardsPack_id))
     }
-
-
 
     return (
       <tr className={s.cardItemContainer}>

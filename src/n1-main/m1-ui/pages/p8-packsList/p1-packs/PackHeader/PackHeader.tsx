@@ -25,9 +25,9 @@ export const PackHeader = () => {
   const [packName, setPackName] = useState('')
 
   const createPackButtonHandler = (data: CreatePackDataType) => {
+    dispatch(changeModalModeAC(!modelMode))
     dispatch(changePacksCurrentPageAC(1))
     dispatch(postPacksTC(data))
-    dispatch(changeModalModeAC(!modelMode))
   }
 
   const addPackHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -48,7 +48,6 @@ export const PackHeader = () => {
       <Modal>
         <SuperInputText placeholder='Pack Name' onChange={addPackHandler} autoFocus/>
         <SuperButton
-            value={packName}
             onClick={() => {createPackButtonHandler({cardsPack: {name: packName}})}}
             title={'CREATE PACK'}
             className={s.searchButton}
