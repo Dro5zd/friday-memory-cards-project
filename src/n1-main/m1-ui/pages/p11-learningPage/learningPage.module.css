@@ -1,0 +1,94 @@
+.learningContainer {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+}
+
+.components {
+  position: relative;
+  width: 400px;
+  height: 600px;
+  border-radius: 3rem;
+  box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
+  padding: 4rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 60px;
+}
+
+.avatar {
+  display: contents;
+  justify-content: center;
+}
+
+.avatarBorder {
+  display: flex;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2), inset 0.2rem 0.2rem 0.5rem var(--shadow-1), inset -0.2rem -0.2rem 0.5rem var(--shadow-2);
+}
+
+.avatarBorder img {
+  display: block;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+}
+
+.profileName {
+  margin-bottom: 230px;
+  font-size: 35px;
+  text-align: center;
+}
+
+.editButton {
+ margin-bottom: 40px;
+}
+
+.close {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.close:before, .close:after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 25px;
+  width: 3px;
+  background-color: var(--textColor);
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+
+.link {
+  text-decoration: none;
+  color: var(--textColor);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: var(--textHover);
+}

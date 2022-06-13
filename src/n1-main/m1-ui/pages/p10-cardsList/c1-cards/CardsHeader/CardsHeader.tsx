@@ -41,7 +41,7 @@ export const CardsHeader: React.FC<CardsHeaderType> = ({isOwner}) => {
     const createCardButtonHandler = (data: CreatePackDataType) => {
         dispatch(changeModalModeAC(!modelMode))
         dispatch(changePacksCurrentPageAC(1))
-        dispatch(createNewCardTC({cardsPack_id: urlCardsPackId}))
+        // dispatch(createNewCardTC({cardsPack_id: urlCardsPackId}))
     }
 
     const [question, setQuestion] = useState('')
@@ -68,7 +68,7 @@ export const CardsHeader: React.FC<CardsHeaderType> = ({isOwner}) => {
             <SuperInputText placeholder='Question' onChange={addQuestionHandler} autoFocus/>
             <SuperInputText placeholder='Answer' onChange={addAnswerHandler}/>
             <SuperButton
-                onClick={() => {createCardButtonHandler({cardsPack: {name: packName}})}}
+                // onClick={() => {createCardButtonHandler({cardsPack: {name: packName}})}}
                 title={'CREATE PACK'}
                 className={s.searchButton}
                 // disabled={packName === ''}

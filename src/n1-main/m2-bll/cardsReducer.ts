@@ -35,15 +35,18 @@ export type CardsReducerInitialStateType = {
   packUserId: string;
 };
 export type CardType = {
+  _id: string;
+  cardsPack_id: string;
+
   answer: string;
   question: string;
-  cardsPack_id: string;
   grade: number;
   shots: number;
+
   user_id: string;
   created: string;
   updated: string;
-  _id: string;
+
 };
 
 export const cardsReducer = (state = initialState, action: CardsReducerActionTypes): CardsReducerInitialStateType => {
