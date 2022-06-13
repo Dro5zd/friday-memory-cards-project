@@ -54,24 +54,33 @@ export const PackItem: React.FC<PackItemType> = ({
                 <td onClick={() => openCardsListHandler(pack._id)} className={s.nameColumn}><span>{pack.name}</span>
                 </td>
                 <td className={s.cardsColumn}><span>{pack.cardsCount}</span></td>
-                <td className={s.updateColumn}><span>{moment(pack.created).format('HH:mm MM.DD.YYYY')}</span></td>
+                <td className={s.updateColumn}><span>{moment(pack.created).format('DD.MM.YYYY HH:mm')}</span></td>
                 <td className={s.userNameColumn}>{pack.user_name}</td>
                 <td className={s.actionsColumn}>
                     <div className={s.buttonBlock}>
-                        <div className={s.learnWrapper} onClick={() => LearningHandler(pack._id)}>
+
+
+                        {userId === pack.user_id ?
+                            <div className={s.deleteWrapper} onClick={toggle_delete_modal}>
+                                <img className={s.packDeleteIcon} src={mode ? trash : trashWhite} alt="delete"/>
+                            </div> : <div className={s.empty}/>
+                        }
+
+                        {pack.cardsCount > 0 ? <div className={s.learnWrapper} onClick={() => LearningHandler(pack._id)}>
                             <img className={s.packLearnIcon} src={mode ? learn : learnWhite} alt="learn"/>
-                        </div>
-                        {userId === pack.user_id &&
+                        </div> : <div className={s.empty}/> }
+
+
+                        {userId === pack.user_id ?
                             <div className={s.editeWrapper}
                                  onClick={toggle_edit_modal}>
                                 <img className={s.packEditIcon} src={mode ? edit : editWhite} alt="edit"/>
-                            </div>
+                            </div> : <div className={s.empty}/>
                         }
-                        {userId === pack.user_id &&
-                            <div className={s.deleteWrapper} onClick={toggle_delete_modal}>
-                                <img className={s.packDeleteIcon} src={mode ? trash : trashWhite} alt="delete"/>
-                            </div>
-                        }
+
+
+
+
                     </div>
                 </td>
             </tr>

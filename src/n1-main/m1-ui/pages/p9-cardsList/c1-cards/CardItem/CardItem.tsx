@@ -7,7 +7,7 @@ import edit from '../../../../../../assets/img/slidersBlack.png'
 import editWhite from "../../../../../../assets/img/slidersWhite.png";
 import learn from "../../../../../../assets/img/bookOpenBlack.png";
 import learnWhite from "../../../../../../assets/img/bookOpenWhite.png";
-import trash from "../../../../../../assets/img/trashBlack.png";
+import trash from "../../../../../../assets/img/trash.svg";
 import trashWhite from "../../../../../../assets/img/trashWhite.png";
 import moment from 'moment';
 import {useModalHandler} from "../../../../../utils/use-modal-handler";
@@ -32,17 +32,18 @@ export const CardItem: React.FC<CardItemType> = ({card, isOwner}) => {
       <tr className={s.cardItemContainer}>
         <td className={s.questionColumn}>{card.question}</td>
         <td className={s.answerColumn}>{card.answer}</td>
-        <td className={s.updateColumn}>{moment(card.updated).format('MM.DD.YYYY, HH:mm')}</td>
+        <td className={s.updateColumn}>{moment(card.updated).format('DD.MM.YYYY HH:mm')}</td>
         <td className={s.gradeColumn}><MainRating value={card.grade}/></td>
         <div className={s.buttonBlock}>
+          {isOwner && <div className={s.deleteWrapper} onClick={toggle_delete_modal}>
+            <img className={s.packDeleteIcon} src={mode ? trash : trashWhite} alt="delete"/></div>}
+          {isOwner && <div className={s.editeWrapper} onClick={toggle_edit_modal}>
+              <img className={s.packEditIcon} src={mode ? edit : editWhite} alt="edit"/></div>}
+
           <div className={s.learnWrapper} onClick={() => {
           }}>
             <img className={s.packLearnIcon} src={mode ? learn : learnWhite} alt="learn"/>
           </div>
-          {isOwner && <div className={s.editeWrapper} onClick={toggle_edit_modal}>
-              <img className={s.packEditIcon} src={mode ? edit : editWhite} alt="edit"/></div>}
-          {isOwner && <div className={s.deleteWrapper} onClick={toggle_delete_modal}>
-              <img className={s.packDeleteIcon} src={mode ? trash : trashWhite} alt="delete"/></div>}
         </div>
       </tr>
     </>

@@ -77,6 +77,14 @@
 .packDeleteIcon {
     cursor: pointer;
     width: 15px;
+
+}
+
+
+.packDeleteIcon:hover {
+    cursor: pointer;
+    width: 15px;
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%);
 }
 .packLearnIcon {
     cursor: pointer;
