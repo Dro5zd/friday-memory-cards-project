@@ -106,10 +106,10 @@ export const deleteCardTC = (id: string, packId: string): AppThunk => async (dis
     serverErrorHandler('Sorry, not able to delete card, try again', dispatch)
   }
 }
-export const updateCardTC = (cardId: string, packId: string): AppThunk => async (dispatch) => {
+export const updateCardTC = (cardId: string, packId: string, question: string, answer: string): AppThunk => async (dispatch) => {
   dispatch(setStatusAC('loading'))
   try {
-    await cardsAPI.updateCard({_id: cardId, question: 'WTF'})
+    await cardsAPI.updateCard({_id: cardId, question, answer})
     dispatch(getCardsTC(packId))
     dispatch(setStatusAC('succeeded'))
   } catch (e: any) {
