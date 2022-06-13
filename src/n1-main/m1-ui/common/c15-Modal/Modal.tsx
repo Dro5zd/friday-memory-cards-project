@@ -1,26 +1,20 @@
 import React, {ReactNode} from 'react';
 import s from './Modal.module.css';
-import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
-import {changeModalModeAC} from '../../../m2-bll/uiReducer';
 
 interface ModalType {
-    children: ReactNode
+  children: ReactNode
+  modalMode: boolean
+  changeModelMode: () => void
 }
 
-export const Modal: React.FC<ModalType>  = ({children}) => {
-    const dispatch = useTypedDispatch()
-    const modelMode = useTypedSelector(state => state.ui.modalMode)
+export const Modal: React.FC<ModalType> = ({changeModelMode,  modalMode, children}) => {
 
-    const changeModelMode= () => {
-        dispatch(changeModalModeAC(!modelMode))
-    }
-
-        return (
-                <div className={modelMode ? `${s.modal} ${s.active}` : s.modal} onClick={changeModelMode}>
-                    <div className={s.modalContent} onClick={event => event.stopPropagation()}>
-                        {children}
-                    </div>
-                </div>
-        );
-    }
+    return (
+      <div className={modalMode? `${s.modal} ${s.active}` : s.modal} onClick={changeModelMode}>
+        <div className={s.modalContent} onClick={e => e.stopPropagation()}>
+          {children}
+        </div>
+      </div>
+    );
+  }
 ;

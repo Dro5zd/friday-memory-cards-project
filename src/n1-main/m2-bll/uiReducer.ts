@@ -1,11 +1,11 @@
 const CHANGE_THEME = 'CHANGE-THEME'
 const CHANGE_EDIT_MODE = 'CHANGE-EDIT-MODE'
-const CHANGE_MODAL_MODE = 'CHANGE-MODAL-MODE'
+// const CHANGE_MODAL_MODE = 'CHANGE-MODAL-MODE'
 
 const initState = {
   mode: true,
   editMode: true,
-  modalMode: false
+  // modalMode: false
 }
 
 export const uiReducer = (state: InitStateType = initState, action: UiActionsType): InitStateType => {
@@ -14,8 +14,8 @@ export const uiReducer = (state: InitStateType = initState, action: UiActionsTyp
       return {...state, mode: action.mode}
     case CHANGE_EDIT_MODE:
       return {...state, editMode: action.editMode}
-    case CHANGE_MODAL_MODE:
-      return {...state, modalMode: action.modalMode}
+    // case CHANGE_MODAL_MODE:
+    //   return {...state, modalMode: action.modalMode}
 
     default:
       return state
@@ -30,18 +30,18 @@ export const changeEditModeAC = (editMode: boolean) => {
   return ({type: CHANGE_EDIT_MODE, editMode} as const)
 }
 
-export const changeModalModeAC = (modalMode: boolean) => {
-  return ({type: CHANGE_MODAL_MODE, modalMode} as const)
-}
+// export const changeModalModeAC = (modalMode: boolean) => {
+//   return ({type: CHANGE_MODAL_MODE, modalMode} as const)
+// }
 
 //types
 export type UiActionsType =
   | ReturnType<typeof changeThemeAC>
   | ReturnType<typeof changeEditModeAC>
-  | ReturnType<typeof changeModalModeAC>
+  // | ReturnType<typeof changeModalModeAC>
 
 type InitStateType = {
   mode: boolean;
   editMode: boolean;
-  modalMode: boolean;
+  // modalMode: boolean;
 }

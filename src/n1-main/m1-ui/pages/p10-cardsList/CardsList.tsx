@@ -54,7 +54,7 @@ export const CardsList = () => {
             ? <Preloader/>
             : <>
               <div className={s.packSide}>
-                <CardsHeader addNewCard={addNewCard} isOwner={isOwner}/>
+                {/*<CardsHeader addNewCard={addNewCard} isOwner={isOwner}/>*/}
                 {serverErrors && <ServerErrors errors={serverErrors}/>}
                 <CardsContainer/>
               </div>
