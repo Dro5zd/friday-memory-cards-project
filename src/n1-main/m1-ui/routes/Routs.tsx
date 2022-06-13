@@ -7,9 +7,9 @@ import {Profile} from '../pages/p3-profile/Profile';
 import Registration from "../pages/p4-registration/Registration";
 import {Login} from "../pages/p2-login/Login";
 import {PacksList} from "../pages/p8-packsList/PacksList";
-import {EmailAnswer} from "../pages/p9-emailAnswer/EmailAnswer";
-import {CardsList} from '../pages/p10-cardsList/CardsList';
 import {LearningPage} from '../pages/p11-learningPage/LearningPage';
+import {EmailAnswer} from "../pages/p10-emailAnswer/EmailAnswer";
+import {CardsList} from '../pages/p9-cardsList/CardsList';
 
 export const PATH = {
     LOGIN: '/login',
@@ -17,6 +17,7 @@ export const PATH = {
     PROFILE: '/profile',
     PASSWORD_RECOVERY: '/password-recovery',
     ENTERING_NEW_PASSWORD: '/set-new-password/:token',
+    TEST: '/test',
     PACKS_LIST: '/packs-list',
     CARDS_LIST: '/cards-list/:urlCardsPackId',
     EMAIL_ANSWER: '/email-answer',

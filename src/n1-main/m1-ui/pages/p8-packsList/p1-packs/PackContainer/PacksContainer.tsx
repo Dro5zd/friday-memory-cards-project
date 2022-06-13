@@ -7,17 +7,8 @@ import {useTypedDispatch, useTypedSelector} from '../../../../../m2-bll/store';
 import sortUpBlack from '../../../../../../assets/img/sortUpBlack.png'
 import sortDownBlack from '../../../../../../assets/img/sortDownBlack.png'
 import {changePacksCurrentPageAC} from "../../../../../m2-bll/appReducer";
-import {UpdateCardsPackType} from "../../../../../m3-dal/cardPacks-api";
 
-interface PacksContainerType {
-  deleteHandler: (id: string) => void
-  updateHandler: (data: UpdateCardsPackType) => void
-  openCardsListHandler: (packId: string) => void
-  changeDeleteMode: () => void
-}
-
-export const PacksContainer:React.FC<PacksContainerType> = ({deleteHandler,
-                                                              changeDeleteMode, updateHandler, openCardsListHandler}) => {
+export const PacksContainer = () => {
   const pack = useTypedSelector(state => state.packs)
   const sortPacks = useTypedSelector(state => state.sort.sortPacks)
   const userId = useTypedSelector(state => state.auth._id)
@@ -71,13 +62,10 @@ export const PacksContainer:React.FC<PacksContainerType> = ({deleteHandler,
           </thead>
             <tbody className={s.packListBody}>
             {pack.cardPacks.map(p =>
-              <PackItem deleteHandler={deleteHandler}
-                        updateHandler={updateHandler}
-                        openCardsListHandler={openCardsListHandler}
+              <PackItem
                         userId={userId}
                         pack={p}
                         key={p._id}
-                        changeDeleteMode={changeDeleteMode}
               />)}
             </tbody>
         </table>

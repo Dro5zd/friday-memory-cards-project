@@ -86,9 +86,9 @@ export const deletePacksTC = (packId: string): AppThunk => (dispatch) => {
             serverErrorHandler('Sorry, not able to delete pack, try again', dispatch)
         })
 }
-export const updatePacksTC = (data: UpdateCardsPackType): AppThunk => (dispatch) => {
+export const updatePacksTC = (packId: string, packName: string): AppThunk => (dispatch) => {
     dispatch(setStatusAC('loading'))
-    cardPacksAPI.updatePacks(data)
+    cardPacksAPI.updatePacks({cardsPack: {_id: packId, name: packName}})
         .then((res) => {
             dispatch(getCardPackTC())
             dispatch(setStatusAC('succeeded'))

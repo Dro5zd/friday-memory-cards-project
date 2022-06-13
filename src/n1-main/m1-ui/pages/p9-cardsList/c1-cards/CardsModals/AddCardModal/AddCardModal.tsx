@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ModalEdited} from "../Modal/ModalEdited";
+import {ModalEdited} from "../../../../../common/c15-Modal/ModalEdited";
 import SuperInputText from "../../../../../common/c1-SuperInputText/SuperInputText";
 import SuperButton from "../../../../../common/c2-SuperButton/SuperButton";
 import {useTypedDispatch} from "../../../../../../m2-bll/store";
