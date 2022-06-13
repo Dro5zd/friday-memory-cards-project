@@ -1,0 +1,63 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.subTitle {
+  margin-top: 30px;
+  font-size: 17px;
+}
+.subTitle2 {
+  margin-top: 10px;
+  font-size: 17px;
+}
+
+.packNameInput {
+  margin: 40px 0 0 0;
+  height: 45px;
+  border-radius: 10px;
+}
+
+.btnWrapper {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 350px;
+  height: 40px;
+}
+
+.cancelButton {
+  border-radius: 10px;
+  height: 40px;
+  width: 150px;
+  margin-left: 15px;
+  background: none;
+  color: var(--greyDark);
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
+}
+
+.cancelButton:hover {
+  color: var(--textHover);
+}
+
+.cancelButton:active {
+  box-shadow: inset .2rem .2rem .5rem var(--shadow-1), inset -.2rem -.2rem .5rem var(--shadow-2);
+}
+
+.saveButton {
+  height: 40px;
+  width: 150px;
+  margin-right: 15px;
+  border-radius: 10px;
+}

@@ -1,5 +1,5 @@
-import axios, {AxiosResponse} from 'axios';
-import {UpdatedGradeType} from './cards-api';
+import axios from 'axios';
+
 import {InitStateType} from "../m2-bll/cardPacksReducer";
 
 const instance = axios.create({
@@ -48,7 +48,7 @@ export type UpdateCardsPackType = {
 type CardsPackCreatePackType = {
     // name: 'Where the russian ship was sent?',
     name: string,
-    deckCover?: string,
+    deckCover?: string
     private?: boolean
 }
 export type CreatePackDataType = {

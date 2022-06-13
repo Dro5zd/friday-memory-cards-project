@@ -6,7 +6,7 @@ import {useTypedDispatch} from '../../../../../m2-bll/store';
 import SuperButton from '../../../../common/c2-SuperButton/SuperButton';
 
 
-export const PackHeader: React.FC<PackHeaderType> = ({changeModelMode}) => {
+export const PackHeader: React.FC<PackHeaderType> = ({closeModal}) => {
   const dispatch = useTypedDispatch()
 
   const debounceHandler = (text: string) => {
@@ -22,7 +22,7 @@ export const PackHeader: React.FC<PackHeaderType> = ({changeModelMode}) => {
             delay={1000}
             callback={debounceHandler}/>
           <SuperButton
-            onClick={changeModelMode}
+            onClick={closeModal}
             title={'ADD NEW PACK'}
             className={s.searchButton}
           />
@@ -34,5 +34,5 @@ export const PackHeader: React.FC<PackHeaderType> = ({changeModelMode}) => {
 
 // types
 type PackHeaderType = {
-  changeModelMode: () => void
+  closeModal: () => void
 }

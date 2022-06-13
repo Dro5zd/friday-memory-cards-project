@@ -2,7 +2,7 @@ import React from 'react';
 import s from './cardsContainer.module.css';
 import {CardItem} from '../CardItem/CardItem';
 import {setUpdateCardFilterAC} from '../../../../../m2-bll/sortReducer';
-import {deleteCardTC, getCardsTC, updateCardTC} from '../../../../../m2-bll/cardsReducer';
+import {getCardsTC} from '../../../../../m2-bll/cardsReducer';
 import {useTypedDispatch, useTypedSelector} from '../../../../../m2-bll/store';
 import {useParams} from 'react-router-dom';
 import sortUpBlack from '../../../../../../assets/img/sortUpBlack.png'

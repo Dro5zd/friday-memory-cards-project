@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import s from './cardsList.module.css'
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
-import {createNewCardTC, getCardsTC} from '../../../m2-bll/cardsReducer';
+import {getCardsTC} from '../../../m2-bll/cardsReducer';
 import {useParams} from "react-router-dom";
 import {changeCardsCurrentPageAC} from "../../../m2-bll/appReducer";
 import {CardsContainer} from './c1-cards/CardsContainer/CardsContainer';
@@ -45,8 +45,11 @@ export const CardsList = () => {
                         : <>
                             <div className={s.packSide}>
                                 {urlCardsPackId &&
-                                    <AddCardModal closeModal={toggle_in_creation_modal} modalMode={in_creation_modal}
-                                                  packId={urlCardsPackId}/>}
+                                    <AddCardModal
+                                      closeModal={toggle_in_creation_modal}
+                                      modalMode={in_creation_modal}
+                                      packId={urlCardsPackId}
+                                    />}
 
                                 <CardsHeader addNewCard={toggle_in_creation_modal} isOwner={isOwner}/>
                                 {serverErrors && <ServerErrors errors={serverErrors}/>}
