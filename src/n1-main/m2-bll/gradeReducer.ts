@@ -19,6 +19,7 @@ export const gradeReducer = (state: InitStateType = initState, action: GradeRedu
             return state;
     }
 };
+
 //actions
 export const setCardGradeAC = (grade: number, card_id: string) => ({
     type: 'SET-CARD-GRADE',
@@ -32,7 +33,6 @@ export const setCardGradeTC = (data: UpdatedGradeType) => (dispatch: Dispatch) =
         .then((res) => {
         })
 }
-
 
 //types
 export type InitStateType = {

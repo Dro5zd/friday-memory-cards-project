@@ -69,8 +69,7 @@ export const PacksContainer:React.FC<PacksContainerType> = ({deleteHandler,
             <th className={s.actionsTitle}>Actions</th>
           </tr>
           </thead>
-          <div className={s.packListBody}>
-            <tbody>
+            <tbody className={s.packListBody}>
             {pack.cardPacks.map(p =>
               <PackItem deleteHandler={deleteHandler}
                         updateHandler={updateHandler}
@@ -81,7 +80,6 @@ export const PacksContainer:React.FC<PacksContainerType> = ({deleteHandler,
                         changeDeleteMode={changeDeleteMode}
               />)}
             </tbody>
-          </div>
         </table>
       </div>
     </div>

@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import s from './cardsList.module.css'
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
-import {createNewCardTC, getCardsTC} from '../../../m2-bll/cardsReducer';
+import {getCardsTC} from '../../../m2-bll/cardsReducer';
 import {useParams} from "react-router-dom";
 import {changeCardsCurrentPageAC} from "../../../m2-bll/appReducer";
 import {CardsContainer} from './c1-cards/CardsContainer/CardsContainer';

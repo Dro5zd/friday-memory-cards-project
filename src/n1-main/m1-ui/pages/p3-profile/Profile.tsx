@@ -55,7 +55,7 @@ export const Profile = () => {
                     </div>
                     <h2 className={s.profileName}>{name || nameMe || 'Name'}</h2>
                   </div>
-                  <SuperButton className={s.editButton} title={'Edit Profile'} onClick={changeMode}/>
+                  <SuperButton className={s.editButton} title={'Edit LearningPage'} onClick={changeMode}/>
 
                   <span className={s.link} onClick={logOutHandler}>Log Out</span>
                 </>

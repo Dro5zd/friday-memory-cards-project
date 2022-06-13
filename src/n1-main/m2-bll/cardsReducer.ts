@@ -35,15 +35,18 @@ export type CardsReducerInitialStateType = {
     packUserId: string;
 };
 export type CardType = {
-    answer: string;
-    question: string;
-    cardsPack_id: string;
-    grade: number;
-    shots: number;
-    user_id: string;
-    created: string;
-    updated: string;
-    _id: string;
+  _id: string;
+  cardsPack_id: string;
+
+  answer: string;
+  question: string;
+  grade: number;
+  shots: number;
+
+  user_id: string;
+  created: string;
+  updated: string;
+
 };
 
 export const cardsReducer = (state = initialState, action: CardsReducerActionTypes): CardsReducerInitialStateType => {
@@ -94,22 +97,22 @@ export const createNewCardTC = (newCard: PostCardDataType): AppThunk => async (d
     }
 }
 export const deleteCardTC = (id: string, packId: string): AppThunk => async (dispatch) => {
-    dispatch(setStatusAC('loading'))
-    try {
-        await cardsAPI.deleteCard(id)
-        dispatch(getCardsTC(packId))
-        dispatch(setStatusAC('succeeded'))
-    } catch (e: any) {
-        serverErrorHandler('Sorry, not able to delete card, try again', dispatch)
-    }
+  dispatch(setStatusAC('loading'))
+  try {
+    await cardsAPI.deleteCard(id)
+    dispatch(getCardsTC(packId))
+    dispatch(setStatusAC('succeeded'))
+  } catch (e: any) {
+    serverErrorHandler('Sorry, not able to delete card, try again', dispatch)
+  }
 }
-export const updateCardTC = (cardId: string, packId: string, question: string, answer: string): AppThunk => async (dispatch) => {
-    dispatch(setStatusAC('loading'))
-    try {
-        await cardsAPI.updateCard({_id: cardId, question, answer})
-        dispatch(getCardsTC(packId))
-        dispatch(setStatusAC('succeeded'))
-    } catch (e: any) {
-        serverErrorHandler('Sorry, not able to edit card, try again', dispatch)
-    }
+export const updateCardTC = (cardId: string, packId: string): AppThunk => async (dispatch) => {
+  dispatch(setStatusAC('loading'))
+  try {
+    await cardsAPI.updateCard({_id: cardId, question: 'WTF'})
+    dispatch(getCardsTC(packId))
+    dispatch(setStatusAC('succeeded'))
+  } catch (e: any) {
+    serverErrorHandler('Sorry, not able to edit card, try again', dispatch)
+  }
 }

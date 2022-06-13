@@ -61,11 +61,11 @@ export const PackSettings: React.FC<PackSettingsType> = ({
                         <span>Show packs Cards</span>
                     </div>
                     <div className={s.segmentedControl}>
-                        <input type="radio" name="radio" id="tab1" checked={!checkedRadio}/>
+                        <input type="radio" name="radio" id="tab1"  defaultChecked={!checkedRadio}/>
                         <label htmlFor="tab1" className={s.segmentedControlItem1}
                                onClick={showAllPacksHandler}>ALL</label>
 
-                        <input type="radio" name="radio" id="tab2" checked={!!checkedRadio}/>
+                        <input type="radio" name="radio" id="tab2" defaultChecked={!!checkedRadio}/>
                         <label htmlFor="tab2" className={s.segmentedControlItem2}
                                onClick={showMyPacksHandler}>MY</label>
                         <div className={s.segmentedControlColor}></div>
