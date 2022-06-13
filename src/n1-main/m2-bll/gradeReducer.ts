@@ -34,7 +34,6 @@ export const setCardGradeTC = (data: UpdatedGradeType) => (dispatch: Dispatch) =
         })
 }
 
-
 //types
 export type InitStateType = {
     _id: string

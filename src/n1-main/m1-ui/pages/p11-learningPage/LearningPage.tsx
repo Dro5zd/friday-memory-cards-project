@@ -8,6 +8,7 @@ import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {changeEditModeAC} from '../../../m2-bll/uiReducer';
 import Preloader from '../../common/c7-Preloader/Preloader';
 import {CardType, getCardsTC} from '../../../m2-bll/cardsReducer';
+import {setCardGradeTC} from '../../../m2-bll/gradeReducer';
 
 const grades = ['не знал', 'забыл', 'долго думал', 'перепутал', 'знал'];
 
@@ -89,9 +90,12 @@ export const LearningPage = () => {
         }
     }
 
-    // const changeMode = () => {
-    //   dispatch(changeEditModeAC(!editMode))
-    // }
+
+    const addRating = (value: number) => {
+        dispatch(setCardGradeTC( {grade: value, card_id: card._id}))
+        dispatch(getCardsTC(card.cardsPack_id))
+        onNext()
+    }
 
 
     return (
@@ -108,7 +112,7 @@ export const LearningPage = () => {
 
                         <span className={s.question}>{card.question}</span>
 
-                        <SuperButton className={s.editButton} title={'Show Answer'} onClick={() => setIsChecked(true)}/>
+                        {!isChecked && <SuperButton className={s.editButton} title={'Show Answer'} onClick={() => setIsChecked(true)}/>}
 
 
                         {isChecked && (
@@ -117,11 +121,10 @@ export const LearningPage = () => {
                                 <span className={s.question}>{card.answer}</span>
 
                                 {grades.map((g, i) => (
-                                    <SuperButton key={'grade-' + i} onClick={() => {
-                                    }}>{g}</SuperButton>
+                                    <SuperButton key={'grade-' + i} onClick={()=>addRating(i+1)} title={g}/>
                                 ))}
 
-                                <SuperButton className={s.editButton} title={'Next'} onClick={onNext}/>
+                                {/*<SuperButton className={s.editButton} title={'Next'} onClick={onNext}/>*/}
                             </>
                         )}
 
