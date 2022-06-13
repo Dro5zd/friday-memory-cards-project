@@ -1,8 +1,7 @@
 import React from 'react';
 import s from './packItem.module.css';
-import {useTypedDispatch, useTypedSelector} from '../../../../../m2-bll/store';
-import {CardPackType, deletePacksTC, updatePacksTC} from '../../../../../m2-bll/cardPacksReducer';
-import {UpdateCardsPackType} from '../../../../../m3-dal/cardPacks-api';
+import {useTypedSelector} from '../../../../../m2-bll/store';
+import {CardPackType} from '../../../../../m2-bll/cardPacksReducer';
 import trash from '../../../../../../assets/img/trashBlack.png'
 import trashWhite from '../../../../../../assets/img/trashWhite.png'
 import edit from '../../../../../../assets/img/slidersBlack.png'
