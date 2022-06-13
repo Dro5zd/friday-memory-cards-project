@@ -16,7 +16,7 @@ interface IAddPackModal {
 export const AddPackModal: React.FC<IAddPackModal> = ({
                                                         closeModal,
                                                         modalMode
-}) => {
+                                                      }) => {
   const dispatch = useTypedDispatch();
   const [packName, setPackName] = useState('')
 
@@ -30,9 +30,9 @@ export const AddPackModal: React.FC<IAddPackModal> = ({
   }
 
   return (
-    <div className={s.wrapper}>
-      <ModalEdited modalMode={modalMode} closeModal={closeModal}>
-        <span className={s.title}>Add new pack</span>
+    <ModalEdited modalMode={modalMode} closeModal={closeModal}>
+      <div className={s.wrapper}>
+        <span className={s.title}>Create new pack</span>
         <SuperInputText
           placeholder='Pack Name...'
           onChange={addPackHandler}
@@ -42,7 +42,9 @@ export const AddPackModal: React.FC<IAddPackModal> = ({
         <div className={s.btnWrapper}>
           <SuperButton
             value={packName}
-            onClick={() => {createPackButtonHandler({cardsPack: {name: packName}})}}
+            onClick={() => {
+              createPackButtonHandler({cardsPack: {name: packName}})
+            }}
             title={'SAVE'}
             className={s.saveButton}
             disabled={packName === ''}
@@ -53,7 +55,7 @@ export const AddPackModal: React.FC<IAddPackModal> = ({
             className={s.cancelButton}
           />
         </div>
-      </ModalEdited>
-    </div>
+      </div>
+    </ModalEdited>
   );
 };

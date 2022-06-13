@@ -25,16 +25,18 @@ export const DeletePackModal: React.FC<IDeletePackModal> = ({
   }
 
   return (
-    <div>
+
       <ModalEdited closeModal={closeModal} modalMode={modalMode}>
+        <div className={s.wrapper}>
         <span className={s.title}>Delete pack</span>
-        <span className={s.subTitle}>Do you want to continue?</span>
+        <span className={s.subTitle}>Are you sure you want to delete this pack?</span>
         <span className={s.subTitle2}>All cards will be excluded from this course.</span>
         <div className={s.btnWrapper}>
           <SuperButton className={s.saveButton} title={'Delete'} onClick={deleteHandler}/>
           <SuperButton className={s.cancelButton} title={'Cancel'} onClick={closeModal}/>
         </div>
+        </div>
       </ModalEdited>
-    </div>
+
   );
 };

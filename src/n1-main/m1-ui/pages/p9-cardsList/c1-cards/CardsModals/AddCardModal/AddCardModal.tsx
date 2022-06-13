@@ -4,6 +4,7 @@ import SuperInputText from "../../../../../common/c1-SuperInputText/SuperInputTe
 import SuperButton from "../../../../../common/c2-SuperButton/SuperButton";
 import {useTypedDispatch} from "../../../../../../m2-bll/store";
 import {createNewCardTC} from "../../../../../../m2-bll/cardsReducer";
+import s from "../../../../p8-packsList/p1-packs/PackModals/Modal.module.css";
 
 interface IAddCardModal {
     closeModal: () => void;
@@ -26,14 +27,19 @@ export const AddCardModal: React.FC<IAddCardModal> = ({closeModal, modalMode, pa
     }
     return (
         <ModalEdited closeModal={closeModal} modalMode={modalMode}>
-            <SuperInputText placeholder={'Question'} value={question} onChange={(e) => {
-                setQuestion(e.currentTarget.value)
-            }}/>
-            <SuperInputText placeholder={'Answer'} value={answer} onChange={(e) => {
-                setAnswer(e.currentTarget.value)
-            }}/>
-            <SuperButton title={'Cancel'} onClick={closeModal}/>
-            <SuperButton title={'Add'} onClick={addNewCardHandler}/>
+          <div className={s.wrapper}>
+            <span className={s.title}>Create new Card</span>
+          <SuperInputText className={s.packNameInput} placeholder={'Question'} value={question} onChange={(e) => {
+            setQuestion(e.currentTarget.value)
+          }}/>
+          <SuperInputText className={s.packNameInput} placeholder={'Answer'} value={answer} onChange={(e) => {
+            setAnswer(e.currentTarget.value)
+          }}/>
+         <div className={s.btnWrapper}>
+           <SuperButton className={s.saveButton} title={'Add'} onClick={addNewCardHandler}/>
+           <SuperButton className={s.cancelButton} title={'Cancel'} onClick={closeModal}/>
+         </div>
+          </div>
         </ModalEdited>
     );
 };
