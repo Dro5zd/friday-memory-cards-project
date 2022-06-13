@@ -6,7 +6,7 @@ const Preloader = () => {
   return (
     <div className={s.preloaderWrapper}>
       <img className={s.preloader} src={preloader} alt={'gif'}/>
-      <span>Stand with Ukraine 🇺🇦</span>
+      <span>Stand with Ukraine!</span>
     </div>
   );
 };

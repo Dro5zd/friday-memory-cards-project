@@ -58,8 +58,6 @@ export const PackItem: React.FC<PackItemType> = ({
                 <td className={s.userNameColumn}>{pack.user_name}</td>
                 <td className={s.actionsColumn}>
                     <div className={s.buttonBlock}>
-
-
                         {userId === pack.user_id ?
                             <div className={s.deleteWrapper} onClick={toggle_delete_modal}>
                                 <img className={s.packDeleteIcon} src={mode ? trash : trashWhite} alt="delete"/>
@@ -77,10 +75,6 @@ export const PackItem: React.FC<PackItemType> = ({
                                 <img className={s.packEditIcon} src={mode ? edit : editWhite} alt="edit"/>
                             </div> : <div className={s.empty}/>
                         }
-
-
-
-
                     </div>
                 </td>
             </tr>

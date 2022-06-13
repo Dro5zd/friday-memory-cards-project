@@ -68,7 +68,7 @@ export const getCardsTC = (cardsPack_id: string): AppThunk => async (dispatch, g
     const questionValue = getState().sort.cardsQuestionValue;
     const answerValue = getState().sort.cardsAnswerValue;
     const sortCards = getState().sort.sortCards
-    // dispatch(setStatusAC('loading')) // ???????????????
+    dispatch(setStatusAC('loading'))
     try {
         const response = await cardsAPI.getCards({
             cardsPack_id: cardsPack_id,
@@ -79,7 +79,7 @@ export const getCardsTC = (cardsPack_id: string): AppThunk => async (dispatch, g
             sortCards: sortCards
         });
         dispatch(setCardsStateAC(response.data))
-        // dispatch(setStatusAC('succeeded')) // ???????????????
+        dispatch(setStatusAC('succeeded'))
     } catch (e: any) {
         serverErrorHandler('Sorry, not able to get cards, that You are looking for, try again', dispatch)
     }

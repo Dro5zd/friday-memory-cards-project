@@ -2,7 +2,6 @@ import React, {useEffect} from 'react';
 import {Main} from './Main';
 import {useTypedDispatch, useTypedSelector} from "../m2-bll/store";
 import {authoriseMeTC} from "../m2-bll/appReducer";
-import Preloader from "./common/c7-Preloader/Preloader";
 import s from './App.module.css';
 
 export const App = () => {
@@ -23,7 +22,7 @@ export const App = () => {
   }, [])
 
   if (!isInitialised) {
-    return <Preloader/>
+    return null
   }
 
   return (

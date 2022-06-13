@@ -4,7 +4,6 @@ import s from './Pagination.module.css'
 import angleLeft from '../../../../assets/img/angleLeft.png'
 import angleRight from '../../../../assets/img/angleRight.png'
 
-
 type PaginationType = {
     onPageChange: (p: number) => void;
     totalCount: number;
@@ -12,7 +11,6 @@ type PaginationType = {
     currentPage: number;
     pageSize: number;
 }
-
 
 export const PaginationNew: React.FC<PaginationType> = ({
                                                             onPageChange,

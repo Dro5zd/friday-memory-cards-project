@@ -27,12 +27,7 @@ export const PacksList = () => {
   useEffect(() => {
     dispatch(getCardPackTC())
   }, [sortUserId, packNameValue, requestPackMinValue, requestPackMaxValue, dispatch])
-// <>
-  //   {
-  //     status === 'loading'
-  //       ? <Preloader/>
-  //   }
-  // </>
+
 
   const changeCurrentPackPage = (page: number) => {
     dispatch(changePacksCurrentPageAC(page))
@@ -55,7 +50,11 @@ export const PacksList = () => {
             maxCardsCount={requestPackMaxValue}
             minCardsCount={requestPackMinValue}
           />
-          <PacksContainer/>
+          {
+            status === 'loading'
+              ? <div className={s.preloader}><Preloader/></div>
+              : <PacksContainer/>
+          }
         </div>
         <PaginationNew
           totalCount={pack.cardPacksTotalCount}
