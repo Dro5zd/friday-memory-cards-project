@@ -6,7 +6,7 @@ import {CreatePackDataType} from "../../../../../../m3-dal/cardPacks-api";
 import {changePacksCurrentPageAC} from "../../../../../../m2-bll/appReducer";
 import {postPacksTC} from "../../../../../../m2-bll/cardPacksReducer";
 import {useTypedDispatch} from "../../../../../../m2-bll/store";
-import {ModalEdited} from "../../../../../common/c15-Modal/ModalEdited";
+import {ModalEdited} from "../../../../../common/c14-Modal/ModalEdited";
 
 interface IAddPackModal {
   closeModal: () => void;

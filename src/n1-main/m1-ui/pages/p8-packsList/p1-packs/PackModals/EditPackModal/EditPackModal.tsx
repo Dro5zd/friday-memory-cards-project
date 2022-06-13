@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {updatePacksTC} from "../../../../../../m2-bll/cardPacksReducer";
 import {useTypedDispatch} from "../../../../../../m2-bll/store";
-import {ModalEdited} from "../../../../../common/c15-Modal/ModalEdited";
+import {ModalEdited} from "../../../../../common/c14-Modal/ModalEdited";
 import SuperInputText from "../../../../../common/c1-SuperInputText/SuperInputText";
 import SuperButton from "../../../../../common/c2-SuperButton/SuperButton";
 import s from "../Modal.module.css";
