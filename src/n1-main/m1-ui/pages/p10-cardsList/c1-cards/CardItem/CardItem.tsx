@@ -31,13 +31,14 @@ export const CardItem: React.FC<CardItemType> = ({card, isOwner}) => {
     }
     return (
         <>
-            <DeleteCardModal closeModal={toggle_delete_modal} modalMode={delete_modal}/>
-            <EditCardModal closeModal={toggle_edit_modal} modalMode={edit_modal}/>
+            <DeleteCardModal cardId={card._id} packId={card.cardsPack_id} closeModal={toggle_delete_modal}
+                             modalMode={delete_modal}/>
+            <EditCardModal initialQuestion={card.question} initialAnswer={card.answer} cardId={card._id}
+                           packId={card.cardsPack_id} closeModal={toggle_edit_modal} modalMode={edit_modal}/>
             <tr className={s.cardItemContainer}>
                 <td className={s.questionColumn}>{card.question}</td>
                 <td className={s.answerColumn}>{card.answer}</td>
                 <td className={s.updateColumn}>{moment(card.updated).format('MM.DD.YYYY, HH:mm')}</td>
-
                 <td className={s.gradeColumn}><MainRating value={card.grade} addRating={addRating}/></td>
                 <div className={s.buttonBlock}>
                     <div className={s.learnWrapper} onClick={() => {

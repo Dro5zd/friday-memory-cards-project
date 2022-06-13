@@ -9,10 +9,8 @@ import ServerErrors from "../../common/c0-ErrorsBlock/ServerErrors";
 import {PaginationNew} from "../../common/c11-Pagination/PaginationNew";
 import {CardsHeader} from "./c1-cards/CardsHeader/CardsHeader";
 import Preloader from "../../common/c7-Preloader/Preloader";
-import {Modal} from '../../common/c15-Modal/Modal';
 import {AddCardModal} from "./c1-cards/CardsModals/AddCardModal/AddCardModal";
-import {DeleteCardModal} from "./c1-cards/CardsModals/DeleteCardModal/DeleteCardModal";
-import {EditCardModal} from "./c1-cards/CardsModals/EditCardModal/EditCardModal";
+import {useModalHandler} from "../../../utils/use-modal-handler";
 
 export const CardsList = () => {
     const {urlCardsPackId} = useParams<string>();
@@ -25,9 +23,7 @@ export const CardsList = () => {
     const serverErrors = useTypedSelector(state => state.app.errors);
     const status = useTypedSelector(state => state.app.status);
     const isOwner = userId === packUserId;
-    const [isInEdition, setIsInEdition] = useState(false);
-    const [isInDeletion, setIsInDeletion] = useState(false);
-    const [isInCreation, setIsInCreation] = useState(false);
+    const {modal: in_creation_modal, toggleModal: toggle_in_creation_modal} = useModalHandler()
 
     useEffect(() => {
         if (urlCardsPackId) {
@@ -35,14 +31,6 @@ export const CardsList = () => {
         }
     }, [dispatch, urlCardsPackId, question, answer]);
 
-    const addNewCard = () => {
-        if (urlCardsPackId) {
-            dispatch(createNewCardTC({cardsPack_id: urlCardsPackId}))
-        }
-    };
-    const deleteCard = (cardId: string, packId: string) => {
-        setIsInDeletion(true)
-    }
     const changeCurrentPage = (page: number) => {
         dispatch(changeCardsCurrentPageAC(page));
         urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
@@ -56,15 +44,11 @@ export const CardsList = () => {
                         ? <Preloader/>
                         : <>
                             <div className={s.packSide}>
+                                {urlCardsPackId &&
+                                    <AddCardModal closeModal={toggle_in_creation_modal} modalMode={in_creation_modal}
+                                                  packId={urlCardsPackId}/>}
 
-                                <AddCardModal closeModal={() => {
-                                    setIsInCreation(false)
-                                }} modalMode={isInCreation}/>
-
-
-                                <CardsHeader addNewCard={() => {
-                                    setIsInCreation(true)
-                                }} isOwner={isOwner}/>
+                                <CardsHeader addNewCard={toggle_in_creation_modal} isOwner={isOwner}/>
                                 {serverErrors && <ServerErrors errors={serverErrors}/>}
                                 <CardsContainer/>
                             </div>
