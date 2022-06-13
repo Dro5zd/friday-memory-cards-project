@@ -47,6 +47,7 @@ export type PostCardDataType = {
 export type UpdateCardDataType = {
     _id: string;
     question?: string;
+    answer?: string;
     comments?: string;
 }
 
