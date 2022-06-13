@@ -27,14 +27,13 @@
 .loginSubTitle {
     font-weight: 500;
     font-size: 23px;
-    margin-bottom: 38px;
 }
 
-.inputWrapper {
+.inputWrapper  {
     display: flex;
     flex-direction: column;
+    margin-top: 45px;
 }
-
 
 .rememberWrapper {
     display: flex;

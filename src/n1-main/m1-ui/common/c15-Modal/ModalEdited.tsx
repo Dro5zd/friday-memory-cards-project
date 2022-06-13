@@ -10,7 +10,7 @@ interface ModalType {
 export const ModalEdited: React.FC<ModalType> = ({children, modalMode, closeModal}) => {
         return (
             <div className={modalMode ? `${s.modal} ${s.active}` : s.modal} onClick={closeModal}>
-                <div className={s.modalContent} onClick={event => event.stopPropagation()}>
+                <div className={ modalMode ? `${s.modalContent} ${s.active}` : s.modalContent} onClick={event => event.stopPropagation()}>
                     {children}
                 </div>
             </div>

@@ -9,11 +9,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: scale(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
 }
 
 .modal.active {
-    transform: scale(1);
+    opacity: 1;
+    pointer-events: all;
 }
 
 .modalContent {
@@ -24,6 +27,11 @@
     align-items: center;
     flex-direction: column;
     background-color: var(--bg);
+    transform: scale(0.5);
+    transition: 0.5s all;
 }
 
+.modalContent.active {
+    transform: scale(1);
+}
 

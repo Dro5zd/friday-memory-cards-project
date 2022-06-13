@@ -5,17 +5,14 @@ import {NavLink, useParams} from 'react-router-dom';
 import {PATH} from '../../routes/Routs';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 
-import {changeEditModeAC} from '../../../m2-bll/uiReducer';
 import Preloader from '../../common/c7-Preloader/Preloader';
 import {CardType, getCardsTC} from '../../../m2-bll/cardsReducer';
 import {setCardGradeTC} from '../../../m2-bll/gradeReducer';
 
 const grades = ['не знал', 'забыл', 'долго думал', 'перепутал', 'знал'];
 
-
 export const LearningPage = () => {
 
-    const editMode = useTypedSelector(state => state.ui.editMode)
     const status = useTypedSelector(state => state.app.status)
     const packs = useTypedSelector(state => state.packs.cardPacks)
     const {cards} = useTypedSelector(state => state.cards);
