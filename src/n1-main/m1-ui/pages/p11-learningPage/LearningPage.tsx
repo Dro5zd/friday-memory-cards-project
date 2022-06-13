@@ -4,8 +4,6 @@ import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import {NavLink, useParams} from 'react-router-dom';
 import {PATH} from '../../routes/Routs';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
-
-import {changeEditModeAC} from '../../../m2-bll/uiReducer';
 import Preloader from '../../common/c7-Preloader/Preloader';
 import {CardType, getCardsTC} from '../../../m2-bll/cardsReducer';
 import {setCardGradeTC} from '../../../m2-bll/gradeReducer';
@@ -15,11 +13,9 @@ const grades = ['не знал', 'забыл', 'долго думал', 'пер�
 
 export const LearningPage = () => {
 
-    const editMode = useTypedSelector(state => state.ui.editMode)
     const status = useTypedSelector(state => state.app.status)
     const packs = useTypedSelector(state => state.packs.cardPacks)
     const {cards} = useTypedSelector(state => state.cards);
-
     const dispatch = useTypedDispatch()
 
 
@@ -123,8 +119,6 @@ export const LearningPage = () => {
                                 {grades.map((g, i) => (
                                     <SuperButton key={'grade-' + i} onClick={()=>addRating(i+1)} title={g}/>
                                 ))}
-
-                                {/*<SuperButton className={s.editButton} title={'Next'} onClick={onNext}/>*/}
                             </>
                         )}
 
