@@ -1,8 +1,8 @@
 import React from 'react';
 import {usePagination} from './usePagination';
 import s from './Pagination.module.css'
-import angleLeft from '../../../../assets/img/angleLeft.png'
-import angleRight from '../../../../assets/img/angleRight.png'
+import angleLeft from '../../../../assets/img/angleLeft.svg'
+import angleRight from '../../../../assets/img/angleRight.svg'
 
 type PaginationType = {
     onPageChange: (p: number) => void;

@@ -2,11 +2,10 @@ import React from 'react';
 import s from './CardsHeader.module.css';
 import {DebounceSearch} from "../../../../common/c13-DebounceSearch/DebounceSearch";
 import SuperButton from "../../../../common/c2-SuperButton/SuperButton";
-import arrowLeftBlackWhite from "../../../../../../assets/img/arrowLeftBlackWhite.png";
-import arrowLeftWhite from "../../../../../../assets/img/arrowLeft.png";
+import arrowLeft from "../../../../../../assets/img/arrowLeft.svg";
 import {setCardsAnswerValue, setCardsQuestionValue} from '../../../../../m2-bll/sortReducer';
 import {PATH} from "../../../../routes/Routs";
-import {useTypedDispatch, useTypedSelector} from "../../../../../m2-bll/store";
+import {useTypedDispatch} from "../../../../../m2-bll/store";
 import {useNavigate} from 'react-router-dom';
 
 type CardsHeaderType = {
@@ -18,7 +17,6 @@ export const CardsHeader: React.FC<CardsHeaderType> = ({isOwner, addNewCard}) =>
 
     const dispatch = useTypedDispatch();
     const navigate = useNavigate();
-    const mode = useTypedSelector(state => state.ui.mode)
 
     const debounceQuestionHandler = (text: string) => {
         dispatch(setCardsQuestionValue(text))
@@ -31,12 +29,10 @@ export const CardsHeader: React.FC<CardsHeaderType> = ({isOwner, addNewCard}) =>
         navigate(PATH.PACKS_LIST)
     }
 
-
-
     return (
         <div>
             <div className={s.arrowWrapper}>
-                <img onClick={goBackHandler} className={s.arrowLeft} src={mode ? arrowLeftBlackWhite : arrowLeftWhite}
+                <img onClick={goBackHandler} className={s.arrowLeft} src={arrowLeft}
                      alt="arrowLeft"/>
             </div>
             <h2 className={s.cardListTitle}>CARDS LIST</h2>

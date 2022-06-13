@@ -2,12 +2,9 @@ import React from 'react';
 import s from './packItem.module.css';
 import {useTypedSelector} from '../../../../../m2-bll/store';
 import {CardPackType} from '../../../../../m2-bll/cardPacksReducer';
-import trash from '../../../../../../assets/img/trashBlack.png'
-import trashWhite from '../../../../../../assets/img/trashWhite.png'
-import edit from '../../../../../../assets/img/slidersBlack.png'
-import editWhite from '../../../../../../assets/img/slidersWhite.png'
-import learn from '../../../../../../assets/img/bookOpenBlack.png'
-import learnWhite from '../../../../../../assets/img/bookOpenWhite.png'
+import trash from '../../../../../../assets/img/trash.svg'
+import edit from '../../../../../../assets/img/sliders.svg'
+import learn from '../../../../../../assets/img/bookOpen.svg'
 import moment from 'moment';
 import {useNavigate} from 'react-router-dom';
 import {useModalHandler} from '../../../../../utils/use-modal-handler';
@@ -18,7 +15,6 @@ export const PackItem: React.FC<PackItemType> = ({
                                                      pack,
                                                      userId,
                                                  }) => {
-    const mode = useTypedSelector(state => state.ui.mode)
     const {modal: delete_modal, toggleModal: toggle_delete_modal} = useModalHandler()
     const {modal: edit_modal, toggleModal: toggle_edit_modal} = useModalHandler()
     const navigate = useNavigate()
@@ -58,21 +54,21 @@ export const PackItem: React.FC<PackItemType> = ({
                 <td className={s.userNameColumn}>{pack.user_name}</td>
                 <td className={s.actionsColumn}>
                     <div className={s.buttonBlock}>
+
                         {userId === pack.user_id ?
                             <div className={s.deleteWrapper} onClick={toggle_delete_modal}>
-                                <img className={s.packDeleteIcon} src={mode ? trash : trashWhite} alt="delete"/>
+                                <img className={s.packDeleteIcon} src={trash} alt="delete"/>
                             </div> : <div className={s.empty}/>
                         }
 
                         {pack.cardsCount > 0 ? <div className={s.learnWrapper} onClick={() => LearningHandler(pack._id)}>
-                            <img className={s.packLearnIcon} src={mode ? learn : learnWhite} alt="learn"/>
+                            <img className={s.packLearnIcon} src={learn} alt="learn"/>
                         </div> : <div className={s.empty}/> }
-
 
                         {userId === pack.user_id ?
                             <div className={s.editeWrapper}
                                  onClick={toggle_edit_modal}>
-                                <img className={s.packEditIcon} src={mode ? edit : editWhite} alt="edit"/>
+                                <img className={s.packEditIcon} src={edit} alt="edit"/>
                             </div> : <div className={s.empty}/>
                         }
                     </div>

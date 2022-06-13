@@ -5,8 +5,8 @@ import {setUpdateCardFilterAC} from '../../../../../m2-bll/sortReducer';
 import {getCardsTC} from '../../../../../m2-bll/cardsReducer';
 import {useTypedDispatch, useTypedSelector} from '../../../../../m2-bll/store';
 import {useParams} from 'react-router-dom';
-import sortUpBlack from '../../../../../../assets/img/sortUpBlack.png'
-import sortDownBlack from '../../../../../../assets/img/sortDownBlack.png'
+import sortUp from '../../../../../../assets/img/sortUp.svg'
+import sortDown from '../../../../../../assets/img/sortDown.svg'
 import Preloader from "../../../../common/c7-Preloader/Preloader";
 
 interface ICardsContainer {
@@ -48,24 +48,24 @@ export const CardsContainer: React.FC<ICardsContainer> = () => {
                             <th className={s.questionTitle}
                                 onClick={() => sortUpdatedCardsHandler('question')}>Question <div
                                 className={s.sortUp}>{sortCards === `0question`
-                                ? <img src={sortUpBlack} alt="sortUpWhite"/>
-                                : <img src={sortDownBlack} alt="sortDownBlack"/>}
+                                ? <img src={sortUp} alt="sortUpWhite"/>
+                                : <img src={sortDown} alt="sortDownBlack"/>}
                             </div></th>
                             <th className={s.answerTitle} onClick={() => sortUpdatedCardsHandler('answer')}>Answer <div
                                 className={s.sortUp}>{sortCards === `0answer`
-                                ? <img src={sortUpBlack} alt="sortUpWhite"/>
-                                : <img src={sortDownBlack} alt="sortDownBlack"/>}
+                                ? <img src={sortUp} alt="sortUpWhite"/>
+                                : <img src={sortDown} alt="sortDownBlack"/>}
                             </div></th>
                             <th onClick={() => sortUpdatedCardsHandler('updated')} className={s.updateTitle}>Last
                                 Updated <div
                                     className={s.sortUp}>{sortCards === `0updated`
-                                    ? <img src={sortUpBlack} alt="sortUpWhite"/>
-                                    : <img src={sortDownBlack} alt="sortDownBlack"/>}
+                                    ? <img src={sortUp} alt="sortUpWhite"/>
+                                    : <img src={sortDown} alt="sortDownBlack"/>}
                                 </div></th>
                             <th onClick={() => sortUpdatedCardsHandler('grade')} className={s.gradeTitle}>Grade <div
                                 className={s.sortUp}>{sortCards === `0grade`
-                                ? <img src={sortUpBlack} alt="sortUpWhite"/>
-                                : <img src={sortDownBlack} alt="sortDownBlack"/>}
+                                ? <img src={sortUp} alt="sortUpWhite"/>
+                                : <img src={sortDown} alt="sortDownBlack"/>}
                             </div></th>
                             <th className={s.actionsTitle}>Actions</th>
                         </tr>

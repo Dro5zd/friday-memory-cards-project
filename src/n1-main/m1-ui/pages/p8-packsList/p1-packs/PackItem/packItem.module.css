@@ -75,23 +75,34 @@
     /*margin-left: 60px;*/
 }
 
-.buttonBlock button {
-    font-size: 17px;
-    height: 25px;
-    margin: 3px;
-    border-radius: 10px;
-}
-
-
 .packEditIcon {
+    cursor: pointer;
     width: 18px;
+    filter: var(--iconColor)
 }
+
+.packEditIcon:hover {
+    filter: var(--iconHover);}
+
 .packDeleteIcon {
+    cursor: pointer;
     width: 15px;
+    filter: var(--iconColor)
 }
+
+.packDeleteIcon:hover {
+    filter: var(--iconHover);}
+
 .packLearnIcon {
+    cursor: pointer;
     width: 18px;
+    filter: var(--iconColor);
 }
+
+.packLearnIcon:hover {
+    filter: var(--iconHover);
+}
+
 
 .editeWrapper {
     width: 30px;
@@ -101,6 +112,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    cursor: pointer;
 }
 .editeWrapper:active {
     box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);
@@ -113,6 +125,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    cursor: pointer;
 }
 .deleteWrapper:active {
     box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);
@@ -125,6 +138,7 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .empty {

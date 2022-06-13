@@ -4,8 +4,8 @@ import {PackItem} from '../PackItem/PackItem';
 import {setUpdatedFilterAC} from '../../../../../m2-bll/sortReducer';
 import {getCardPackTC} from '../../../../../m2-bll/cardPacksReducer';
 import {useTypedDispatch, useTypedSelector} from '../../../../../m2-bll/store';
-import sortUpBlack from '../../../../../../assets/img/sortUpBlack.png'
-import sortDownBlack from '../../../../../../assets/img/sortDownBlack.png'
+import sortUp from '../../../../../../assets/img/sortUp.svg'
+import sortDown from '../../../../../../assets/img/sortDown.svg'
 import {changePacksCurrentPageAC} from "../../../../../m2-bll/appReducer";
 
 export const PacksContainer = () => {
@@ -33,28 +33,28 @@ export const PacksContainer = () => {
               onClick={() => sortUpdatedHandler('name')}
             >Name <div
               className={s.sortUp}>{sortPacks === `0name`
-              ? <img src={sortUpBlack} alt="sortUpWhite"/>
-              : <img src={sortDownBlack} alt="sortDownBlack"/>}
+              ? <img src={sortUp} alt="sortUp"/>
+              : <img src={sortDown} alt="sortDown"/>}
             </div>
             </th>
             <th className={s.cardsTitle} onClick={() => sortUpdatedHandler('cardsCount')}>Cards <div
               className={s.sortUp}>{sortPacks === `0cardsCount`
-              ? <img src={sortUpBlack} alt="sortUpWhite"/>
-              : <img src={sortDownBlack} alt="sortDownBlack"/>}
+              ? <img src={sortUp} alt="sortUp"/>
+              : <img src={sortDown} alt="sortDown"/>}
             </div>
             </th>
             <th className={s.updateTitle} onClick={() => sortUpdatedHandler('updated')}
             >Last Updated <div
               className={s.sortUp}>{sortPacks === `0updated`
-              ? <img src={sortUpBlack} alt="sortUpWhite"/>
-              : <img src={sortDownBlack} alt="sortDownBlack"/>}
+              ? <img src={sortUp} alt="sortUp"/>
+              : <img src={sortDown} alt="sortDown"/>}
             </div>
             </th>
             <th className={s.creatorTitle}
                 onClick={() => sortUpdatedHandler('user_name')}>Created by <div
               className={s.sortUp}>{sortPacks === `0user_name`
-              ? <img src={sortUpBlack} alt="sortUpWhite"/>
-              : <img src={sortDownBlack} alt="sortDownBlack"/>}
+              ? <img src={sortUp} alt="sortUp"/>
+              : <img src={sortDown} alt="sortDown"/>}
             </div>
             </th>
             <th className={s.actionsTitle}>Actions</th>

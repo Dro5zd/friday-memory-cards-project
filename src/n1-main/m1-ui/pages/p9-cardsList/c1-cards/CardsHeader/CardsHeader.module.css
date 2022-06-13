@@ -18,13 +18,13 @@
 
 .arrowLeft {
   height: 14px;
-  transition: all 0.5s ease;
   cursor: pointer;
+  filter: var(--iconColor);
 }
 
 .arrowLeft:hover {
   transform: scale(1.05);
-  transition: all 0.5s ease;
+  filter: var(--iconHover)
 }
 
 .cardListTitle {

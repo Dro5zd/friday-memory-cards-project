@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import s from './Pagination.module.css';
-import angleLeft from '../../../../assets/img/angleLeft.png'
-import angleRight from '../../../../assets/img/angleRight.png'
+import angleLeft from '../../../../assets/img/angleLeft.svg'
+import angleRight from '../../../../assets/img/angleRight.svg'
 
 interface IPagination {
     totalItemsCount: number;
