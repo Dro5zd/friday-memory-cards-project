@@ -10,7 +10,6 @@ import {setCardGradeTC} from '../../../m2-bll/gradeReducer';
 
 const grades = ['не знал', 'забыл', 'долго думал', 'перепутал', 'знал'];
 
-
 export const LearningPage = () => {
 
     const status = useTypedSelector(state => state.app.status)
