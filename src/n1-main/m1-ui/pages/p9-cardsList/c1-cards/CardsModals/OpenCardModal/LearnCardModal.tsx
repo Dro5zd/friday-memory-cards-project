@@ -1,5 +1,5 @@
 import React from 'react';
-import {ModalEdited} from "../../../../../common/c15-Modal/ModalEdited";
+import { ModalEdited } from '../../../../../common/c14-Modal/ModalEdited';
 import SuperButton from "../../../../../common/c2-SuperButton/SuperButton";
 import s from './OpenCardModal.module.css'
 
