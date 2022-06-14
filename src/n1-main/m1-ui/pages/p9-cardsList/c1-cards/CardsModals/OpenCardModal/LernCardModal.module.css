@@ -1,0 +1,40 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    max-height: 500px;
+}
+
+.title {
+    margin: 10px 0 0 0;
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.titleQuestion {
+    margin: 10px auto 50px auto;
+    font-size: 30px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.titleAnswer {
+    margin: 10px auto 50px auto;
+    font-size: 30px;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+.cancelButton {
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
+}
+/*
+word-wrap: break-word;  нужно добавить чтоб текс не вылазил за края модалки*/
