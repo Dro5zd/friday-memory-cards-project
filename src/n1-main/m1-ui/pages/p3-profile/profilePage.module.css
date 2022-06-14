@@ -1,94 +1,117 @@
+* {
+    margin: 0;
+}
+
 .profileContainer {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: var(--bg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg);
 }
 
 .components {
-  position: relative;
-  width: 400px;
-  height: 600px;
-  border-radius: 3rem;
-  box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
-  padding: 4rem;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 60px;
+    width: 1300px;
+    height: 600px;
+    border-radius: 3rem;
+    box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
+    padding: 4rem;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 60px;
+    flex-direction: column;
+    position: relative;
 }
 
-.avatar {
-  display: contents;
-  justify-content: center;
+.wrapper {
+    display: flex;
+    height: 100%;
+}
+
+.leftSide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -54px;
+    height: 555px;
+    width: 300px;
+    border-radius: 12px;
+    background-color: var(--bg);
+    box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
 }
 
 .avatarBorder {
-  display: flex;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2), inset 0.2rem 0.2rem 0.5rem var(--shadow-1), inset -0.2rem -0.2rem 0.5rem var(--shadow-2);
+    display: flex;
+    width: 100px;
+    height: 100px;
+    margin-top: 40px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2), inset 0.2rem 0.2rem 0.5rem var(--shadow-1), inset -0.2rem -0.2rem 0.5rem var(--shadow-2);
 }
 
 .avatarBorder img {
-  display: block;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
 }
 
 .profileName {
-  margin-bottom: 230px;
-  font-size: 35px;
-  text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15px;
 }
 
 .editButton {
- margin-bottom: 40px;
-}
-
-.close {
-  position: absolute;
-  right: 50px;
-  top: 50px;
-  width: 32px;
-  height: 32px;
-  opacity: 0.3;
-}
-
-.close:hover {
-  opacity: 1;
-}
-
-.close:before, .close:after {
-  position: absolute;
-  left: 15px;
-  content: ' ';
-  height: 25px;
-  width: 3px;
-  background-color: var(--textColor);
-}
-
-.close:before {
-  transform: rotate(45deg);
-}
-
-.close:after {
-  transform: rotate(-45deg);
+    width: 160px;
+    height: 35px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 20px;
 }
 
 .link {
-  text-decoration: none;
-  color: var(--textColor);
-  font-weight: bold;
-  cursor: pointer;
+    text-decoration: none;
+    color: var(--textColor);
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .link:hover {
-  color: var(--textHover);
+    color: var(--textHover);
 }
+
+.close {
+    position: absolute;
+    right: 35px;
+    top: 35px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+}
+
+.close:hover {
+    opacity: 1;
+}
+
+.close:before, .close:after {
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 25px;
+    width: 3px;
+    background-color: var(--textColor);
+}
+
+.close:before {
+    transform: rotate(45deg);
+}
+
+.close:after {
+    transform: rotate(-45deg);
+}
+

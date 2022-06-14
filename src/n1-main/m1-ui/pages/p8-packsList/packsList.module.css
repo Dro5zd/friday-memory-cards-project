@@ -23,6 +23,7 @@
   flex-direction: column;
   position: relative;
 }
+
 .preloader {
   display: flex;
   align-items: center;
