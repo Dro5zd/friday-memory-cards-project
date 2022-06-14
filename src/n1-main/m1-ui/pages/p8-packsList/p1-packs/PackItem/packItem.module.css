@@ -1,8 +1,8 @@
 .packItemContainer {
     display: flex;
-    width: 100%;
+    width: 1000px;
     height: 40px;
-    margin-top: 5px;
+    margin: 5px 0 0 2px;
     /*background-color: #11eec5;*/
     border-radius: 10px;
     box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
@@ -145,8 +145,6 @@
     width: 30px;
     height: 30px;
 }
-
-
 
 .learnWrapper:active {
     box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);

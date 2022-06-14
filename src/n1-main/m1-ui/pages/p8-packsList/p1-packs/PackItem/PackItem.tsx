@@ -1,6 +1,5 @@
 import React from 'react';
 import s from './packItem.module.css';
-import {useTypedSelector} from '../../../../../m2-bll/store';
 import {CardPackType} from '../../../../../m2-bll/cardPacksReducer';
 import trash from '../../../../../../assets/img/trash.svg'
 import edit from '../../../../../../assets/img/sliders.svg'
