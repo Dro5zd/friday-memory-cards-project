@@ -62,6 +62,6 @@ export const usePagination = (props: UsePaginationType) => {
         if (shouldShowLeftDots && shouldShowRightDots) {
             let middleRange = range(leftSiblingIndex, rightSiblingIndex);
             return [firstPageIndex, '...', ...middleRange, '...', lastPageIndex];
-        }
+        } return ['no pages']
     }, [props.totalCount, props.pageSize, props.siblingCount, props.currentPage]);
 };

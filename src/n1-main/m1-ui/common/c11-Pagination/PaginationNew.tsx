@@ -41,8 +41,6 @@ export const PaginationNew: React.FC<PaginationType> = ({
         dispatch(getCardPackTC())
     }
 
-
-    // @ts-ignore
     if (currentPage === 0 || paginationRange.length < 2) {
         return null;
     }
@@ -58,7 +56,7 @@ export const PaginationNew: React.FC<PaginationType> = ({
     const onPrevious = () => {
         onPageChange(currentPage - 1);
     };
-    // @ts-ignore
+
     let lastPage = paginationRange[paginationRange.length - 1];
     return (
         <div>
@@ -70,7 +68,7 @@ export const PaginationNew: React.FC<PaginationType> = ({
                     >
                         <div className={s.angle}><img className={s.angle} src={angleLeft} alt="angleLeft"/></div>
                     </li>
-                    {/*@ts-ignore*/}
+
                     {paginationRange.map((pageNumber, index) => {
                         if (pageNumber === '...') {
                             return <li key={index} className={s.paginationItemDots}>&#8230;</li>;
