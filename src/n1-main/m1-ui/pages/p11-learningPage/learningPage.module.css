@@ -15,41 +15,65 @@
   box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
   padding: 4rem;
   display: flex;
-  align-items: center;
+  align-items: start;
   flex-direction: column;
   margin-top: 60px;
 }
 
-.avatar {
-  display: contents;
-  justify-content: center;
+.packNameTitle {
+  margin: 30px auto 0 auto;
+  font-size: 20px;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
-.avatarBorder {
-  display: flex;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2), inset 0.2rem 0.2rem 0.5rem var(--shadow-1), inset -0.2rem -0.2rem 0.5rem var(--shadow-2);
+.packNameSubtitle {
+  margin: 10px auto 50px auto;
+  font-size: 30px;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
-.avatarBorder img {
-  display: block;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
+.questionWrapper {
+  margin-top: 10px;
+  font-size: 20px;
 }
 
-.profileName {
-  margin-bottom: 230px;
-  font-size: 35px;
-  text-align: center;
+.questionTitle {
+  font-weight: 600;
+}
+
+.question {
+  font-weight: 300;
+}
+
+.answerWrapper {
+  margin: 50px 0 90px 0;
+  font-size: 20px;
+}
+
+.answerTitle {
+  font-weight: 600;
+}
+
+.answer {
+  font-weight: 300;
 }
 
 .editButton {
- margin-bottom: 40px;
+  margin: 200px auto 0 auto;
+  height: 40px;
+  width: 200px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.answerBtn {
+  height: 40px;
+  width: 200px;
+  font-size: 20px;
+  border-radius: 5px;
+  margin: 5px auto;
 }
 
 .close {
@@ -80,15 +104,4 @@
 
 .close:after {
   transform: rotate(-45deg);
-}
-
-.link {
-  text-decoration: none;
-  color: var(--textColor);
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.link:hover {
-  color: var(--textHover);
 }

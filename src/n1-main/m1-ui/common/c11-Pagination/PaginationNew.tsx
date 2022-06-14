@@ -90,8 +90,10 @@ export const PaginationNew: React.FC<PaginationType> = ({
                         <div className={s.angle}><img className={s.angle} src={angleRight} alt="angleRight"/></div>
                     </li>
                 </ul>
+                <div className={s.wrapper}>
+                    <SuperSelect className={s.select} options={options} onChangeOption={onChangeOption}/>
+                </div>
             </div>
-            <SuperSelect options={options} onChangeOption={onChangeOption}/>
         </div>
 
     );

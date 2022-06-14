@@ -40,12 +40,18 @@
     background-color: var(--bg);
     box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
 }
+.avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
 
 .avatarBorder {
     display: flex;
     width: 100px;
     height: 100px;
-    margin-top: 40px;
+    margin: 30px 0;
     border-radius: 50%;
     justify-content: center;
     align-items: center;
@@ -59,18 +65,18 @@
 }
 
 .profileName {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     font-size: 20px;
     text-align: center;
     margin-top: 15px;
 }
 
 .editButton {
-    width: 160px;
-    height: 35px;
+    width: 130px;
+    height: 30px;
     border-radius: 8px;
     margin-bottom: 50px;
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .link {
@@ -127,4 +133,5 @@
 .range {
     margin-top: 40px;
     padding: 0 20px;
+    width: 210px;
 }
