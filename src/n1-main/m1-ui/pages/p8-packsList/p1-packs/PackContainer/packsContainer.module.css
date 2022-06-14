@@ -21,6 +21,7 @@
 }
 
 .packListBody {
+  display: block;
   max-height: 455px;
   overflow: scroll;
   /*background-color: #d70d0d;*/

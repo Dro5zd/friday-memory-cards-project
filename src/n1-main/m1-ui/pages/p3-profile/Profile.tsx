@@ -31,17 +31,14 @@ export const Profile = () => {
     const avatarMe = useTypedSelector(state => state.auth.avatar)
     const status = useTypedSelector(state => state.app.status)
     const pack = useTypedSelector(state => state.packs)
+    const sortUserId = useTypedSelector(state => state.sort.user_id)
     const serverErrors = useTypedSelector(state => state.app.errors)
+    const requestPackMinValue = useTypedSelector(state => state.sort.packMinValue)
+    const requestPackMaxValue = useTypedSelector(state => state.sort.packMaxValue)
     const {modal: in_creation_modal, toggleModal: toggle_in_creation_modal} = useModalHandler()
 
     const navigate = useNavigate()
     const dispatch = useTypedDispatch()
-
-
-
-
-    // const [value1, setValue1] = useState(pack.minCardsCount)
-    // const [value2, setValue2] = useState(pack.maxCardsCount)
 
     useEffect(() => {
         if (!isAuthorised) {
@@ -50,9 +47,16 @@ export const Profile = () => {
     }, [isAuthorised, navigate])
 
     useEffect(() => {
-        dispatch(setMyAllFilterAC(userId))
-        dispatch(changePacksCurrentPageAC(1));
-    }, [dispatch])
+        dispatch(getCardPackTC())
+    }, [sortUserId, dispatch])
+
+    useEffect(() => {
+        setValue1(pack.minCardsCount)
+        setValue2(pack.maxCardsCount)
+    }, [pack.minCardsCount, pack.maxCardsCount])
+
+    const [value1, setValue1] = useState(requestPackMinValue)
+    const [value2, setValue2] = useState(requestPackMaxValue)
 
     const changeMode = () => {
         dispatch(changeEditModeAC(!editMode))
@@ -60,13 +64,19 @@ export const Profile = () => {
     const logOutHandler = () => {
         dispatch(logOutMeTC())
     }
-    // const onMouseUpSetFilter = () => {
-    //     dispatch(setRangeValueAC(value1, value2))
-    // }
+    const onMouseUpSetFilter = () => {
+        dispatch(setRangeValueAC(value1, value2))
+    }
 
     const changeCurrentPackPage = (page: number) => {
         dispatch(changePacksCurrentPageAC(page))
         dispatch(getCardPackTC())
+    }
+
+    const showAllPacksHandler = () => {
+        dispatch(setMyAllFilterAC(''))
+        dispatch(changePacksCurrentPageAC(1));
+        //dispatch(setRangeValueAC(minCardsCount, maxCardsCount))
     }
 
     return (
@@ -76,7 +86,7 @@ export const Profile = () => {
                     {status === 'loading' ? <Preloader/> :
                         <>
                             <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
-                                <div className={s.close}></div>
+                                <div className={s.close} onClick={showAllPacksHandler}></div>
                             </NavLink>
                             <AddPackModal
                                 closeModal={toggle_in_creation_modal}
@@ -93,17 +103,22 @@ export const Profile = () => {
                                         <h2 className={s.profileName}>{name || nameMe || 'Name'}</h2>
                                     </div>
                                     <SuperButton className={s.editButton} title={'Edit Profile'} onClick={changeMode}/>
-                                    <span className={s.link} onClick={logOutHandler}>Log Out</span>
+                                    <div className={s.rangeWrapper}>
+                                        <div className={s.rangeSpan}>
+                                            <span>Number of Cards</span>
+                                        </div>
                                     <div className={s.range}>
-                                        {/*<SuperDoubleRange*/}
-                                        {/*    onMouseUpSetFilter={onMouseUpSetFilter}*/}
-                                        {/*    value={[value1, value2]}*/}
-                                        {/*    setValue1={setValue1}*/}
-                                        {/*    setValue2={setValue2}*/}
-                                        {/*    min={minRangeValue}*/}
-                                        {/*    max={maxRangeValue}*/}
-                                        {/*/>*/}
+                                        <SuperDoubleRange
+                                            onMouseUpSetFilter={onMouseUpSetFilter}
+                                            value={[value1, value2]}
+                                            setValue1={setValue1}
+                                            setValue2={setValue2}
+                                            min={pack.minCardsCount}
+                                            max={pack.maxCardsCount}
+                                        />
                                     </div>
+                                    </div>
+                                    <span className={s.link} onClick={logOutHandler}>Log Out</span>
                                 </div>
                                 <PacksContainer/>
                             </div>

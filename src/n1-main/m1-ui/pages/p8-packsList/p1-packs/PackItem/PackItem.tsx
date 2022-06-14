@@ -6,10 +6,11 @@ import trash from '../../../../../../assets/img/trash.svg'
 import edit from '../../../../../../assets/img/sliders.svg'
 import learn from '../../../../../../assets/img/bookOpen.svg'
 import moment from 'moment';
-import {useNavigate} from 'react-router-dom';
+import {NavLink, useNavigate} from 'react-router-dom';
 import {useModalHandler} from '../../../../../utils/use-modal-handler';
 import {DeletePackModal} from '../PackModals/DeletePackModal/DeletePackModal';
 import {EditPackModal} from '../PackModals/EditPackModal/EditPackModal';
+import {PATH} from '../../../../routes/Routs';
 
 export const PackItem: React.FC<PackItemType> = ({
                                                      pack,
@@ -51,7 +52,11 @@ export const PackItem: React.FC<PackItemType> = ({
                 </td>
                 <td className={s.cardsColumn}><span>{pack.cardsCount}</span></td>
                 <td className={s.updateColumn}><span>{moment(pack.created).format('DD.MM.YYYY HH:mm')}</span></td>
-                <td className={s.userNameColumn}>{pack.user_name}</td>
+                <td className={s.userNameColumn}>
+                    <NavLink to={PATH.PROFILE} className={navData => navData.isActive ? s.active : s.link}>
+                    {pack.user_name}
+                    </NavLink>
+                </td>
                 <td className={s.actionsColumn}>
                     <div className={s.buttonBlock}>
 
