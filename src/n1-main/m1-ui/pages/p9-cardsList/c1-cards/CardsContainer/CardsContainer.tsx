@@ -16,12 +16,12 @@ interface ICardsContainer {
 export const CardsContainer: React.FC<ICardsContainer> = () => {
     const {urlCardsPackId} = useParams<string>();
     const cards = useTypedSelector(state => state.cards);
-    const sortCards = useTypedSelector<string>(state => state.sort.sortCards)
+    const sortCards = useTypedSelector<string>(state => state.sort.sortCards);
     const userId = useTypedSelector<string>(state => state.auth._id);
-    const packUserId = useTypedSelector<string>(state => state.cards.packUserId)
-    const status = useTypedSelector(state => state.app.status)
+    const packUserId = useTypedSelector<string>(state => state.cards.packUserId);
+    const status = useTypedSelector(state => state.app.status);
     const dispatch = useTypedDispatch();
-    const isOwner = userId === packUserId
+    const isOwner = userId === packUserId;
 
     const sortUpdatedCardsHandler = (value: string) => {
         sortCards === `0${value}`
@@ -29,13 +29,6 @@ export const CardsContainer: React.FC<ICardsContainer> = () => {
             : dispatch(setUpdateCardFilterAC(`0${value}`))
         urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
     }
-    /* const deleteCard = (cardId: string, packId: string) => {
-       dispatch(deleteCardTC(cardId, packId))
-     };
-
-     const updateCard = (cardId: string, packId: string) => {
-       dispatch(updateCardTC(cardId, packId))
-     };*/
 
     return (
         <div className={s.packsContainer}>

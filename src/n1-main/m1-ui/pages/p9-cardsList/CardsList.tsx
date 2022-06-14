@@ -46,11 +46,10 @@ export const CardsList = () => {
                             <div className={s.packSide}>
                                 {urlCardsPackId &&
                                     <AddCardModal
-                                      closeModal={toggle_in_creation_modal}
-                                      modalMode={in_creation_modal}
-                                      packId={urlCardsPackId}
+                                        closeModal={toggle_in_creation_modal}
+                                        modalMode={in_creation_modal}
+                                        packId={urlCardsPackId}
                                     />}
-
                                 <CardsHeader addNewCard={toggle_in_creation_modal} isOwner={isOwner}/>
                                 {serverErrors && <ServerErrors errors={serverErrors}/>}
                                 <CardsContainer/>

@@ -13,6 +13,7 @@ import moment from 'moment';
 import {useModalHandler} from "../../../../../utils/use-modal-handler";
 import {DeleteCardModal} from "../CardsModals/DeleteCardModal/DeleteCardModal";
 import {EditCardModal} from "../CardsModals/EditCardModal/EditCardModal";
+import {LearnCardModal} from "../CardsModals/OpenCardModal/LearnCardModal";
 
 type CardItemType = {
   card: CardType;
@@ -22,6 +23,7 @@ export const CardItem: React.FC<CardItemType> = ({card, isOwner}) => {
   const mode = useTypedSelector(state => state.ui.mode)
   const {modal: delete_modal, toggleModal: toggle_delete_modal} = useModalHandler()
   const {modal: edit_modal, toggleModal: toggle_edit_modal} = useModalHandler()
+  const {modal: learn_modal, toggleModal: toggle_learn_modal} = useModalHandler()
 
   return (
     <>
@@ -29,6 +31,7 @@ export const CardItem: React.FC<CardItemType> = ({card, isOwner}) => {
                        modalMode={delete_modal}/>
       <EditCardModal initialQuestion={card.question} initialAnswer={card.answer} cardId={card._id}
                      packId={card.cardsPack_id} closeModal={toggle_edit_modal} modalMode={edit_modal}/>
+      <LearnCardModal closeModal={toggle_learn_modal} modalMode={learn_modal} question={card.question} answer={card.answer}/>
       <tr className={s.cardItemContainer}>
         <td className={s.questionColumn}>{card.question}</td>
         <td className={s.answerColumn}>{card.answer}</td>
@@ -37,7 +40,7 @@ export const CardItem: React.FC<CardItemType> = ({card, isOwner}) => {
         <div className={s.buttonBlock}>
           <div className={s.learnWrapper} onClick={() => {
           }}>
-            <img className={s.packLearnIcon} src={mode ? learn : learnWhite} alt="learn"/>
+            <img onClick={toggle_learn_modal} className={s.packLearnIcon} src={mode ? learn : learnWhite} alt="learn"/>
           </div>
           {isOwner && <div className={s.editeWrapper} onClick={toggle_edit_modal}>
               <img className={s.packEditIcon} src={mode ? edit : editWhite} alt="edit"/></div>}
