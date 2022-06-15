@@ -83,20 +83,3 @@
     align-items: center;
     justify-content: right;
 }
-
-/*.logOut {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    filter: var(--iconColor);*/
-/*}*/
-
-/*.logOut:hover {*/
-/*  filter: var(--iconHover);*/
-/*}*/
-
-/*.logOut img {*/
-/*    border: none;*/
-/*    height: 25px;*/
-/*    width: 25px;*/
-/*    margin: 0 15px 0 0;*/
-/*}*/
