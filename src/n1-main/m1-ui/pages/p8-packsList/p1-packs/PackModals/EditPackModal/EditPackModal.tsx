@@ -28,34 +28,30 @@ export const EditPackModal: React.FC<IEditPackModal> = ({
     }
 
     return (
-        <>
-            {modalMode && (<div >
-                <ModalEdited modalMode={modalMode} closeModal={closeModal}>
-                    <span className={s.title}>Update Pack Name</span>
-                    <SuperInputText
-                        className={s.packNameInput}
-                        placeholder={'New Pack Name'}
-                        value={packName}
-                        onChange={(e) => {
-                            setPackName(e.currentTarget.value)
-                        }}
-                    />
-                    <div className={s.btnWrapper}>
-                        <SuperButton
-                            className={s.saveButton}
-                            title={'Update'}
-                            onClick={updateHandler}
-                            disabled={packName === ''}
-                        />
-                        <SuperButton
-                            className={s.cancelButton}
-                            title={'Cancel'}
-                            onClick={closeModal}
-                        />
-                    </div>
-                </ModalEdited>
-            </div>)}
-        </>
+        <ModalEdited modalMode={modalMode} closeModal={closeModal}>
+            <span className={s.title}>Update Pack Name</span>
+            <SuperInputText
+                className={s.packNameInput}
+                placeholder={'New Pack Name'}
+                value={packName}
+                onChange={(e) => {
+                    setPackName(e.currentTarget.value)
+                }}
+            />
+            <div className={s.btnWrapper}>
+                <SuperButton
+                    className={s.saveButton}
+                    title={'Update'}
+                    onClick={updateHandler}
+                    disabled={packName === ''}
+                />
+                <SuperButton
+                    className={s.cancelButton}
+                    title={'Cancel'}
+                    onClick={closeModal}
+                />
+            </div>
+        </ModalEdited>
 
     );
 };
