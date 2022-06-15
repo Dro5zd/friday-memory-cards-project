@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import s from './packsContainer.module.css'
 import {PackItem} from '../PackItem/PackItem';
 import {setUpdatedFilterAC} from '../../../../../m2-bll/sortReducer';
@@ -9,15 +9,24 @@ import sortDown from '../../../../../../assets/img/sortDown.svg'
 import {changePacksCurrentPageAC} from "../../../../../m2-bll/appReducer";
 import {DeletePackModal} from '../PackModals/DeletePackModal/DeletePackModal';
 import {EditPackModal} from '../PackModals/EditPackModal/EditPackModal';
+import {useNavigate} from "react-router-dom";
+import {PATH} from "../../../../routes/Routs";
 
 export const PacksContainer = () => {
   const pack = useTypedSelector(state => state.packs)
   const sortPacks = useTypedSelector(state => state.sort.sortPacks)
   const userId = useTypedSelector(state => state.auth._id)
   const dispatch = useTypedDispatch()
-
   const [openEditModalId,  setOpenEditModalId] = useState('')
   const [openDeleteModalId,  setOpenDeleteModalId] = useState('')
+
+  const isAuthorised = useTypedSelector(state => state.app.isAuthorised)
+  const navigate = useNavigate()
+  useEffect(()=>{
+    if (!isAuthorised) {
+    navigate(PATH.LOGIN)
+    }
+  }, [isAuthorised, navigate])
 
   const closeEditModalHandler =()=>{
     setOpenEditModalId('')

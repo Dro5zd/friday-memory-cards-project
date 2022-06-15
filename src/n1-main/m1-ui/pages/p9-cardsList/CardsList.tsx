@@ -2,8 +2,8 @@ import React, {useEffect} from 'react'
 import s from './cardsList.module.css'
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {getCardsTC} from '../../../m2-bll/cardsReducer';
-import {useParams} from "react-router-dom";
-import {changeCardsCurrentPageAC, setCardsPortionAC, setPacksPortionAC} from '../../../m2-bll/appReducer';
+import {useNavigate, useParams} from "react-router-dom";
+import {changeCardsCurrentPageAC, setCardsPortionAC} from '../../../m2-bll/appReducer';
 import {CardsContainer} from './c1-cards/CardsContainer/CardsContainer';
 import ServerErrors from "../../common/c0-ErrorsBlock/ServerErrors";
 import {Pagination} from "../../common/c11-Pagination/Pagination";
@@ -11,7 +11,7 @@ import {CardsHeader} from "./c1-cards/CardsHeader/CardsHeader";
 import Preloader from "../../common/c7-Preloader/Preloader";
 import {AddCardModal} from "./c1-cards/CardsModals/AddCardModal/AddCardModal";
 import {useModalHandler} from "../../../utils/use-modal-handler";
-import {getCardPackTC} from '../../../m2-bll/cardPacksReducer';
+import {PATH} from "../../routes/Routs";
 
 export const CardsList = () => {
     const {urlCardsPackId} = useParams<string>();
@@ -27,11 +27,20 @@ export const CardsList = () => {
     const isOwner = userId === packUserId;
     const {modal: in_creation_modal, toggleModal: toggle_in_creation_modal} = useModalHandler()
 
+
     useEffect(() => {
         if (urlCardsPackId) {
             dispatch(getCardsTC(urlCardsPackId))
         }
     }, [dispatch, urlCardsPackId, question, answer, cardsPortionValue]);
+
+    const isAuthorised = useTypedSelector(state => state.app.isAuthorised)
+    const navigate = useNavigate()
+    useEffect(()=>{
+       if (!isAuthorised) {
+            navigate(PATH.LOGIN)
+        }
+    }, [isAuthorised, navigate])
 
     const changeCurrentPage = (page: number) => {
         dispatch(changeCardsCurrentPageAC(page));
