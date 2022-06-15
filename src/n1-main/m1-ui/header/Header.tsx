@@ -12,7 +12,6 @@ export const Header = () => {
   const isAuthorised = useTypedSelector<boolean>(state => state.app.isAuthorised)
   const {modal: header_modal, toggleModal: toggle_header_modal} = useModalHandler()
 
-
   return (
     <header className={s.header}>
       <HeaderModal
