@@ -11,41 +11,33 @@ import {DeletePackModal} from '../PackModals/DeletePackModal/DeletePackModal';
 import {EditPackModal} from '../PackModals/EditPackModal/EditPackModal';
 import {PATH} from '../../../../routes/Routs';
 
+interface PackItemType {
+    pack: CardPackType
+    userId: string
+    openEditModalHandler: (id: string) => void
+    openDeleteModalHandler: (id: string) => void
+}
+
 export const PackItem: React.FC<PackItemType> = ({
                                                      pack,
                                                      userId,
+                                                     openEditModalHandler,
+                                                     openDeleteModalHandler
                                                  }) => {
-    const {modal: delete_modal, toggleModal: toggle_delete_modal} = useModalHandler()
-    const {modal: edit_modal, toggleModal: toggle_edit_modal} = useModalHandler()
-    const navigate = useNavigate()
 
+    const navigate = useNavigate()
+    const openEditModal = () => openEditModalHandler(pack._id)
+    const openDeleteModal = () => openDeleteModalHandler(pack._id)
 
     const openCardsListHandler = (packId: string) => {
         navigate('/cards-list/' + packId)
     }
 
-    // const updateHandler = (data: UpdateCardsPackType) => {
-    //   dispatch(updatePacksTC(data))
-    // }
-
     const LearningHandler = (packId: string) => {
         navigate('/learning-page/' + packId)
     }
 
-
     return (
-        <>
-            <DeletePackModal
-                closeModal={toggle_delete_modal}
-                modalMode={delete_modal}
-                packId={pack._id}
-            />
-            <EditPackModal
-                closeModal={toggle_edit_modal}
-                modalMode={edit_modal}
-                packId={pack._id}
-                initialPAckName={pack.name}
-            />
             <tr className={s.packItemContainer}>
                 <td onClick={() => openCardsListHandler(pack._id)} className={s.nameColumn}><span>{pack.name}</span>
                 </td>
@@ -60,32 +52,22 @@ export const PackItem: React.FC<PackItemType> = ({
                     <div className={s.buttonBlock}>
 
                         {userId === pack.user_id ?
-                            <div className={s.deleteWrapper} onClick={toggle_delete_modal}>
+                            <div className={s.deleteWrapper} onClick={openDeleteModal}>
                                 <img className={s.packDeleteIcon} src={trash} alt="delete"/>
                             </div> : <div className={s.empty}/>
                         }
-
                         {pack.cardsCount > 0 ? <div className={s.learnWrapper} onClick={() => LearningHandler(pack._id)}>
                             <img className={s.packLearnIcon} src={learn} alt="learn"/>
                         </div> : <div className={s.empty}/> }
 
                         {userId === pack.user_id ?
                             <div className={s.editeWrapper}
-                                 onClick={toggle_edit_modal}>
+                                 onClick={openEditModal}>
                                 <img className={s.packEditIcon} src={edit} alt="edit"/>
                             </div> : <div className={s.empty}/>
                         }
                     </div>
                 </td>
             </tr>
-        </>
     );
 };
-
-//type
-interface PackItemType {
-    pack: CardPackType
-    userId: string
-}
-
-// () => deleteHandler(pack._id)

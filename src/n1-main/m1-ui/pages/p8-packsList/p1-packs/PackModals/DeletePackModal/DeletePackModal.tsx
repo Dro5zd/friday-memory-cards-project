@@ -25,7 +25,6 @@ export const DeletePackModal: React.FC<IDeletePackModal> = ({
   }
 
   return (
-
       <ModalEdited closeModal={closeModal} modalMode={modalMode}>
         <div className={s.wrapper}>
         <span className={s.title}>Delete pack</span>

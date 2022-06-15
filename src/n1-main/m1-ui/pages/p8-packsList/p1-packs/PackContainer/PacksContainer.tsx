@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import s from './packsContainer.module.css'
 import {PackItem} from '../PackItem/PackItem';
 import {setUpdatedFilterAC} from '../../../../../m2-bll/sortReducer';
@@ -7,12 +7,31 @@ import {useTypedDispatch, useTypedSelector} from '../../../../../m2-bll/store';
 import sortUp from '../../../../../../assets/img/sortUp.svg'
 import sortDown from '../../../../../../assets/img/sortDown.svg'
 import {changePacksCurrentPageAC} from "../../../../../m2-bll/appReducer";
+import {DeletePackModal} from '../PackModals/DeletePackModal/DeletePackModal';
+import {EditPackModal} from '../PackModals/EditPackModal/EditPackModal';
 
 export const PacksContainer = () => {
   const pack = useTypedSelector(state => state.packs)
   const sortPacks = useTypedSelector(state => state.sort.sortPacks)
   const userId = useTypedSelector(state => state.auth._id)
   const dispatch = useTypedDispatch()
+
+  const [openEditModalId,  setOpenEditModalId] = useState('')
+  const [openDeleteModalId,  setOpenDeleteModalId] = useState('')
+
+  const closeEditModalHandler =()=>{
+    setOpenEditModalId('')
+  }
+  const openEditModalHandler =(id: string)=>{
+    setOpenEditModalId(id)
+  }
+
+  const closeDeleteModalHandler =()=>{
+    setOpenDeleteModalId('')
+  }
+  const openDeleteModalHandler =(id: string)=>{
+    setOpenDeleteModalId(id)
+  }
 
   const sortUpdatedHandler = (value: string) => {
     sortPacks === `0${value}` ?
@@ -25,6 +44,16 @@ export const PacksContainer = () => {
   return (
     <div className={s.packsSide}>
       <div className={s.packsContainer}>
+        <DeletePackModal
+            closeModal={closeDeleteModalHandler}
+            modalMode={!!openDeleteModalId}
+            packId={openDeleteModalId}
+        />
+        <EditPackModal
+            closeModal={closeEditModalHandler}
+            modalMode={!!openEditModalId}
+            packId={openEditModalId}
+        />
         <table>
           <thead>
           <tr className={s.packListHeader}>
@@ -63,6 +92,8 @@ export const PacksContainer = () => {
             <tbody className={s.packListBody}>
             {pack.cardPacks.map(p =>
               <PackItem
+                  openEditModalHandler={openEditModalHandler}
+                  openDeleteModalHandler={openDeleteModalHandler}
                         userId={userId}
                         pack={p}
                         key={p._id}

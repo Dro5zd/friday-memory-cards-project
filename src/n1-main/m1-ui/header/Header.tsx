@@ -9,7 +9,6 @@ import {Switcher} from '../common/c8-Switcher/Switcher';
 import {changeThemeAC} from '../../m2-bll/uiReducer';
 import {setMyAllFilterAC} from '../../m2-bll/sortReducer';
 import {changePacksCurrentPageAC} from '../../m2-bll/appReducer';
-import {getCardPackTC} from '../../m2-bll/cardPacksReducer';
 
 export const Header = () => {
 
@@ -44,16 +43,6 @@ export const Header = () => {
             <Switcher onChangeThemeHandler={onChangeThemeHandler}/>
             {isAuthorised ?
                 <div className={s.wrapper}>
-
-                    {/*<div className={s.headerButtons}>*/}
-                    {/*    <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>*/}
-                    {/*        Packs List*/}
-                    {/*    </NavLink>*/}
-                    {/*    <NavLink to={PATH.CARDS_LIST} className={navData => navData.isActive ? s.active : s.link}>*/}
-                    {/*        Cards List*/}
-                    {/*    </NavLink>*/}
-                    {/*</div>*/}
-
                     <div className={s.headerItem}>
                         <NavLink to={PATH.PROFILE} className={navData => navData.isActive ? s.active : s.link} onClick={showMyPacksHandler}>
                             <div className={s.avatar} >
@@ -71,21 +60,6 @@ export const Header = () => {
                 :
                 ''
             }
-            {/*   <NavLink to={PATH.LOGIN} className={navData => navData.isActive ? s.active : s.link}>
-           Login
-         </NavLink>*/}
-            {/*<NavLink to={PATH.REGISTER} className={navData => navData.isActive ? s.active : s.link}>*/}
-            {/*    Register*/}
-            {/*</NavLink>*/}
-            {/*<NavLink to={PATH.PASSWORD_RECOVERY} className={navData => navData.isActive ? s.active : s.link}>*/}
-            {/*    Password Recovery*/}
-            {/*</NavLink>*/}
-            {/*<NavLink to={PATH.ENTERING_NEW_PASSWORD} className={navData => navData.isActive ? s.active : s.link}>*/}
-            {/*    New Password*/}
-            {/*</NavLink>*/}
-            {/*<NavLink to={PATH.TEST} className={navData => navData.isActive ? s.active : s.link}>*/}
-            {/*    PacksList*/}
-            {/*</NavLink>*/}
         </header>
     );
 }
