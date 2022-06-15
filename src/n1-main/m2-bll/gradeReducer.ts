@@ -44,7 +44,7 @@ export type InitStateType = {
     shots: number
 }
 
-// type GradeType = 0 | 1 | 2 | 3 | 4 | 5
+// type GradeType = 0 | ModalEditedForHeader | 2 | 3 | 4 | 5
 
 export type GradeReducerActionType =
     | ReturnType<typeof setCardGradeAC>

@@ -1,137 +1,161 @@
 * {
-    margin: 0;
+  margin: 0;
 }
 
 .profileContainer {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: var(--bg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
 }
 
 .components {
-    width: 1300px;
-    height: 600px;
-    border-radius: 3rem;
-    box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
-    padding: 4rem;
-    display: flex;
-    justify-content: space-around;
-    margin-top: 60px;
-    flex-direction: column;
-    position: relative;
+  width: 1300px;
+  height: 600px;
+  border-radius: 3rem;
+  box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
+  padding: 4rem;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 60px;
+  flex-direction: column;
+  position: relative;
 }
 
 .wrapper {
-    display: flex;
-    height: 100%;
+  display: flex;
+  height: 100%;
 }
 
 .leftSide {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: -54px;
-    height: 555px;
-    width: 300px;
-    border-radius: 12px;
-    background-color: var(--bg);
-    box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -54px;
+  height: 555px;
+  width: 300px;
+  border-radius: 12px;
+  background-color: var(--bg);
+  box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
 }
+
 .avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .avatarBorder {
-    display: flex;
-    width: 100px;
-    height: 100px;
-    margin: 30px 0;
-    border-radius: 50%;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2), inset 0.2rem 0.2rem 0.5rem var(--shadow-1), inset -0.2rem -0.2rem 0.5rem var(--shadow-2);
+  display: flex;
+  width: 140px;
+  height: 140px;
+  margin: 30px 0;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2), inset 0.2rem 0.2rem 0.5rem var(--shadow-1), inset -0.2rem -0.2rem 0.5rem var(--shadow-2);
 }
 
 .avatarBorder img {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
 }
 
 .profileName {
-    margin-bottom: 30px;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 15px;
+  margin-bottom: 30px;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 15px;
 }
 
 .editButton {
-    width: 130px;
-    height: 30px;
-    border-radius: 8px;
-    margin-bottom: 50px;
-    font-size: 17px;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 20px;
+  position: absolute;
+  left: 225px;
+  top: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg);
+  border-radius: 50%;
+  border: 2px solid var(--textColor);
+  cursor: pointer;
+}
+
+.editButton img {
+  filter: var(--iconColor);
+  height: 20px;
+  width: 20px;
+}
+
+.editButton:hover img {
+  filter: var(--iconHover)
+}
+
+.editButton:hover {
+  transform: scale(1.03);
+  border: 2px solid var(--textHover)
 }
 
 .link {
-    text-decoration: none;
-    color: var(--textColor);
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
+  text-decoration: none;
+  color: var(--textColor);
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .link:hover {
-    color: var(--textHover);
+  color: var(--textHover);
 }
 
 .close {
-    position: absolute;
-    right: 35px;
-    top: 35px;
-    width: 32px;
-    height: 32px;
-    opacity: 0.3;
+  position: absolute;
+  right: 35px;
+  top: 35px;
+  width: 32px;
+  height: 32px;
+  opacity: 0.3;
 }
 
 .close:hover {
-    opacity: 1;
+  opacity: 1;
 }
 
 .close:before, .close:after {
-    position: absolute;
-    left: 15px;
-    content: ' ';
-    height: 25px;
-    width: 3px;
-    background-color: var(--textColor);
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 25px;
+  width: 3px;
+  background-color: var(--textColor);
 }
 
 .close:before {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .close:after {
-    transform: rotate(-45deg);
+  transform: rotate(-45deg);
 }
 
 .rangeWrapper {
-    margin-bottom: 60px;
+  margin-bottom: 60px;
 }
 
 .rangeSpan {
-    font-weight: bold;
-    margin: 60px 0;
+  font-weight: bold;
+  margin: 60px 0;
 }
 
 .range {
-    margin-top: 40px;
-    padding: 0 20px;
-    width: 210px;
+  margin-top: 40px;
+  padding: 0 20px;
+  width: 210px;
 }

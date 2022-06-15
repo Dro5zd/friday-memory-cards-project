@@ -102,7 +102,7 @@ const SuperRange: React.FC<SuperRangePropsType> = (
                   style={{left: `calc(${pointPosition}% - ${selfPointPosition}px)`}}>{value}</span>
       <div className={s.progressOverlay} style={styleProgressOverlay}>
         <div className={s.progress} style={{
-          zIndex: 'var(--zIndexProgress, 1)',
+          zIndex: 'var(--zIndexProgress, ModalEditedForHeader)',
           background: `var(--bgProgress, ${progressBGColor})`,
           width: `${pointPosition}%`,
           boxShadow: `3px 0 0 0 ${restProgressBGColor}`
