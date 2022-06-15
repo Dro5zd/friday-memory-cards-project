@@ -34,7 +34,7 @@ export const PackSettings: React.FC<PackSettingsType> = ({
   /* const onChangeDoubleInputRangeHandle = (nums: Array<number>) => {
        debugger
        setValue1(nums[0])
-       setValue2(nums[1])
+       setValue2(nums[ModalEditedForHeader])
    }*/
 
   const showMyPacksHandler = () => {

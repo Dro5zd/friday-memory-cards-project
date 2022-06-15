@@ -1,42 +1,18 @@
 .link {
-    /*transition: all 0.5s ease;*/
     text-decoration: none;
     text-transform: uppercase;
     height: 60px;
-    /*width: 200px;*/
     list-style-type: none;
     display: inline;
     align-items: center;
     justify-content: center;
     border-radius: 1rem;
-    /*box-shadow: 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);*/
 }
 
-/*.link:active {*/
-/*    box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem white;*/
-/*}*/
-
-/*.link:hover {*/
-/*    color: var(--primary);*/
-/*}*/
-
-/*сделал при нажатии плавный переход но делал в спешке и не очень нравится надо поковырять закоментил в линк и актив*/
 .active {
-    /*transition: all 0.5s ease;*/
-    /*margin: 1px;*/
-    /*border-radius: 1rem;*/
     text-decoration: none;
-    /*color: var(--primary);*/
     text-transform: uppercase;
-    /*font-weight: bold;*/
-    /*height: 60px;*/
-    /*width: 200px;*/
-    /*box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem white;*/
 }
-
-/*.active:active {*/
-/*    !*box-shadow: inset 0.2rem 0.2rem 0.5rem #c8d0e7, inset -0.2rem -0.2rem 0.5rem white;*!*/
-/*}*/
 
 .wrapper {
     display: inline-flex;
@@ -92,19 +68,11 @@
     margin-right: 75px;
 }
 
-.avatar img {
+.imgAvatar {
     height: 45px;
     border-radius: 50%;
     margin-left: 8px;
     border: 2px var(--textColor) solid;
-}
-
-/*.avatar:hover h2{*/
-/*    color: var(--primary);*/
-/*}*/
-
-.logo:hover{
-    transform: scale(1.02);
 }
 
 .profileName {
@@ -116,18 +84,19 @@
     justify-content: right;
 }
 
-/*.wrapper .headerItem .avatar {*/
+/*.logOut {*/
 /*    display: flex;*/
-/*    justify-content: right;*/
+/*    align-items: center;*/
+/*    filter: var(--iconColor);*/
 /*}*/
 
-
-/*стили для иконок не закончил пока */
-
-/*.user {*/
-/*    width: 15px;*/
-/*    margin-right: 15px;*/
-/*    color: var(--primary);*/
+/*.logOut:hover {*/
+/*  filter: var(--iconHover);*/
 /*}*/
 
-/*стили для иконок не закончил пока */
+/*.logOut img {*/
+/*    border: none;*/
+/*    height: 25px;*/
+/*    width: 25px;*/
+/*    margin: 0 15px 0 0;*/
+/*}*/

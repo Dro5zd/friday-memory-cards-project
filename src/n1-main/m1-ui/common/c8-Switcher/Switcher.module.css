@@ -7,11 +7,8 @@
     border-radius: 50%;
     background-color: var(--bg);
     box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
-    position: absolute;
-    right: 16px;
-    top: 13px;
-    z-index: 9999;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .switcherBtn:active {

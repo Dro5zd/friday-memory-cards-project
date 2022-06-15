@@ -35,7 +35,7 @@
     overflow: hidden;
     /*margin-right: 10px;*/
     /*background-color: #eabd0b;*/
-    /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
+    /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-ModalEditedForHeader), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
 }
 .cardsColumn {
     display: flex;
@@ -52,7 +52,7 @@
     margin-right: 10px;
     /*margin-right: 5px;*/
     /*background-color: #EABD0BFF;*/
-    /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
+    /*box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-ModalEditedForHeader), -0.2rem -0.2rem 0.5rem var(--shadow-2);*/
 }
 .actionsColumn {
     display: flex;

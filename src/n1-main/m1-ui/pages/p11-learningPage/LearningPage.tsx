@@ -83,13 +83,11 @@ export const LearningPage = () => {
   return (
     <div className={s.learningContainer}>
       <div className={s.components}>
-        {status === 'loading'
-          ? <Preloader/>
-          : <>
+         <>
             <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
               <div className={s.close}></div>
             </NavLink>
-            <span className={s.packNameTitle}>Learning pack:</span>
+            <span className={s.packNameTitle}>Learning pack</span>
             <span className={s.packNameSubtitle}> "{packName.name}" </span>
             <div className={s.questionWrapper}>
               <span className={s.questionTitle}> Question: </span>
@@ -113,12 +111,7 @@ export const LearningPage = () => {
                 </>
               )}
           </>
-        }
       </div>
     </div>
   )
 }
-
-
-
-
