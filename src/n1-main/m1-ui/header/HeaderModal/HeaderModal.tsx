@@ -1,13 +1,14 @@
 import React from 'react';
 import {setMyAllFilterAC} from "../../../m2-bll/sortReducer";
 import {changePacksCurrentPageAC, logOutMeTC} from "../../../m2-bll/appReducer";
-import {NavLink} from "react-router-dom";
+import {NavLink, useNavigate} from "react-router-dom";
 import {useTypedDispatch, useTypedSelector} from "../../../m2-bll/store";
 import {PATH} from "../../routes/Routs";
 import noPhoto from '../../../../assets/img/noPhoto.png';
 import s from './HeaderModal.module.css'
 import {ModalHeaderEdited} from "./ModalEditedForHeader/ModalHeaderEdited";
 import logOut from "../../../../assets/img/arrow-right-from-bracket-solid.svg";
+import settingsIcon from '../../../../assets/img/gear-solid.svg'
 import {Switcher} from "../../common/c8-Switcher/Switcher";
 import {changeThemeAC} from "../../../m2-bll/uiReducer";
 
@@ -27,6 +28,7 @@ export const HeaderModal: React.FC<IHeaderModal> = ({
   const avatarMe = useTypedSelector(state => state.auth.avatar)
   const mode = useTypedSelector(state => state.ui.mode)
   const dispatch = useTypedDispatch();
+  const navigate = useNavigate()
 
   const showMyPacksHandler = () => {
     dispatch(setMyAllFilterAC(userId))
@@ -34,12 +36,19 @@ export const HeaderModal: React.FC<IHeaderModal> = ({
     closeModal()
   }
   const logOutHandler = () => {
+    closeModal()
     dispatch(logOutMeTC())
+  }
+
+  const settingsButtonHandler = () => {
+    closeModal()
+    navigate(PATH.PROFILE_EDIT)
   }
 
   const onChangeThemeHandler = () => {
     return dispatch(changeThemeAC(!mode))
   }
+
 
   return (
     <ModalHeaderEdited modalMode={modalMode} closeModal={closeModal}>
@@ -50,15 +59,18 @@ export const HeaderModal: React.FC<IHeaderModal> = ({
           onClick={showMyPacksHandler}
         >
           <div className={s.avatar}>
-            <div className={s.avatarBorder}>
-              <img className={s.imgAvatar} src={avatar || avatarMe || noPhoto} alt={'ava'}/>
-            </div>
+            <img className={s.imgAvatar} src={avatar || avatarMe || noPhoto} alt={'ava'}/>
             <h2 className={s.profileName}>{name || nameMe || 'Name'}</h2>
           </div>
         </NavLink>
         <Switcher onChangeThemeHandler={onChangeThemeHandler}/>
+        <div className={s.settingsBtn} onClick={settingsButtonHandler}>
+          <img src={settingsIcon} alt="settings"/>
+          <span>Settings</span>
+        </div>
         <div className={s.logOut} onClick={logOutHandler}>
           <img src={logOut} alt="logOut"/>
+          <span>Log Out</span>
         </div>
       </div>
     </ModalHeaderEdited>

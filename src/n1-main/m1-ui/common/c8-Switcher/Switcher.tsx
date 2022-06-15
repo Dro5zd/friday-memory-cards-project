@@ -13,13 +13,13 @@ export const Switcher = (props: SwitcherPropsType) => {
   const mode = useTypedSelector(state => state.ui.mode)
 
   return (
-    <div className={s.switcherBtn}>
+    <div className={s.switcherBtn} onClick={props.onChangeThemeHandler}>
       <img
         className={s.mainBtnIcon}
-        onClick={props.onChangeThemeHandler}
         src={mode ? sun : moon}
         alt={'logo'}
       />
+      <span>{mode ? 'Day ' : 'Night ' }mode</span>
     </div>
   );
 };

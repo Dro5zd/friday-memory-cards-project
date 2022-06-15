@@ -7,8 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 10px 0;
-    /*height: 100px;*/
+    margin-top: 11px;
 }
 
 .empty {
@@ -78,15 +77,12 @@
     pointer-events: none;
 }
 
-.wrapper {
+.selectWrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 0 5px 50px;
+    margin:11px 0 5px 50px;
 }
-/*.wrapper span{*/
-/*    font-size: 20px;*/
-/*}*/
 
 .select {
     display: flex;

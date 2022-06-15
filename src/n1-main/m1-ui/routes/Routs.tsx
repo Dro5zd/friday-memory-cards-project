@@ -10,11 +10,13 @@ import {PacksList} from "../pages/p8-packsList/PacksList";
 import {LearningPage} from '../pages/p11-learningPage/LearningPage';
 import {EmailAnswer} from "../pages/p10-emailAnswer/EmailAnswer";
 import {CardsList} from '../pages/p9-cardsList/CardsList';
+import {ProfileEdit} from "../pages/p3-profile/ProfileEdit";
 
 export const PATH = {
     LOGIN: '/login',
     REGISTER: '/register',
     PROFILE: '/profile',
+    PROFILE_EDIT: '/profile-edite',
     PASSWORD_RECOVERY: '/password-recovery',
     ENTERING_NEW_PASSWORD: '/set-new-password/:token',
     TEST: '/test',
@@ -34,6 +36,7 @@ export const Routs = () => {
                 <Route path={PATH.LOGIN} element={<Login/>}/>
                 <Route path={PATH.REGISTER} element={<Registration/>}/>
                 <Route path={PATH.PROFILE} element={<Profile/>}/>
+                <Route path={PATH.PROFILE_EDIT} element={<ProfileEdit/>}/>
                 <Route path={PATH.PASSWORD_RECOVERY} element={<PasswordRecovery/>}/>
                 <Route path={PATH.EMAIL_ANSWER} element={<EmailAnswer/>}/>
                 <Route path={PATH.ENTERING_NEW_PASSWORD} element={<NewPassword/>}/>

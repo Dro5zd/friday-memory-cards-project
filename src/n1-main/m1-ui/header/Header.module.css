@@ -1,26 +1,5 @@
-.link {
-    text-decoration: none;
-    text-transform: uppercase;
-    height: 60px;
-    list-style-type: none;
-    display: inline;
-    align-items: center;
-    justify-content: center;
-    border-radius: 1rem;
-}
-
-.active {
-    text-decoration: none;
-    text-transform: uppercase;
-}
-
-.wrapper {
-    display: inline-flex;
-    position: relative;
-}
-
 .header {
-    justify-content: end;
+    justify-content: space-between;
     position: fixed;
     margin-top: 15px;
     display: flex;
@@ -33,12 +12,11 @@
     left: 2vw;
 }
 
-.header .logo {
+.logo {
     display: flex;
     height: 60px;
-    position: absolute;
     left: 0;
-    margin: 5px 0 0 50px;
+    margin: 5px 0 0 30px;
     font-size: 30px;
     font-weight: 600;
     transition: all 0.5s ease;
@@ -46,6 +24,11 @@
 
 .logo:hover {
     transform: scale(1.02);
+}
+
+.wrapper {
+    display: inline-flex;
+    position: relative;
 }
 
 .headerItem {
@@ -56,16 +39,11 @@
     height: 100%;
 }
 
-.headerItem a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .avatar {
     display: flex;
     height: 50px;
-    margin-right: 75px;
+    margin-right: 15px;
 }
 
 .imgAvatar {
@@ -73,13 +51,4 @@
     border-radius: 50%;
     margin-left: 8px;
     border: 2px var(--textColor) solid;
-}
-
-.profileName {
-    display: flex;
-    width: 300px;
-    word-wrap: break-word;
-    font-size: 20px;
-    align-items: center;
-    justify-content: right;
 }

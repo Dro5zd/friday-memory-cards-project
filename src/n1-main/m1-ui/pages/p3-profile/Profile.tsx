@@ -1,15 +1,11 @@
 import React, {useEffect, useState} from 'react'
 import s from './profilePage.module.css';
-import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import noPhoto from '../../../../assets/img/noPhoto.png'
-import {ProfileEdit} from './ProfileEdit';
 import {NavLink, useNavigate} from 'react-router-dom';
 import {PATH} from '../../routes/Routs';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
-import {changePacksCurrentPageAC, logOutMeTC, setPacksPortionAC} from '../../../m2-bll/appReducer';
-import {changeEditModeAC} from '../../../m2-bll/uiReducer';
+import {changePacksCurrentPageAC, setPacksPortionAC} from '../../../m2-bll/appReducer';
 import Preloader from '../../common/c7-Preloader/Preloader';
-import {PackSettings} from '../p8-packsList/p1-packs/PackSettings/PackSettings';
 import {PacksContainer} from '../p8-packsList/p1-packs/PackContainer/PacksContainer';
 import {Pagination} from '../../common/c11-Pagination/Pagination';
 import {AddPackModal} from '../p8-packsList/p1-packs/PackModals/AddPackModal/AddPackModal';
@@ -24,7 +20,6 @@ import camera from '../../../../assets/img/camera-solid.svg'
 export const Profile = () => {
 
   const isAuthorised = useTypedSelector<boolean>(state => state.app.isAuthorised)
-  const editMode = useTypedSelector(state => state.ui.editMode)
   const name = useTypedSelector(state => state.profile.name)
   const nameMe = useTypedSelector(state => state.auth.name)
   const avatar = useTypedSelector(state => state.profile.avatar)
@@ -58,9 +53,6 @@ export const Profile = () => {
   const [value1, setValue1] = useState(requestPackMinValue)
   const [value2, setValue2] = useState(requestPackMaxValue)
 
-  const changeMode = () => {
-    dispatch(changeEditModeAC(!editMode))
-  }
   const onMouseUpSetFilter = () => {
     dispatch(setRangeValueAC(value1, value2))
   }
@@ -82,13 +74,9 @@ export const Profile = () => {
 
   return (
     <div className={s.profileContainer}>
-      {editMode ?
         <div className={s.components}>
           {status === 'loading' ? <Preloader/> :
             <>
-              <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
-                <div className={s.close} onClick={showAllPacksHandler}></div>
-              </NavLink>
               <AddPackModal
                 closeModal={toggle_in_creation_modal}
                 modalMode={in_creation_modal}
@@ -103,12 +91,11 @@ export const Profile = () => {
                     </div>
                     <h2 className={s.profileName}>{name || nameMe || 'Name'}</h2>
                   </div>
-                  {/*<SuperButton className={s.editButton} title={'Edit Profile'} onClick={changeMode}/>*/}
-                  <div className={s.editButton} onClick={() => {
+                  <button className={s.editPhoto} onClick={() => {
                     alert('chose your new photo')
                   }}>
                     <img src={camera} alt="camera"/>
-                  </div>
+                  </button>
                   <div className={s.rangeWrapper}>
                     <div className={s.rangeSpan}>
                       <span>Number of Cards</span>
@@ -139,8 +126,6 @@ export const Profile = () => {
             </>
           }
         </div>
-        : <ProfileEdit changeMode={changeMode}/>
-      }
     </div>
   )
 }

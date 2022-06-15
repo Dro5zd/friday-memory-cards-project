@@ -72,77 +72,27 @@
   margin-top: 15px;
 }
 
-.editButton {
-  width: 30px;
-  height: 30px;
+.editPhoto {
+  width: 33px;
+  height: 33px;
   margin-bottom: 20px;
   position: absolute;
-  left: 225px;
-  top: 200px;
+  left: 221px;
+  top: 210px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--bg);
+  background-color:  var(--bg);
   border-radius: 50%;
-  border: 2px solid var(--textColor);
   cursor: pointer;
+  border: none;
+  box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
 }
 
-.editButton img {
+.editPhoto img {
   filter: var(--iconColor);
   height: 20px;
   width: 20px;
-}
-
-.editButton:hover img {
-  filter: var(--iconHover)
-}
-
-.editButton:hover {
-  transform: scale(1.03);
-  border: 2px solid var(--textHover)
-}
-
-.link {
-  text-decoration: none;
-  color: var(--textColor);
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.link:hover {
-  color: var(--textHover);
-}
-
-.close {
-  position: absolute;
-  right: 35px;
-  top: 35px;
-  width: 32px;
-  height: 32px;
-  opacity: 0.3;
-}
-
-.close:hover {
-  opacity: 1;
-}
-
-.close:before, .close:after {
-  position: absolute;
-  left: 15px;
-  content: ' ';
-  height: 25px;
-  width: 3px;
-  background-color: var(--textColor);
-}
-
-.close:before {
-  transform: rotate(45deg);
-}
-
-.close:after {
-  transform: rotate(-45deg);
 }
 
 .rangeWrapper {

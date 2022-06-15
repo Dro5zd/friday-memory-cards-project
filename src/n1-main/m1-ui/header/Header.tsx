@@ -6,11 +6,14 @@ import {useTypedSelector} from '../../m2-bll/store';
 import mainLogo from '../../../assets/img/B.A.D._logo3.png'
 import {HeaderModal} from "./HeaderModal/HeaderModal";
 import {useModalHandler} from "../../utils/use-modal-handler";
+import noPhoto from "../../../assets/img/noPhoto.png";
 
 export const Header = () => {
 
   const isAuthorised = useTypedSelector<boolean>(state => state.app.isAuthorised)
   const {modal: header_modal, toggleModal: toggle_header_modal} = useModalHandler()
+  const avatar = useTypedSelector(state => state.profile.avatar)
+  const avatarMe = useTypedSelector(state => state.auth.avatar)
 
   return (
     <header className={s.header}>
@@ -27,7 +30,9 @@ export const Header = () => {
       {isAuthorised ?
         <div className={s.wrapper}>
           <div className={s.headerItem}>
-            <button className={s.avatar} onClick={toggle_header_modal}></button>
+            <div className={s.avatar} onClick={toggle_header_modal}>
+              <img className={s.imgAvatar} src={avatar || avatarMe || noPhoto} alt={'ava'}/>
+            </div>
           </div>
         </div>
         :

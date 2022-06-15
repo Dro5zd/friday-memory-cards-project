@@ -6,19 +6,18 @@ import SuperInputText from '../../common/c1-SuperInputText/SuperInputText';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {updateProfileTC} from '../../../m2-bll/profileReducer';
 import Preloader from "../../common/c7-Preloader/Preloader";
+import {PATH} from "../../routes/Routs";
+import {useNavigate} from "react-router-dom";
 
-type ProfileEditType = {
-  changeMode: (mode: boolean) => void
-}
-
-export const ProfileEdit = (props: ProfileEditType) => {
+export const ProfileEdit = () => {
 
   const avatar = useTypedSelector(state => state.profile.avatar)
+
   const name = useTypedSelector(state => state.profile.name)
   const authName = useTypedSelector(state => state.auth.name)
   const authAvatar = useTypedSelector(state => state.auth.avatar)
   const status = useTypedSelector(state => state.app.status)
-
+  const navigate = useNavigate()
   const dispatch = useTypedDispatch()
 
   const [newName, setNewName] = useState(name || authName || '')
@@ -32,12 +31,12 @@ export const ProfileEdit = (props: ProfileEditType) => {
   }
 
   const cancelButtonHandler = () => {
-    props.changeMode(true)
+    navigate(PATH.PROFILE)
   }
 
   const updateProfile = (name: string, avatar: string) => {
+    navigate(PATH.PROFILE)
     dispatch(updateProfileTC({name, avatar}))
-    props.changeMode(true)
   }
 
   return (
@@ -54,10 +53,12 @@ export const ProfileEdit = (props: ProfileEditType) => {
                 </div>
               </div>
 
+
               <div className={s.inputBlock}>
                 <SuperInputText placeholder={'Enter new name'} onChange={onChangeNewNameHandler} value={newName}/>
                 <SuperInputText placeholder={'Enter link to new avatar'} onChange={onChangeNewAvatarHandler}
                                 value={newAvatar}/>
+
               </div>
 
               <div className={s.buttonBlock}>

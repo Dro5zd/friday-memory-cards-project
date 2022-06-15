@@ -83,7 +83,7 @@ export const Pagination: React.FC<PaginationType> = ({
                         <div className={s.angle}><img className={s.angle} src={angleRight} alt="angleRight"/></div>
                     </li>
                 </ul>
-                <div className={s.wrapper}>
+                <div className={s.selectWrapper}>
                     <SuperSelect className={s.select} options={options} onChangeOption={onChangePortions}/>
                     <span>{title} per page</span>
                 </div>
