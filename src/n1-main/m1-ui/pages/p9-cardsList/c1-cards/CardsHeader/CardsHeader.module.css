@@ -10,6 +10,7 @@
   height: 40px;
   width: 40px;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .arrowWrapper:active {
@@ -18,7 +19,6 @@
 
 .arrowLeft {
   height: 14px;
-  cursor: pointer;
   filter: var(--iconColor);
 }
 

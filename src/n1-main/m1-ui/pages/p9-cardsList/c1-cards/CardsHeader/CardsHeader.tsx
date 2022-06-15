@@ -31,8 +31,8 @@ export const CardsHeader: React.FC<CardsHeaderType> = ({isOwner, addNewCard}) =>
 
     return (
         <div>
-            <div className={s.arrowWrapper}>
-                <img onClick={goBackHandler} className={s.arrowLeft} src={arrowLeft}
+            <div className={s.arrowWrapper} onClick={goBackHandler} >
+                <img className={s.arrowLeft} src={arrowLeft}
                      alt="arrowLeft"/>
             </div>
             <h2 className={s.cardListTitle}>CARDS LIST</h2>
