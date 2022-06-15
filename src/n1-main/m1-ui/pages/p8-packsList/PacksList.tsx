@@ -2,9 +2,9 @@ import React, {useEffect} from 'react'
 import s from './packsList.module.css'
 import {getCardPackTC} from '../../../m2-bll/cardPacksReducer';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
-import {changePacksCurrentPageAC} from '../../../m2-bll/appReducer';
+import {changePacksCurrentPageAC, setPacksPortionAC} from '../../../m2-bll/appReducer';
 import {PacksContainer} from './p1-packs/PackContainer/PacksContainer';
-import {PaginationNew} from '../../common/c11-Pagination/PaginationNew';
+import {Pagination} from '../../common/c11-Pagination/Pagination';
 import {PackSettings} from './p1-packs/PackSettings/PackSettings';
 import {PackHeader} from './p1-packs/PackHeader/PackHeader';
 import ServerErrors from '../../common/c0-ErrorsBlock/ServerErrors';
@@ -34,6 +34,11 @@ export const PacksList = () => {
         dispatch(getCardPackTC())
     }
 
+    const onChangeOption = (option: number) => {
+        dispatch(setPacksPortionAC(option))
+        dispatch(getCardPackTC())
+    }
+
     return (
         <div className={s.container}>
             <AddPackModal
@@ -56,12 +61,14 @@ export const PacksList = () => {
                             : <PacksContainer/>
                     }
                 </div>
-                <PaginationNew
+                <Pagination
                     totalCount={pack.cardPacksTotalCount}
                     pageSize={pack.pageCount}
                     currentPage={pack.page}
                     onPageChange={changeCurrentPackPage}
                     siblingCount={3}
+                    onChangePortions={onChangeOption}
+                    title={'packs'}
                 />
             </div>
         </div>

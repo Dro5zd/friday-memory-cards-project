@@ -84,9 +84,13 @@
     justify-content: center;
     margin: 0 0 5px 50px;
 }
+/*.wrapper span{*/
+/*    font-size: 20px;*/
+/*}*/
 
 .select {
     display: flex;
+    margin-right: 15px;
     border: none;
     border-radius: 5px;
     outline: none;

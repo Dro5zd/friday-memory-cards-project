@@ -63,8 +63,8 @@ export const setCardsStateAC = (data: CardsReducerInitialStateType) => ({type: '
 export type CardsReducerActionTypes = ReturnType<typeof setCardsStateAC>;
 
 export const getCardsTC = (cardsPack_id: string): AppThunk => async (dispatch, getState) => {
-    const pageCount = 10;
     const currentPage = getState().app.cardsCurrentPage;
+    const pageCount = getState().app.cardsPortionValue;
     const questionValue = getState().sort.cardsQuestionValue;
     const answerValue = getState().sort.cardsAnswerValue;
     const sortCards = getState().sort.sortCards

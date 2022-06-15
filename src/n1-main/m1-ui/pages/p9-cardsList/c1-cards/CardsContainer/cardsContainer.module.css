@@ -4,7 +4,7 @@
 
 .packsContainer{
     height: 500px;
-    /*width: 100%;*/
+    /*width: 1300px;*/
     display: flex;
     flex-direction: column;
     /*background: red;*/
@@ -72,6 +72,14 @@
     justify-content: center;
     width: 130px;
     /*background-color: #430bea;*/
+}
+
+.cardListBody{
+    display: block;
+    min-height: 480px;
+    overflow: scroll;
+    width: 1308px;
+    padding-left: 4px;
 }
 
 tbody tr:nth-child(odd) {

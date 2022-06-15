@@ -77,7 +77,6 @@ export const LearningPage = () => {
 
   const addRating = (value: number) => {
     dispatch(setCardGradeTC({grade: value, card_id: card._id}))
-    dispatch(getCardsTC(card.cardsPack_id))
     onNext()
   }
 

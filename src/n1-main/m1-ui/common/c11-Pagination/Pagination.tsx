@@ -1,59 +1,95 @@
-import React, {useEffect, useState} from 'react';
-import s from './Pagination.module.css';
+import React from 'react';
+import {usePagination} from './usePagination';
+import s from './Pagination.module.css'
 import angleLeft from '../../../../assets/img/angleLeft.svg'
 import angleRight from '../../../../assets/img/angleRight.svg'
+import SuperSelect from '../c5-SuperSelect/SuperSelect';
 
-interface IPagination {
-    totalItemsCount: number;
-    pageSize: number;
+
+type PaginationType = {
+    onPageChange: (p: number) => void;
+    onChangePortions: (portion: number) => void;
+    totalCount: number;
+    siblingCount: number;
     currentPage: number;
-    onPageChanged: (p: number) => void;
-    portionSize?: number;
+    pageSize: number;
+    title: string
 }
 
-export const Pagination: React.FC<IPagination> = ({
-                                                      totalItemsCount,
-                                                      currentPage,
-                                                      onPageChanged,
-                                                      pageSize,
-                                                      portionSize = 10,
-                                                  }) => {
-    useEffect(() => setPortionNumber(Math.ceil(currentPage / portionSize)), [currentPage, portionSize]);
-    const pagesCount = Math.ceil(totalItemsCount / pageSize);
-    const pages: number[] = [];
-    for (let i = 1; i <= pagesCount; i++) {
-        pages.push(i);
+export const Pagination: React.FC<PaginationType> = ({
+                                                         onPageChange,
+                                                         totalCount,
+                                                         siblingCount = 10,
+                                                         currentPage,
+                                                         pageSize,
+                                                         title,
+                                                         onChangePortions
+                                                     }) => {
+
+    const options = [10, 20, 50, 100];
+
+    const paginationRange = usePagination({
+        currentPage,
+        totalCount,
+        siblingCount,
+        pageSize,
+    });
+
+    if (currentPage === 0 || paginationRange.length < 2) {
+        return null;
     }
-    const portionCount = Math.ceil(pagesCount / portionSize);
-    const [portionNumber, setPortionNumber] = useState(1);
-    const leftPortionNumber = (portionNumber - 1) * portionSize + 1;
-    const rightPortionNumber = portionNumber * portionSize;
-    const changeToPreviousPage = () => {
-        setPortionNumber(portionNumber - 1);
-    };
-    const changeToNextPage = () => {
-        setPortionNumber(portionNumber + 1);
+
+    const onNext = () => {
+        if (currentPage === lastPage) {
+            return
+        } else {
+            onPageChange(currentPage + 1)
+        }
     };
 
+    const onPrevious = () => {
+        onPageChange(currentPage - 1);
+    };
+
+    let lastPage = paginationRange[paginationRange.length - 1];
     return (
-        <div className={s.paginationContainer}>
-            {portionNumber > 1 && <div onClick={changeToPreviousPage}><img className={s.angle} src={angleLeft} alt="angleLeft"/></div>}
-            {pages
-                .filter((p) => p >= leftPortionNumber && p <= rightPortionNumber)
-                .map((p) => {
-                    return (
-                        <div
-                            className={p ===currentPage ? s.currentPage : s.paginationItem}
-                            key={Math.random()}
-                            onClick={() => {
-                                onPageChanged(p);
-                            }}
-                        >
-                            {p}
-                        </div>
-                    );
-                })}
-            {portionCount > portionNumber && <div onClick={changeToNextPage}><img className={s.angle} src={angleRight} alt="angleRight"/></div>}
+        <div>
+            <div className={s.paginationContainer}>
+                <ul className={s.paginationContainer}>
+                    <li
+                        className={currentPage === 1 ? s.paginationItemDisabled : s.paginationItem}
+                        onClick={onPrevious}
+                    >
+                        <div className={s.angle}><img className={s.angle} src={angleLeft} alt="angleLeft"/></div>
+                    </li>
+
+                    {paginationRange.map((pageNumber, index) => {
+                        if (pageNumber === '...') {
+                            return <li key={index} className={s.paginationItemDots}>&#8230;</li>;
+                        }
+                        return (
+                            <li key={index}
+                                className={pageNumber === currentPage ? s.paginationItemSelected : s.paginationItem}
+                                onClick={() => onPageChange(+pageNumber)}
+                            >
+                                {pageNumber}
+                            </li>
+                        );
+                    })}
+                    <li
+                        className={currentPage === lastPage ? s.paginationItemDisabled : s.paginationItem}
+                        onClick={onNext}
+                    >
+                        <div className={s.angle}><img className={s.angle} src={angleRight} alt="angleRight"/></div>
+                    </li>
+                </ul>
+                <div className={s.wrapper}>
+                    <SuperSelect className={s.select} options={options} onChangeOption={onChangePortions}/>
+                    <span>{title} per page</span>
+                </div>
+            </div>
+
         </div>
+
     );
 };

@@ -6,12 +6,12 @@ import {ProfileEdit} from './ProfileEdit';
 import {NavLink, useNavigate} from 'react-router-dom';
 import {PATH} from '../../routes/Routs';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
-import {changePacksCurrentPageAC, logOutMeTC} from '../../../m2-bll/appReducer';
+import {changePacksCurrentPageAC, logOutMeTC, setPacksPortionAC} from '../../../m2-bll/appReducer';
 import {changeEditModeAC} from '../../../m2-bll/uiReducer';
 import Preloader from '../../common/c7-Preloader/Preloader';
 import {PackSettings} from '../p8-packsList/p1-packs/PackSettings/PackSettings';
 import {PacksContainer} from '../p8-packsList/p1-packs/PackContainer/PacksContainer';
-import {PaginationNew} from '../../common/c11-Pagination/PaginationNew';
+import {Pagination} from '../../common/c11-Pagination/Pagination';
 import {AddPackModal} from '../p8-packsList/p1-packs/PackModals/AddPackModal/AddPackModal';
 import {useModalHandler} from '../../../utils/use-modal-handler';
 import {getCardPackTC} from '../../../m2-bll/cardPacksReducer';
@@ -79,6 +79,11 @@ export const Profile = () => {
         //dispatch(setRangeValueAC(minCardsCount, maxCardsCount))
     }
 
+    const onChangeOption = (option: number) => {
+        dispatch(setPacksPortionAC(option))
+        dispatch(getCardPackTC())
+    }
+
     return (
         <div className={s.profileContainer}>
             {editMode ?
@@ -122,12 +127,14 @@ export const Profile = () => {
                                 </div>
                                 <PacksContainer/>
                             </div>
-                            <PaginationNew
+                            <Pagination
                                 totalCount={pack.cardPacksTotalCount}
                                 pageSize={pack.pageCount}
                                 currentPage={pack.page}
                                 onPageChange={changeCurrentPackPage}
                                 siblingCount={3}
+                                onChangePortions={onChangeOption}
+                                title={'packs'}
                             />
                         </>
                     }

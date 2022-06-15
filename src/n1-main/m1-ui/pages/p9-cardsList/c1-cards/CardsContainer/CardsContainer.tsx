@@ -63,7 +63,7 @@ export const CardsContainer: React.FC<ICardsContainer> = () => {
                             <th className={s.actionsTitle}>Actions</th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody className={s.cardListBody}>
                         {cards.cards.map((card) => {
                             return <CardItem isOwner={isOwner} key={card._id} card={card}/>
                         })}

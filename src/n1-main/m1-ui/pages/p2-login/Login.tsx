@@ -34,10 +34,7 @@ export const Login = () => {
   return (
     <div className={s.loginContainer}>
       <div className={s.components}>
-        {
-          status === 'loading'
-            ? <Preloader/>
-            :  <div>
+        <div>
           <div className={s.loginTitle}>
             <img src={mainLogo} alt="main_logo"/>
           </div>
@@ -79,7 +76,6 @@ export const Login = () => {
             </div>
           </div>
         </div>
-        }
         <div className={s.errorBlock}>
           {errors.email && <span>Email is not correct</span>}
           {errors.password && <span>Password should be more then 7 char</span>}

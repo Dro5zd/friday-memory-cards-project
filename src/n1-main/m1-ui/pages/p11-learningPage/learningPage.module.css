@@ -10,7 +10,7 @@
 .components {
   position: relative;
   width: 400px;
-  height: 600px;
+  /*height: 600px;*/
   border-radius: 3rem;
   box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
   padding: 4rem;
@@ -61,7 +61,7 @@
 }
 
 .editButton {
-  margin: 200px auto 0 auto;
+  margin: 50px auto 0 auto;
   height: 40px;
   width: 200px;
   font-size: 20px;

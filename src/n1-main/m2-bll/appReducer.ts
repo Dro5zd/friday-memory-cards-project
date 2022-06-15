@@ -12,7 +12,8 @@ const initState: InitStateType = {
     packsCurrentPage: 1,
     errors: [],
     status: 'idle',
-    potionValue: 10
+    packsPortionValue: 10,
+    cardsPortionValue: 10
 }
 type InitStateType = {
     isAuthorised: boolean;
@@ -22,7 +23,8 @@ type InitStateType = {
     packsCurrentPage: number;
     errors: string[];
     status: RequestStatusType
-    potionValue: number
+    packsPortionValue: number
+    cardsPortionValue: number
 }
 
 export const appReducer = (state = initState, action: AppActionType): InitStateType => {
@@ -43,8 +45,10 @@ export const appReducer = (state = initState, action: AppActionType): InitStateT
             return {...state, errors: []}
         case 'SET-STATUS':
             return {...state, status: action.status}
-        case 'SET-PAGES-PORTION':
-            return {...state, potionValue: action.value}
+        case 'SET-PACKS-PORTION':
+            return {...state, packsPortionValue: action.value}
+        case 'SET-CARDS-PORTION':
+            return {...state, cardsPortionValue: action.value}
 
         default:
             return state
@@ -61,7 +65,8 @@ export const changePacksCurrentPageAC = (page: number) => ({type: 'CHANGE-PACKS-
 export const setErrorsAC = (error: string) => ({type: 'SET-SERVER-ERROR', error} as const)
 export const clearErrorsAC = () => ({type: 'CLEAR-SERVER-ERROR'} as const)
 export const setStatusAC = (status: RequestStatusType) => ({type: 'SET-STATUS', status} as const)
-export const setPagesPortionAC = (value: number) => ({type: 'SET-PAGES-PORTION', value} as const)
+export const setPacksPortionAC = (value: number) => ({type: 'SET-PACKS-PORTION', value} as const)
+export const setCardsPortionAC = (value: number) => ({type: 'SET-CARDS-PORTION', value} as const)
 
 export const authoriseMeTC = (): AppThunk => (dispatch) => {
     dispatch(setStatusAC('loading'))
@@ -93,5 +98,6 @@ export type AppActionType =
     | ReturnType<typeof setErrorsAC>
     | ReturnType<typeof clearErrorsAC>
     | ReturnType<typeof setStatusAC>
-    | ReturnType<typeof setPagesPortionAC>
+    | ReturnType<typeof setPacksPortionAC>
+    | ReturnType<typeof setCardsPortionAC>
 

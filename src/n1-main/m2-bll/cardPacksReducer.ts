@@ -45,7 +45,7 @@ export const setCardPacksAC = (data: InitStateType) => ({
 //thunk
 export const getCardPackTC = (): AppThunk => (dispatch, getState) => {
     dispatch(setStatusAC('loading'))
-    const pageCount = getState().app.potionValue
+    const pageCount = getState().app.packsPortionValue
     const currentPage = getState().app.packsCurrentPage
     const user_id = getState().sort.user_id
     const sortPacks = getState().sort.sortPacks
