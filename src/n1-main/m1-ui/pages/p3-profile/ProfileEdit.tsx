@@ -62,8 +62,8 @@ export const ProfileEdit = () => {
               </div>
 
               <div className={s.buttonBlock}>
-                <SuperButton className={s.cancelButton} title={'Cancel'} onClick={cancelButtonHandler}/>
                 <SuperButton title={'Save'} onClick={() => updateProfile(newName, newAvatar)}/>
+                <SuperButton className={s.cancelButton} title={'Cancel'} onClick={cancelButtonHandler}/>
               </div>
             </>
         }
