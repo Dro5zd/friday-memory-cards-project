@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import s from './profilePage.module.css';
 import noPhoto from '../../../../assets/img/noPhoto.png'
-import {NavLink, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {PATH} from '../../routes/Routs';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {changePacksCurrentPageAC, setPacksPortionAC} from '../../../m2-bll/appReducer';
@@ -14,7 +14,7 @@ import {getCardPackTC} from '../../../m2-bll/cardPacksReducer';
 import {PackHeader} from '../p8-packsList/p1-packs/PackHeader/PackHeader';
 import ServerErrors from '../../common/c0-ErrorsBlock/ServerErrors';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
-import {setMyAllFilterAC, setRangeValueAC} from '../../../m2-bll/sortReducer';
+import {setRangeValueAC} from '../../../m2-bll/sortReducer';
 import camera from '../../../../assets/img/camera-solid.svg'
 
 export const Profile = () => {
@@ -43,7 +43,7 @@ export const Profile = () => {
 
   useEffect(() => {
     dispatch(getCardPackTC())
-  }, [sortUserId, dispatch])
+  }, [sortUserId, dispatch, requestPackMinValue, requestPackMaxValue])
 
   useEffect(() => {
     setValue1(pack.minCardsCount)
@@ -60,11 +60,6 @@ export const Profile = () => {
   const changeCurrentPackPage = (page: number) => {
     dispatch(changePacksCurrentPageAC(page))
     dispatch(getCardPackTC())
-  }
-
-  const showAllPacksHandler = () => {
-    dispatch(setMyAllFilterAC(''))
-    dispatch(changePacksCurrentPageAC(1));
   }
 
   const onChangeOption = (option: number) => {
@@ -91,11 +86,11 @@ export const Profile = () => {
                     </div>
                     <h2 className={s.profileName}>{name || nameMe || 'Name'}</h2>
                   </div>
-                  <button className={s.editPhoto} onClick={() => {
+                  <div className={s.editPhoto} onClick={() => {
                     alert('chose your new photo')
                   }}>
                     <img src={camera} alt="camera"/>
-                  </button>
+                  </div>
                   <div className={s.rangeWrapper}>
                     <div className={s.rangeSpan}>
                       <span>Number of Cards</span>
@@ -129,7 +124,3 @@ export const Profile = () => {
     </div>
   )
 }
-
-
-
-

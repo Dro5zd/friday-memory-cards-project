@@ -28,17 +28,17 @@ export const PacksContainer = () => {
     }
   }, [isAuthorised, navigate])
 
-  const closeEditModalHandler =()=>{
+  const closeEditModalHandler = () => {
     setOpenEditModalId('')
   }
-  const openEditModalHandler =(id: string)=>{
+  const openEditModalHandler = (id: string)=>{
     setOpenEditModalId(id)
   }
 
-  const closeDeleteModalHandler =()=>{
+  const closeDeleteModalHandler = () => {
     setOpenDeleteModalId('')
   }
-  const openDeleteModalHandler =(id: string)=>{
+  const openDeleteModalHandler = (id: string) => {
     setOpenDeleteModalId(id)
   }
 

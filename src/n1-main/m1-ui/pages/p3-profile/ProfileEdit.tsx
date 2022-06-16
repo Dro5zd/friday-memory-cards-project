@@ -12,7 +12,6 @@ import {useNavigate} from "react-router-dom";
 export const ProfileEdit = () => {
 
   const avatar = useTypedSelector(state => state.profile.avatar)
-
   const name = useTypedSelector(state => state.profile.name)
   const authName = useTypedSelector(state => state.auth.name)
   const authAvatar = useTypedSelector(state => state.auth.avatar)
@@ -34,9 +33,9 @@ export const ProfileEdit = () => {
     navigate(PATH.PROFILE)
   }
 
-  const updateProfile = (name: string, avatar: string) => {
+  const updateProfile = async (name: string, avatar: string) => {
+   await dispatch(updateProfileTC({name, avatar}))
     navigate(PATH.PROFILE)
-    dispatch(updateProfileTC({name, avatar}))
   }
 
   return (
@@ -53,12 +52,10 @@ export const ProfileEdit = () => {
                 </div>
               </div>
 
-
               <div className={s.inputBlock}>
                 <SuperInputText placeholder={'Enter new name'} onChange={onChangeNewNameHandler} value={newName}/>
                 <SuperInputText placeholder={'Enter link to new avatar'} onChange={onChangeNewAvatarHandler}
                                 value={newAvatar}/>
-
               </div>
 
               <div className={s.buttonBlock}>
@@ -71,4 +68,3 @@ export const ProfileEdit = () => {
     </div>
   )
 }
-
