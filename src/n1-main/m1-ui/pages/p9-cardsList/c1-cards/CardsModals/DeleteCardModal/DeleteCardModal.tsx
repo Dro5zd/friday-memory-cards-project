@@ -11,7 +11,11 @@ interface IDeleteCardModal {
     cardId: string;
     packId: string;
 }
-export const DeleteCardModal:React.FC<IDeleteCardModal> = ({closeModal, modalMode, cardId, packId}) => {
+export const DeleteCardModal:React.FC<IDeleteCardModal> = ({
+                                                               closeModal,
+                                                               modalMode,
+                                                               cardId,
+                                                               packId}) => {
     const dispatch = useTypedDispatch()
     const onDeleteHandler = () => {
         closeModal()
