@@ -47,6 +47,7 @@ export const HeaderModal: React.FC<IHeaderModal> = ({
   }
 
   const onChangeThemeHandler = () => {
+    closeModal()
     dispatch(changeThemeAC(!mode))
   }
 
