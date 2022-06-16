@@ -21,38 +21,53 @@
 }
 
 .packNameTitle {
-  margin: 30px auto 0 auto;
+  margin: 10px auto;
   font-size: 20px;
   font-weight: 300;
   text-transform: uppercase;
 }
 
 .packNameSubtitle {
-  margin: 10px auto 50px auto;
+  margin: 0 auto 20px auto;
   font-size: 30px;
   font-weight: 300;
   text-transform: uppercase;
 }
 
 .questionWrapper {
-  margin-top: 10px;
+  margin: 25px auto;
   font-size: 20px;
+  background-color: var(--packItem);
+  border-radius: 10px;
+  padding: 5px;
 }
 
 .questionTitle {
   font-weight: 600;
+  margin: 0 auto;
+  font-size: 20px;
 }
 
 .question {
   font-weight: 300;
+  max-height: 100px;
+  overflow: scroll;
 }
 
 .answerWrapper {
-  margin: 50px 0 90px 0;
+  margin: 25px auto 50px auto;
   font-size: 20px;
+  max-height: 160px;
+  overflow: scroll;
+  background-color: var(--packItem);
+  border-radius: 10px;
+  padding: 5px;
+
 }
 
 .answerTitle {
+  margin: 0 auto;
+  font-size: 20px;
   font-weight: 600;
 }
 

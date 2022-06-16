@@ -83,34 +83,34 @@ export const LearningPage = () => {
   return (
     <div className={s.learningContainer}>
       <div className={s.components}>
-         <>
-            <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
-              <div className={s.close}></div>
-            </NavLink>
-            <span className={s.packNameTitle}>Learning pack</span>
-            <span className={s.packNameSubtitle}> "{packName.name}" </span>
-            <div className={s.questionWrapper}>
-              <span className={s.questionTitle}> Question: </span>
-              <span className={s.question}>"{card.question}"</span>
-            </div>
-            {
-              !isChecked &&
-                <SuperButton className={s.editButton} title={'Show Answer'} onClick={() => setIsChecked(true)}/>
-            }
-            {
-              isChecked && (
-                <>
-                  <div className={s.answerWrapper}>
-                    <span className={s.answerTitle}>Answer: </span>
-                    <span className={s.answer}>"{card.answer}"</span>
-                  </div>
-                  {
-                    grades.map((g, i) => (
-                      <SuperButton className={s.answerBtn} key={'grade-' + i} onClick={() => addRating(i + 1)} title={g}/>
-                    ))}
-                </>
-              )}
-          </>
+        <>
+          <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
+            <div className={s.close}></div>
+          </NavLink>
+          <span className={s.packNameTitle}>Learning pack</span>
+          <span className={s.packNameSubtitle}>"{packName.name}"</span>
+          <span className={s.questionTitle}> Question: </span>
+          <div className={s.questionWrapper}>
+            <span className={s.question}>"{card.question}"</span>
+          </div>
+          {
+            !isChecked &&
+              <SuperButton className={s.editButton} title={'Show Answer'} onClick={() => setIsChecked(true)}/>
+          }
+          {
+            isChecked && (
+              <>
+                <span className={s.answerTitle}>Answer: </span>
+                <div className={s.answerWrapper}>
+                  <span className={s.answer}>"{card.answer}"</span>
+                </div>
+                {
+                  grades.map((g, i) => (
+                    <SuperButton className={s.answerBtn} key={'grade-' + i} onClick={() => addRating(i + 1)} title={g}/>
+                  ))}
+              </>
+            )}
+        </>
       </div>
     </div>
   )
