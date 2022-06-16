@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import SuperInputText from "../../../../../common/c1-SuperInputText/SuperInputText";
 import {ModalEdited} from "../../../../../common/c14-Modal/ModalEdited";
 import SuperButton from "../../../../../common/c2-SuperButton/SuperButton";
@@ -24,8 +24,16 @@ export const EditCardModal: React.FC<IEditCardModal> = ({
                                                             initialAnswer
                                                         }) => {
     const dispatch = useTypedDispatch();
+
+    useEffect(()=>{
+        setAnswer(initialAnswer)
+        setQuestion(initialQuestion)
+        },
+        [initialQuestion, initialAnswer])
+
     const [answer, setAnswer] = useState<string>(initialAnswer);
     const [question, setQuestion] = useState<string>(initialQuestion);
+
     const editModalHandler = () => {
         closeModal()
         dispatch(updateCardTC(cardId, packId, question, answer))
