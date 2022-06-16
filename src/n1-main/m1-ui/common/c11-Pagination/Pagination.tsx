@@ -35,9 +35,9 @@ export const Pagination: React.FC<PaginationType> = ({
         pageSize,
     });
 
-    if (currentPage === 0 || paginationRange.length < 2) {
-        return null;
-    }
+    // if (currentPage === 0 || paginationRange.length < 2) {
+    //     return null;
+    // }
 
     const onNext = () => {
         if (currentPage === lastPage) {

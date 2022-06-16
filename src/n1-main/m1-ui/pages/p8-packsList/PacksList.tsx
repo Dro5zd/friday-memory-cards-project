@@ -21,17 +21,17 @@ export const PacksList = () => {
     const requestPackMaxValue = useTypedSelector(state => state.sort.packMaxValue)
     const status = useTypedSelector(state => state.app.status)
     const serverErrors = useTypedSelector(state => state.app.errors)
+    const selectedPage = useTypedSelector(state => state.app.packsCurrentPage )
     const {modal: in_creation_modal, toggleModal: toggle_in_creation_modal} = useModalHandler()
     const dispatch = useTypedDispatch()
 
     useEffect(() => {
         dispatch(getCardPackTC())
-    }, [sortUserId, packNameValue, requestPackMinValue, requestPackMaxValue, dispatch])
+    }, [sortUserId, packNameValue, requestPackMinValue, requestPackMaxValue, dispatch, selectedPage])
 
 
     const changeCurrentPackPage = (page: number) => {
         dispatch(changePacksCurrentPageAC(page))
-        dispatch(getCardPackTC())
     }
 
     const onChangeOption = (option: number) => {

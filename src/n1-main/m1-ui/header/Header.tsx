@@ -2,11 +2,12 @@ import React from 'react';
 import s from './Header.module.css'
 import {NavLink} from 'react-router-dom';
 import {PATH} from '../routes/Routs';
-import {useTypedSelector} from '../../m2-bll/store';
+import {useTypedDispatch, useTypedSelector} from '../../m2-bll/store';
 import mainLogo from '../../../assets/img/B.A.D._logo3.png'
 import {HeaderModal} from "./HeaderModal/HeaderModal";
 import {useModalHandler} from "../../utils/use-modal-handler";
 import noPhoto from "../../../assets/img/noPhoto.png";
+import {changePacksCurrentPageAC} from "../../m2-bll/appReducer";
 
 export const Header = () => {
 
@@ -14,6 +15,11 @@ export const Header = () => {
   const {modal: header_modal, toggleModal: toggle_header_modal} = useModalHandler()
   const avatar = useTypedSelector(state => state.profile.avatar)
   const avatarMe = useTypedSelector(state => state.auth.avatar)
+  const dispatch = useTypedDispatch()
+
+  const refreshPage = () => {
+    dispatch(changePacksCurrentPageAC(1))
+  }
 
   return (
     <header className={s.header}>
@@ -23,7 +29,7 @@ export const Header = () => {
       />
       <NavLink to={isAuthorised ? PATH.PACKS_LIST : PATH.LOGIN}
                className={navData => navData.isActive ? s.active : s.link}>
-        <div className={s.logo}>
+        <div className={s.logo} onClick={refreshPage}>
           <img src={mainLogo} alt="main_logo"/>
         </div>
       </NavLink>
