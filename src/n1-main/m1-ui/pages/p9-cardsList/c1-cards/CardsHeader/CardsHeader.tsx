@@ -3,7 +3,7 @@ import s from './CardsHeader.module.css';
 import {DebounceSearch} from "../../../../common/c13-DebounceSearch/DebounceSearch";
 import SuperButton from "../../../../common/c2-SuperButton/SuperButton";
 import arrowLeft from "../../../../../../assets/img/arrowLeft.svg";
-import {setCardsAnswerValue, setCardsQuestionValue} from '../../../../../m2-bll/sortReducer';
+import {setCardsAnswerValue, setCardsQuestionValue, setRangeValueAC} from '../../../../../m2-bll/sortReducer';
 import {PATH} from "../../../../routes/Routs";
 import {useTypedDispatch} from "../../../../../m2-bll/store";
 import {useNavigate} from 'react-router-dom';
@@ -26,6 +26,7 @@ export const CardsHeader: React.FC<CardsHeaderType> = ({isOwner, addNewCard}) =>
     };
 
     const goBackHandler = () => {
+        dispatch(setRangeValueAC(0, 1500))
         navigate(PATH.PACKS_LIST)
     }
 

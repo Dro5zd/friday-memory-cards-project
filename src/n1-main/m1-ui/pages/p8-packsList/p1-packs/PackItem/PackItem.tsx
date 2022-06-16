@@ -6,9 +6,6 @@ import edit from '../../../../../../assets/img/sliders.svg'
 import learn from '../../../../../../assets/img/bookOpen.svg'
 import moment from 'moment';
 import {NavLink, useNavigate} from 'react-router-dom';
-import {useModalHandler} from '../../../../../utils/use-modal-handler';
-import {DeletePackModal} from '../PackModals/DeletePackModal/DeletePackModal';
-import {EditPackModal} from '../PackModals/EditPackModal/EditPackModal';
 import {PATH} from '../../../../routes/Routs';
 
 interface PackItemType {

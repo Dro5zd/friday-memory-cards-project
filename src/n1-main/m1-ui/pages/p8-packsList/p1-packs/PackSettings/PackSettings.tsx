@@ -26,6 +26,7 @@ export const PackSettings: React.FC<PackSettingsType> = ({
 
   const userId = useTypedSelector(state => state.auth._id)
   const checkedRadio = useTypedSelector(state => state.sort.user_id)
+
   const [value1, setValue1] = useState(minCardsCount)
   const [value2, setValue2] = useState(maxCardsCount)
 
@@ -39,13 +40,13 @@ export const PackSettings: React.FC<PackSettingsType> = ({
 
   const showMyPacksHandler = () => {
     dispatch(setMyAllFilterAC(userId))
-    //dispatch(setRangeValueAC(minCardsCount, maxCardsCount))
+    dispatch(setRangeValueAC(0, 1500))
     dispatch(changePacksCurrentPageAC(1));
   }
   const showAllPacksHandler = () => {
     dispatch(setMyAllFilterAC(''))
     dispatch(changePacksCurrentPageAC(1));
-    //dispatch(setRangeValueAC(minCardsCount, maxCardsCount))
+    dispatch(setRangeValueAC(0, 1500))
   }
 
   const onMouseUpSetFilter = () => {
