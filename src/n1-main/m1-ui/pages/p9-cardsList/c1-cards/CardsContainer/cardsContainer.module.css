@@ -76,7 +76,7 @@
 
 .cardListBody{
     display: block;
-    min-height: 480px;
+    max-height: 453px;
     overflow: scroll;
     width: 1308px;
     padding-left: 4px;

@@ -4,7 +4,6 @@
   display: flex;
   position: absolute;
   top: 25px;
-  /*left: 80px;*/
   background-color: var(--bg);
   box-shadow: 0.3rem 0.3rem 0.6rem var(--shadow-1), -0.2rem -0.2rem 0.5rem var(--shadow-2);
   height: 40px;
@@ -28,7 +27,7 @@
 }
 
 .cardListTitle {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   font-weight: 500;
   font-size: 29px;
 }
