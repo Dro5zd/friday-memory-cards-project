@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, MouseEvent} from 'react'
 import s from './learningPage.module.css';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import {NavLink, useParams} from 'react-router-dom';
@@ -86,38 +86,44 @@ export const LearningPage = () => {
   return (
     <div className={s.learningContainer}>
       <div className={s.components}>
-        <>
-          <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
-            <div className={s.close}></div>
-          </NavLink>
-          <span className={s.packNameTitle}>Learning pack</span>
-          <span className={s.packNameSubtitle}>"{packName.name}"</span>
-           <span className={s.questionTitle}> Question: </span>
-           <div className={s.questionWrapper}>
-             <span className={s.question}>"{card.question}"</span>
-           </div>
-          {
-            !isChecked &&
-              <SuperButton className={s.editButton} title={'Show Answer'} onClick={() => setIsChecked(true)}/>
-          }
-          {
-            isChecked && (
-              <>
-                  <span className={s.answerTitle}>Answer: </span>
-                  <div className={s.answerWrapper}>
-                    <span className={s.answer}>"{card.answer}"</span>
-                  </div>
-                <div className={s.btnWrapper}>
-                  {
-                    grades.map((g, i) => (
-                      <div className={s.answerBtn} key={'grade-' + i} onClick={() => addRating(i + 1)}>
-                        <img className={s.icon} src={g} alt="answerBtn"/>
+        <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
+          <div className={s.close}></div>
+        </NavLink>
+        <span className={s.packNameTitle}>Learning pack</span>
+        <span className={s.packNameSubtitle}>"{packName.name}"</span>
+        <span className={s.questionTitle}> Question: </span>
+        <div className={s.questionWrapper}>
+          <span className={s.question}>"{card.question}"</span>
+        </div>
+        {
+          !isChecked &&
+            <SuperButton className={s.editButton} title={'Show Answer'} onClick={() => setIsChecked(true)}/>
+        }
+        {
+          isChecked && (
+            <>
+              <span className={s.answerTitle}>Answer: </span>
+              <div className={s.answerWrapper}>
+                <span className={s.answer}>"{card.answer}"</span>
+              </div>
+              <div className={s.btnWrapper}>
+                {
+                  grades.map((g, i) => (
+                    <div className={s.answerBtn} key={'grade-' + i}
+                         onClick={() => addRating(i + 1)}>
+                      <img className={s.icon} src={g} id={g} alt="answerBtn"/>
+                      <div className={s.headerTitleWrapper}>
+                        {i === 0 && <span className={s.spanStyle}>Didn't know</span>}
+                        {i === 1 && <span className={s.spanStyle}>Forgot</span>}
+                        {i === 2 && <span className={s.spanStyle}>A lot of thought</span>}
+                        {i === 3 && <span className={s.spanStyle}>Confused</span>}
+                        {i === 4 && <span className={s.spanStyle}>Knew the answer</span>}
                       </div>
-                    ))}
-                </div>
-              </>
-            )}
-        </>
+                    </div>
+                  ))}
+              </div>
+            </>
+          )}
       </div>
     </div>
   )
