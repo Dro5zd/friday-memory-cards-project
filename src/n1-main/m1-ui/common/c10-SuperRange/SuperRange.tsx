@@ -89,23 +89,22 @@ const SuperRange: React.FC<SuperRangePropsType> = (
   const pointPosition = value * 100 / max
   //--- заливка progress до ползунка
   const progressBGColor = bgColor ? bgColor : '#6d5dfc'
-  //--- заливка progress до ползунка: дозаливка
-  const restProgressBGColor = bgColor ? bgColor : 'olive'
 
-  const selfPointPosition = (value * 26) / 100
+
+  const selfPointPosition1 = (value * 26) / 100
+  
 
   const finalRange = styleClassNameRange ? `${s.range} ${styleClassNameRange}` : s.range
 
   return (
     <div className={finalRange}>
             <span className={s.valueCoords}
-                  style={{left: `calc(${pointPosition}% - ${selfPointPosition}px)`}}>{value}</span>
+                  style={{left: `calc(${pointPosition}% - ${selfPointPosition1}px)`}}>{value}</span>
       <div className={s.progressOverlay} style={styleProgressOverlay}>
         <div className={s.progress} style={{
           zIndex: 'var(--zIndexProgress, ModalEditedForHeader)',
           background: `var(--bgProgress, ${progressBGColor})`,
           width: `${pointPosition}%`,
-          boxShadow: `3px 0 0 0 ${restProgressBGColor}`
         }}/>
       </div>
         <div className={s.input}>

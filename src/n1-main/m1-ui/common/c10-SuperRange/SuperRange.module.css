@@ -102,8 +102,8 @@ input[type=range]::-webkit-slider-thumb {
     top: -30px;
     background: var(--bg);
     color: var(--textColor);
-    box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
-    padding: 3px 5px;
+    /*box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);*/
+    /*padding: 3px 5px;*/
     border-radius: 5px;
     line-height: 1;
     font-weight: bold;
