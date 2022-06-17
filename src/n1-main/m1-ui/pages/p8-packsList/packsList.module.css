@@ -9,11 +9,12 @@
   justify-content: center;
   align-items: center;
   background: var(--bg);
+  position: relative;
 }
 
 .components {
   width: 1300px;
-  height: 600px;
+  height: 640px;
   border-radius: 3rem;
   box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
   padding: 4rem;
@@ -36,4 +37,13 @@
 .wrapper {
   display: flex;
   height: 100%;
+}
+
+.eWrapper {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }

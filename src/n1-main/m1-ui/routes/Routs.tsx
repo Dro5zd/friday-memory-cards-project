@@ -7,8 +7,8 @@ import {Profile} from '../pages/p3-profile/Profile';
 import Registration from "../pages/p4-registration/Registration";
 import {Login} from "../pages/p2-login/Login";
 import {PacksList} from "../pages/p8-packsList/PacksList";
-import {LearningPage} from '../pages/p11-learningPage/LearningPage';
-import {EmailAnswer} from "../pages/p10-emailAnswer/EmailAnswer";
+import {LearningPage} from '../pages/p10-learningPage/LearningPage';
+import {EmailAnswer} from "../pages/p7-emailAnswer/EmailAnswer";
 import {CardsList} from '../pages/p9-cardsList/CardsList';
 import {ProfileEdit} from "../pages/p3-profile/ProfileEdit";
 

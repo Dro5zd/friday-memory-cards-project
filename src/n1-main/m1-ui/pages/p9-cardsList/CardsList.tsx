@@ -63,7 +63,7 @@ export const CardsList = () => {
               />
           }
           <CardsHeader addNewCard={toggle_in_creation_modal} isOwner={isOwner}/>
-          {serverErrors && <ServerErrors errors={serverErrors}/>}
+
           {
             status === 'loading'
               ? <Preloader/>
@@ -79,6 +79,9 @@ export const CardsList = () => {
           onChangePortions={onChangeOption}
           title={'cards'}
         />
+      </div>
+      <div className={s.eWrapper}>
+        {serverErrors && <ServerErrors errors={serverErrors}/>}
       </div>
     </div>
   )

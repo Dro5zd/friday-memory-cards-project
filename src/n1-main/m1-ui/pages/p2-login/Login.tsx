@@ -10,6 +10,7 @@ import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {loginFormTC} from '../../../m2-bll/loginReducer';
 import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
 import Preloader from "../../common/c7-Preloader/Preloader";
+import ServerErrors from "../../common/c0-ErrorsBlock/ServerErrors";
 
 export const Login = () => {
   const {register, handleSubmit, reset, formState: {errors}} = useForm<LoginFormType>()
@@ -51,7 +52,8 @@ export const Login = () => {
                   {...register('password',
                     {
                       required: true, minLength: 8,
-                    })} type={passOn ? 'password' : 'text'} placeholder={'Password'} passOn={passOn} setPassOn={setPassOn}/>
+                    })} type={passOn ? 'password' : 'text'} placeholder={'Password'} passOn={passOn}
+                  setPassOn={setPassOn}/>
               </div>
             </div>
             <div className={s.rememberWrapper}>

@@ -13,7 +13,7 @@
 
 .components {
     width: 1300px;
-    height: 600px;
+    height: 640px;
     border-radius: 3rem;
     box-shadow: 0.8rem 0.8rem 1.4rem var(--shadow-1), -0.2rem -0.2rem 1.8rem var(--shadow-2);
     padding: 4rem;
@@ -22,6 +22,14 @@
     margin-top: 60px;
     position: relative;
     flex-direction: column;
-    /*background-color: #ef7f0e;*/
     justify-content: space-around;
+}
+
+.eWrapper {
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }

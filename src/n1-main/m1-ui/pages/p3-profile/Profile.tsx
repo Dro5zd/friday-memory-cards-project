@@ -77,7 +77,6 @@ export const Profile = () => {
                 modalMode={in_creation_modal}
               />
               <PackHeader closeModal={toggle_in_creation_modal}/>
-              {serverErrors && <ServerErrors errors={serverErrors}/>}
               <div className={s.wrapper}>
                 <div className={s.leftSide}>
                   <div className={s.avatar}>
@@ -121,6 +120,9 @@ export const Profile = () => {
             </>
           }
         </div>
+      <div className={s.eWrapper}>
+        {serverErrors && <ServerErrors errors={serverErrors}/>}
+      </div>
     </div>
   )
 }
