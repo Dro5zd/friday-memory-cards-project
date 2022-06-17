@@ -85,6 +85,7 @@ export const Pagination: React.FC<PaginationType> = ({
                 </ul>
                 <div className={s.selectWrapper}>
                     <SuperSelect
+                      value={pageSize}
                       className={s.select}
                       options={options}
                       onChangeOption={onChangePortions}

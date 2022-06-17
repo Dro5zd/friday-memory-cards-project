@@ -1,4 +1,4 @@
-import React, {useEffect, useState, MouseEvent} from 'react'
+import React, {useEffect, useState} from 'react'
 import s from './learningPage.module.css';
 import SuperButton from '../../common/c2-SuperButton/SuperButton';
 import {NavLink, useParams} from 'react-router-dom';
@@ -12,7 +12,6 @@ import grin from '../../../../assets/img/face-grin-solid.svg'
 import surprise from '../../../../assets/img/face-surprise-solid.svg'
 import frown from '../../../../assets/img/face-frown-solid.svg'
 
-
 const grades = [frown, meh, surprise, smile, grin];
 
 export const LearningPage = () => {
@@ -22,10 +21,10 @@ export const LearningPage = () => {
   const dispatch = useTypedDispatch()
 
   const getCard = (cards: CardType[]) => {
-    const sum = cards.reduce((acc, card) => acc + (6 - card.grade) * (6 - card.grade), 0);
+    const sum = cards.reduce((acc, card) => acc + (6 - card.grade) ** (6 - card.grade), 0);
     const rand = Math.random() * sum;
     const res = cards.reduce((acc: { sum: number, id: number }, card, i) => {
-        const newSum = acc.sum + (6 - card.grade) ** (6 - card.grade);
+        const newSum = acc.sum + (6 - card.grade) * (6 - card.grade);
         return {sum: newSum, id: newSum < rand ? i : acc.id}
       }
       , {sum: 0, id: -1});
