@@ -24,6 +24,13 @@
   border-radius: 10px;
 }
 
+.packNameInput1 {
+  margin: 40px 0 0 0;
+  height: 45px;
+  border-radius: 10px;
+  display: none;
+}
+
 .btnWrapper {
   margin-top: 30px;
   display: flex;

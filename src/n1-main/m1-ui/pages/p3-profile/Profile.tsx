@@ -16,6 +16,7 @@ import ServerErrors from '../../common/c0-ErrorsBlock/ServerErrors';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
 import {setRangeValueAC} from '../../../m2-bll/sortReducer';
 import camera from '../../../../assets/img/camera-solid.svg'
+import {InputFile} from '../../common/c1.1-InputFile/InputFile';
 
 export const Profile = () => {
 
@@ -87,8 +88,10 @@ export const Profile = () => {
                   </div>
                   <div className={s.editPhoto} onClick={() => {
                     alert('chose your new photo')
+
                   }}>
                     <img src={camera} alt="camera"/>
+                    <InputFile/>
                   </div>
                   <div className={s.rangeWrapper}>
                     <div className={s.rangeSpan}>

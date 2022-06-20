@@ -22,6 +22,7 @@ export const PacksList = () => {
   const status = useTypedSelector(state => state.app.status)
   const serverErrors = useTypedSelector(state => state.app.errors)
   const selectedPage = useTypedSelector(state => state.app.packsCurrentPage)
+
   const {modal: in_creation_modal, toggleModal: toggle_in_creation_modal} = useModalHandler()
   const dispatch = useTypedDispatch()
 

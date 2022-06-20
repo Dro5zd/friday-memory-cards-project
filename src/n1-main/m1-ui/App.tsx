@@ -11,8 +11,6 @@ export const App = () => {
 
   let mainTheme = `${s.App} ${s.themeWhite}`;
 
-
-
   if (!mode) {
     mainTheme = `${s.App} ${s.themeDark}`
   }

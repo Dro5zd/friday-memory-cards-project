@@ -1,4 +1,4 @@
-import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent,} from 'react'
+import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, KeyboardEvent} from 'react'
 import s from './SuperInputText.module.css'
 import passViewOn from "../../../../assets/img/view.svg";
 import passViewOff from "../../../../assets/img/no-view.svg";
@@ -58,15 +58,14 @@ const SuperInputText = React.forwardRef<HTMLInputElement, SuperInputTextPropsTyp
                 onKeyPress={onKeyPressCallback}
                 className={finalInputClassName}
                 ref={ref}
-
                 {...restProps}
             />
 
             {type === ('password') &&
-                <img className={s.passwordControl} src={passOn ? passViewOn : passViewOff} alt="passwordOn/Off"
+                <img className={s.iconControl} src={passOn ? passViewOn : passViewOff} alt="passwordOn/Off"
                      onClick={changeView}/>}
             {type === ('text') &&
-                <img className={s.passwordControl} src={passOn ? passViewOn : passViewOff} alt="passwordOn/Off"
+                <img className={s.iconControl} src={passOn ? passViewOn : passViewOff} alt="passwordOn/Off"
                      onClick={changeView}/>}
 
         </div>

@@ -23,6 +23,8 @@ export const cardsAPI = {
         return instance.put('/cards/grade', gradeData)
     }
 };
+
+
 export type GetCardsDataType = {
     cardAnswer?: string;
     cardQuestion?: string;
