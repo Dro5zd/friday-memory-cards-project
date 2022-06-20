@@ -12,10 +12,6 @@ export const EmailAnswer = () => {
       <div className={s.components}>
         <div className={s.loginTitle}>
           <img src={mainLogo} alt="main_logo"/>
-          {/*из-за того что полсе получения ссылки на почту открывается новая вкладка,
-                для ввода нового пароля - эта линка отрабатывает не корректно
-                по этому нужно будет перенаправлять на поле логинизации...
-                пока оставлю так но потом нужно обратить внимание!!! */}
           <NavLink to={PATH.LOGIN}
                    className={navData => navData.isActive ? s.active : s.link}>
             <div className={s.close}></div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import s from './error404.module.css'
-import png from './png.png'
+import png from '../../../../assets/img/png.png'
 
 export const Error404 = () => {
     return (

@@ -11,7 +11,6 @@ import logOut from "../../../../assets/img/arrow-right-from-bracket-solid.svg";
 import settingsIcon from '../../../../assets/img/gear-solid.svg'
 import {Switcher} from "../../common/c8-Switcher/Switcher";
 import {changeThemeAC} from "../../../m2-bll/uiReducer";
-import {getCardPackTC} from "../../../m2-bll/cardPacksReducer";
 
 interface IHeaderModal {
   closeModal: () => void;
