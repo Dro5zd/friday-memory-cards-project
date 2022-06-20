@@ -1,71 +1,51 @@
-import React, {ChangeEvent, useRef, useState,} from 'react'
-import s from './InputFile.module.css'
-import clipIcon from "../../../../assets/img/paperclip-solid.svg";
-import imageIcon from "../../../../assets/img/image-solid.svg";
-import videoIcon from "../../../../assets/img/video-solid.svg";
-import audioIcon from "../../../../assets/img/file-audio-solid.svg";
-import {useModalHandler} from '../../../utils/use-modal-handler';
+import React, {ChangeEvent, useState} from 'react'
 
-
-
-export const InputFile = () => {
-
-    const {modal: selected, toggleModal: toggleSelected} = useModalHandler()
-
-
-    const myRef = useRef<HTMLInputElement>(null)
-
-    const [fileType, setFileType]= useState(".jpg, .jpeg, .png")
-
-    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        toggleSelected()
-    }
-
-    const addVideoHandler = async () => {
-        await setFileType('video/*')
-        myRef.current && myRef.current.click()
-    }
-    const addAudioHandler = async () => {
-        await setFileType('audio/*')
-        myRef.current && myRef.current.click()
-    }
-    const addImageHandler = async () => {
-        await setFileType('image/*')
-        myRef.current && myRef.current.click()
-    }
-
-    const showHandler = () => {
-        toggleSelected()
-    }
-
-
-    return (
-        <div className={s.inputWrapper}>
-            <input
-                type={'file'}
-                onChange={onChangeHandler}
-                style={{display: 'none'}}
-                ref={myRef}
-                accept={fileType}
-            />
-
-            {
-                !selected && <img className={s.iconControlClip} src={clipIcon} alt="passwordOn/Off"
-                                  onMouseEnter={showHandler} onBlur={showHandler}/>
-            }
-
-            {selected &&
-                <div className={s.iconsWrapper} onMouseLeave={showHandler}>
-                    <img className={s.iconControlClip1} src={imageIcon} alt="passwordOn/Off"
-                         onClick={addImageHandler}/>
-                    <img className={s.iconControlClip1} src={videoIcon} alt="passwordOn/Off"
-                         onClick={addVideoHandler}/>
-                    <img className={s.iconControlClip1} src={audioIcon} alt="passwordOn/Off"
-                         onClick={addAudioHandler}/>
-                </div>
-            }
-
-
-        </div>
-    )
+interface IProps {
+    fileType: string;
+    onChangeCallback: (value: string) => void
 }
+
+export const InputFile = React.forwardRef<HTMLInputElement, IProps>(({fileType, onChangeCallback}, ref) => {
+    const [fileURL, setFileURL] = useState<string>();
+    const [file, setFile] = useState<File>();
+    const [fileData, setFileData] = useState<FormData>();
+    //const [code, setCode] = useState(false);
+    //const [base64, setBase64] = useState(true);
+    const [file64, setFile64] = useState<string | ArrayBuffer | null>();
+    const upload = (e: ChangeEvent<HTMLInputElement>) => {
+        // e.preventDefault();
+        const reader = new FileReader();
+        const formData = new FormData(); // for send to back
+        const newFile = e.target.files && e.target.files[0];
+
+        if (newFile) {
+            //setFile(newFile);
+            //setFileURL(window.URL.createObjectURL(newFile));
+            //formData.append('myFile', newFile, newFile.name);
+            //setFileData(formData);
+            reader.onloadend = () => {
+                setFile64(reader.result)
+            }
+            reader.readAsDataURL(newFile);
+            console.log(file64)
+
+
+           /* if (code) { // reader
+                reader.onloadend = () => {
+                    setFile64(reader.result);
+                };
+                if (base64) reader.readAsDataURL(newFile);
+                else reader.readAsText(newFile);
+            }*/
+        }
+    };
+    return (
+        <input
+            type={'file'}
+            onChange={upload}
+            style={{display: 'none'}}
+            ref={ref}
+            accept={fileType}
+        />
+    )
+})

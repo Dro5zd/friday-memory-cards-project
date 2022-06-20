@@ -6,6 +6,7 @@ import {useTypedDispatch} from '../../../../../../m2-bll/store';
 import {createNewCardTC} from '../../../../../../m2-bll/cardsReducer';
 import s from '../../../../p8-packsList/p1-packs/PackModals/Modal.module.css';
 import {InputFile} from '../../../../../common/c1.1-InputFile/InputFile';
+import {AttachFiles} from "../AttachFiles";
 
 interface IAddCardModal {
     closeModal: () => void;
@@ -35,13 +36,13 @@ export const AddCardModal: React.FC<IAddCardModal> = ({closeModal, modalMode, pa
             <div className={s.wrapper}>
                 <span className={s.title}>Create new Card</span>
 
-                <InputFile/>
+                <AttachFiles/>
 
                 <SuperInputText className={s.packNameInput} placeholder={'Question'} value={question} onChange={(e) => {
                     setQuestion(e.currentTarget.value)
                 }}/>
 
-                <InputFile/>
+                <AttachFiles/>
                 <SuperInputText className={s.packNameInput} placeholder={'Answer'} value={answer} onChange={(e) => {
                     setAnswer(e.currentTarget.value)
                 }}/>
