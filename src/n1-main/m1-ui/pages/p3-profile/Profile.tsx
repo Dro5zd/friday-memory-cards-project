@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import s from './profilePage.module.css';
 import noPhoto from '../../../../assets/img/noPhoto.png'
 import {useNavigate} from 'react-router-dom';
@@ -16,6 +16,9 @@ import ServerErrors from '../../common/c0-ErrorsBlock/ServerErrors';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
 import {setRangeValueAC} from '../../../m2-bll/sortReducer';
 import {EditPhotoIcon} from "./EditPhotoIcon";
+import {InputFile} from '../../common/c1.1-InputFile/InputFile';
+import {updateProfileTC} from '../../../m2-bll/profileReducer';
+import camera from '../../../../assets/img/camera-solid.svg';
 
 export const Profile = () => {
 

@@ -8,6 +8,7 @@ import {updateProfileTC} from '../../../m2-bll/profileReducer';
 import Preloader from "../../common/c7-Preloader/Preloader";
 import {PATH} from "../../routes/Routs";
 import {useNavigate} from "react-router-dom";
+import {EditPhotoIcon} from './EditPhotoIcon';
 
 export const ProfileEdit = () => {
 
@@ -25,9 +26,9 @@ export const ProfileEdit = () => {
   const onChangeNewNameHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setNewName(e.currentTarget.value)
   }
-  const onChangeNewAvatarHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setNewAvatar(e.currentTarget.value)
-  }
+  // const onChangeNewAvatarHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  //   setNewAvatar(e.currentTarget.value)
+  // }
 
   const cancelButtonHandler = () => {
     navigate(PATH.PROFILE)
@@ -48,18 +49,20 @@ export const ProfileEdit = () => {
               <div className={s.avatar}>
                 <h2 className={s.profileName}>Personal Information</h2>
                 <div className={s.avatarBorder}>
-                  <img src={avatar || authAvatar || noPhoto} alt={'ava'}/>
+                  <img src={avatar || authAvatar || noPhoto } alt={'ava'}/>
                 </div>
               </div>
 
               <div className={s.inputBlock}>
                 <SuperInputText placeholder={'Enter new name'} onChange={onChangeNewNameHandler} value={newName}/>
-                <SuperInputText placeholder={'Enter link to new avatar'} onChange={onChangeNewAvatarHandler}
-                                value={newAvatar}/>
+                {/*<SuperInputText placeholder={'Enter link to new avatar'} onChange={onChangeNewAvatarHandler}*/}
+                {/*                value={newAvatar}/>*/}
+
               </div>
 
               <div className={s.buttonBlock}>
                 <SuperButton title={'Save'} onClick={() => updateProfile(newName, newAvatar)}/>
+                <EditPhotoIcon className={s.editPhoto}/>
                 <SuperButton className={s.cancelButton} title={'Cancel'} onClick={cancelButtonHandler}/>
               </div>
             </>
