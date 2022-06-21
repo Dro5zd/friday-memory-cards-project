@@ -15,8 +15,7 @@ import {PackHeader} from '../p8-packsList/p1-packs/PackHeader/PackHeader';
 import ServerErrors from '../../common/c0-ErrorsBlock/ServerErrors';
 import {SuperDoubleRange} from '../../common/c9-SuperDoubleRange/SuperDoubleRange';
 import {setRangeValueAC} from '../../../m2-bll/sortReducer';
-import camera from '../../../../assets/img/camera-solid.svg'
-import {InputFile} from '../../common/c1.1-InputFile/InputFile';
+import {EditPhotoIcon} from "./EditPhotoIcon";
 
 export const Profile = () => {
 
@@ -86,13 +85,7 @@ export const Profile = () => {
                     </div>
                     <h2 className={s.profileName}>{name || nameMe || 'Name'}</h2>
                   </div>
-                  <div className={s.editPhoto} onClick={() => {
-                    alert('chose your new photo')
-
-                  }}>
-                    <img src={camera} alt="camera"/>
-                    <InputFile/>
-                  </div>
+                  <EditPhotoIcon className={s.editPhoto}/>
                   <div className={s.rangeWrapper}>
                     <div className={s.rangeSpan}>
                       <span>Number of Cards</span>
