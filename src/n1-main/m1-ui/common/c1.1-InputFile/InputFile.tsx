@@ -9,10 +9,10 @@ interface IProps {
 export const InputFile = React.forwardRef<HTMLInputElement, IProps>(({fileType, onChangeCallback}, ref) => {
 
 
-    const [fileURL, setFileURL] = useState<string>();
-    const [file, setFile] = useState<File>();
-    const [fileData, setFileData] = useState<FormData>();
-    const [code, setCode] = useState(false);
+    // const [fileURL, setFileURL] = useState<string>();
+    // const [file, setFile] = useState<File>();
+    // const [fileData, setFileData] = useState<FormData>();
+    // const [code, setCode] = useState(false);
     const [base64, setBase64] = useState(true);
     const [file64, setFile64] = useState<string | ArrayBuffer | null>();
 
@@ -29,17 +29,14 @@ export const InputFile = React.forwardRef<HTMLInputElement, IProps>(({fileType, 
         console.log(newFile)
 
         if (newFile) {
-            setFile(newFile);
-            setFileURL(window.URL.createObjectURL(newFile));
+            // setFile(newFile);
+            // setFileURL(window.URL.createObjectURL(newFile));
             formData.append('myFile', newFile, newFile.name);
-            setFileData(formData);
+            // setFileData(formData);
 
             reader.onloadend = () => {
                 setFile64(reader.result)
             }
-
-
-
 
             // if (code) { // reader
             //     reader.onloadend = () => {
@@ -55,7 +52,9 @@ export const InputFile = React.forwardRef<HTMLInputElement, IProps>(({fileType, 
 
     };
 
-    if (file64) {onChangeCallback(file64.toString())}
+    if (file64) {
+        onChangeCallback(file64.toString())
+    }
 
     return (
         <div>

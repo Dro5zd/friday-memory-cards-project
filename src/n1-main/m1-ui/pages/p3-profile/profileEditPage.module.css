@@ -79,3 +79,25 @@
 .cancelButton:active {
   box-shadow: inset .2rem .2rem .5rem var(--shadow-1), inset -.2rem -.2rem .5rem var(--shadow-2);
 }
+
+.editPhoto {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 265px;
+  left: 315px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:  var(--bg);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0.1rem 0.1rem 0.2rem var(--shadow-1), -0.1rem -0.1rem 0.2rem var(--shadow-2);
+}
+
+.editPhoto img {
+  filter: var(--iconColor);
+  height: 20px;
+  width: 20px;
+}

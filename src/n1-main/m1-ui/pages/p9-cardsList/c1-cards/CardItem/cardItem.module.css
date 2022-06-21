@@ -145,3 +145,12 @@
 .learnWrapper:active {
   box-shadow: inset .1rem .1rem .2rem var(--shadow-1), inset -.1rem -.1rem .2rem var(--shadow-2);
 }
+
+.qImg {
+  height: 30px;
+  width: 30px;
+}
+.aImg {
+  height: 30px;
+  width: 30px;
+}

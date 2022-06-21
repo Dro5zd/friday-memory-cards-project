@@ -48,6 +48,10 @@ export const LearningPage = () => {
     user_id: '',
     created: '',
     updated: '',
+    answerImg: '',
+    questionImg: '',
+    questionVideo: '',
+    answerVideo: '',
   });
 
   useEffect(() => {

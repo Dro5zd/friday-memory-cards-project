@@ -41,5 +41,13 @@
     height: 40px;
     width: 150px;
 }
-/*
-word-wrap: break-word;  нужно добавить чтоб текс не вылазил за края модалки*/
+
+.qImg {
+    height: 200px;
+    width: 300px;
+}
+
+.aImg {
+    height: 200px;
+    width: 300px;
+}

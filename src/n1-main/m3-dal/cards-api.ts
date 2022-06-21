@@ -51,6 +51,10 @@ export type UpdateCardDataType = {
     question?: string;
     answer?: string;
     comments?: string;
+    answerImg?: string;
+    questionImg?: string;
+    questionVideo?: string;
+    answerVideo?: string;
 }
 
 // export type UpdateCardsGradeType = {
