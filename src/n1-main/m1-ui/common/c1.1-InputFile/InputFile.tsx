@@ -1,5 +1,4 @@
 import React, {ChangeEvent, useState} from 'react'
-import {useTypedSelector} from '../../../m2-bll/store';
 
 interface IProps {
     fileType: string;

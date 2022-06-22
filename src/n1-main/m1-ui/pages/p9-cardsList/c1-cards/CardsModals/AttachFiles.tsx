@@ -1,7 +1,5 @@
 import React, {useRef} from 'react';
 import s from './AttachFiles.module.css'
-import {useModalHandler} from "../../../../../utils/use-modal-handler";
-import clipIcon from "../../../../../../assets/img/paperclip-solid.svg";
 import imageIcon from "../../../../../../assets/img/image-solid.svg";
 import videoIcon from "../../../../../../assets/img/video-solid.svg";
 import audioIcon from "../../../../../../assets/img/file-audio-solid.svg";
@@ -29,7 +27,6 @@ export const AttachFiles:React.FC<IAttachFiles> = ({addPhoto}) => {
     }
 
     const onChangeImgHandler = (value: string) => {
-
         addPhoto(value)
     }
 

@@ -13,14 +13,16 @@ import {EditPhotoIcon} from './EditPhotoIcon';
 export const ProfileEdit = () => {
 
   const avatar = useTypedSelector(state => state.profile.avatar)
+  const authAvatar = useTypedSelector(state => state.auth.avatar)
   const name = useTypedSelector(state => state.profile.name)
   const authName = useTypedSelector(state => state.auth.name)
   const status = useTypedSelector(state => state.app.status)
+
   const navigate = useNavigate()
   const dispatch = useTypedDispatch()
 
   const [newName, setNewName] = useState(name || authName || '')
-  const [newAvatar, setNewAvatar] = useState(avatar)
+  const [newAvatar, setNewAvatar] = useState(avatar || authAvatar)
 
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // надо пофиксить вылеты при повторном изменении фотки
