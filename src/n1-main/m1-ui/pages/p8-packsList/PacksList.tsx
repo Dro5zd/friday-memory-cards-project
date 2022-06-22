@@ -47,7 +47,7 @@ export const PacksList = () => {
         modalMode={in_creation_modal}
       />
       <div className={s.components}>
-        <PackHeader closeModal={toggle_in_creation_modal}/>
+        <PackHeader toggleModal={toggle_in_creation_modal}/>
         <div className={s.wrapper}>
           <PackSettings
             minRangeValue={pack.minCardsCount}

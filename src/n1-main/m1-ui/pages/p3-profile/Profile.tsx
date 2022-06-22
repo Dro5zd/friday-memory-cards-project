@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import s from './profilePage.module.css';
 import noPhoto from '../../../../assets/img/noPhoto.png'
 import {useNavigate} from 'react-router-dom';
@@ -22,9 +22,7 @@ export const Profile = () => {
 
   const isAuthorised = useTypedSelector<boolean>(state => state.app.isAuthorised)
   const name = useTypedSelector(state => state.profile.name)
-  // const nameMe = useTypedSelector(state => state.auth.name)
   const avatar = useTypedSelector(state => state.profile.avatar)
-  // const avatarMe = useTypedSelector(state => state.auth.avatar)
   const status = useTypedSelector(state => state.app.status)
   const pack = useTypedSelector(state => state.packs)
   const sortUserId = useTypedSelector(state => state.sort.user_id)
@@ -84,7 +82,7 @@ export const Profile = () => {
                 closeModal={toggle_in_creation_modal}
                 modalMode={in_creation_modal}
               />
-              <PackHeader closeModal={toggle_in_creation_modal}/>
+              <PackHeader toggleModal={toggle_in_creation_modal}/>
               <div className={s.wrapper}>
                 <div className={s.leftSide}>
                   <div className={s.avatar}>

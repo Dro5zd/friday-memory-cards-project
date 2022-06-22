@@ -6,12 +6,15 @@ interface IDebounceSearch {
     callback: (value: string) => void;
     delay: number;
     className?: string;
+    placeHolder?: string
+    setText?: (text: string)=> void
 }
 
-export const DebounceSearch: React.FC<IDebounceSearch> = React.memo(({callback, delay, className}) => {
+export const DebounceSearch: React.FC<IDebounceSearch> = React.memo(({callback, delay, className, placeHolder, setText}) => {
     const [searchValue, setSearchValue] = useState<string>('')
     const onChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         setSearchValue(e.currentTarget.value)
+        setText && setText(e.currentTarget.value)
     }, []);
     const debouncedSearchValue: string = useDebounce<string>(searchValue, delay);
     useEffect(() => {
@@ -22,7 +25,7 @@ export const DebounceSearch: React.FC<IDebounceSearch> = React.memo(({callback, 
 
     return (
         <div>
-            <SuperInputText placeholder={'Search...'} className={className} onChange={onChangeHandler}/>
+            <SuperInputText placeholder={placeHolder} className={className} onChange={onChangeHandler}/>
         </div>
     );
 });
