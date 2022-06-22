@@ -7,9 +7,10 @@ import {InputFile} from "../../../../common/c1.1-InputFile/InputFile";
 
 interface IAttachFiles {
     addPhoto: (photo: string) => void
+    addVideo: (video: string) => void
 }
 
-export const AttachFiles:React.FC<IAttachFiles> = ({addPhoto}) => {
+export const AttachFiles:React.FC<IAttachFiles> = ({addPhoto, addVideo}) => {
 
     // const {modal: selected, toggleModal: toggleSelected} = useModalHandler()
 
@@ -19,7 +20,7 @@ export const AttachFiles:React.FC<IAttachFiles> = ({addPhoto}) => {
     const imgRef = useRef<HTMLInputElement>(null)
 
     const onChangeVideoHandler = (value: string) => {
-
+        addVideo(value)
     }
 
     const onChangeAudioHandler = (value: string) => {
@@ -33,10 +34,10 @@ export const AttachFiles:React.FC<IAttachFiles> = ({addPhoto}) => {
     const addVideoHandler = () => {
         videoRef.current && videoRef.current.click()
     }
-    const addAudioHandler =  () => {
+    const addAudioHandler = () => {
         audioRef.current && audioRef.current.click()
     }
-    const addImageHandler =  () => {
+    const addImageHandler = () => {
         imgRef.current && imgRef.current.click()
     }
 

@@ -22,9 +22,9 @@ export const Profile = () => {
 
   const isAuthorised = useTypedSelector<boolean>(state => state.app.isAuthorised)
   const name = useTypedSelector(state => state.profile.name)
-  const nameMe = useTypedSelector(state => state.auth.name)
+  // const nameMe = useTypedSelector(state => state.auth.name)
   const avatar = useTypedSelector(state => state.profile.avatar)
-  const avatarMe = useTypedSelector(state => state.auth.avatar)
+  // const avatarMe = useTypedSelector(state => state.auth.avatar)
   const status = useTypedSelector(state => state.app.status)
   const pack = useTypedSelector(state => state.packs)
   const sortUserId = useTypedSelector(state => state.sort.user_id)
@@ -33,7 +33,7 @@ export const Profile = () => {
   const requestPackMaxValue = useTypedSelector(state => state.sort.packMaxValue)
   const {modal: in_creation_modal, toggleModal: toggle_in_creation_modal} = useModalHandler()
 
-  const [newAvatar, setNewAvatar] = useState(avatar || avatarMe)
+  const [newAvatar, setNewAvatar] = useState(avatar)
 
   const navigate = useNavigate()
   const dispatch = useTypedDispatch()
@@ -91,7 +91,7 @@ export const Profile = () => {
                     <div className={s.avatarBorder}>
                       <img src={newAvatar || noPhoto} alt={'ava'}/>
                     </div>
-                    <h2 className={s.profileName}>{name || nameMe || 'Name'}</h2>
+                    <h2 className={s.profileName}>{name}</h2>
                   </div>
                   <EditPhotoIcon className={s.editPhoto} dispatchCallback={updateProfile}/>
                   <div className={s.rangeWrapper}>

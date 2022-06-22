@@ -34,18 +34,27 @@ export const EditCardModal: React.FC<IEditCardModal> = ({
 
   const [answerPhoto, setAnswerPhoto] = useState<string>('');
   const [questionPhoto, setQuestionPhoto] = useState<string>('');
+  const [questionVideo, setQuestionVideo] = useState<string>('');
+  const [answerVideo, setAnswerVideo] = useState<string>('');
   const [answer, setAnswer] = useState<string>(initialAnswer);
   const [question, setQuestion] = useState<string>(initialQuestion);
 
   const editModalHandler = () => {
     closeModal()
-    dispatch(updateCardTC({_id: cardId, questionImg: questionPhoto, answerImg: answerPhoto, question, answer}, packId))
+    dispatch(updateCardTC({_id: cardId,
+      questionImg: questionPhoto,
+      answerImg: answerPhoto,
+      question,
+      answer,
+      questionVideo,
+      answerVideo},
+      packId))
   };
   return (
     <ModalEdited closeModal={closeModal} modalMode={modalMode}>
       <div className={s.wrapper}>
         <span className={s.title}>Update Card</span>
-        <AttachFiles addPhoto={setQuestionPhoto}/>
+        <AttachFiles addPhoto={setQuestionPhoto} addVideo={setQuestionVideo}/>
         <SuperInputText
           className={s.packNameInput}
           placeholder={'Question'}
@@ -54,7 +63,7 @@ export const EditCardModal: React.FC<IEditCardModal> = ({
             setQuestion(e.currentTarget.value)
           }}
         />
-        <AttachFiles addPhoto={setAnswerPhoto}/>
+        <AttachFiles addPhoto={setAnswerPhoto} addVideo={setAnswerVideo}/>
         <SuperInputText
           className={s.packNameInput}
           placeholder={'Answer'}

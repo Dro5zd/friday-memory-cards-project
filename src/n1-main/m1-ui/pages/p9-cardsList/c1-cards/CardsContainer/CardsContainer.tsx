@@ -24,9 +24,9 @@ export const CardsContainer = () => {
   const isOwner = userId === packUserId;
 
 
-    const [openEditModalId, setOpenEditModalId] = useState<string[]>([])
-    const [openDeleteModalId, setOpenDeleteModalId] = useState<string[]>([])
-    const [openLearnModalId, setOpenLearnModalId] = useState<string[]>([])
+  const [openEditModalId, setOpenEditModalId] = useState<string[]>([])
+  const [openDeleteModalId, setOpenDeleteModalId] = useState<string[]>([])
+  const [openLearnModalId, setOpenLearnModalId] = useState<string[]>([])
 
   const sortUpdatedCardsHandler = (value: string) => {
     sortCards === `0${value}`
@@ -37,7 +37,7 @@ export const CardsContainer = () => {
 
   const fullDelete = openDeleteModalId.length === 2
   const fullEdit = openEditModalId.length === 4
-  const fullLearn = openLearnModalId.length === 4
+  const fullLearn = openLearnModalId.length === 6
 
 
   const closeDeleteModalHandler = () => {
@@ -55,12 +55,19 @@ export const CardsContainer = () => {
   }
 
 
-    const closeLearnModalHandler = () => {
-        setOpenLearnModalId([])
-    }
-    const openLearnModalHandler = (question: string, answer: string, questionImg: string, answerImg: string) => {
-        setOpenLearnModalId([question, answer, questionImg, answerImg])
-    }
+  const closeLearnModalHandler = () => {
+    setOpenLearnModalId([])
+  }
+  const openLearnModalHandler = (
+    question: string,
+    answer: string,
+    questionImg: string,
+    answerImg: string,
+    questionVideo: string,
+    answerVideo: string
+  ) => {
+    setOpenLearnModalId([question, answer, questionImg, answerImg, questionVideo, answerVideo])
+  }
 
   return (
     <div className={s.packsContainer}>
@@ -90,6 +97,8 @@ export const CardsContainer = () => {
               answer={openLearnModalId[1]}
               questionImg={openLearnModalId[2]}
               answerImg={openLearnModalId[3]}
+              questionVideo={openLearnModalId[4]}
+              answerVideo={openLearnModalId[5]}
             />
             <table>
               <thead>

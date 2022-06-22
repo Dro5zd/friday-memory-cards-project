@@ -20,6 +20,8 @@ export const AddCardModal: React.FC<IAddCardModal> = ({closeModal, modalMode, pa
 
     const [answerPhoto, setAnswerPhoto] = useState<string>('');
     const [questionPhoto, setQuestionPhoto] = useState<string>('');
+    const [questionVideo, setQuestionVideo] = useState<string>('');
+    const [answerVideo, setAnswerVideo] = useState<string>('');
 
     const [question, setQuestion] = useState<string>('');
     const newCard: PostCardDataType = {
@@ -28,6 +30,8 @@ export const AddCardModal: React.FC<IAddCardModal> = ({closeModal, modalMode, pa
         answer: answer,
         answerImg: answerPhoto,
         questionImg: questionPhoto,
+        questionVideo,
+        answerVideo,
     }
 
     const addNewCardHandler = () => {
@@ -39,13 +43,13 @@ export const AddCardModal: React.FC<IAddCardModal> = ({closeModal, modalMode, pa
         <ModalEdited closeModal={closeModal} modalMode={modalMode}>
             <div className={s.wrapper}>
                 <span className={s.title}>Create new Card</span>
-                <AttachFiles addPhoto={setQuestionPhoto}/>
+                <AttachFiles addPhoto={setQuestionPhoto} addVideo={setQuestionVideo}/>
 
                 <SuperInputText className={s.packNameInput} placeholder={'Question'} value={question} onChange={(e) => {
                     setQuestion(e.currentTarget.value)
                 }}/>
 
-                <AttachFiles addPhoto={setAnswerPhoto}/>
+                <AttachFiles addPhoto={setAnswerPhoto} addVideo={setAnswerVideo}/>
                 <SuperInputText className={s.packNameInput} placeholder={'Answer'} value={answer} onChange={(e) => {
                     setAnswer(e.currentTarget.value)
                 }}/>

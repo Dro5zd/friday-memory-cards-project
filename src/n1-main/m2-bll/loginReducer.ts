@@ -1,6 +1,7 @@
 import {Dispatch} from "redux";
 import {authAPI, LoginParamsType} from "../m3-dal/auth-api";
 import {setIsAuthorisedAC, setStatusAC} from "./appReducer";
+import {updateProfileAC} from "./profileReducer";
 
 const LOGIN = 'LOGIN'
 const SET_LOGIN_ERROR = 'SET-LOGIN-ERROR'
@@ -38,6 +39,7 @@ export const loginFormTC = (data: LoginParamsType) => (dispatch: Dispatch) => {
       dispatch(setIsAuthorisedAC(true))
       dispatch(loginAC(res.data))
       dispatch(setStatusAC('succeeded'))
+      dispatch(updateProfileAC(res.data.name, res.data.avatar))
     })
     .catch((e) => {
       dispatch(setLoginErrorAC(e.message))

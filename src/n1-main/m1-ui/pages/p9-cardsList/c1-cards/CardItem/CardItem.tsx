@@ -12,7 +12,7 @@ type CardItemType = {
     isOwner: boolean;
     openEditModalHandler: (packId: string, cardId: string, question: string, answer: string) => void
     openDeleteModalHandler: (packId: string, cardId: string) => void
-    openLearnModalHandler: (question: string, answer: string, questionImg: string, answerImg: string) => void
+    openLearnModalHandler: (question: string, answer: string, questionImg: string, answerImg: string, questionVideo: string, answerVideo: string) => void
 }
 export const CardItem: React.FC<CardItemType> = ({
                                                      card,
@@ -25,12 +25,20 @@ export const CardItem: React.FC<CardItemType> = ({
 
     const openEditModal = () => openEditModalHandler(card.cardsPack_id, card._id, card.question, card.answer)
     const openDeleteModal = () => openDeleteModalHandler(card.cardsPack_id, card._id)
-    const openLearnModal = () => openLearnModalHandler(card.question, card.answer, card.questionImg, card.answerImg)
+    const openLearnModal = () => openLearnModalHandler(card.question, card.answer, card.questionImg, card.answerImg, card.questionVideo, card.answerVideo)
 
     return (
         <tr className={s.cardItemContainer}>
-            <td className={s.questionColumn}>{card.question} {card.questionImg && <img className={s.qImg} src={card.questionImg} alt=""/>}</td>
-            <td className={s.answerColumn}>{card.answer} {card.answerImg && <img className={s.aImg} src={card.answerImg} alt=""/>}</td>
+            <td className={s.questionColumn}>
+              {card.question}
+              {card.questionImg && <img className={s.qImg} src={card.questionImg} alt=""/>}
+              {card.questionVideo && <video className={s.qImg} src={card.questionVideo}></video>}
+            </td>
+            <td className={s.answerColumn}>
+              {card.answer}
+              {card.answerImg && <img className={s.aImg} src={card.answerImg} alt=""/>}
+              {card.answerVideo && <video className={s.aImg} src={card.answerVideo}></video>}
+            </td>
             <td className={s.updateColumn}>{moment(card.updated).format('DD.MM.YYYY HH:mm')}</td>
             <td className={s.gradeColumn}><MainRating value={card.grade}/></td>
             <td className={s.buttonBlock}>
