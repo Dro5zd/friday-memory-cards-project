@@ -1,8 +1,7 @@
-import {cardPacksAPI, CreatePackDataType, UpdateCardsPackType} from '../m3-dal/cardPacks-api';
+import {cardPacksAPI, CreatePackDataType} from '../m3-dal/cardPacks-api';
 import {AppThunk} from './store';
 import {serverErrorHandler} from "../utils/serverErrorHandler";
 import {setStatusAC} from "./appReducer";
-import {setRangeValueAC} from "./sortReducer";
 
 const SET_PACKS = 'POST-PACKS'
 

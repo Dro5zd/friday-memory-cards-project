@@ -9,15 +9,12 @@ import {useForm} from 'react-hook-form';
 import {useTypedDispatch, useTypedSelector} from '../../../m2-bll/store';
 import {loginFormTC} from '../../../m2-bll/loginReducer';
 import mainLogo from '../../../../assets/img/B.A.D._logo3.png';
-import Preloader from "../../common/c7-Preloader/Preloader";
-import ServerErrors from "../../common/c0-ErrorsBlock/ServerErrors";
 
 export const Login = () => {
   const {register, handleSubmit, reset, formState: {errors}} = useForm<LoginFormType>()
   const isAuthorised = useTypedSelector(state => state.app.isAuthorised)
   const loginError = useTypedSelector(state => state.auth.error)
   const [passOn, setPassOn] = useState(true)
-  const status = useTypedSelector(state => state.app.status)
 
   const dispatch = useTypedDispatch()
   const navigate = useNavigate()
