@@ -3,6 +3,12 @@
   flex-direction: column;
 }
 
+.deleteModuleWrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
 .title {
   font-size: 30px;
   font-weight: 300;
@@ -13,6 +19,7 @@
   margin-top: 30px;
   font-size: 17px;
 }
+
 .subTitle2 {
   margin-top: 10px;
   font-size: 17px;
@@ -63,4 +70,32 @@
   width: 150px;
   margin-right: 15px;
   border-radius: 10px;
+}
+
+.questionWrapper {
+  position: relative;
+}
+
+.iconsPositionWrapper {
+  position: relative;
+}
+
+.questionIcon {
+  position: absolute;
+  top: 130px;
+  right: 34px;
+  margin-right: 10px;
+  height: 15px;
+  width: 15px;
+  filter: brightness(0) saturate(100%) invert(49%) sepia(69%) saturate(6718%) hue-rotate(234deg) brightness(103%) contrast(98%);  z-index: 1000;
+}
+
+.answerIcon {
+  position: absolute;
+  top: 118px;
+  right: -30px;
+  margin-right: 10px;
+  height: 15px;
+  width: 15px;
+  filter: brightness(0) saturate(100%) invert(49%) sepia(69%) saturate(6718%) hue-rotate(234deg) brightness(103%) contrast(98%);  z-index: 1000;
 }

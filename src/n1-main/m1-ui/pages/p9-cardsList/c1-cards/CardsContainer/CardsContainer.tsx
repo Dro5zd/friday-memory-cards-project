@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import s from './cardsContainer.module.css';
 import {CardItem} from '../CardItem/CardItem';
 import {setUpdateCardFilterAC} from '../../../../../m2-bll/sortReducer';
-import {CardType, getCardsTC} from '../../../../../m2-bll/cardsReducer';
+import {getCardsTC} from '../../../../../m2-bll/cardsReducer';
 import {useTypedDispatch, useTypedSelector} from '../../../../../m2-bll/store';
 import {useParams} from 'react-router-dom';
 import sortUp from '../../../../../../assets/img/sortUp.svg'
@@ -135,7 +135,10 @@ export const CardsContainer = () => {
                   openEditModalHandler={openEditModalHandler}
                   openDeleteModalHandler={openDeleteModalHandler}
                   openLearnModalHandler={openLearnModalHandler}
-                  isOwner={isOwner} key={card._id} card={card}/>
+                  isOwner={isOwner}
+                  key={card._id}
+                  card={card}
+                />
               })}
               </tbody>
             </table>

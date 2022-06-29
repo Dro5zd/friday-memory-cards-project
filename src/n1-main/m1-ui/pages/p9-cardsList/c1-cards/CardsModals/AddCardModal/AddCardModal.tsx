@@ -7,58 +7,86 @@ import {createNewCardTC} from '../../../../../../m2-bll/cardsReducer';
 import s from '../../../../p8-packsList/p1-packs/PackModals/Modal.module.css';
 import {AttachFiles} from "../AttachFiles";
 import {PostCardDataType} from "../../../../../../m3-dal/cards-api";
+import fileAdded from "../../../../../../../assets/img/check-solid.svg";
 
 interface IAddCardModal {
-    closeModal: () => void;
-    modalMode: boolean;
-    packId: string;
+  closeModal: () => void;
+  modalMode: boolean;
+  packId: string;
 }
 
-export const AddCardModal: React.FC<IAddCardModal> = ({closeModal, modalMode, packId}) => {
-    const dispatch = useTypedDispatch();
-    const [answer, setAnswer] = useState<string>('');
+export const AddCardModal: React.FC<IAddCardModal> = ({
+                                                        closeModal,
+                                                        modalMode,
+                                                        packId
+                                                      }) => {
+  const dispatch = useTypedDispatch();
+  const [answer, setAnswer] = useState<string>('');
 
-    const [answerPhoto, setAnswerPhoto] = useState<string>('');
-    const [questionPhoto, setQuestionPhoto] = useState<string>('');
-    const [questionVideo, setQuestionVideo] = useState<string>('');
-    const [answerVideo, setAnswerVideo] = useState<string>('');
+  const [answerPhoto, setAnswerPhoto] = useState<string>('');
+  const [questionPhoto, setQuestionPhoto] = useState<string>('');
+  const [questionVideo, setQuestionVideo] = useState<string>('');
+  const [answerVideo, setAnswerVideo] = useState<string>('');
 
-    const [question, setQuestion] = useState<string>('');
-    const newCard: PostCardDataType = {
-        cardsPack_id: packId,
-        question: question,
-        answer: answer,
-        answerImg: answerPhoto,
-        questionImg: questionPhoto,
-        questionVideo,
-        answerVideo,
-    }
+  const [question, setQuestion] = useState<string>('');
+  const newCard: PostCardDataType = {
+    cardsPack_id: packId,
+    question: question,
+    answer: answer,
+    answerImg: answerPhoto,
+    questionImg: questionPhoto,
+    questionVideo,
+    answerVideo,
+  }
 
-    const addNewCardHandler = () => {
-        closeModal();
-        dispatch(createNewCardTC(newCard))
-    }
+  const addNewCardHandler = () => {
+    closeModal();
+    dispatch(createNewCardTC(newCard))
+  }
 
-    return (
-        <ModalEdited closeModal={closeModal} modalMode={modalMode}>
-            <div className={s.wrapper}>
-                <span className={s.title}>Create new Card</span>
-                <AttachFiles addPhoto={setQuestionPhoto} addVideo={setQuestionVideo}/>
+  return (
+    <ModalEdited closeModal={closeModal} modalMode={modalMode}>
+      <div className={s.wrapper}>
+        <span className={s.title}>Create new Card</span>
 
-                <SuperInputText className={s.packNameInput} placeholder={'Question'} value={question} onChange={(e) => {
-                    setQuestion(e.currentTarget.value)
-                }}/>
+        {newCard.questionImg && <img className={s.questionIcon} src={fileAdded} alt="photoIcon"/>}
+        {newCard.questionVideo && <img className={s.questionIcon} src={fileAdded} alt="videoIcon"/>}
 
-                <AttachFiles addPhoto={setAnswerPhoto} addVideo={setAnswerVideo}/>
-                <SuperInputText className={s.packNameInput} placeholder={'Answer'} value={answer} onChange={(e) => {
-                    setAnswer(e.currentTarget.value)
-                }}/>
+        <AttachFiles
+          addPhoto={setQuestionPhoto}
+          addVideo={setQuestionVideo}
+        />
+        <div className={s.questionWrapper}>
+          {newCard.answerImg && <img className={s.answerIcon} src={fileAdded} alt="photoIcon"/>}
+          {newCard.answerVideo && <img className={s.answerIcon} src={fileAdded} alt="videoIcon"/>}
 
-                <div className={s.btnWrapper}>
-                    <SuperButton className={s.saveButton} title={'Add'} onClick={addNewCardHandler}/>
-                    <SuperButton className={s.cancelButton} title={'Cancel'} onClick={closeModal}/>
-                </div>
-            </div>
-        </ModalEdited>
-    );
+          <SuperInputText
+            className={s.packNameInput}
+            placeholder={'Question'}
+            value={question}
+            onChange={(e) => {
+              setQuestion(e.currentTarget.value)
+            }}/>
+        </div>
+
+        <AttachFiles
+          addPhoto={setAnswerPhoto}
+          addVideo={setAnswerVideo}
+        />
+
+        <SuperInputText
+          className={s.packNameInput}
+          placeholder={'Answer'}
+          value={answer}
+          onChange={(e) => {
+            setAnswer(e.currentTarget.value)
+          }}/>
+
+        <div className={s.btnWrapper}>
+          <SuperButton className={s.saveButton} title={'Add'} onClick={addNewCardHandler}/>
+          <SuperButton className={s.cancelButton} title={'Cancel'} onClick={closeModal}/>
+        </div>
+      </div>
+    </ModalEdited>
+  );
 };

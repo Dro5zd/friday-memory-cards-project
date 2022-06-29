@@ -6,6 +6,8 @@ import {useTypedDispatch} from "../../../../../../m2-bll/store";
 import {updateCardTC} from "../../../../../../m2-bll/cardsReducer";
 import s from "../../../../p8-packsList/p1-packs/PackModals/Modal.module.css";
 import {AttachFiles} from "../AttachFiles";
+import fileAdded from "../../../../../../../assets/img/check-solid.svg";
+import {UpdateCardDataType} from "../../../../../../m3-dal/cards-api";
 
 interface IEditCardModal {
   closeModal: () => void;
@@ -39,31 +41,52 @@ export const EditCardModal: React.FC<IEditCardModal> = ({
   const [answer, setAnswer] = useState<string>(initialAnswer);
   const [question, setQuestion] = useState<string>(initialQuestion);
 
+  const userCards: UpdateCardDataType = {
+    _id: cardId,
+    questionImg: questionPhoto,
+    answerImg: answerPhoto,
+    question,
+    answer,
+    questionVideo,
+    answerVideo
+  }
+
   const editModalHandler = () => {
     closeModal()
-    dispatch(updateCardTC({_id: cardId,
-      questionImg: questionPhoto,
-      answerImg: answerPhoto,
-      question,
-      answer,
-      questionVideo,
-      answerVideo},
-      packId))
+    dispatch(updateCardTC(userCards, packId))
   };
   return (
     <ModalEdited closeModal={closeModal} modalMode={modalMode}>
       <div className={s.wrapper}>
         <span className={s.title}>Update Card</span>
-        <AttachFiles addPhoto={setQuestionPhoto} addVideo={setQuestionVideo}/>
-        <SuperInputText
-          className={s.packNameInput}
-          placeholder={'Question'}
-          value={question}
-          onChange={(e) => {
-            setQuestion(e.currentTarget.value)
-          }}
+
+        {userCards.questionImg && <img className={s.questionIcon} src={fileAdded} alt="photoIcon"/>}
+        {userCards.questionVideo && <img className={s.questionIcon} src={fileAdded} alt="videoIcon"/>}
+
+        <AttachFiles
+          addPhoto={setQuestionPhoto}
+          addVideo={setQuestionVideo}
         />
-        <AttachFiles addPhoto={setAnswerPhoto} addVideo={setAnswerVideo}/>
+
+        <div className={s.iconsPositionWrapper}>
+          {userCards.answerImg && <img className={s.answerIcon} src={fileAdded} alt="photoIcon"/>}
+          {userCards.answerVideo && <img className={s.answerIcon} src={fileAdded} alt="videoIcon"/>}
+
+          <SuperInputText
+            className={s.packNameInput}
+            placeholder={'Question'}
+            value={question}
+            onChange={(e) => {
+              setQuestion(e.currentTarget.value)
+            }}
+          />
+        </div>
+
+        <AttachFiles
+          addPhoto={setAnswerPhoto}
+          addVideo={setAnswerVideo}
+        />
+
         <SuperInputText
           className={s.packNameInput}
           placeholder={'Answer'}

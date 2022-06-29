@@ -1,38 +1,54 @@
 .inputWrapper {
-    position: relative;
+  position: relative;
 }
 
+/*не удалять относительно него работает маусИвент на закрыте блока иконок*/
+/*//////////////////////////////////*/
+.iconsBlock {
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 20px;
+  z-index: 11;
+}
+/*//////////////////////////////////*/
+
 .iconControlClip {
-    position: absolute;
-    top: 55px;
-    right: 20px;
-    display: inline-block;
-    width: 25px;
-    height: 25px;
-    filter: var(--iconColor);
-    z-index: 10;
-    cursor: pointer;
+  position: absolute;
+  top: 55px;
+  right: 20px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  filter: var(--iconColor);
+  z-index: 10;
+  cursor: pointer;
 }
 
 .iconControlClip1 {
-    display: flex;
-    width: 25px;
-    height: 25px;
-    margin-right: 10px;
-    filter: var(--iconColor);
-    z-index: 10;
-    justify-content: space-between;
-    cursor: pointer;
-
+  display: flex;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  filter: var(--iconColor);
+  z-index: 10;
+  justify-content: space-between;
+  cursor: pointer;
 }
 
 .iconsWrapper {
-    position: absolute;
-    top: 50px;
-    right: 20px;
-    display: flex;
-    width: 100px;
-    height: 60px;
-    cursor: pointer;
-    /*opacity: 1;*/
+  position: absolute;
+  top: 55px;
+  right: 0;
+  display: flex;
+  width: 65px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.paperClip {
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+  filter: var(--iconColor);
 }

@@ -26,9 +26,9 @@
     background-color: var(--textHover);
 }
 
-.checkbox:hover::before {
-    background-color: var(--textHover);
-}
+/*.checkbox:hover::before {*/
+/*    background-color: var(--textHover);*/
+/*}*/
 
 .checkbox:checked {
     box-shadow: inset .1rem .1rem .3rem var(--shadow-1), inset -.1rem -.1rem .3rem var(--shadow-2);

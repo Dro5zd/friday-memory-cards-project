@@ -5,6 +5,8 @@ import {MainRating} from '../../../../common/c12-Rating/Rating';
 import trash from '../../../../../../assets/img/trash.svg'
 import edit from '../../../../../../assets/img/sliders.svg'
 import learn from '../../../../../../assets/img/bookOpen.svg'
+import video from '../../../../../../assets/img/video-solid.svg'
+import photo from '../../../../../../assets/img/image-solid.svg'
 import moment from 'moment';
 
 type CardItemType = {
@@ -29,16 +31,19 @@ export const CardItem: React.FC<CardItemType> = ({
 
     return (
         <tr className={s.cardItemContainer}>
+
             <td className={s.questionColumn}>
+              {card.questionImg && <img className={s.photoIcon} src={photo} alt="img question"/>}
+              {card.questionVideo && <img className={s.videoIcon} src={video} alt="video question"/>}
               {card.question}
-              {card.questionImg && <img className={s.qImg} src={card.questionImg} alt=""/>}
-              {card.questionVideo && <video className={s.qImg} src={card.questionVideo}></video>}
             </td>
+
             <td className={s.answerColumn}>
+              {card.answerImg && <img className={s.photoIcon} src={photo} alt="img question"/>}
+              {card.answerVideo && <img className={s.videoIcon} src={video} alt="video question"/>}
               {card.answer}
-              {card.answerImg && <img className={s.aImg} src={card.answerImg} alt=""/>}
-              {card.answerVideo && <video className={s.aImg} src={card.answerVideo}></video>}
             </td>
+
             <td className={s.updateColumn}>{moment(card.updated).format('DD.MM.YYYY HH:mm')}</td>
             <td className={s.gradeColumn}><MainRating value={card.grade}/></td>
             <td className={s.buttonBlock}>
