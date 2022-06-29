@@ -43,11 +43,13 @@
 }
 
 .qImg {
+    margin: 10px auto;
     height: 200px;
-    width: 300px;
+    width: 320px;
 }
 
 .aImg {
+    margin: 10px auto;
     height: 200px;
-    width: 300px;
+    width: 320px;
 }

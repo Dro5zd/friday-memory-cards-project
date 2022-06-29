@@ -13,7 +13,7 @@
 .questionColumn {
   margin-top: 11px;
   display: flex;
-  justify-content: center;
+  /*justify-content: center;*/
   width: 445px;
   height: 40px;
   margin-left: 10px;
@@ -24,8 +24,8 @@
 }
 
 .answerColumn {
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
+  /*justify-content: center;*/
   padding: 12px 20px;
   width: 405px;
   height: 40px;

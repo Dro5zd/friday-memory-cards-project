@@ -7,7 +7,6 @@ import {createNewCardTC} from '../../../../../../m2-bll/cardsReducer';
 import s from '../../../../p8-packsList/p1-packs/PackModals/Modal.module.css';
 import {AttachFiles} from "../AttachFiles";
 import {PostCardDataType} from "../../../../../../m3-dal/cards-api";
-import fileAdded from "../../../../../../../assets/img/check-solid.svg";
 
 interface IAddCardModal {
   closeModal: () => void;
@@ -49,16 +48,13 @@ export const AddCardModal: React.FC<IAddCardModal> = ({
       <div className={s.wrapper}>
         <span className={s.title}>Create new Card</span>
 
-        {newCard.questionImg && <img className={s.questionIcon} src={fileAdded} alt="photoIcon"/>}
-        {newCard.questionVideo && <img className={s.questionIcon} src={fileAdded} alt="videoIcon"/>}
+        {newCard.questionImg && <img className={s.questionIcon} src={newCard.questionImg} alt="photoIcon"/>}
+        {newCard.questionVideo && <video className={s.questionIcon} src={newCard.questionVideo} style={{width: '300px'}} controls/>}
 
         <AttachFiles
           addPhoto={setQuestionPhoto}
           addVideo={setQuestionVideo}
         />
-        <div className={s.questionWrapper}>
-          {newCard.answerImg && <img className={s.answerIcon} src={fileAdded} alt="photoIcon"/>}
-          {newCard.answerVideo && <img className={s.answerIcon} src={fileAdded} alt="videoIcon"/>}
 
           <SuperInputText
             className={s.packNameInput}
@@ -67,7 +63,9 @@ export const AddCardModal: React.FC<IAddCardModal> = ({
             onChange={(e) => {
               setQuestion(e.currentTarget.value)
             }}/>
-        </div>
+
+        {newCard.answerImg && <img className={s.answerIcon} src={newCard.answerImg} alt="photoIcon"/>}
+        {newCard.answerVideo && <img className={s.answerIcon} src={newCard.answerVideo} alt="videoIcon"/>}
 
         <AttachFiles
           addPhoto={setAnswerPhoto}

@@ -81,21 +81,20 @@
 }
 
 .questionIcon {
-  position: absolute;
-  top: 130px;
-  right: 34px;
-  margin-right: 10px;
-  height: 15px;
-  width: 15px;
-  filter: brightness(0) saturate(100%) invert(49%) sepia(69%) saturate(6718%) hue-rotate(234deg) brightness(103%) contrast(98%);  z-index: 1000;
+  margin: 15px auto -10px auto;
+  height: 200px;
+  width: 300px;
+  /*filter: brightness(0) saturate(100%) invert(49%) sepia(69%) saturate(6718%) hue-rotate(234deg) brightness(103%) contrast(98%);  z-index: 1000;*/
 }
 
 .answerIcon {
-  position: absolute;
-  top: 118px;
-  right: -30px;
-  margin-right: 10px;
-  height: 15px;
-  width: 15px;
-  filter: brightness(0) saturate(100%) invert(49%) sepia(69%) saturate(6718%) hue-rotate(234deg) brightness(103%) contrast(98%);  z-index: 1000;
+  margin: 25px auto -15px auto;
+  height: 200px;
+  width: 300px;
+  /*filter: brightness(0) saturate(100%) invert(49%) sepia(69%) saturate(6718%) hue-rotate(234deg) brightness(103%) contrast(98%);  z-index: 1000;*/
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
 }

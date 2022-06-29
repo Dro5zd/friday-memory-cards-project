@@ -60,7 +60,7 @@ export const AttachFiles: React.FC<IAttachFiles> = ({addPhoto, addVideo}) => {
           : <div className={s.iconsWrapper}>
             <div className={s.iconsBlock} onMouseLeave={closeIconBlockHandler}>
                <img className={s.iconControlClip1} src={imageIcon} alt="imageIcon"
-                        onClick={addImageHandler}/>attach filef
+                        onClick={addImageHandler}/>
               <img className={s.iconControlClip1} src={videoIcon} alt="videoIcon"
                    onClick={addVideoHandler}/>
             </div>
