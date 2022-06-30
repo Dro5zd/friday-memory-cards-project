@@ -32,12 +32,9 @@ export const PasswordRecovery = () => {
 
   return (
     <div className={s.recoveryContainer}>
+      {status === 'loading' && <Preloader/>}
       <div className={s.components}>
-        {
-          status === 'loading'
-            ? <Preloader/>
-            : <>
-              <div className={s.recoveryTitle}><img src={mainLogo} alt="main_logo"/></div>
+        <div className={s.recoveryTitle}><img src={mainLogo} alt="main_logo"/></div>
               <div className={s.recoverySubTitle}>Forgot password?</div>
               <form className={s.inputWrapper} onSubmit={handleSubmit(onSubmit)}>
                 <SuperInputText
@@ -49,8 +46,6 @@ export const PasswordRecovery = () => {
                 <SuperButton className={s.sendButton} title={'Send'}/>
               </form>
               <NavLink className={s.toLoginLink} to={PATH.LOGIN}>Try to Log In</NavLink>
-            </>
-        }
         <div className={s.errorBlock}>
           {errors.email && <span>Email is not correct</span>}
           {serverMessage && <span>{serverMessage} please check your email</span>}

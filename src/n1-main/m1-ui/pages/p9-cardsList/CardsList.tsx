@@ -14,45 +14,46 @@ import {useModalHandler} from "../../../utils/use-modal-handler";
 import {PATH} from "../../routes/Routs";
 
 export const CardsList = () => {
-    const {urlCardsPackId} = useParams<string>();
-    const dispatch = useTypedDispatch();
-    const cards = useTypedSelector(state => state.cards);
-    const userId = useTypedSelector<string>(state => state.auth._id);
-    const packUserId = useTypedSelector<string>(state => state.cards.packUserId);
-    const question = useTypedSelector(state => state.sort.cardsQuestionValue);
-    const answer = useTypedSelector(state => state.sort.cardsAnswerValue);
-    const serverErrors = useTypedSelector(state => state.app.errors);
-    const status = useTypedSelector(state => state.app.status);
-    const cardsPortionValue = useTypedSelector(state => state.app.cardsPortionValue);
-    const isOwner = userId === packUserId;
-    const {modal: in_creation_modal, toggleModal: toggle_in_creation_modal} = useModalHandler()
+  const {urlCardsPackId} = useParams<string>();
+  const dispatch = useTypedDispatch();
+  const cards = useTypedSelector(state => state.cards);
+  const userId = useTypedSelector<string>(state => state.auth._id);
+  const packUserId = useTypedSelector<string>(state => state.cards.packUserId);
+  const question = useTypedSelector(state => state.sort.cardsQuestionValue);
+  const answer = useTypedSelector(state => state.sort.cardsAnswerValue);
+  const serverErrors = useTypedSelector(state => state.app.errors);
+  const status = useTypedSelector(state => state.app.status);
+  const cardsPortionValue = useTypedSelector(state => state.app.cardsPortionValue);
+  const isOwner = userId === packUserId;
+  const {modal: in_creation_modal, toggleModal: toggle_in_creation_modal} = useModalHandler()
 
 
-    useEffect(() => {
-        if (urlCardsPackId) {
-            dispatch(getCardsTC(urlCardsPackId))
-        }
-    }, [dispatch, urlCardsPackId, question, answer, cardsPortionValue]);
-
-    const isAuthorised = useTypedSelector(state => state.app.isAuthorised)
-    const navigate = useNavigate()
-    useEffect(()=>{
-       if (!isAuthorised) {
-            navigate(PATH.LOGIN)
-        }
-    }, [isAuthorised, navigate])
-
-    const changeCurrentPage = (page: number) => {
-        dispatch(changeCardsCurrentPageAC(page));
-        urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
+  useEffect(() => {
+    if (urlCardsPackId) {
+      dispatch(getCardsTC(urlCardsPackId))
     }
+  }, [dispatch, urlCardsPackId, question, answer, cardsPortionValue]);
 
-    const onChangeOption = (option: number) => {
-        dispatch(setCardsPortionAC(option))
+  const isAuthorised = useTypedSelector(state => state.app.isAuthorised)
+  const navigate = useNavigate()
+  useEffect(() => {
+    if (!isAuthorised) {
+      navigate(PATH.LOGIN)
     }
+  }, [isAuthorised, navigate])
+
+  const changeCurrentPage = (page: number) => {
+    dispatch(changeCardsCurrentPageAC(page));
+    urlCardsPackId && dispatch(getCardsTC(urlCardsPackId))
+  }
+
+  const onChangeOption = (option: number) => {
+    dispatch(setCardsPortionAC(option))
+  }
 
   return (
     <div className={s.container}>
+      {status === 'loading' && <Preloader/>}
       <div className={s.components}>
         <div className={s.packSide}>
           {urlCardsPackId &&
@@ -63,12 +64,7 @@ export const CardsList = () => {
               />
           }
           <CardsHeader addNewCard={toggle_in_creation_modal} isOwner={isOwner}/>
-
-          {
-            status === 'loading'
-              ? <Preloader/>
-              : <CardsContainer/>
-          }
+          <CardsContainer/>
         </div>
         <Pagination
           totalCount={cards.cardsTotalCount}

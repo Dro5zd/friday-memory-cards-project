@@ -37,51 +37,46 @@ const Registration = () => {
 
   return (
     <div className={s.registrationContainer}>
+      {status === 'loading' && <Preloader/>}
       <div className={s.components}>
-        {
-          status === 'loading'
-            ? <Preloader/>
-            : <>
-              <div className={s.registrationTitle}><img src={mainLogo} alt="main_logo"/></div>
-              <div className={s.registrationSubTitle}>Sign up</div>
-              <form onSubmit={handleSubmit(onSubmit)} className={s.inputWrapper}>
-                <SuperInputText {...register('email', {
-                  required: true,
-                  pattern: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
-                })} type={'email'} placeholder={'Email'}/>
+        <div className={s.registrationTitle}><img src={mainLogo} alt="main_logo"/></div>
+        <div className={s.registrationSubTitle}>Sign up</div>
+        <form onSubmit={handleSubmit(onSubmit)} className={s.inputWrapper}>
+          <SuperInputText {...register('email', {
+            required: true,
+            pattern: /^([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})$/,
+          })} type={'email'} placeholder={'Email'}/>
 
-                <div className={s.passwordInput}>
-                  <SuperInputText {...register('password', {required: true, minLength: 8})}
-                                  type={passOn ? 'password' : 'text'}
-                                  placeholder={'Password'} passOn={passOn} setPassOn={setPassOn}/>
-                </div>
-                <div className={s.passwordConfirmInput}>
-                  <SuperInputText
-                    {...register('confirmPassword', {
-                      validate: (value: string) => {
-                        if (watch('password') !== value) {
-                          return 'Your passwords do no match'
-                        }
-                      }
-                    })}
-                    type={passOn1 ? 'password' : 'text'}
-                    placeholder={'Confirm Password'} passOn={passOn1} setPassOn={setPassOn1}
-                  />
-                </div>
-                <SuperButton className={s.registrationButton} title={'Sign Up'} type={'submit'}/>
-                <div className={s.navigateBlock}>
-                  <span>Already have an account?</span>
-                  <NavLink className={s.toLoginLink} to={PATH.LOGIN}>Login</NavLink>
-                </div>
-              </form>
-              <div className={s.errorBlock}>
-                {errors.email && <span>Email is not correct</span>}
-                {errors.password && <span>Password should be more then 7 char</span>}
-                <span>{errors.confirmPassword?.message}</span>
-                <span>{serverError}</span>
-              </div>
-            </>
-        }
+          <div className={s.passwordInput}>
+            <SuperInputText {...register('password', {required: true, minLength: 8})}
+                            type={passOn ? 'password' : 'text'}
+                            placeholder={'Password'} passOn={passOn} setPassOn={setPassOn}/>
+          </div>
+          <div className={s.passwordConfirmInput}>
+            <SuperInputText
+              {...register('confirmPassword', {
+                validate: (value: string) => {
+                  if (watch('password') !== value) {
+                    return 'Your passwords do no match'
+                  }
+                }
+              })}
+              type={passOn1 ? 'password' : 'text'}
+              placeholder={'Confirm Password'} passOn={passOn1} setPassOn={setPassOn1}
+            />
+          </div>
+          <SuperButton className={s.registrationButton} title={'Sign Up'} type={'submit'}/>
+          <div className={s.navigateBlock}>
+            <span>Already have an account?</span>
+            <NavLink className={s.toLoginLink} to={PATH.LOGIN}>Login</NavLink>
+          </div>
+        </form>
+        <div className={s.errorBlock}>
+          {errors.email && <span>Email is not correct</span>}
+          {errors.password && <span>Password should be more then 7 char</span>}
+          <span>{errors.confirmPassword?.message}</span>
+          <span>{serverError}</span>
+        </div>
       </div>
     </div>
   );

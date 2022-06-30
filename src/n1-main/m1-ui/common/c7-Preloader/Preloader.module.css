@@ -1,12 +1,18 @@
 .preloaderWrapper {
     height: 100vh;
-    width: 100%;
+    width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+    position: fixed;
 }
 
+.preloaderWrapper span {
+    color: #ffd41d;
+}
 .preloader {
     width: 200px;
     height: 200px;

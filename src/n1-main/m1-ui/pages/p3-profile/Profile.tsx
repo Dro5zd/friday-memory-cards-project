@@ -77,9 +77,8 @@ export const Profile = () => {
 
   return (
     <div className={s.profileContainer}>
+      {status === 'loading' && <Preloader/>}
         <div className={s.components}>
-          {status === 'loading' ? <Preloader/> :
-            <>
               <AddPackModal
                 closeModal={toggle_in_creation_modal}
                 modalMode={in_creation_modal}
@@ -121,8 +120,6 @@ export const Profile = () => {
                 onChangePortions={onChangeOption}
                 title={'packs'}
               />
-            </>
-          }
         </div>
       <div className={s.eWrapper}>
         {serverErrors && <ServerErrors errors={serverErrors}/>}

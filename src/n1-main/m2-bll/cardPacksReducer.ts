@@ -10,10 +10,10 @@ const initState = {
         {
             _id: '',
             user_id: '',
-            name: '🇺🇦🇺🇦🇺🇦🇺🇦🇺🇦',
+            name: '',
             cardsCount: 1,
             created: '',
-            updated: 'Date.now()',
+            updated: '',
             user_name: '',
         },
     ],

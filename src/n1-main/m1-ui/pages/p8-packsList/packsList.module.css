@@ -29,9 +29,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  top: -170px;
-  left: 750px;
+  /*position: absolute;*/
+  /*top: 250px;*/
+  /*left: 700px;*/
 }
 
 .wrapper {

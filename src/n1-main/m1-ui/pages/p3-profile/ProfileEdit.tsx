@@ -42,11 +42,8 @@ export const ProfileEdit = () => {
 
   return (
     <div className={s.profileEditContainer}>
+      {status === 'loading' && <Preloader/>}
       <div className={s.components}>
-        {
-          status === 'loading'
-            ? <Preloader/>
-            : <>
               <div className={s.avatar}>
                 <h2 className={s.profileName}>Personal Information</h2>
                 <div className={s.avatarBorder}>
@@ -63,8 +60,6 @@ export const ProfileEdit = () => {
                 <EditPhotoIcon className={s.editPhoto} dispatchCallback={setNewAvatar}/>
                 <SuperButton className={s.cancelButton} title={'Cancel'} onClick={cancelButtonHandler}/>
               </div>
-            </>
-        }
       </div>
     </div>
   )

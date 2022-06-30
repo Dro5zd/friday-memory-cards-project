@@ -46,31 +46,28 @@ export const PacksList = () => {
         closeModal={toggle_in_creation_modal}
         modalMode={in_creation_modal}
       />
-      <div className={s.components}>
-        <PackHeader closeModal={toggle_in_creation_modal}/>
-        <div className={s.wrapper}>
-          <PackSettings
-            minRangeValue={pack.minCardsCount}
-            maxRangeValue={pack.maxCardsCount}
-            maxCardsCount={requestPackMaxValue}
-            minCardsCount={requestPackMinValue}
-          />
-          {
-            status === 'loading'
-              ? <div className={s.preloader}><Preloader/></div>
-              : <PacksContainer/>
-          }
-        </div>
-        <Pagination
-          totalCount={pack.cardPacksTotalCount}
-          pageSize={pack.pageCount}
-          currentPage={pack.page}
-          onPageChange={changeCurrentPackPage}
-          siblingCount={3}
-          onChangePortions={onChangeOption}
-          title={'packs'}
-        />
-      </div>
+      {status === 'loading' && <Preloader/>}
+           <div className={s.components}>
+            <PackHeader closeModal={toggle_in_creation_modal}/>
+            <div className={s.wrapper}>
+              <PackSettings
+                minRangeValue={pack.minCardsCount}
+                maxRangeValue={pack.maxCardsCount}
+                maxCardsCount={requestPackMaxValue}
+                minCardsCount={requestPackMinValue}
+              />
+              <PacksContainer/>
+            </div>
+            <Pagination
+              totalCount={pack.cardPacksTotalCount}
+              pageSize={pack.pageCount}
+              currentPage={pack.page}
+              onPageChange={changeCurrentPackPage}
+              siblingCount={3}
+              onChangePortions={onChangeOption}
+              title={'packs'}
+            />
+          </div>
       <div className={s.eWrapper}>
         {serverErrors && <ServerErrors errors={serverErrors}/>}
       </div>

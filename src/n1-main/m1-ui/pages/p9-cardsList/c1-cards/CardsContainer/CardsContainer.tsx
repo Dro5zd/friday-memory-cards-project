@@ -7,7 +7,6 @@ import {useTypedDispatch, useTypedSelector} from '../../../../../m2-bll/store';
 import {useParams} from 'react-router-dom';
 import sortUp from '../../../../../../assets/img/sortUp.svg'
 import sortDown from '../../../../../../assets/img/sortDown.svg'
-import Preloader from '../../../../common/c7-Preloader/Preloader';
 import {DeleteCardModal} from '../CardsModals/DeleteCardModal/DeleteCardModal';
 import {EditCardModal} from '../CardsModals/EditCardModal/EditCardModal';
 import {LearnCardModal} from '../CardsModals/OpenCardModal/LearnCardModal';
@@ -19,7 +18,6 @@ export const CardsContainer = () => {
   const sortCards = useTypedSelector<string>(state => state.sort.sortCards);
   const userId = useTypedSelector<string>(state => state.auth._id);
   const packUserId = useTypedSelector<string>(state => state.cards.packUserId);
-  const status = useTypedSelector(state => state.app.status);
   const dispatch = useTypedDispatch();
   const isOwner = userId === packUserId;
 
@@ -71,11 +69,7 @@ export const CardsContainer = () => {
 
   return (
     <div className={s.packsContainer}>
-      {
-        status === 'loading'
-          ? <Preloader/>
-          :
-          <div>
+      <div>
             <DeleteCardModal
               closeModal={closeDeleteModalHandler}
               modalMode={fullDelete}
@@ -143,7 +137,6 @@ export const CardsContainer = () => {
               </tbody>
             </table>
           </div>
-      }
     </div>
   );
 };

@@ -34,49 +34,44 @@ export const NewPassword = () => {
   }
 
 
-   useEffect(() => {
-     if (passChanged) {
-       dispatch(setPassChangedAC(false))
-       navigate(PATH.LOGIN)
-     }
-   }, [passChanged, navigate])
+  useEffect(() => {
+    if (passChanged) {
+      dispatch(setPassChangedAC(false))
+      navigate(PATH.LOGIN)
+    }
+  }, [passChanged, navigate])
 
 
   return (
     <div className={s.newPassContainer}>
+      {status === 'loading' && <Preloader/>}
       <div className={s.components}>
-        {
-          status === 'loading'
-          ? <Preloader/>
-          : <>
-              <div className={s.newPassTitle}><img src={mainLogo} alt="main_logo"/></div>
-              <div className={s.newPassSubTitle}>Create new password</div>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <div className={s.inputNewPassWrapper}>
-                  <SuperInputText
-                    {...register('password', {
-                      required: true,
-                      minLength: 8,
-                    })}
-                    className={s.newPassInput}
-                    type={passOn ? 'password' : 'text'}
-                    placeholder={'New password'}
-                    passOn={passOn} setPassOn={setPassOn}
-                  />
-                </div>
-                <div className={s.instructionsSpan}>
+        <div className={s.newPassTitle}><img src={mainLogo} alt="main_logo"/></div>
+        <div className={s.newPassSubTitle}>Create new password</div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className={s.inputNewPassWrapper}>
+            <SuperInputText
+              {...register('password', {
+                required: true,
+                minLength: 8,
+              })}
+              className={s.newPassInput}
+              type={passOn ? 'password' : 'text'}
+              placeholder={'New password'}
+              passOn={passOn} setPassOn={setPassOn}
+            />
+          </div>
+          <div className={s.instructionsSpan}>
           <span>
             Create new password and we will send you
             <br/>
             further instructions to email
           </span>
-                </div>
-                <div className={s.newPassButtonWrapper}>
-                  <SuperButton className={s.newPassButton} title={'Create New Password'}/>
-                </div>
-              </form>
-            </>
-        }
+          </div>
+          <div className={s.newPassButtonWrapper}>
+            <SuperButton className={s.newPassButton} title={'Create New Password'}/>
+          </div>
+        </form>
         <div className={s.errorBlock}>
           {errors.password && <span>Password should be more then 7 char</span>}
           <span>{newPassError}</span>

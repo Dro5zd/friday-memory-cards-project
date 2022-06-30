@@ -3,7 +3,6 @@ import {Main} from './Main';
 import {useTypedDispatch, useTypedSelector} from "../m2-bll/store";
 import {authoriseMeTC} from "../m2-bll/appReducer";
 import s from './App.module.css';
-import Preloader from "./common/c7-Preloader/Preloader";
 
 export const App = () => {
   const dispatch = useTypedDispatch()
@@ -21,13 +20,12 @@ export const App = () => {
   }, [])
 
   if (!isInitialised) {
-    return <Preloader/>
+    return null
   }
 
   return (
     <div className={mainTheme}>
       <Main/>
-
     </div>
   );
 }

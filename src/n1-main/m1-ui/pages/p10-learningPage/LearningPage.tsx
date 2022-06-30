@@ -11,12 +11,14 @@ import smile from '../../../../assets/img/face-smile-solid.svg'
 import grin from '../../../../assets/img/face-grin-solid.svg'
 import surprise from '../../../../assets/img/face-surprise-solid.svg'
 import frown from '../../../../assets/img/face-frown-solid.svg'
+import Preloader from "../../common/c7-Preloader/Preloader";
 
 const grades = [frown, meh, surprise, smile, grin];
 
 export const LearningPage = () => {
 
   const packs = useTypedSelector(state => state.packs.cardPacks)
+  const status = useTypedSelector(state => state.app.status)
   const {cards} = useTypedSelector(state => state.cards);
   const dispatch = useTypedDispatch()
 
@@ -88,6 +90,7 @@ export const LearningPage = () => {
 
   return (
     <div className={s.learningContainer}>
+      {status === 'loading' && <Preloader/>}
       <div className={s.components}>
         <NavLink to={PATH.PACKS_LIST} className={navData => navData.isActive ? s.active : s.link}>
           <div className={s.close}></div>
